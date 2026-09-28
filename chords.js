@@ -39,9 +39,10 @@ let arrivedShared = false;
    count.js, which every page loads — this file is on two of them, and
    the front door was recording nothing and dropping the flier code. The
    steps left here are the ones that are about this tool: chose_file,
-   analyzed_ok, analyzed_fail, limit_reached, copied_text, shared_link,
-   opened_shared, made_own and clicked_onward. count.js sends `opened`
-   and `clicked_app` for every page including this one.
+   analyzed_ok, analyzed_fail, limit_reached, budget_reached,
+   copied_text, shared_link, opened_shared, made_own and clicked_onward.
+   count.js sends `opened` and `clicked_app` for every page including
+   this one.
 
    Every step is still recorded from the page rather than some from the
    server, because a funnel whose steps are measured by different
