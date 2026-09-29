@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A tuner, a metronome and your own songs to practise on — CoLabRoom</title>
+<meta name="description" content="A tuner, a metronome and a drone, with no song needed. Then loop the passage you keep missing, slow the recording down, and read the words from the stand.">
+<meta property="og:title" content="Practise — CoLabRoom">
+<meta property="og:description" content="Tune up. Then play it through. Songwriting for musicians who aren't in the same room.">
+<meta property="og:type" content="website">
+<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="site.css">
+  <link rel="canonical" href="https://colabroom.com/practise.html">
+  <meta property="og:url" content="https://colabroom.com/practise.html">
+  <meta property="og:site_name" content="CoLabRoom">
+  <meta property="og:image" content="https://colabroom.com/share.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CoLabRoom — songwriting for musicians who aren't in the same room.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Practise — CoLabRoom">
+  <meta name="twitter:description" content="Tune up. Then play it through. Songwriting for musicians who aren't in the same room.">
+  <meta name="twitter:image" content="https://colabroom.com/share.png">
+  <meta name="theme-color" content="#06101F">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "CoLabRoom", "item": "https://colabroom.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Practise", "item": "https://colabroom.com/practise.html" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <a class="brand" href="index.html">CoLabRoom</a>
+    <nav class="pages">
+      <a href="chords.html">Chords</a>
+      <a href="takes.html">Takes</a>
+      <a href="analysis.html">What it heard</a>
+      <a href="songbook.html">Song sheet</a>
+      <a href="help.html">Stuck?</a>
+      <a href="practise.html" aria-current="page">Practise</a>
+      <a href="learn.html">Learn</a>
+      <a href="bands.html">Your room</a>
+      <a href="openmic.html">Open Mic</a>
+    </nav>
+    <span class="sp"></span>
+    <!-- Somebody who already has an account had no way in from here. -->
+    <a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
+    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a>
+  </header>
+
+  <!-- What the app's Tune up sheet and Perform screen do on main
+       (e3276c8a, 29 September 2026), in their own words where they have
+       them: Tune up, Nothing you play is recorded, Perform, Loop from here,
+       Slower, Count-in before play, Full analysis, Play the set. -->
+  <div class="hero inner">
+    <p class="kicker">Practise</p>
+    <h1>Tune up. Then play it through.</h1>
+    <p>
+      Practise on the songs you are actually playing, at a speed you can
+      manage.
+    </p>
+  </div>
+
+  <section class="moment reveal">
+    <div class="eyebrow">Tune up</div>
+    <h2>No song needed.</h2>
+    <p class="lede">
+      A tuner, a metronome and a drone, one tap from Your music. The tuner
+      says how far off the note is. The drone holds one note to tune or sing
+      against. Nothing you play is recorded.
+    </p>
+    <!-- tune_up_sheet.dart: the metronome row says this itself on the web. -->
+    <p class="lede">
+      The click is in the app on your phone. It is not in the browser yet.
+    </p>
+    <div class="art tuner" aria-hidden="true">
+      <div class="tuner-head">
+        <span class="tuner-note">E</span>
+        <span class="tuner-say">In tune.</span>
+      </div>
+      <div class="scale"><b style="left:50%"></b></div>
+      <div class="ends"><span>Flat</span><span>Sharp</span></div>
+      <div class="pill-row">
+        <span class="pill on">Tuner</span>
+        <span class="pill">Metronome</span>
+        <span class="pill">Drone</span>
+      </div>
+      <div class="chordfoot">Nothing you play is recorded.</div>
+    </div>
+  </section>
+
+  <section class="moment reveal">
+    <div class="eyebrow">Play it through</div>
+    <h2>Loop the bit you keep missing.</h2>
+    <p class="lede">
+      Open a song in Perform. Loop a passage, slow the recording down, and
+      count yourself in. Slowing down doesn't send you back to the start.
+    </p>
+    <!-- practice_without_a_recording.dart: with no recording the clock is
+         a tempo you tap, and the loop goes by line. -->
+    <p class="lede">
+      No recording yet? Tap a tempo, and loop it a line at a time.
+    </p>
+    <div class="art lyric" aria-hidden="true">
+      <span class="chords">Bm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G</span>
+      <span class="line"><span class="dot" style="background:var(--gold)"></span><em>Neither of us knew the words</em></span>
+      <span class="chords">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D</span>
+      <span class="line"><span class="dot" style="background:var(--gold)"></span><em>So we made them up instead</em></span>
+      <div class="pill-row">
+        <span class="pill on">Loop from here</span>
+        <span class="pill on">Slower</span>
+        <span class="pill">Count-in before play</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="moment reveal">
+    <div class="eyebrow">The band, minus you</div>
+    <h2>Mute your part. Play the rest.</h2>
+    <p class="lede">
+      After a Full analysis, the instruments on a recording come apart.
+      Turn yours off and play along with everybody else. A Full analysis
+      uses one of your credits.
+    </p>
+    <!-- live_performance_screen.dart: one chip per separated part, named
+         "No <part>"; the chosen one is the part you are playing. -->
+    <div class="art pill-row" aria-hidden="true">
+      <span class="pill">No vocals</span>
+      <span class="pill on">No guitar</span>
+      <span class="pill">No bass</span>
+      <span class="pill">No drums</span>
+    </div>
+  </section>
+
+  <section class="moment reveal">
+    <div class="eyebrow">On the stand</div>
+    <h2>Big words. One song at a time.</h2>
+    <p class="lede">
+      Perform scrolls your words and chords as the song goes, in type large
+      enough to read from the stand. Play a set and it walks the running
+      order one song at a time, in the keys you play them in, with the
+      recording off so only the words move.
+    </p>
+    <a class="more" href="learn.html">And when you have a question →</a>
+  </section>
+
+  <div class="close">
+    <h2>Bring a song.</h2>
+    <p>The beta is small and free, and I read everything that comes back.</p>
+    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Email for an invite</a>
+    <div class="meta">Free during the beta · works in your browser</div>
+  </div>
+
+  <nav class="keep-reading" aria-label="More about CoLabRoom">
+    <p class="eyebrow">Keep reading</p>
+    <div class="onward-row">
+      <a class="onward" href="learn.html">
+        <span class="where">Learn</span>
+        <span class="what">Ask about your own song.</span>
+      </a>
+      <a class="onward" href="songbook.html">
+        <span class="where">Song sheet</span>
+        <span class="what">A page, not a form.</span>
+      </a>
+      <a class="onward" href="analysis.html">
+        <span class="where">What it heard</span>
+        <span class="what">It listens back and writes it down.</span>
+      </a>
+    </div>
+  </nav>
+
+  <footer>
+    <span>CoLabRoom — songwriting for musicians</span>
+    <span class="sp"></span>
+    <a href="index.html#beta">Account deletion</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="copyright.html">Copyright</a>
+  </footer>
+
+</div>
+
+<script src="count.js" data-page="practise"></script>
+<script src="stage.js"></script>
+<script src="reveal.js"></script>
+</body>
+</html>
