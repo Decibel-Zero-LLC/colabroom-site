@@ -268,31 +268,50 @@
     the sound and the picture between the phones and browsers in the call
     while it is on. Calls are never recorded: we never ask LiveKit to record
     one, and the permission the app is given to join a call does not include
-    recording. LiveKit is told who is in a call by an account identifier and
-    the display name you chose, so the people in it can see who is talking.
+    recording. When a call has a song up, you can choose Record me to record
+    your own part on your own phone; that is a take on the song like any
+    other. LiveKit is told who is in a call by an account identifier and the
+    display name you chose, so the people in it can see who is talking.
   </p>
   <p>
     While you are in a call your app tells us every twenty seconds that you
     are still there, so the room can show who is in it; when you leave, that
-    note is deleted, and the room stops showing you within a minute even if
-    your phone could not say goodbye. When the first person starts a call,
-    the others in the room are told, no more than once every ten minutes.
+    note is deleted. If your phone could not say goodbye, the room stops
+    showing you within a minute, and the note is deleted within ten minutes.
+    When the first person starts a call, the others in the room who can join
+    it are told, no more than once every ten minutes. We keep a record of
+    when each call in a room started and ended, and nothing in it says who
+    was on the call.
   </p>
   <p>
-    Calls are for people 18 and over for now. Before your first call you are
-    asked the month and year you were born, once. We keep that month and year
-    against your account, and nobody else can see it; the app only ever uses
-    it to answer whether you may join a call. If the answer is under 13, it
-    is not kept at all. Anybody in a call can report or block anybody else in
-    it, from the call itself.
+    Because LiveKit charges by the minute, we count the time spent in calls,
+    ten minutes at a time, so that each account's calls can have a monthly
+    limit. It is counted against your account, or, while somebody in the room
+    who pays for a plan is on the call, it can be counted against theirs
+    instead, with a note that it was yours. The count holds nothing about
+    what was said or shown.
+  </p>
+  <p>
+    Calls are for people 18 and over for now. Before your first call, unless
+    you have already said, you are asked the month and year you were born,
+    once. We keep that month and year against your account, and nobody else
+    can see it; the app only ever uses it to answer whether you are 18 or
+    over, which calls, lesson links and meeting people you have not worked
+    with all depend on. If the answer is under 13, the month and year are not
+    kept: only the fact that such an answer was given, and when, so the
+    question is never asked again on that account. Anybody in a call can
+    report or block anybody else in it, from the call itself.
   </p>
 
   <h3>Your code, for meeting people</h3>
   <p>
     Every account has a short code, shown as a QR code, so somebody you meet
-    can ask to add you. Anybody who has your code can see your display name,
-    your picture and the parts you play, and can send you a request. Making a
-    new code in the app stops the old one working.
+    can ask to add you. Anybody signed in who has your code can see your
+    display name, your picture and the parts you play, and can send you a
+    request, unless one of you has blocked the other. If the two of you do
+    not already share a room or a song, it opens only when both of you have
+    said you are 18 or over. Making a new code in the app stops the old one
+    working.
   </p>
 
   <h3>Notifications on your phone</h3>
@@ -492,9 +511,12 @@
     room is deleted, or the account is. A note looking for somebody expires
     after a month. Questions you asked the app, and its answers, stay with
     your account. The note that you are in a call is deleted when you leave
-    it. The month and year you gave for calls stay with your account until
-    you delete it. A delivery receipt lives and dies with the notification
-    it belongs to.
+    it, or within ten minutes if your phone could not say so. The month and
+    year you were born, if you gave them, stay with your account until you
+    delete it. The record of when a room's calls started and ended goes when
+    the room does. The count of time spent in calls stays after an account
+    is deleted, with nothing left in it that says whose it was. A delivery
+    receipt lives and dies with the notification it belongs to.
   </p>
 
   <h2>Your controls</h2>
@@ -521,8 +543,9 @@
     CoLabRoom isn't directed at children under 13, and we don't knowingly
     collect information from anyone under 13. Calls are for people 18 and
     over; when somebody gives a birth month and year that makes them under
-    13, the app refuses it and nothing is stored. If you believe a child has
-    created an account, contact
+    13, the app refuses it and does not store the month or year, only that
+    an answer like that was given, and when, so it cannot be answered again.
+    If you believe a child has created an account, contact
     <a href="mailto:support@colabroom.com">support@colabroom.com</a> and we'll
     remove it.
   </p>
