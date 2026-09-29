@@ -76,6 +76,15 @@ nav.pages a:hover { color: var(--text); }
 nav.pages a[aria-current="page"] { color: var(--text); }
 header.top .sp { flex: 1; }
 
+/* With Practise and Learn the nav is too long to share a row with the
+   name and both buttons, and the one that lost was "Ask for an invite",
+   which wrapped under the name on its own. So on a wide screen the nav
+   takes the second row, whole, and the buttons stay together at the top
+   right. A phone lays the header out in rows of its own further down. */
+@media (min-width: 46.0625rem) {
+  header.top nav.pages { order: 1; flex-basis: 100%; }
+}
+
 .cta {
   display: inline-block; font-family: var(--display); font-weight: 700;
   font-size: 0.9rem; text-decoration: none;
@@ -238,6 +247,168 @@ section.moment .more {
 .pill {
   font-family: var(--mono); font-size: 0.68rem; color: var(--body);
   border: 1px solid var(--line); border-radius: 100px; padding: 0.3rem 0.7rem;
+}
+/* The one that is chosen, as the app marks it: a cyan edge, nothing louder. */
+.pill.on { color: var(--text); border-color: var(--cyan); }
+.pill.leave { color: var(--a2); }
+
+/* ---------- the newer pictures ----------
+   Added with Practise, Learn, calls and the Open Mic Night (September
+   2026). Drawn like the takes and the chord above: the app's own words in
+   the site's ink, names made up, and nothing that moves. */
+
+/* A heading line inside a picture: what this is, and a quieter word on
+   when or who. Shared by the call note, the night, the lesson card and the
+   question to Clef. */
+.art-head {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.9rem;
+  padding-bottom: 0.85rem; border-bottom: 1px solid var(--line);
+}
+.art-head .t {
+  font-family: var(--display); font-weight: 800; font-size: 1rem;
+  color: var(--text); letter-spacing: -0.01em;
+}
+.art-head .s {
+  font-family: var(--mono); font-size: 0.68rem; color: var(--muted);
+  letter-spacing: 0.06em;
+}
+.art-head .s.on { color: var(--green); }
+
+/* A row in a list: a colour, a name, and a short word at the end. */
+.entry { display: flex; align-items: center; flex-wrap: wrap; gap: 0.35rem 0.8rem; padding: 0.7rem 0; }
+.entry + .entry { border-top: 1px solid var(--line); }
+.entry .name {
+  font-family: var(--display); font-weight: 700; font-size: 0.9rem;
+  color: var(--text); flex: 1 1 auto; min-width: 0;
+}
+.entry .name .sub {
+  display: block; margin-top: 0.2rem;
+  font-family: var(--mono); font-weight: 400; font-size: 0.68rem;
+  color: var(--muted); letter-spacing: 0.04em;
+}
+.entry .pill { margin-left: auto; }
+.entry .side {
+  font-family: var(--mono); font-size: 0.68rem; color: var(--muted);
+  letter-spacing: 0.04em; margin-left: auto; text-align: right;
+}
+.art .pill-row { margin-top: 1rem; }
+.art-head + .pill-row { margin-top: 1rem; }
+
+/* A line somebody wrote, set under the rest. */
+.said {
+  margin-top: 0.4rem; padding-top: 0.9rem; border-top: 1px solid var(--line);
+  color: var(--text); font-size: 1rem; line-height: 1.45;
+}
+.said span {
+  display: block; margin-top: 0.3rem;
+  font-family: var(--mono); font-size: 0.66rem; color: var(--muted); letter-spacing: 0.06em;
+}
+
+/* The tuner: flat on the left, sharp on the right, a mark in the middle
+   where the note is. Drawn still on purpose; the app's own tuner does not
+   glide either, because a needle that glides is wrong while it moves. */
+.tuner .tuner-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.4rem 1.1rem; }
+.tuner .tuner-note {
+  font-family: var(--display); font-weight: 900; font-size: 2.6rem;
+  line-height: 1; color: var(--text); letter-spacing: -0.02em;
+}
+.tuner .tuner-say { font-family: var(--mono); font-size: 0.74rem; color: var(--gold); letter-spacing: 0.05em; }
+.tuner .scale {
+  position: relative; height: 2.4rem; margin: 1.2rem 0 0.45rem;
+  border-bottom: 1px solid var(--line);
+  background-image: repeating-linear-gradient(90deg,
+    color-mix(in srgb, var(--muted) 40%, transparent) 0 2px, transparent 2px 5%);
+  background-size: 100% 45%; background-position: 0 100%; background-repeat: no-repeat;
+}
+.tuner .scale::before {
+  content: ''; position: absolute; left: 50%; bottom: 0; top: 0;
+  width: 2px; margin-left: -1px; background: var(--green); opacity: 0.8;
+}
+.tuner .scale b {
+  position: absolute; bottom: 0; top: 0.2rem; width: 3px; margin-left: -1.5px;
+  background: var(--gold); border-radius: 3px;
+}
+/* In tune, the app turns the needle green (tuner_sheet.dart), and the
+   words go with it. */
+.tuner .scale b.in { background: var(--green); }
+.tuner .tuner-say.in { color: var(--green); }
+.tuner .ends {
+  display: flex; justify-content: space-between;
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted);
+}
+.tuner .pill-row { margin-top: 1.25rem; }
+
+/* A question to Clef and its answer, as the Ask sheet lays them out. The
+   face is two dots on gold, which is all of it that fits at this size. */
+.ask .face {
+  width: 1.35rem; height: 1.35rem; border-radius: 100px; flex: none; align-self: center;
+  background:
+    radial-gradient(circle at 36% 44%, var(--ink) 0 9%, transparent 10%),
+    radial-gradient(circle at 64% 44%, var(--ink) 0 9%, transparent 10%),
+    var(--gold);
+}
+.ask .art-head { align-items: center; }
+.ask .q, .ask .a {
+  max-width: 36ch; margin-top: 0.9rem; padding: 0.7rem 0.95rem;
+  border-radius: 0.95rem; font-size: 0.98rem; line-height: 1.45;
+}
+.ask .q {
+  margin-left: auto; width: fit-content; color: var(--text);
+  background: color-mix(in srgb, var(--cyan) 13%, transparent);
+  border-bottom-right-radius: 0.3rem;
+}
+.ask .a {
+  color: var(--body); background: var(--ink); border: 1px solid var(--line);
+  border-bottom-left-radius: 0.3rem;
+}
+.ask .box {
+  margin-top: 1.1rem; padding: 0.55rem 0.95rem;
+  border: 1px solid var(--line); border-radius: 100px;
+  font-family: var(--mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.04em;
+}
+
+/* A call: two pictures side by side, the line that says what it is, and
+   the buttons along the bottom. Letters where the faces go. */
+.call .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 1rem; }
+.call .tile {
+  aspect-ratio: 16 / 10; border-radius: 0.7rem; border: 1px solid var(--line);
+  background: linear-gradient(160deg, #0F2340 0%, var(--ink) 100%);
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.call .tile i {
+  width: 2.6rem; height: 2.6rem; border-radius: 100px; font-style: normal;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-weight: 800; font-size: 1.05rem; color: var(--ink);
+}
+.call .tile span {
+  position: absolute; left: 0.6rem; bottom: 0.45rem;
+  font-family: var(--mono); font-size: 0.64rem; color: var(--body); letter-spacing: 0.04em;
+}
+
+/* What came in lately: a name, one plain line, and the whole row a way on
+   to where it is explained. Compact on purpose, and not a card: it is a
+   list to jump from, not the news told a second time. */
+ul.log { list-style: none; margin: 1.75rem 0 0; padding: 0; max-width: 46rem; }
+ul.log li + li { border-top: 1px solid var(--line); }
+ul.log a {
+  display: grid; grid-template-columns: 11rem 1fr auto; gap: 0.1rem 1.25rem;
+  align-items: baseline; padding: 0.6rem 0;
+  color: var(--body); text-decoration: none;
+}
+ul.log a::after { content: '\2192'; color: var(--cyan); font-family: var(--display); }
+ul.log b {
+  font-family: var(--display); font-weight: 800; font-size: 0.92rem;
+  color: var(--cyan); letter-spacing: -0.01em;
+}
+ul.log span { font-size: 0.98rem; line-height: 1.45; }
+ul.log a:hover b, ul.log a:hover span { color: var(--text); }
+
+/* One chord progression, three ways of reading it. */
+.readings .entry .name { font-family: var(--mono); font-weight: 400; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; flex: 0 0 9rem; }
+.readings .entry .v {
+  font-family: var(--display); font-weight: 800; font-size: 1.15rem;
+  color: var(--text); letter-spacing: 0.01em; word-spacing: 0.5em;
 }
 
 /* ---------- a short list of plain facts ---------- */
@@ -504,9 +675,13 @@ footer .sp { flex: 1; }
   }
   header.top .cta.quiet { margin-right: 0.45rem; }
   .brand { display: block; margin-bottom: 0.9rem; }
+  /* Nine places now, and two rows is the most a phone should give them:
+     at 0.9rem with the old gap, Practise and Learn pushed "Open Mic" onto
+     a third row by itself on a 375px phone. A shade smaller and a little
+     closer keeps two rows at 360px and 375px, measured. */
   nav.pages {
-    gap: 1.35rem;
-    font-size: 0.9rem;
+    gap: 1.2rem 0.75rem;
+    font-size: 0.8rem;
     padding-bottom: 0.25rem;
   }
 
@@ -551,6 +726,14 @@ footer .sp { flex: 1; }
   .lyric em { font-size: 1rem; }
   .lyric .chords { padding-left: 0; }
 
+  /* The month's list: the name runs into its line, one short paragraph a
+     row, so seven of them stay a list to jump from and not a screenful. */
+  ul.log a { display: block; padding: 0.55rem 0; }
+  ul.log b { margin-right: 0.35rem; }
+  ul.log a::after { margin-left: 0.35rem; }
+  .readings .entry .name { flex-basis: 100%; }
+  .tuner .tuner-note { font-size: 2.2rem; }
+
   .keep-reading { padding: 2.5rem 0 0.5rem; }
   .onward { flex-basis: 100%; padding: 0.9rem 1rem; }
   .onward .what { font-size: 0.88rem; }
@@ -563,7 +746,8 @@ footer .sp { flex: 1; }
    only the things that actually break get another value. */
 @media (max-width: 22rem) {
   .wrap { padding: 0 1rem; }
-  nav.pages { gap: 1rem; font-size: 0.85rem; }
+  /* And two rows at 320px too, where "Open Mic" was left on a third. */
+  nav.pages { gap: 1.1rem 0.55rem; font-size: 0.75rem; }
   .stat { flex-basis: 100%; }
 }
 

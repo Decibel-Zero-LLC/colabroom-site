@@ -8,7 +8,11 @@ from `main`; `CNAME` points it at the custom domain. Merging is publishing.
 
 What is in here:
 
-- Nine marketing pages, three legal pages, a printable flier, and `404.html`.
+- Eleven marketing pages, three free tool pages (transpose, capo, Nashville
+  numbers), three legal pages, a printable flier, and `404.html`.
+- The tests, run by hand from the root with Deno and nothing else:
+  `deno test --allow-read tools.test.js tools/chords_test.js tools/count_test.js tools/nav_test.js`.
+  `tools/nav_test.js` holds every page's nav to the front page's.
 - `site.css` — the look. `fonts.css` plus `fonts/` — the three faces, served
   from this domain rather than Google's, under the OFL (see `fonts/README.md`).
 - `count.js` — the arrival code and the anonymous step counters, on every

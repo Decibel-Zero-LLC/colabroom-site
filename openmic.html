@@ -47,7 +47,8 @@
       <a href="takes.html">Takes</a>
       <a href="analysis.html">What it heard</a>
       <a href="songbook.html">Song sheet</a>
-      <a href="help.html">Stuck?</a>
+      <a href="practise.html">Practise</a>
+      <a href="learn.html">Learn</a>
       <a href="bands.html">Your room</a>
       <a href="openmic.html" aria-current="page">Open Mic</a>
     </nav>
@@ -94,11 +95,88 @@
 
   <section class="moment reveal">
     <div class="eyebrow">Listen</div>
-    <h2>You decide by ear, in about ten seconds.</h2>
+    <h2>You decide by ear.</h2>
     <p class="lede">
       "Guitarist" doesn't tell you metal from jazz. Pick what you play, press
       Listen, hear the songs that need it. The rest you judge by ear.
     </p>
+  </section>
+
+  <!-- Open Mic Night: app #604, migration 0237, lib/domain/open_mic_night.dart.
+       The day and the hour are left off on purpose: they are not fixed
+       yet, and the app shows the time in the phone's own zone. Only
+       the room's owner, an adult, can put its song on the list. Nothing
+       about the night is counted. -->
+  <section class="moment reveal" id="night">
+    <div class="eyebrow">Open Mic Night</div>
+    <h2>Once a week, a night.</h2>
+    <p class="lede">
+      The Open Mic has a night every week, and the app shows when in your
+      own time zone. Put a song that is already on the Open Mic on the
+      night's list. Press Remind me and the app tells you before a night
+      with songs on its list.
+    </p>
+    <p class="lede">
+      Only an adult who owns the song's room can put it on the list.
+      Nothing is counted, and there is no audience number.
+    </p>
+    <div class="art" aria-hidden="true">
+      <div class="art-head">
+        <span class="t">Open Mic Night</span>
+        <span class="s">In the order they went on the list.</span>
+      </div>
+      <div class="entry">
+        <span class="dot" style="background:var(--a1)"></span>
+        <span class="name">County Line</span>
+        <span class="side">Mara</span>
+      </div>
+      <div class="entry">
+        <span class="dot" style="background:var(--a4)"></span>
+        <span class="name">Low Tide</span>
+        <span class="side">Jonah</span>
+      </div>
+      <div class="entry">
+        <span class="dot" style="background:var(--a3)"></span>
+        <span class="name">Kitchen Radio</span>
+        <span class="side">Sam</span>
+      </div>
+      <div class="pill-row">
+        <span class="pill">Remind me</span>
+        <span class="pill">Put a song up</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- A door: app #596, migration 0235, lib/domain/doors.dart. Never a
+       count and never "online". Your people see it; everybody on the Open
+       Mic only when you are listed and say yes. -->
+  <section class="moment reveal" id="door">
+    <div class="eyebrow">Open the door</div>
+    <h2>Up for company?</h2>
+    <p class="lede">
+      Working on a song and wouldn't mind company? Open your door. Your
+      people see it lit, and one tap knocks. Let them in and you get a room
+      for the two of you, where they hear that one song and you can talk it
+      over.
+    </p>
+    <p class="lede">
+      Everybody else on the Open Mic sees it only if you say so. It closes
+      by itself, and nobody is told a knock went unanswered.
+    </p>
+    <div class="art" aria-hidden="true">
+      <div class="art-head">
+        <span class="t">Your people</span>
+      </div>
+      <div class="entry">
+        <span class="dot" style="background:var(--green)"></span>
+        <span class="name">Mara<span class="sub">Door open on County Line</span></span>
+        <span class="pill on">Knock</span>
+      </div>
+      <div class="entry">
+        <span class="dot" style="background:var(--a4)"></span>
+        <span class="name">Jonah<span class="sub">Heads down</span></span>
+      </div>
+    </div>
   </section>
 
   <section class="moment reveal">

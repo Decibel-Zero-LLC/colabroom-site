@@ -80,14 +80,19 @@
   <header class="top">
     <a class="brand" href="index.html">CoLabRoom</a>
     <nav class="pages">
-      <a href="chords.html">Chords</a>
-      <!-- The best-written page on the site had one link into it, from the
+      <!-- One nav on every page (tools/nav_test.js holds them to it), and
+           on a phone it fits in two rows. Practise and Learn came in
+           (September 2026), and Stuck? made room: it has its own section
+           on this page and is linked from Learn. What key stays, because
+           the best-written page on the site had one link into it, from the
            bottom of another page, and was not in here at all. -->
+      <a href="chords.html">Chords</a>
       <a href="what-key.html">What key</a>
       <a href="takes.html">Takes</a>
       <a href="analysis.html">What it heard</a>
       <a href="songbook.html">Song sheet</a>
-      <a href="help.html">Stuck?</a>
+      <a href="practise.html">Practise</a>
+      <a href="learn.html">Learn</a>
       <a href="bands.html">Your room</a>
       <a href="openmic.html">Open Mic</a>
     </nav>
@@ -199,6 +204,8 @@
     <h2>A page, not a form.</h2>
     <p class="lede">
       Chords above the words. Everyone's colour beside the lines they wrote.
+      Read the chords in letters, in Do Re Mi, or the German way, with H.
+      Only your page changes.
     </p>
     <a class="more" href="songbook.html">Words and chords →</a>
     <div class="art lyric" aria-hidden="true">
@@ -241,6 +248,58 @@
     </div>
   </section>
 
+  <!-- Practise and Learn: what the app's Learn tab holds, which a visitor
+       had no way to hear about. Every sentence here is on the app's main
+       (e3276c8a, 29 September 2026) and not held in a release build. The
+       detail lives on practise.html and learn.html; here, one paragraph. -->
+  <section class="moment reveal">
+    <div class="eyebrow">Practise</div>
+    <h2>Tune up. Then play it through.</h2>
+    <p class="lede">
+      A tuner, a metronome and a drone, with no song needed. Then open a
+      song in Perform: loop the passage you keep missing, slow the
+      recording down, count yourself in.
+    </p>
+    <a class="more" href="practise.html">Practising →</a>
+    <div class="art tuner" aria-hidden="true">
+      <div class="tuner-head">
+        <span class="tuner-note">A</span>
+        <span class="tuner-say">A little flat — tighten.</span>
+      </div>
+      <div class="scale"><b style="left:41%"></b></div>
+      <div class="ends"><span>Flat</span><span>Sharp</span></div>
+      <div class="pill-row">
+        <span class="pill on">Tuner</span>
+        <span class="pill">Metronome</span>
+        <span class="pill">Drone</span>
+      </div>
+      <div class="chordfoot">Nothing you play is recorded.</div>
+    </div>
+  </section>
+
+  <section class="moment reveal">
+    <div class="eyebrow">Learn</div>
+    <h2>Ask about your own song.</h2>
+    <p class="lede">
+      Clef is a guide in the app, not a person. It answers questions about
+      your own song, typed or spoken. It shows you how. It never writes it
+      for you. Clef is for adults.
+    </p>
+    <a class="more" href="learn.html">Learning →</a>
+    <!-- The answer is the app's own line for a key question
+         (lib/features/teacher/teacher_facts.dart): Clef never states a key
+         as settled. -->
+    <div class="art ask" aria-hidden="true">
+      <div class="art-head">
+        <span class="face"></span>
+        <span class="t">Ask Clef about County Line</span>
+      </div>
+      <div class="q">What key is this in?</div>
+      <div class="a">The sheet thinks the key is D major. It is not certain; check it against your ears.</div>
+      <div class="box">Ask, or say: loop the chorus</div>
+    </div>
+  </section>
+
   <section class="moment reveal">
     <div class="eyebrow">Your room</div>
     <h2>See what happened overnight.</h2>
@@ -249,17 +308,107 @@
       the band talks in the room — one thread each, and your people in one
       place.
     </p>
+    <!-- Calls: app lib/features/calls (18 and over, lib/domain/calls.dart)
+         and the note a room keeps afterwards (app #597, migration 0232).
+         "Never recorded" is the call screen's own line. -->
+    <p class="lede">
+      And when you are free at once, call the room. The call itself is
+      never recorded; afterwards the room keeps a note. Calls are for
+      adults.
+    </p>
     <a class="more" href="bands.html">How a room works →</a>
+    <div class="art" aria-hidden="true">
+      <div class="art-head">
+        <span class="t">After the call</span>
+        <span class="s">You and Mara · a few minutes</span>
+      </div>
+      <div class="entry">
+        <span class="dot" style="background:var(--a2)"></span>
+        <span class="name">Mara's harmony</span>
+        <span class="side">a new take</span>
+      </div>
+      <div class="entry">
+        <span class="dot" style="background:var(--a1)"></span>
+        <span class="name">Second verse</span>
+        <span class="side">you changed the words</span>
+      </div>
+      <p class="said">Bridge still drags, try it a little faster.<span>Mara</span></p>
+    </div>
   </section>
 
   <section class="moment reveal">
     <div class="eyebrow">The Open Mic</div>
     <h2>Or find somebody you haven't met.</h2>
+    <!-- Open Mic Night (app #604, 0237). No day or hour here: those are
+         not settled yet, and the app shows the time in the phone's own
+         zone anyway. The door is on openmic.html. The picture is the same
+         one openmic.html draws: the list before a night, with Remind me
+         (lib/features/openmic/night_screen.dart). -->
     <p class="lede">
-      Put a song up and say what it needs. Nothing is public until you
-      say so.
+      Put a song up and say what it needs. Nothing is public until you say
+      so. Once a week there is a night, with a list to put your song on.
+      The Open Mic is for adults.
     </p>
     <a class="more" href="openmic.html">How the Open Mic works →</a>
+    <div class="art" aria-hidden="true">
+      <div class="art-head">
+        <span class="t">Open Mic Night</span>
+        <span class="s">In the order they went on the list.</span>
+      </div>
+      <div class="entry">
+        <span class="dot" style="background:var(--a1)"></span>
+        <span class="name">County Line</span>
+        <span class="side">Mara</span>
+      </div>
+      <div class="entry">
+        <span class="dot" style="background:var(--a4)"></span>
+        <span class="name">Low Tide</span>
+        <span class="side">Jonah</span>
+      </div>
+      <div class="entry">
+        <span class="dot" style="background:var(--a3)"></span>
+        <span class="name">Kitchen Radio</span>
+        <span class="side">Sam</span>
+      </div>
+      <div class="pill-row">
+        <span class="pill">Remind me</span>
+        <span class="pill">Put a song up</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- What landed in September 2026: each on the app's main (e3276c8a)
+       and not held in a release build. Month only: the day a thing merged
+       is not the day a tester's phone got it. One line each, and each a
+       way on to where it is explained, so it is a list to jump from and
+       not the same news twice. -->
+  <section class="moment reveal" id="new">
+    <div class="eyebrow">New lately</div>
+    <h2>New in September 2026.</h2>
+    <ul class="log">
+      <li><a href="bands.html#calls"><b>Calls</b><span>Audio and video with your room, for adults. Never recorded.</span></a></li>
+      <li><a href="bands.html#after-the-call"><b>After the call</b><span>The room keeps a note of the takes added and the words changed.</span></a></li>
+      <li><a href="learn.html#clef"><b>Clef</b><span>A guide in the app, not a person, for questions about your own songs. For adults.</span></a></li>
+      <li><a href="practise.html#tune-up"><b>Tune up</b><span>A tuner, a metronome and a drone, with no song needed.</span></a></li>
+      <li><a href="songbook.html#how-you-read-notes"><b>How you read notes</b><span>Letters, Do Re Mi, or the German way, with H.</span></a></li>
+      <li><a href="openmic.html#night"><b>Open Mic Night</b><span>Once a week, a list on the Open Mic to put your song on.</span></a></li>
+      <li><a href="openmic.html#door"><b>Open the door</b><span>Say you would welcome company on a song, and your people can knock.</span></a></li>
+    </ul>
+  </section>
+
+  <!-- Intentions, not a roadmap. Nothing here has a date or a price, and
+       the list stays short on purpose. -->
+  <section class="moment reveal" id="coming">
+    <div class="eyebrow">Coming</div>
+    <h2>What I am building next.</h2>
+    <p class="lede">
+      Intentions, not promises. No dates.
+    </p>
+    <ul class="plain">
+      <li><b>iPhone and Android apps,</b> in testing now with the first bands.</li>
+      <li><b>Studio, a paid plan.</b> What you make stays yours whether you pay or not.</li>
+      <li><b>Translation on a tap,</b> for notes and messages written in another language.</li>
+    </ul>
   </section>
 
   <div class="close">
@@ -351,6 +500,18 @@
       <a class="onward" href="songbook.html">
         <span class="where">Song sheet</span>
         <span class="what">A page, not a form.</span>
+      </a>
+      <a class="onward" href="help.html">
+        <span class="where">Stuck?</span>
+        <span class="what">Tap the chord you're stuck on.</span>
+      </a>
+      <a class="onward" href="practise.html">
+        <span class="where">Practise</span>
+        <span class="what">Tune up. Then play it through.</span>
+      </a>
+      <a class="onward" href="learn.html">
+        <span class="where">Learn</span>
+        <span class="what">Ask about your own song.</span>
       </a>
       <a class="onward" href="bands.html">
         <span class="where">Your room</span>
