@@ -328,6 +328,10 @@ section.moment .more {
   position: absolute; bottom: 0; top: 0.2rem; width: 3px; margin-left: -1.5px;
   background: var(--gold); border-radius: 3px;
 }
+/* In tune, the app turns the needle green (tuner_sheet.dart), and the
+   words go with it. */
+.tuner .scale b.in { background: var(--green); }
+.tuner .tuner-say.in { color: var(--green); }
 .tuner .ends {
   display: flex; justify-content: space-between;
   font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em;
@@ -382,18 +386,23 @@ section.moment .more {
   font-family: var(--mono); font-size: 0.64rem; color: var(--body); letter-spacing: 0.04em;
 }
 
-/* What changed this month: a name, then one plain line. */
-ul.log { list-style: none; margin: 2.5rem 0 0; }
-ul.log li {
-  display: grid; grid-template-columns: 11rem 1fr; gap: 0.2rem 1.25rem;
-  padding: 0.75rem 0; align-items: baseline;
-}
+/* What came in lately: a name, one plain line, and the whole row a way on
+   to where it is explained. Compact on purpose, and not a card: it is a
+   list to jump from, not the news told a second time. */
+ul.log { list-style: none; margin: 1.75rem 0 0; padding: 0; max-width: 46rem; }
 ul.log li + li { border-top: 1px solid var(--line); }
+ul.log a {
+  display: grid; grid-template-columns: 11rem 1fr auto; gap: 0.1rem 1.25rem;
+  align-items: baseline; padding: 0.6rem 0;
+  color: var(--body); text-decoration: none;
+}
+ul.log a::after { content: '\2192'; color: var(--cyan); font-family: var(--display); }
 ul.log b {
   font-family: var(--display); font-weight: 800; font-size: 0.92rem;
-  color: var(--text); letter-spacing: -0.01em;
+  color: var(--cyan); letter-spacing: -0.01em;
 }
 ul.log span { font-size: 0.98rem; line-height: 1.45; }
+ul.log a:hover b, ul.log a:hover span { color: var(--text); }
 
 /* One chord progression, three ways of reading it. */
 .readings .entry .name { font-family: var(--mono); font-weight: 400; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; flex: 0 0 9rem; }
@@ -669,10 +678,10 @@ footer .sp { flex: 1; }
   /* Nine places now, and two rows is the most a phone should give them:
      at 0.9rem with the old gap, Practise and Learn pushed "Open Mic" onto
      a third row by itself on a 375px phone. A shade smaller and a little
-     closer keeps two rows down to 360px, with room to spare at 375. */
+     closer keeps two rows at 360px and 375px, measured. */
   nav.pages {
-    gap: 1.35rem 0.9rem;
-    font-size: 0.85rem;
+    gap: 1.2rem 0.75rem;
+    font-size: 0.8rem;
     padding-bottom: 0.25rem;
   }
 
@@ -717,8 +726,11 @@ footer .sp { flex: 1; }
   .lyric em { font-size: 1rem; }
   .lyric .chords { padding-left: 0; }
 
-  /* The month's list: the name over its line, not beside it. */
-  ul.log li { grid-template-columns: 1fr; }
+  /* The month's list: the name runs into its line, one short paragraph a
+     row, so seven of them stay a list to jump from and not a screenful. */
+  ul.log a { display: block; padding: 0.55rem 0; }
+  ul.log b { margin-right: 0.35rem; }
+  ul.log a::after { margin-left: 0.35rem; }
   .readings .entry .name { flex-basis: 100%; }
   .tuner .tuner-note { font-size: 2.2rem; }
 
@@ -734,7 +746,8 @@ footer .sp { flex: 1; }
    only the things that actually break get another value. */
 @media (max-width: 22rem) {
   .wrap { padding: 0 1rem; }
-  nav.pages { gap: 1.2rem 0.8rem; font-size: 0.85rem; }
+  /* And two rows at 320px too, where "Open Mic" was left on a third. */
+  nav.pages { gap: 1.1rem 0.55rem; font-size: 0.75rem; }
   .stat { flex-basis: 100%; }
 }
 

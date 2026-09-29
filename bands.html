@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>A private room for a band, a duo, or you and a friend — CoLabRoom</title>
-<meta name="description" content="A private room for each band or project, invitations by email, calls with the room, setlists you can print, and a record of who wrote and played what.">
+<meta name="description" content="A private room for each band or project, invitations by email, calls with the room for adults, setlists you can print, and a record of who wrote and played what.">
 <meta property="og:title" content="Your room — CoLabRoom">
 <meta property="og:description" content="Open it and see what happened. Songwriting for musicians who aren't in the same room.">
 <meta property="og:type" content="website">
@@ -43,10 +43,10 @@
     <a class="brand" href="index.html">CoLabRoom</a>
     <nav class="pages">
       <a href="chords.html">Chords</a>
+      <a href="what-key.html">What key</a>
       <a href="takes.html">Takes</a>
       <a href="analysis.html">What it heard</a>
       <a href="songbook.html">Song sheet</a>
-      <a href="help.html">Stuck?</a>
       <a href="practise.html">Practise</a>
       <a href="learn.html">Learn</a>
       <a href="bands.html" aria-current="page">Your room</a>
@@ -123,19 +123,19 @@
   </section>
 
   <!-- Calls: app lib/features/calls on main (e3276c8a). A call always
-       happens in a room, one person can be called only from a room you
-       share, and calls are for people 18 and over (lib/domain/calls.dart).
-       "Call · nothing is recorded" is the call screen's own line. -->
-  <section class="moment reveal">
+       happens in a room; one person is called straight in only from a
+       room of just the two of you, and a band you share rings the band
+       (person_call_door.dart). Calls are for people 18 and over
+       (lib/domain/calls.dart). "Call · nothing is recorded" is the call
+       screen's own line. -->
+  <section class="moment reveal" id="calls">
     <div class="eyebrow">Calls</div>
     <h2>When you are free at the same time.</h2>
     <p class="lede">
-      Call the whole room, or one person you share a room with. Audio and
-      video. Put a song up and its chords and words take the screen, with
-      the faces along the top. The call itself is never recorded.
-    </p>
-    <p class="lede">
-      Calls are for adults, 18 and over.
+      Call the whole room, or one person in a room of just the two of you.
+      Audio and video. Put a song up and its chords and words take the
+      screen, with the faces along the top. The call itself is never
+      recorded. Calls are for adults, 18 and over.
     </p>
     <div class="art call" aria-hidden="true">
       <div class="art-head">
@@ -158,7 +158,7 @@
   <!-- The note a room keeps after a call: app #597, migration 0232,
        lib/domain/call_note.dart. Not a recording, not a transcript, and no
        minutes counted per person. -->
-  <section class="moment reveal">
+  <section class="moment reveal" id="after-the-call">
     <div class="eyebrow">After the call</div>
     <h2>The room keeps a note.</h2>
     <p class="lede">

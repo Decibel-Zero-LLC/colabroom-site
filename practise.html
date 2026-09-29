@@ -43,10 +43,10 @@
     <a class="brand" href="index.html">CoLabRoom</a>
     <nav class="pages">
       <a href="chords.html">Chords</a>
+      <a href="what-key.html">What key</a>
       <a href="takes.html">Takes</a>
       <a href="analysis.html">What it heard</a>
       <a href="songbook.html">Song sheet</a>
-      <a href="help.html">Stuck?</a>
       <a href="practise.html" aria-current="page">Practise</a>
       <a href="learn.html">Learn</a>
       <a href="bands.html">Your room</a>
@@ -71,24 +71,23 @@
     </p>
   </div>
 
-  <section class="moment reveal">
+  <!-- tune_up_sheet.dart: the tuner and the drone work in a browser; the
+       metronome row says on the web that the click is phones only. -->
+  <section class="moment reveal" id="tune-up">
     <div class="eyebrow">Tune up</div>
     <h2>No song needed.</h2>
     <p class="lede">
-      A tuner, a metronome and a drone, one tap from Your music. The tuner
-      says how far off the note is. The drone holds one note to tune or sing
-      against. Nothing you play is recorded.
-    </p>
-    <!-- tune_up_sheet.dart: the metronome row says this itself on the web. -->
-    <p class="lede">
-      The click is in the app on your phone. It is not in the browser yet.
+      A tuner, a metronome and a drone, with no song needed. The tuner says
+      how far off the note is. The drone holds one note to tune or sing
+      against. Nothing you play is recorded. The metronome is in the phone
+      app, still in testing, and not in the browser yet.
     </p>
     <div class="art tuner" aria-hidden="true">
       <div class="tuner-head">
         <span class="tuner-note">E</span>
-        <span class="tuner-say">In tune.</span>
+        <span class="tuner-say in">In tune.</span>
       </div>
-      <div class="scale"><b style="left:50%"></b></div>
+      <div class="scale"><b class="in" style="left:50%"></b></div>
       <div class="ends"><span>Flat</span><span>Sharp</span></div>
       <div class="pill-row">
         <span class="pill on">Tuner</span>
@@ -127,17 +126,21 @@
   <section class="moment reveal">
     <div class="eyebrow">The band, minus you</div>
     <h2>Mute your part. Play the rest.</h2>
+    <!-- A credit is one Full analysis of one recording (what_you_get.dart);
+         every account starts with a few, and they do not expire. No number
+         here: the app reads it from the server, and help says "a few". -->
     <p class="lede">
-      After a Full analysis, the instruments on a recording come apart.
-      Turn yours off and play along with everybody else. A Full analysis
-      uses one of your credits.
+      After a <a href="analysis.html">Full analysis</a>, the instruments on
+      a recording come apart. Turn yours off and play along with everybody
+      else. A Full analysis uses a credit, and every account starts with a
+      few that do not expire.
     </p>
     <!-- live_performance_screen.dart: one chip per separated part, named
          "No <part>"; the chosen one is the part you are playing. -->
     <div class="art" aria-hidden="true">
       <div class="art-head">
         <span class="t">County Line</span>
-        <span class="s">Perform · you play the guitar</span>
+        <span class="s">Perform</span>
       </div>
       <div class="pill-row">
         <span class="pill">No vocals</span>
