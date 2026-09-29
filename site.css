@@ -281,6 +281,12 @@ section.moment .more {
   font-family: var(--display); font-weight: 700; font-size: 0.9rem;
   color: var(--text); flex: 1 1 auto; min-width: 0;
 }
+.entry .name .sub {
+  display: block; margin-top: 0.2rem;
+  font-family: var(--mono); font-weight: 400; font-size: 0.68rem;
+  color: var(--muted); letter-spacing: 0.04em;
+}
+.entry .pill { margin-left: auto; }
 .entry .side {
   font-family: var(--mono); font-size: 0.68rem; color: var(--muted);
   letter-spacing: 0.04em; margin-left: auto; text-align: right;
@@ -310,8 +316,9 @@ section.moment .more {
 .tuner .scale {
   position: relative; height: 2.4rem; margin: 1.2rem 0 0.45rem;
   border-bottom: 1px solid var(--line);
-  background-image: repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 10%);
-  background-size: 100% 55%; background-position: 0 100%; background-repeat: no-repeat;
+  background-image: repeating-linear-gradient(90deg,
+    color-mix(in srgb, var(--muted) 40%, transparent) 0 2px, transparent 2px 5%);
+  background-size: 100% 45%; background-position: 0 100%; background-repeat: no-repeat;
 }
 .tuner .scale::before {
   content: ''; position: absolute; left: 50%; bottom: 0; top: 0;
