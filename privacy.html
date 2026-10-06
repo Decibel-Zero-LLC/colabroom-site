@@ -239,18 +239,34 @@
 
   <h3>What you say about yourself</h3>
   <p>
-    If you list yourself in the Open Mic: the city you type, what you play,
-    and a few words about the kind of music you make. All three are optional,
-    all three are editable, and all three stop being visible to anyone the
-    moment you take yourself off the list, except for the page about you on
-    this website, as “Who can see what” says.
+    On your profile you can say the city you are in, what you play, who you
+    sound like, the languages you sing in, and a few words about the kind
+    of music you make. All of it is optional and editable. Your city is
+    shown on your page only if you choose to show it publicly. If you
+    choose to show it to people you have worked with instead, somebody who
+    has shared a take on the same song as you, and typed the same city,
+    can see that you share it. If you
+    list yourself in the Open Mic, anybody signed in who may meet you (two
+    adults, or people who already play together) can see the rest on your
+    page. Taking yourself off the list hides it from
+    people you do not know. It does not hide it from your people: your
+    connections, anybody with a connection request open between you, and
+    everybody you share a room with can still see it on your page. The page
+    about you on this website can also stay up for a while, as “Who can see
+    what” says.
   </p>
   <p>
-    On your profile you can also put up to eight more pictures, each with a
-    line of your own words, and links to your videos on YouTube, Vimeo,
-    TikTok, Instagram or Facebook. We do not keep the videos, only the
-    links. When you add one, our server asks that site for the video's title
-    and its small picture, and keeps them with the link.
+    On your profile you can also put up to eight more pictures, each with
+    a caption of your own if you want one, and links to your music and
+    videos on SoundCloud, Spotify, YouTube, Bandcamp, Apple Music, Vimeo,
+    Audiomack, TikTok, Instagram or Facebook. We do not keep the music or
+    the videos, only the links. When you add a YouTube, Vimeo or TikTok
+    link, our server asks that site for the video's title and keeps it with
+    the link; for YouTube and Vimeo it also keeps the address of the
+    video's small picture. Instagram and Facebook are not asked. We do not
+    store the small picture itself: the phone or browser of whoever looks
+    at your profile loads it straight from YouTube or Vimeo, so that site
+    sees their network address.
   </p>
   <p>
     If you choose how you read notes — letter names, Do Re Mi, or German
@@ -290,12 +306,13 @@
   <p>
     While the app is open it tells our realtime service that you are, so
     your people — connections, and everybody you share a room with — can
-    see a mark beside your name. That mark is not written down: closing the
+    see a mark beside your name, unless you turn on Appear away. That mark
+    is not written down: closing the
     app ends it. Separately, each time you open the app while signed in, we
     record that a run of the app started, against your account, with the
     time, the app's version and the platform; nobody else can see that
-    record, and it is deleted after 90 days, as “Feedback and diagnostics”
-    says. A door you open and a check-in at a place are written down too,
+    record, and it is deleted after 90 days, or later if nobody has used
+    the app for a while, as “Feedback and diagnostics” says. A door you open and a check-in at a place are written down too,
     as the next two parts say.
   </p>
 
@@ -318,9 +335,18 @@
   <p>
     Your people can see your door. Everybody on the Open Mic who may meet
     you can see it too, but only if you choose that, and only while you
-    are listed on the Open Mic. Under 18, a door is shown only to the people
-    you share a room with, or, at a place, to the people checked in there
-    who already play with you in a room or on a song.
+    are listed on the Open Mic. The name of the song your door is open on
+    is shown only to somebody who could already find that song: somebody
+    in its room or on it, or, if it is already on the Open Mic or in the
+    showcase, somebody who could find it there. Anybody else sees the door
+    without a song name.
+  </p>
+  <p>
+    Under 18, a door is shown only to people who already play with you:
+    everybody you share a room with, and your connections who are on a
+    song with you. A door opened at a place is shown only to the people
+    checked in there who already play with you in a room or on a song. A
+    room made at a door does not count for this unless its owner kept it.
   </p>
   <p>
     Somebody who can see your door can knock. We store who knocked, when,
@@ -429,8 +455,7 @@
     ended, the note has at least one line, and at least two people from the
     call are still in the room. A call still going on is ended first, once
     nobody has been heard on it for a little while; until then the room
-    waits. A note that was already kept on October 6, 2026, when the thirty
-    days began, counts them from that day. A kept note is kept for the
+    waits. A kept note is kept for the
     people still in the room only. Anybody from the call who had
     already left the room, or been taken out of it, is taken off the note
     first, with their line, and nobody is told. Any other note goes with the
@@ -449,7 +474,9 @@
     set or a picture, the room stays, and its notes are ordinary notes. The
     After the call page is new: the versions of the app people have today do
     not show it yet, so until a newer version reaches you, a kept note
-    cannot be read or taken back from the app.
+    cannot be read or taken back from the app. Those versions also do not
+    yet warn you, when you write a line in a room made at a door, that the
+    line can be kept after the room goes.
   </p>
   <p>
     Because LiveKit charges by the minute, we count the time spent in calls,
@@ -463,10 +490,13 @@
     Calls, and asking the app about a song, are for people 18 and over for
     now. The first time you do something that depends on your age, unless
     you have already said, you are asked the month and year you were born,
-    once. That can be a call, a lesson link, checking in at a place on Here
-    tonight, asking or offering to play with somebody new, or another way
-    of meeting people you have not worked with; the newest version of the
-    app also asks before your first question about a song. We keep that
+    once. That can be a call, a lesson link, listing yourself on the Open
+    Mic, making a place on Here tonight or checking in at one, asking or
+    offering to play with somebody new, or another way of meeting people
+    you have not worked with. The Android and web versions of the app also
+    ask before your first question about a song. The iPhone version
+    available today does not ask there, and our server turns the question
+    away until you have answered somewhere else. We keep that
     month and year against your account, and nobody else can see it; the
     app only ever uses it to answer whether you are 18 or over, which calls,
     asking the app about a song, lesson links, meeting people you have not
@@ -566,9 +596,11 @@
     open the app while signed in, it records that a run of the app started,
     against your account, with the time, the version and the platform, so
     an error count has something to be divided by. Opening it signed out
-    records nothing. Those records are deleted after 90 days; if you delete
-    your account sooner, they stay until then without saying whose they
-    were.
+    records nothing. Those records are deleted after 90 days, by a job that
+    runs once a day. The job deletes only on days when the app has been used
+    in the week before, so after a quiet spell an old record can stay until
+    somebody uses the app again. If you delete your account sooner, they
+    stay until then without saying whose they were.
   </p>
   <p>
     If you ask a question in Help and choose to send it to a person, we
@@ -589,7 +621,7 @@
     <div class="row"><span class="who">Google Cloud Run</span><span>Runs our own chord-detection code, to work out what's being played.</span></div>
     <div class="row"><span class="who">RunPod</span><span>Also transcribes the words for a song sheet. That runs on the same worker as the separation, on our own code — the vocal does not leave that machine.</span></div>
     <div class="row"><span class="who">OpenAI</span><span>For recordings, used on the shorter path only: voice notes, and recordings you transcribe from Takes. The isolated vocal — not the full mix — goes to OpenAI's transcription API. Governed by <a href="https://openai.com/policies/api-data-usage-policies" target="_blank" rel="noopener">OpenAI's own API data terms</a>.</span></div>
-    <div class="row"><span class="who">RunPod</span><span>Also works out the tune of the isolated vocal. That is where the sung range shown on a song sheet — and on your Open Mic profile, if you have listed yourself — comes from. Same worker, our own code.</span></div>
+    <div class="row"><span class="who">RunPod</span><span>Also works out the tune of the isolated vocal. That is where the sung range shown on a song sheet — and on your profile page, if you play a singing part — comes from. Same worker, our own code.</span></div>
     <div class="row"><span class="who">Anthropic or OpenAI</span><span>Only when you ask the app a question about a song. Your question and what the app has already worked out — the title, key, tempo, length, chords, sections, up to sixty lines of the words, which parts have been shared on it and the display names of the people who recorded them, which parts it is still asking for, how many beats the band counts in a cycle, and the way you name notes — go to a language model that writes the answer. The recording never does. Which model depends on how we have configured it: Anthropic's API when a key for it is set, otherwise OpenAI's. Both publish API terms under which what is sent is not used to train their models. We keep your question and the answer too; if the model does not answer, the question is kept with no answer. A question turned away because you have asked too many this hour is not kept. Some questions the app answers by itself: those go to no model, and are not kept. Asking is for people 18 and over, and is not on in rooms made by a lesson link.</span></div>
     <div class="row"><span class="who">Apple or Google</span><span>If you dictate lyrics rather than type them, the phone's own speech recogniser is used, and on iOS that may send what you say to Apple. It's the system feature, not ours, and it only runs while you're dictating.</span></div>
   </div>
@@ -607,10 +639,12 @@
     short-lived link, to OpenAI's moderation model. If it flags the picture
     as sexual or as graphic violence, the picture is taken down and a report
     is filed for a person to look at. A gallery picture is shown to nobody
-    but you until the check has answered; a profile or room picture is shown
-    as soon as you upload it, and taken down if the check flags it. If the
-    check cannot be made, the picture is shown unchecked, and anybody can
-    still report it. This is governed by the same
+    but you until our check has run; a profile or room picture is shown
+    as soon as you upload it, and taken down if the check flags it. If our
+    check runs but cannot get an answer, the picture is shown unchecked. If your phone never reaches our check at all, a profile or
+    room picture stays up unchecked, and a gallery picture stays hidden
+    from everybody but you until the check runs. Anybody can still report
+    a picture. This is governed by the same
     <a href="https://openai.com/policies/api-data-usage-policies" target="_blank" rel="noopener">API data terms</a>.
   </p>
   <p>
@@ -635,8 +669,9 @@
     <li>
       <strong>Listing yourself in the Open Mic.</strong> Your display name,
       your picture, and whatever you entered under “what you say about
-      yourself” above become visible to anyone signed in, and you can be found
-      by searching for those things. Off until you turn it on. If you are
+      yourself” above become visible to anyone signed in who may meet you
+      (your city only if you chose to show it publicly), and you can be
+      found by searching for those things. Off until you turn it on. If you are
       18 or over and have said what you play, who you sound like or a few
       words about yourself, a page about you is also put on this website,
       colabroom.com, where anybody can read it without signing in and search
@@ -644,32 +679,41 @@
       you sound like, your city if you chose to show it publicly, and how
       many of your songs are in the showcase. The page does not print your
       few words, but the list it is made from, which needs no account to
-      read, includes them. The pages are rebuilt once a day, so yours can
-      stay up for up to a day after you take yourself off, and a search
-      engine may keep its own copy for longer.
+      read, includes them, and your account's identifier too. The pages are
+      rebuilt once a day, so yours can stay up for up to a day after you
+      take yourself off, and a search engine may keep its own copy for
+      longer. The pages of this website are kept in a public code
+      repository, so a copy of a page that was taken down can still be read
+      in that repository's history.
     </li>
     <li>
       <strong>Putting a song on the Open Mic.</strong> That song, and the
       takes inside it you have already shared with your own room, can be
-      heard by anyone signed in. A take you have not shared stays private even
+      heard by anyone signed in who may meet whoever started the song. A take you have not shared stays private even
       then — the room offers the song, never your unheard draft.
     </li>
     <li>
       <strong>Showing a finished song.</strong> Marking a song finished is
       private and shows it to nobody; it only stops the song asking for help.
-      Putting it in the showcase is a second choice, made separately. A song
+      Putting it in the showcase is a second choice, made separately. In the
+      app, a song in the showcase can be seen by anyone signed in who may
+      meet whoever started it. A song
       in the showcase that has something to play, by somebody 18 or over,
       also gets its own page on this website, readable by anybody and by
       search engines: its title, your display name, its key, its length,
       and the display names of the others whose takes on it are public. The
-      recording is not on that page. Taking the song out of the showcase
-      takes the page down at the next daily rebuild.
+      recording is not on that page. The list the page is made from, which
+      needs no account to read, also gives the song's identifier and your
+      account's identifier. Taking the song out of the showcase takes the
+      page down at the next daily rebuild, though, as above, an earlier copy
+      stays in the website's public history.
     </li>
     <li>
-      <strong>Opening your door to the Open Mic.</strong> Your door, and the
-      name of the song it is open on, can be seen by everybody on the Open Mic who may
-      meet you, while it is open and you are listed on the Open Mic. Closing
-      it ends that.
+      <strong>Opening your door to the Open Mic.</strong> Your door can be
+      seen by everybody on the Open Mic who may meet you, while it is open
+      and you are listed on the Open Mic. The name of the song it is open on
+      is shown only to those who could already find that song, as “Your
+      door” says. Closing it ends that.
     </li>
     <li>
       <strong>Putting a song on an Open Mic Night list.</strong> The song,
@@ -724,9 +768,11 @@
       <strong>Whether you have the app open right now</strong> is visible to
       your people while it is open, unless you turn on Appear away, and to
       nobody else. A door you open is
-      seen by your people, and by the Open Mic only if you choose; a
-      check-in at a place, and a door opened there, only by the people
-      checked in there who may meet you.
+      seen by your people, and by the Open Mic only if you choose. A door
+      opened at a place is seen only by the people checked in there who may
+      meet you. A check-in at a place is seen by the people checked in there
+      who may meet you, while the night is on, and for seven days after it
+      by the people who were there and may meet you.
     </li>
   </ul>
   <p>
@@ -871,13 +917,18 @@
     Here tonight is deleted, with who checked in and any meets, seven days
     after its night; a kept call note, thirty days after its room went (or
     after the block that kept it); an Open Mic Night list, eight weeks after
-    its night; the record that you opened the app, after 90 days. A reminder for Open
+    its night; the record that you opened the app, after 90 days, or later
+    after a quiet spell, as “Feedback and diagnostics” says. A reminder for Open
     Mic Night stays until you turn it off. How you read notes stays until
     you change it or delete your account. When you say Not now to some of
     the app's offers — listing you on the Open Mic, its welcome questions,
     its first-run card — we remember that against your account, and on your
     phone, so it does not ask again: for thirty days for the Open Mic, and
-    for good for the other two. That stays until you delete your account.
+    for good for the other two. The copy against your account stays until
+    you delete your account. Deleting your account does not yet remove the
+    copy on your phone, or in your browser on the web: it stays there,
+    under your account's identifier, until the app's data there is cleared
+    or the app is removed.
   </p>
   <p>
     Some things stay after an account is deleted. A report is kept with no
@@ -891,9 +942,12 @@
     they are with nobody named, and a song's history keeps the words you
     replaced, which somebody else wrote. Notifications already in other
     people's inboxes keep the words they were written with, which can
-    include your name and the start of what you said. Error records stay
+    include your name and the start of what you said. A screenshot you
+    attached to feedback stays in our file storage, in a folder named by
+    your account's identifier, though the feedback it came with is
+    deleted. Error records stay
     without saying whose they were, and so do the records of each run of
-    the app, until their 90 days are up. The totals this website counts,
+    the app, until they are deleted. The totals this website counts,
     and a sign-up counted against a flier, have no end date; none of them
     names a person. The <a href="/#beta">home page</a> says more about what
     deleting an account removes.
@@ -907,7 +961,7 @@
     <li>Choose some of the notifications you get under <strong style="color: var(--text)">Account → Notifications</strong>: invites, answers to them, being asked to play, messages, calls and new takes each have a switch, and the Open Mic Night reminder comes only if you ask for it. Other notifications have no switch yet, among them a knock on your door, being let in, an ask to meet and its yes, a room you are in being kept, and the answer to a report you made.</li>
     <li>Make a new code for meeting people, which stops the old one working.</li>
     <li>Turn on Appear away, so your people do not see that you have the app open.</li>
-    <li>Leave a room you no longer want to be in — its songs and its thread go with it. Your place on its calls and your lines in their notes stay for the people still in it; in a room made at a door, they are deleted from its notes when the room goes.</li>
+    <li>Leave a room you no longer want to be in — its songs and its thread go with it. Your place on its calls and your lines in their notes stay for the people still in it. A room made at a door is the exception: if it goes by itself, they are deleted from its notes when it goes; if it stays, because its owner kept it or it holds a song, a set or a picture, they stay as in any room.</li>
     <li>Close your door, say you have left a place on Here tonight, or take your song off an Open Mic Night list, at any time.</li>
     <li>
       Delete your account from <strong style="color: var(--text)">Account → Delete account</strong>.
@@ -936,10 +990,9 @@
   <p>
     The Open Mic is for adults. Under 18, the rooms you are invited into work
     as they always do. Under 18, you can open your door, but it is shown only
-    to the people you share a room with, or, at a place, to the people
-    checked in there who already play with you in a room or on a song; and
-    you can check in at a place on Here tonight, but there you see, and are
-    seen by, only people you already play with.
+    to people who already play with you, as “Your door” says. You can check
+    in at a place on Here tonight, but there you see, and are seen by, only
+    people you already play with.
   </p>
 
   <h2>Changes</h2>
