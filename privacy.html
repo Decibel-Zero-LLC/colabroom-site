@@ -218,8 +218,9 @@
     image and no tracked links.
   </p>
   <p>
-    Email you write to us — to support@colabroom.com or hello@colabroom.com,
-    or a reply to one of the emails above — is passed on by
+    Email you write to us — to support@colabroom.com, hello@colabroom.com,
+    copyright@colabroom.com or any other colabroom.com address, or a reply
+    to one of the emails above — is passed on by
     <strong style="color: var(--text)">Porkbun</strong>'s mail forwarding
     to a <strong style="color: var(--text)">Gmail</strong> inbox, where we
     read it. So Porkbun and Google receive what you write to us, and your
@@ -231,7 +232,9 @@
     Song lyrics and chord annotations, comments, room and song names, and any
     voice notes or reference recordings you attach to a song. All of it is
     stored so the people in your room can see and hear it — that's the point
-    of the app.
+    of the app. You can also seal a take nobody has heard yet, to be offered
+    back to you on a day you choose; until then nobody but you can see or
+    hear it.
   </p>
 
   <h3>What you import</h3>
@@ -241,6 +244,14 @@
     Google Sheet, your phone or browser fetches it straight from Google, from
     the link you supply, so Google sees your network address, as it would for
     any download.
+  </p>
+  <p>
+    A chord chart you bring in — pasted, opened from a file, or shared in
+    from another app — is read on your device too, then kept with the song
+    for the people in its room, with who brought it. If that person deletes
+    their account, the chart stays with the song without their name. Find
+    one opens your own browser on a Google search for the song's title, its
+    artist and “chords”; the app reads nothing from that search.
   </p>
 
   <h3>Invitations</h3>
@@ -272,8 +283,11 @@
     address, can read your whole profile record from our service, not only
     what the app shows them. That record holds your city whatever you chose
     for it, what you say about yourself, whether you are listed on the Open
-    Mic, which plan you are on, and the code you arrived with, if any.
-    The app itself never shows them those things.
+    Mic, whether you said you are open to play, busy or away (even after
+    that has lapsed), when you made your account, which plan you are on,
+    and the code you arrived with, if any. The app shows them only what
+    your choices allow: it never shows them a city you kept from them, your
+    plan or your code.
   </p>
   <p>
     You can also tell your people whether you are open to play, busy or
@@ -324,13 +338,17 @@
     Messages you send to one person, lines you write in a room's thread,
     replies on an ask, and the note you can leave with “heard it” are all
     stored, so the people they are for can read them. Each is yours to take
-    back from inside the app. Who can see each one is under “Who can see
-    what” below.
+    back from inside the app. A notification that already reached somebody
+    keeps the start of what you wrote until they clear it. When you ask
+    somebody to play on a song, the few words you write with the ask stay
+    on the song after you withdraw it, and go when the song does. Who can
+    see each one is under “Who can see what” below.
   </p>
   <p>
     Questions you ask the app about a song (except the ones it answers by
-    itself) are kept with the answer, so we can see where answers go wrong,
-    and to count the hourly limit. Only you can read them from our service,
+    itself) are kept with the answer, which model answered and how long it
+    took, so we can see where answers go wrong, and to count the hourly
+    limit. Only you can read them from our service,
     and the app does not show them again. You cannot take one back; it goes
     when the song or your account is deleted.
   </p>
@@ -342,7 +360,9 @@
     who play that part, and who may meet you, see only how many people are
     looking, never who or what you wrote. If, in that month, somebody who
     plays it lists themselves on the Open Mic and may meet you, we tell you
-    their name, and remember that the note met them. After the month the
+    their name, and remember that the note met them. If you both show your
+    city publicly, only people in the same city are counted or named. After
+    the month the
     note stops working and leaves the app, but it is still stored, with
     whom it met, until you delete your account. Sending or answering a
     connection request is stored so the app knows who your people are.
@@ -384,7 +404,9 @@
     was closed, the song it is open on, who it is shown to, the place or the
     Open Mic Night it was opened at, if any, and the last time your phone
     said it was still there. A door closes by itself two hours after you
-    opened it or last kept it open. Before that, a door shown only to your
+    opened it or last kept it open. While a call or a take is going on, the
+    app holds it open a few minutes at a time, so it does not close in the
+    middle of playing. Before the two hours are up, a door shown only to your
     people also goes dark when your phone has not said it is still there
     for ten minutes; a door shown to the Open Mic does not wait on your
     phone, and stays open until its two hours are up or you close it. A door
@@ -394,9 +416,9 @@
     Mic Night is set to close when the night ends, if that comes first.
   </p>
   <p>
-    Your people can see your door. Everybody on the Open Mic who may meet
-    you can see it too, but only if you choose that, and only while you
-    are listed on the Open Mic. The name of the song your door is open on
+    Your people can see your door. Anybody signed in who may meet you can
+    see it too, but only if you choose that, and only while you are listed
+    on the Open Mic. The name of the song your door is open on
     is shown only to somebody who could already find that song: somebody
     in its room or on it, or, if it is already on the Open Mic or in the
     showcase, somebody who could find it there. Anybody else sees the door
@@ -426,7 +448,8 @@
     account is deleted. The room goes by itself when the door's time is
     over, unless it holds a song, a set or a picture, or its owner keeps it.
     The person let in can ask to keep it; the ask is stored for as long as
-    the room exists, and cannot be taken back. Only the person whose door
+    the room exists, and cannot be taken back. The versions of the app
+    people have today do not yet offer that ask. Only the person whose door
     it was can keep the room. Keeping it makes everybody in it each other's
     people: you can message each other, see when the other is here, see
     each other's page and see each other's door. The first time the owner
@@ -483,8 +506,10 @@
     one, and the permission the app is given to join a call does not include
     recording. When a call has a song up, you can choose Record me to record
     your own part on your own phone; that is a take on the song like any
-    other. LiveKit is told who is in a call by an account identifier and the
-    display name you chose, so the people in it can see who is talking.
+    other. LiveKit is told who is in a call by an account identifier, a
+    random label for that run of the app, and the display name you chose,
+    so the people in it can see who is talking. Like any service that
+    carries a call, it also sees each phone's network address.
   </p>
   <p>
     While you are in a call your app tells us every twenty seconds that you
@@ -610,7 +635,12 @@
   <p>
     If you report something, we store what you reported, which kind of thing
     it was, anything you typed, and who put it there — and a person reads it.
-    A report of a line in a call's note keeps that line's exact words.
+    We also keep who made the report: the person reviewing it sees that,
+    and the person reported never does. A report of sexual content on
+    somebody's page, picture, song or take can hide it straight away, until
+    a person decides: a page or picture from everybody but its owner, a song
+    or take from everybody outside its room. Its owner is told later that
+    something was held, not by whom. A report of a line in a call's note keeps that line's exact words.
     Whoever reviews reports can remove a reported line from a call's note:
     it goes from the note for everybody who was on the call, and the person
     who reported it is told it was taken down. A report names a line by who
@@ -627,9 +657,10 @@
     picture that an open report names is kept until the report is decided,
     even if it is deleted in the app. If a report is about something the
     law requires us to pass on to the National Center for Missing &amp;
-    Exploited Children, we preserve it: the files it names, and the email
-    address of the account it is about, are kept after the report is
-    decided, and nothing deletes them on a clock yet.
+    Exploited Children, we preserve it: the files it names, the email
+    address and account identifier of the account it is about, and who
+    reported it, are kept after the report is decided, and nothing deletes
+    them on a clock yet.
   </p>
   <p>
     If you block somebody, we store that you did, so the app can keep the two
@@ -675,11 +706,12 @@
   </p>
   <p>
     Once an hour, a job looks for kinds of error we have not seen before.
-    For each one it sends the error's latest message, with how many times
+    For each one it sends the error's latest message, which can name the
+    song it was about, with when it was first and last seen, how many times
     it happened and to how many accounts, but not which, to Anthropic's API,
-    which suggests a likely cause. That suggestion, which can quote the
-    message, is filed with the same counts in our private code repository
-    on GitHub, for us to read.
+    which suggests a likely cause. That suggestion and the error itself are
+    filed, with the same counts, in our private code repository on GitHub,
+    for us to read.
   </p>
   <p>
     If you ask a question in Help and choose to send it to a person, we
@@ -687,13 +719,16 @@
     screen you were on, and your app version and platform, against your
     account, so that a person can answer it. The answer the person writes
     is stored with it, and reaches you as a notification. Only you, and we,
-    can read them. Both are deleted with your account.
+    can read them. Both are deleted with your account. Newer versions of the
+    app can also start an email to us from Help, in your own mail app, with
+    your question, the app's version and platform, and your account's
+    identifier in it; nothing is sent until you send it.
   </p>
 
   <h2>Analysis: where a recording actually goes</h2>
   <p>
-    Analysing a recording is something you ask for, per song — it isn't
-    automatic. When you do:
+    In the app, analysing a recording is something you ask for, per song —
+    it isn't automatic. When you do:
   </p>
   <div class="table">
     <div class="row"><span class="who">Supabase</span><span>Stores the recording, your account data, and every song in the app. Our database and file storage provider.</span></div>
@@ -703,7 +738,7 @@
     <div class="row"><span class="who">OpenAI</span><span>Hears the recording when our own worker gives a song sheet no words — a song where it found no vocal, a worker from before it could transcribe, or chords worked out on your phone instead — and every time you ask the sheet to listen for the words again. The recording goes to OpenAI's transcription API: the isolated vocal when separation made one, and otherwise the whole recording. With it go the start of the words already on the sheet, as a hint, and the language the room said the song is sung in. A recording it has already heard with the same hint is not sent again. Governed by <a href="https://openai.com/policies/api-data-usage-policies" target="_blank" rel="noopener">OpenAI's own API data terms</a>.</span></div>
     <div class="row"><span class="who">RunPod</span><span>Also works out the tune of the isolated vocal. That is where the sung range shown on a song sheet — and on your profile page, if you play a singing part — comes from. Same worker, our own code.</span></div>
     <div class="row"><span class="who">Anthropic or OpenAI</span><span>Only when you ask the app a question about a song. Your question and what the app has already worked out — the title, key, tempo, length, chords, sections, up to sixty lines of the words, which parts have been shared on it and the display names of the people who recorded them, which parts it is still asking for, how many beats the band counts in a cycle, and the way you name notes — go to a language model that writes the answer. The recording never does. Which model depends on how we have configured it: Anthropic's API when a key for it is set, otherwise OpenAI's. Both publish API terms under which what is sent is not used to train their models. We keep your question and the answer too, readable from our service by you alone, until the song or your account is deleted; if the model does not answer, the question is kept with no answer. A question turned away because you have asked too many this hour is not kept. Some questions the app answers by itself: those go to no model, and are not kept. Asking is for people 18 and over, and is not on in rooms made by a lesson link.</span></div>
-    <div class="row"><span class="who">Apple or Google</span><span>If you dictate lyrics rather than type them, the phone's own speech recogniser is used, and on iOS that may send what you say to Apple. It's the system feature, not ours, and it only runs while you're dictating.</span></div>
+    <div class="row"><span class="who">Apple or Google</span><span>If you dictate lyrics rather than type them, your phone's or browser's own speech recogniser is used. On an iPhone that may send what you say to Apple; on Android, or in a browser such as Chrome, it may send it to Google. It's the system feature, not ours, and it only runs while you're dictating. A question you speak to the app is different: it is heard only on the phone itself, and where the phone cannot do that, it is not heard at all.</span></div>
   </div>
   <p>
     RunPod and Google Cloud Run are infrastructure we run our own code on —
@@ -712,6 +747,13 @@
     OpenAI. When the worker gives no words, or you ask the sheet to listen
     again, the recording goes to OpenAI as the OpenAI row says: the isolated
     vocal when there is one, otherwise the whole recording.
+  </p>
+  <p>
+    Outside the app, we sometimes run tests of our own on recordings already
+    stored, to measure how well the analysis works. Those tests run on
+    GitHub's computers and send the recordings, or their separated vocals,
+    to the same services in the table: OpenAI, RunPod and our chord
+    detector. Nobody asks you first. The last ones ran in August 2026.
   </p>
   <p>
     One thing that is not a recording also goes to OpenAI: every profile
@@ -732,9 +774,12 @@
     file, analysed again by anyone, reuses the first result instead of being
     reprocessed. Nobody can reach an analysis without already having the
     recording it came from. The cache holds what was worked out — the
-    chords, key, tempo, sections, the tune and the words heard — and
-    nothing that says whose recording it was. It is not deleted when the
-    song or the account is.
+    chords, key, tempo, sections, the tune and the words heard — and no
+    person's name. It does keep where the first analysis left the separated
+    parts: a folder named by that room and song. The words OpenAI heard are
+    cached the same way, by a fingerprint of the audio sent and of the hint
+    sent with it. Neither cache is deleted when the song or the account is, and
+    neither has an end date.
   </p>
 
   <h2>Who can see what</h2>
@@ -785,25 +830,27 @@
       then — the room offers the song, never your unheard draft.
     </li>
     <li>
-      <strong>Showing a finished song.</strong> Marking a song finished is
-      private and shows it to nobody; it only stops the song asking for help.
+      <strong>Showing a finished song.</strong> Marking a song finished
+      shows it to nobody new. It stops the song asking for help, and it also
+      takes the song off the Open Mic; unmarking it does not put it back.
       Putting it in the showcase is a second choice, made separately. In the
       app, a song in the showcase can be seen by anyone signed in who may
       meet whoever started it. A song
       in the showcase that has something to play, by somebody 18 or over,
       also gets its own page on this website, readable by anybody and by
       search engines: its title, your display name, its key, its length,
-      and the display names of the others whose takes on it are public. The
-      recording is not on that page. The list the page is made from, which
-      needs no account to read, also gives the song's identifier and your
-      account's identifier. Taking the song out of the showcase takes the
+      whether more than one musician played on it, and the display names of
+      the others whose takes on it are public. The recording is not on that
+      page. The list the page is made from, which needs no account to read,
+      also gives the song's identifier, your account's identifier, and when
+      the song went in the showcase. Taking the song out of the showcase takes the
       page down at the next daily rebuild, though, as above, an earlier copy
       stays in the website's public history.
     </li>
     <li>
       <strong>Opening your door to the Open Mic.</strong> Your door can be
-      seen by everybody on the Open Mic who may meet you, while it is open
-      and you are listed on the Open Mic. The name of the song it is open on
+      seen by anybody signed in who may meet you, while it is open and you
+      are listed on the Open Mic. The name of the song it is open on
       is shown only to those who could already find that song, as “Your
       door” says. Closing it ends that.
     </li>
@@ -865,7 +912,8 @@
       nobody else, except on the older versions “Whether you are here right
       now” describes. A song you have open is seen by everybody on that
       song, Appear away or not. A door you open is
-      seen by your people, and by the Open Mic only if you choose. A door
+      seen by your people, and by anybody signed in who may meet you only
+      if you choose. A door
       opened at a place is seen only by the people checked in there who may
       meet you. A check-in at a place is seen by the people checked in there
       who may meet you, while the night is on, and for seven days after it
@@ -873,8 +921,9 @@
     </li>
   </ul>
   <p>
-    A notification about any of these carries the sender's name and the first
-    part of what they said, and nothing more.
+    A notification about any of these carries the sender's name, the room
+    or song it is about if there is one, up to the first 200 characters of what they said,
+    and the identifiers the app needs to open it.
   </p>
 
   <h2>The chord tool on this website</h2>
@@ -885,10 +934,11 @@
   </p>
   <p>
     <strong style="color: var(--text)">The recording is never stored.</strong>
-    It is held in memory for as long as the analysis takes, passed to the chord
-    detector, and dropped. There is no upload folder, no database row, and no
-    copy afterwards — so there is nothing to delete, and nothing for us to hand
-    over if anybody ever asked.
+    It is held in memory for as long as the analysis takes, passed to our
+    chord detector, which runs on Google Cloud Run, and dropped. Our own code
+    keeps no upload folder, no database row, and no copy afterwards. The
+    request still passes through Supabase, who run our function, and we have
+    not yet checked what Supabase's own logs keep of it.
   </p>
   <p>
     One thing is kept, and only to stop the tool being used to run up a bill:
@@ -1057,7 +1107,8 @@
     door keeps the account identifiers of who opened the door and who was let
     in for as long as the room exists. Takes you shared on songs other
     people own, and songs you started in rooms other people own, stay where
-    they are with nobody named, and a song's history keeps the words you
+    they are with nobody named. So do a recording you put on such a song,
+    and an ask you made for one, with its words. A song's history keeps the words you
     replaced, which somebody else wrote. Notifications already in other
     people's inboxes keep the words they were written with, which can
     include your name and the start of what you said. A screenshot you
@@ -1080,11 +1131,11 @@
   <ul>
     <li>Delete a voice note, a recording, or a song at any time from inside the app.</li>
     <li>Export a song or setlist as text or a printable PDF.</li>
-    <li>Take back any message, reply or note you wrote, from the line itself. Questions you asked the app about a song are the exception: they cannot be taken back. A note looking for somebody can be removed while it is working; after its month it no longer shows in the app. A line in a call note that was kept after its room went is taken back under <strong style="color: var(--text)">Your music → After the call</strong>, until the note's last day, and that is for good.</li>
+    <li>Take back any message, reply or note you wrote, from the line itself. A notification that already reached somebody keeps its start until they clear it. Questions you asked the app about a song, and the words you wrote with an ask to play, are the exceptions: they cannot be taken back. A note looking for somebody can be removed while it is working; after its month it no longer shows in the app. A line in a call note that was kept after its room went is taken back under <strong style="color: var(--text)">Your music → After the call</strong>, until the note's last day, and that is for good.</li>
     <li>Choose some of the notifications you get under <strong style="color: var(--text)">Account → Notifications</strong>: invites, answers to them, being asked to play, messages, calls and new takes each have a switch, and the Open Mic Night reminder comes only if you ask for it. Other notifications have no switch yet, among them a knock on your door, being let in, an ask to meet and its yes, a room you are in being kept, and the answer to a report you made.</li>
     <li>Make a new code for meeting people, which stops the old one working.</li>
     <li>Turn on Appear away, so your people do not see that you have the app open. It does not hide a song you have open from the people on that song.</li>
-    <li>Leave a room you no longer want to be in — its songs and its thread go with it. Your place on its calls and your lines in their notes stay for the people still in it. A room made at a door is the exception: if it goes by itself, they are deleted from its notes when it goes; if it stays, because its owner kept it or it holds a song, a set or a picture, they stay as in any room.</li>
+    <li>Leave a room you no longer want to be in. You lose its songs and its thread, and its songs leave your sets. What you put there — takes, words, comments, lines in its thread, your place on its calls and your lines in their notes — stays with the room for the people still in it. A room made at a door is the exception: if it goes by itself, they are deleted from its notes when it goes; if it stays, because its owner kept it or it holds a song, a set or a picture, they stay as in any room.</li>
     <li>Close your door, say you have left a place on Here tonight, or take your song off an Open Mic Night list, at any time.</li>
     <li>
       Delete your account from <strong style="color: var(--text)">Account → Delete account</strong>.
