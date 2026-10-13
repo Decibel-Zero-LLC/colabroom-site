@@ -242,6 +242,13 @@
     them. What they hear is read on your phone and is not recorded, stored
     or sent.
   </p>
+  <p>
+    When somebody makes a recording the song's record we keep who did, when,
+    which recording, where it sits on the song and a fingerprint (SHA-256) of
+    the file, shown to everybody on the song until it is deleted; if they
+    delete their account it stays with nobody named, and so does their
+    answer about it.
+  </p>
 
   <h3>What you import</h3>
   <p>
@@ -837,6 +844,16 @@
       heard by anyone signed in who may meet whoever started the song.
       Everybody else with a shared take on it is asked first, once; their
       part goes out only if they say yes, and they can take it back later.
+      A song's record is the recording the room chooses to be the song: any
+      take, a file brought in, or the song's own recording. When
+      somebody makes a new recording the record, everybody whose part
+      may be on it is asked again, about that recording only, before
+      people outside the room hear it; until they all say yes, those
+      people hear what they heard before. A take brought in from a
+      file, which may have the whole band on it, goes out only once
+      everybody else with a shared take on the song has said yes to
+      their own part, and not at all once somebody asked about it as
+      the record has said no.
       Without their yes, their part stays with the room. The same is asked
       before a song goes in the showcase. A take you have not shared stays private even
       then — the room offers the song, never your unheard draft.
@@ -1057,7 +1074,12 @@
   <p>
     A take is never deleted because nobody has played it for a while. It
     stays until somebody removes it: whoever recorded it, the room's owner,
-    or whoever deletes the song or the room it is on. The separated parts
+    or whoever deletes the song or the room it is on.
+    A take or a song's own recording that has ever been the song's record is
+    the exception: removing it takes it off the song, but its file stays
+    with the song's list of versions until the song or its room is
+    deleted, so which recording was the record can always be shown; a
+    removed take's version no longer plays. The separated parts
     an analysis makes from a song's recording are different: they are a
     copy we made, not something you made, and they are put away when nobody
     has played them for 180 days. The song then says so, and Bring them
