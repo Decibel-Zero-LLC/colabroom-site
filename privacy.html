@@ -184,7 +184,7 @@
   <a class="back" href="/">← CoLabRoom</a>
 
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated October 13, 2026</p>
+  <p class="updated">Last updated October 14, 2026</p>
 
   <p class="notice">
     CoLabRoom is published by <strong style="color: var(--text)">Decibel Zero LLC</strong>
@@ -248,6 +248,10 @@
     the file, shown to everybody on the song until it is deleted; if they
     delete their account it stays with nobody named, and so does their
     answer about it.
+    For every take we keep a fingerprint (SHA-256) of its file, taken by our
+    server from the file we store, and whether the app recorded it or it
+    was brought in from a file; the song's History shows both, with the
+    start of the fingerprint, to everybody who can hear that take.
   </p>
   <p>
     In a lesson — a room a teacher's lesson link made — the end of a
@@ -631,7 +635,12 @@
     asking the app about a song, lesson links, meeting people you have not
     worked with, whether a room can be handed to you, who can see your door
     or see you at a place on Here tonight, and whether a room made at a door
-    can be kept all depend on. If the answer is under 13, the month and year are not
+    can be kept all depend on.
+    On a song marked finished, the list under Let people use it also says
+    whether everybody on the song has said they are 18 or over: one
+    answer for the whole song, read by the people on it, that names
+    nobody. On a song with only two people on it, that answer is in
+    effect about the other person. If the answer is under 13, the month and year are not
     kept: only the fact that such an answer was given, and when, so the
     question is never asked again on that account. Anybody in a call can
     report or block anybody else in it, from the call itself.
@@ -1090,7 +1099,7 @@
   <h2>Backups, and the jobs that look after the app</h2>
   <div class="table">
     <div class="row"><span class="who">Backblaze B2</span><span>Every night we copy our database's tables, and the recordings, takes, separated parts, voice notes, room pictures and song covers in our file storage, to Backblaze B2, a storage service, where the copies are kept encrypted. Each copy is locked against being changed or deleted for at least thirty days. Copies more than sixty days old can then be removed, and we remove them by hand. So something you delete can stay in a backup copy for at least sixty days, and longer until we clear old copies. The copies are there to put things back if they are lost; nothing in the app reads them.</span></div>
-    <div class="row"><span class="who">GitHub</span><span>Our scheduled jobs run on GitHub Actions, GitHub's computers. They read our database to tidy and to count, among them: deleting the old records of each run of the app, the weekly totals, whether a Help question or a report is waiting, the error check described under “Feedback and diagnostics”, removing files a deleted song, room or account left behind, putting away separated parts nobody plays, building the pages of this website, and the nightly backup, which passes everything it copies through GitHub's computers on its way to Backblaze. The backup writes only counts to GitHub's logs and keeps no copy there.</span></div>
+    <div class="row"><span class="who">GitHub</span><span>Our scheduled jobs run on GitHub Actions, GitHub's computers. They read our database to tidy and to count, among them: taking each new take's fingerprint, which reads its file on GitHub's computers and keeps nothing there, deleting the old records of each run of the app, the weekly totals, whether a Help question or a report is waiting, the error check described under “Feedback and diagnostics”, removing files a deleted song, room or account left behind, putting away separated parts nobody plays, building the pages of this website, and the nightly backup, which passes everything it copies through GitHub's computers on its way to Backblaze. The backup writes only counts to GitHub's logs and keeps no copy there.</span></div>
   </div>
 
   <h2>How long we keep it</h2>
