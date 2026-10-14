@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CoLabRoom Terms of Service</title>
-<meta name="description" content="The terms for the CoLabRoom beta: your songs stay yours, what rooms and invitations are for, what you may not upload, and how either of us can stop.">
+<meta name="description" content="The terms for using CoLabRoom: your music stays yours, what is open from 13 and what is for adults, what you may not upload, money and credits, meeting people safely, Florida law and how disagreements are settled.">
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
@@ -101,19 +101,19 @@
   }
   h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
 
+  h3 {
+    font-family: var(--display);
+    color: var(--text);
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin: 1.6rem 0 0.5rem;
+  }
+
   p { margin: 0 0 1.05rem; max-width: var(--measure); }
   ul, ol { margin: 0 0 1.05rem; padding-left: 1.25rem; max-width: var(--measure); }
   li { margin-bottom: 0.5rem; }
 
-  .placeholder {
-    background: var(--surface);
-    border: 1px dashed var(--line);
-    border-radius: 0.4rem;
-    padding: 0.05em 0.5em;
-    color: var(--gold);
-    font-family: var(--mono);
-    font-size: 0.88em;
-  }
+  strong { color: var(--text); }
 
   footer {
     margin-top: 4rem;
@@ -131,7 +131,7 @@
   <meta property="og:url" content="https://colabroom.com/terms.html">
   <meta property="og:site_name" content="CoLabRoom">
   <meta property="og:title" content="CoLabRoom Terms of Service">
-  <meta property="og:description" content="The terms for using CoLabRoom's beta.">
+  <meta property="og:description" content="The terms for using CoLabRoom, in plain words: your music stays yours, who can use what, and how disagreements are settled.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://colabroom.com/share.png">
   <meta property="og:image:width" content="1200">
@@ -139,7 +139,7 @@
   <meta property="og:image:alt" content="CoLabRoom — songwriting for musicians who aren't in the same room.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="CoLabRoom Terms of Service">
-  <meta name="twitter:description" content="The terms for using CoLabRoom's beta.">
+  <meta name="twitter:description" content="The terms for using CoLabRoom, in plain words: your music stays yours, who can use what, and how disagreements are settled.">
   <meta name="twitter:image" content="https://colabroom.com/share.png">
   <meta name="theme-color" content="#06101F">
 </head>
@@ -149,178 +149,1040 @@
   <a class="back" href="/">← CoLabRoom</a>
 
   <h1>Terms of Service</h1>
-  <p class="updated">Last updated September 24, 2026 · Effective for the CoLabRoom beta</p>
+  <p class="updated">Last updated October 14, 2026</p>
 
   <p class="notice">
-    CoLabRoom is a beta, published by <strong style="color: var(--text)">Decibel
-    Zero LLC</strong> ("we", "us"). These terms are written to match what the
-    app actually does today, not a generic template — and one field below is
-    still a placeholder pending legal review; see the note where it appears.
+    CoLabRoom is made and run by <strong>Decibel Zero LLC</strong>, a Florida
+    limited liability company (“we”, “us”). These terms are the agreement
+    between you and us. They are written to say what the app actually does
+    today, and where something isn't built yet, they say so. CoLabRoom is
+    still being tested, and before it opens to the public our lawyer will
+    review these terms. Please read <a href="#disputes">Disputes</a>: once
+    it applies to you, a disagreement between us is settled by arbitration,
+    one person at a time, not in a class action, and both of us give up a
+    jury trial, unless you opt out within 30 days.
   </p>
 
-  <h2>The beta</h2>
-  <p>
-    CoLabRoom is in active testing. Features can change, break, or disappear
-    between builds, and the automatic chord and lyric analysis is a first
-    pass, not a guaranteed-accurate one — Tap Sync and manual correction
-    exist because of that. We don't promise a particular level of uptime or
-    that the service will be available at any given time.
-  </p>
-
-  <h2>Your account</h2>
-  <p>
-    You need an account to use CoLabRoom. You're responsible for keeping your
-    login secure and for what happens under your account. You must be at
-    least 13 years old to create one.
-  </p>
-
-  <h2>Your content</h2>
-  <p>
-    Your lyrics, recordings, and everything else you put into CoLabRoom stay
-    yours. Using the app means giving us permission to store, transmit, and
-    process that content for the purpose of running the app — including
-    sending a recording to the analysis services described in the
-    <a href="/privacy.html">Privacy Policy</a> when you ask for analysis.
-    We don't claim ownership of what you write, and we don't use your song
-    content to train any model.
-  </p>
-  <p>
-    What you say is your content too: messages to one person, lines in a
-    room's thread, replies on an ask and notes are stored so the people they
-    are for can read them, and the same rules apply to them.
-  </p>
-  <p>
-    Don't upload anything you don't have the right to — a sample, a cover's
-    original recording, a co-writer's work without their agreement. You're
-    responsible for what you put into a room.
-  </p>
-
-  <h2>Rooms and deleting your account</h2>
-  <p>
-    Deleting your account is immediate, permanent, and cannot be undone. It
-    removes your profile, your words, and every room nobody else is in, with
-    its songs.
-  </p>
-  <p>
-    A room other people are in is settled first: the app lists each one
-    before anything is deleted, and your account can be deleted once every
-    one is settled. <strong style="color: var(--text)">Hand it over</strong>
-    moves the room and every song in it to somebody in it, once they say
-    yes. <strong style="color: var(--text)">Close the room</strong> gives
-    every song somebody else in it started, played on or wrote on to them,
-    in a room of their own, and deletes the rest. Songs you started and
-    takes you shared in other people's rooms stay with their bands, without
-    your name.
-  </p>
-  <p>
-    Deleting your account also deletes every message you sent, in rooms and
-    to people, along with your questions to the app, your notes and your
-    connection requests.
-  </p>
-
-  <h2>Meeting other people</h2>
-  <p>
-    CoLabRoom has an Open Mic: a place you can list yourself, put a song where
-    other musicians can hear it, and ask somebody you have never met to play on
-    it. Every part of that is something you choose to do, and every part of it
-    can be undone — the
-    <a href="/privacy.html">Privacy Policy</a> says exactly what becomes
-    visible with each one.
-  </p>
-  <p>
-    The Open Mic is for adults. Under 18, the rooms you are invited into work
-    as they always do.
-  </p>
-  <p>
-    What arrives from a stranger has not been reviewed by us before you see
-    it. Every place somebody else's music or profile appears carries a way to
-    report it and a way to block the person who put it there, and blocking
-    also closes anything already open between the two of you.
-  </p>
-
-  <h2>Talking to each other</h2>
-  <p>
-    You can write to somebody you are connected with or share a room with;
-    the app does not deliver a message to anybody else. A room's thread is
-    read by everybody in that room, including people who join later, so
-    treat it as the band's rather than yours. Anything you wrote can be taken
-    back from inside the app, and blocking somebody closes what is open
-    between you.
-  </p>
-  <p>
-    We don't read messages as a matter of course. When something is
-    reported, we look at what was reported, and the
-    <a href="/privacy.html">Privacy Policy</a> says what is stored.
-  </p>
-
-  <h2>The assistant</h2>
-  <p>
-    You can ask the app about a song and get an answer written by a language
-    model from what the app has worked out — the key, the chords, the
-    sections, the words. It is a guess from what the app heard: it can be
-    wrong, it is not advice of any kind, and every answer ends by pointing
-    you at a person. The Privacy Policy says exactly what is sent, and to
-    whom.
-  </p>
-
-  <h2>Acceptable use</h2>
-  <p>Don't use CoLabRoom to:</p>
+  <h2>The short version</h2>
   <ul>
-    <li>Upload content you don't have the rights to.</li>
-    <li>Harass, threaten, or abuse another user.</li>
-    <li>Send unwanted, deceptive or abusive messages, or use a room's thread to harass anybody in it.</li>
-    <li>Attempt to access another room you're not a member of, or another account that isn't yours.</li>
-    <li>Interfere with the service — attempting to overload it, reverse-engineer it, or bypass its access controls.</li>
+    <li>Your music stays yours. We use it to run the app for you and the people you choose. We never sell it, and we never train an AI on it.</li>
+    <li>You must be 13 or older. From 13 you can do everything with your own music, and write, share and play together in the rooms you have joined. Calls, Clef, lessons, being handed a room, and meeting people you haven't worked with are for people 18 and over, for now.</li>
+    <li>Only upload what you have the right to share. Never share an intimate image of anyone without their consent.</li>
+    <li>What the app works out about a song, and what Clef says, is a first pass. It can be wrong, and it is not legal or professional advice.</li>
+    <li>CoLabRoom is still being tested. It comes as it is, without guarantees, and the most we can owe you is limited.</li>
+    <li>Florida law applies. If we disagree, we talk first, then settle it one person at a time in arbitration or small claims court. You can opt out of arbitration within 30 days.</li>
   </ul>
   <p>
-    <strong style="color: var(--text)">There is no tolerance for objectionable
-    content or abusive behaviour here.</strong> We read every report, and
-    acting on one can mean removing the content, removing the account, or
-    both. We can suspend or remove an account that does any of the above, and
-    we can remove content that violates these terms. CoLabRoom is a beta run
-    by a very small team, so we won't promise a response time we can't keep —
-    but nothing reported goes unread.
-  </p>
-  <p>
-    Report anything from inside the app — every song, take, profile, link and
-    ask has a report on it — or write to
-    <a href="mailto:support@colabroom.com">support@colabroom.com</a>. If what
-    you are reporting is somebody else's copyrighted work, the
-    <a href="/copyright.html">copyright page</a> is the faster route.
+    This summary is only to help you find your way. The full terms below are
+    what apply.
   </p>
 
-  <h2>No warranty</h2>
+  <h2 id="about">Who we are, and these terms</h2>
+
+  <h3>Who we are</h3>
   <p>
-    CoLabRoom is provided as-is, especially given its beta status. We don't
-    warrant that the app, or the automatic analysis it offers, will be
-    accurate, uninterrupted, or error-free.
+    CoLabRoom is made and run by Decibel Zero LLC, a Florida limited
+    liability company, 3259 Alling Court, Deltona, Florida 32725, United
+    States. When these terms say “we” or “us”, they mean Decibel Zero LLC.
+    You can reach us at
+    <a href="mailto:support@colabroom.com">support@colabroom.com</a>.
   </p>
 
-  <h2>Limitation of liability</h2>
+  <h3>Agreeing to these terms</h3>
   <p>
-    To the extent the law allows, Decibel Zero LLC isn't liable for indirect,
-    incidental, or consequential damages arising from your use of CoLabRoom —
-    including loss of song content, to the extent it results from your own
-    account deletion or from beta instability we've disclosed above.
+    You agree to these terms when you make a CoLabRoom account. If you use
+    the free tools on colabroom.com without an account, these terms apply to
+    that use too, except <a href="#disputes">Disputes</a>. If you don't
+    agree, please don't use CoLabRoom.
+  </p>
+  <p>
+    Our <a href="/privacy.html">Privacy Policy</a> says what we collect,
+    where it goes and how long we keep it, and our
+    <a href="/copyright.html">copyright page</a> says how copyright
+    complaints work. Both are part of these terms. Where these terms and the
+    Privacy Policy describe the same thing, the Privacy Policy has the
+    detail.
   </p>
 
-  <h2>Changes to these terms</h2>
+  <h3>When these terms apply</h3>
   <p>
-    If we change these terms in a way that matters, we'll update the date at
-    the top and say so inside the app.
+    These terms replace the terms of September 24, 2026. If you make your
+    account after this version was posted, they apply from when you make it.
+    If your account was made before, they apply to it 30 days after we email
+    you about them, or sooner if you agree to them in the app, and until then
+    the earlier terms apply. <a href="#disputes">Disputes</a>, with its
+    arbitration, class action and jury trial sections, applies to an account
+    made before this version was posted only once you agree to this version
+    in the app.
   </p>
 
-  <h2>Governing law</h2>
+  <h3>A test that is still going on</h3>
   <p>
-    <span class="placeholder">[state/jurisdiction — pending legal review]</span>.
-    This is the one section we haven't filled in: it should name the actual
-    state whose law governs this agreement, which is worth confirming with
-    an attorney rather than guessing.
+    These terms apply to CoLabRoom while it is being tested by a small group
+    of invited people, and as it opens to the public. Before the public
+    launch our lawyer will review them. If anything changes in a way that
+    matters, we will tell you as
+    <a href="#changes">Changes to these terms</a> says.
   </p>
 
-  <h2>Contact</h2>
+  <h2 id="who">Who can use CoLabRoom</h2>
+
+  <h3>Age</h3>
   <p>
-    Decibel Zero LLC — <a href="mailto:support@colabroom.com">support@colabroom.com</a>
+    You must be 13 or older to make an account. When you sign up you
+    confirm that you are. The first time you reach something that depends on
+    your age, we ask the month and year you were born, once. Please tell us
+    the truth: some parts of CoLabRoom depend on it, and once given it can
+    only be corrected by writing to
+    <a href="mailto:support@colabroom.com">support@colabroom.com</a>. If you
+    are under 18, please read these terms with a parent or guardian.
+  </p>
+
+  <h3>From 13</h3>
+  <p>
+    From 13 you can use everything you do with your own music (writing,
+    recording, the song sheet, practising and exporting) and everything
+    inside the rooms you have joined: the room's thread, notes, takes, songs
+    and sets. You can write to the people you share a room with, and listen
+    to your own people's songs on Open Mic Night.
+  </p>
+
+  <h3>From 18, for now</h3>
+  <p>
+    Some parts of CoLabRoom are for people 18 and over, for now, and the app
+    tells you when you reach one:
+  </p>
+  <ul>
+    <li>calls, and asking Clef about a song;</li>
+    <li>anything that puts you in front of people you have not worked with:
+      listing yourself on the Open Mic, putting a song on the Open Mic, in
+      the showcase or on an Open Mic Night list, a public page about you on
+      colabroom.com, asking or offering to play with somebody new, and adding
+      somebody new with their code or with We met;</li>
+    <li>lessons: a teacher's lesson link, lesson rooms and lesson
+      records;</li>
+    <li>showing your door on the Open Mic, making a place on Here tonight,
+      and meeting anybody there you have not played with;</li>
+    <li>being handed a room, and keeping a room that was made at a door;</li>
+    <li>signing anything, such as printing a music release, and offering a
+      song for other people to use.</li>
+  </ul>
+  <p>
+    Under 18, you can open your door and check in at a place, but only the
+    people you already play with see you there. When any of these opens to
+    younger musicians, this page will say so before it happens.
+  </p>
+
+  <h3>Invitations</h3>
+  <p>
+    Anyone can be invited into a room by email, whatever their age, and once
+    you join, the people in it count as people you work with. Only join rooms
+    of people you know. You never have to say yes, and you can leave, block
+    or report at any time.
+  </p>
+  <p>
+    If we have reason to think the age on an account is wrong, we may close
+    the 18-and-over parts until it is sorted out. On iPhone and Android we
+    may use the age range the App Store or Google Play gives us instead of
+    the one you told us, whichever is more careful.
+  </p>
+
+  <h3>Under 13</h3>
+  <p>
+    CoLabRoom is not for children under 13. If we learn that an account
+    belongs to a child under 13, we stop it working as soon as we learn of
+    it. Within 14 days we delete it and everything the child put on
+    CoLabRoom, including takes and words in other people's rooms; the people
+    in those rooms see only that a part was removed. Copies in our encrypted
+    backups go as our Privacy Policy says. A parent who thinks their child
+    has an account, or wants a child's information deleted, can write to
+    <a href="mailto:support@colabroom.com">support@colabroom.com</a>.
+  </p>
+
+  <h3>Parents and guardians</h3>
+  <p>
+    A parent or guardian can ask us to delete their child's account by
+    writing to <a href="mailto:support@colabroom.com">support@colabroom.com</a>.
+    More controls for parents and guardians are coming, and these terms will
+    describe them when they arrive.
+  </p>
+
+  <h3>If you are under 18</h3>
+  <p>
+    The law may let you cancel this agreement, or something you bought. If
+    you do, your account closes, we refund what you paid us directly, and we
+    help you ask the app store about anything you bought there. What you
+    already shared in a room stays with the room for the people in it, as far
+    as the law allows. A parent or guardian who agreed to these terms for you
+    stays bound by them. When you turn 18, we may ask you to agree to these
+    terms in your own name.
+  </p>
+
+  <h3>Where CoLabRoom is offered</h3>
+  <p>
+    CoLabRoom is offered to people in the United States. It is not offered in
+    the European Union or the United Kingdom for now. If you use it from
+    somewhere else, that is your choice, and you are responsible for
+    following your local laws. Nothing in these terms takes away rights that
+    the law where you live gives you and that can't be signed away.
+  </p>
+
+  <h2 id="account">Your account</h2>
+  <p>
+    An account is for one person, and you need one to use the app. Use your
+    own email address, keep your password to yourself, and tell us at
+    <a href="mailto:support@colabroom.com">support@colabroom.com</a> if you
+    think somebody else has got into your account. You're responsible for
+    what happens under your account. Don't make an account for somebody
+    else, sell or share yours, or make another one after we have closed
+    yours.
+  </p>
+  <p>
+    Every account has a meeting code, shown as a QR code, so somebody you
+    meet can ask to add you. Share it only with people you want to hear from.
+    Making a new code in the app stops the old one working.
+  </p>
+  <p>
+    We send notices to the email address on your account, or inside the app.
+    You agree that we may give you notices and records this way, rather than
+    on paper. Keep your email address up to date.
+  </p>
+
+  <h2 id="test-builds">Test versions</h2>
+  <p>
+    CoLabRoom is still being built. Features can change, break or disappear
+    between versions, and some may never be released. Keep your own copy of
+    anything important, using the app's export where it has one. We don't
+    plan to wipe accounts or songs during the test; if we ever have to, we
+    will tell you first, here and in the app, with time to export what the
+    app lets you export. What we keep about testers is exactly what our
+    Privacy Policy describes.
+  </p>
+  <p>
+    If we give you a version of CoLabRoom that has not been released to
+    everyone (a test version from TestFlight, a test download for Android, or
+    a preview), keep what is in it to yourself until we release it: don't
+    post, stream, record, demo or describe its unreleased features to anyone
+    else, and don't share the download or take it apart. This doesn't stop
+    you talking about your own music, and it ends for any feature once we
+    release it publicly, or if it was already public without your help. Test
+    versions may lose work that hasn't been saved. You can stop testing at
+    any time, and we can end a test at any time.
+  </p>
+  <p>
+    We can change, pause or take away a feature at any time, including when
+    the law or someone else's rights require it. When something you use goes
+    away, we'll tell you in the app.
+  </p>
+
+  <h2 id="content">Your music, and what you share</h2>
+
+  <h3>It stays yours</h3>
+  <p>
+    Your songs, recordings, words and pictures stay yours. We never claim to
+    own them. What you say is your content too: messages, lines in a room's
+    thread, replies on an ask, notes, and the line you add to a call's note.
+  </p>
+
+  <h3>What you let us do with it</h3>
+  <p>
+    So that CoLabRoom can work, you give Decibel Zero LLC permission to
+    store, copy, back up, process, show, play and send your content,
+    including your name, face and voice in it, and to have the companies
+    named in our Privacy Policy do those things for us. That permission is
+    non-exclusive, worldwide and free, and it covers running CoLabRoom:
+  </p>
+  <ul>
+    <li>keeping your content, and keeping encrypted backup copies of it;</li>
+    <li>sending a recording to the analysis services in our Privacy Policy
+      when you, or somebody who can open the song, asks for it to be
+      read;</li>
+    <li>checking pictures with the moderation service our Privacy Policy
+      names;</li>
+    <li>showing and playing your content to the people it is meant for: your
+      rooms, anybody invited onto a song you are on, the people checked in at
+      a place you check into, and, when you or your room put it there in the
+      way the app describes, the Open Mic, Open Mic Night, the showcase and a
+      public page on colabroom.com.</li>
+  </ul>
+  <p>
+    It does not let us sell your music, or license it to anyone to use
+    outside CoLabRoom. We don't use your songs, recordings or words to train
+    any AI model. We never use your face or voice in advertising without
+    asking you first, separately, and we never use your face or your voice
+    to identify who you are: no face recognition, faceprints or voiceprints.
+  </p>
+  <p>
+    The permission ends when you delete the content or your account, except
+    for: what you shared in other people's rooms (below); our backups, for
+    the time our Privacy Policy says; a copy kept with a report, or kept
+    because the law requires it; and what an analysis worked out from a
+    recording (its chords, key, tempo, sections, tune and the words it
+    heard), which we keep without anyone's name so the same recording is
+    never processed twice.
+  </p>
+
+  <h3>Our own tests</h3>
+  <p>
+    Until now we have sometimes tested how well the analysis works on
+    recordings already stored in the app, without asking first, as our
+    Privacy Policy says. The last of those ran in August 2026. Before we run
+    a test like that again, we will make it use only our own recordings and
+    recordings whose owners have said yes.
+  </p>
+
+  <h3>What you share in a room</h3>
+  <p>
+    When you share a take, a line, a note or a picture in a room, you let
+    the people in that room use it for that room's songs, inside CoLabRoom
+    and for the band's own listening, rehearsing and playing: to hear it,
+    record over it, mix it and export it. If you leave the room or delete
+    your account, what you shared stays with the room for the people in it
+    (without your name, once your account is gone), and they keep this
+    permission for it. While you are in the room you can delete your own
+    take, though a take that was ever the song's main recording stays in the
+    song's list of versions, as our Privacy Policy explains, and copies
+    others already exported or mixed stay with them. You still own your
+    part. Releasing, selling or licensing a song to anyone else needs a yes
+    from everyone on it, and doesn't come from this.
+  </p>
+
+  <h3>Your promise</h3>
+  <p>
+    You confirm that you have the right to share what you upload, including
+    the permission of anyone else whose face, voice, words or music is in
+    it.
+  </p>
+
+  <h3>Your ideas</h3>
+  <p>
+    If you send us feedback or ideas about the app, we may use them without
+    owing you anything. This is about ideas for the app, not your music,
+    which stays yours.
+  </p>
+
+  <h3>What is ours</h3>
+  <p>
+    The app, the website, their look and their code belong to Decibel Zero
+    LLC and the people who license their work to us. These terms give you a
+    personal right to use CoLabRoom while you follow them, not ownership of
+    it or any other right in it. Don't use the CoLabRoom name or logo in a
+    way that suggests we made, sponsor or endorse something we didn't;
+    saying truthfully that your music was made on CoLabRoom is fine.
+    CoLabRoom also uses software and models made by others, under their own
+    licences.
+  </p>
+
+  <h2 id="rules">What's not allowed</h2>
+  <p>Don't use CoLabRoom to:</p>
+  <ul>
+    <li>upload or share music, recordings, words or pictures you don't have
+      the right to share: a sample, somebody else's record, a co-writer's
+      work without their agreement;</li>
+    <li>put a cover, or anyone else's song, on the Open Mic, in the showcase,
+      or on a door shown to people you have not worked with;</li>
+    <li>share sexual content involving anyone under 18, or anything that
+      sexualises a child, ever, in any form;</li>
+    <li>share a sexual or intimate picture or video of anyone without their
+      consent, or threaten to;</li>
+    <li>contact someone under 18 in a sexual or romantic way, or try to get
+      them to meet you, move to another app, or keep a secret from their
+      parents;</li>
+    <li>harass, threaten, bully or abuse anyone, or attack people for who
+      they are;</li>
+    <li>send unwanted, deceptive or abusive messages or spam, or use a room's
+      thread to harass anybody in it;</li>
+    <li>pretend to be somebody else, or lie about your age;</li>
+    <li>post somebody's private information, such as their home address or
+      phone number, without their permission;</li>
+    <li>record anyone without their consent;</li>
+    <li>break the law, or help anyone else do so;</li>
+    <li>get into a room, a song or an account that isn't yours, or get round
+      an age check, a block or any other limit the app sets;</li>
+    <li>interfere with the service: overload it, copy it with automated
+      tools, put viruses or other harmful code in it, or take it apart,
+      except where the law lets you.</li>
+  </ul>
+  <p>
+    <strong>There is no tolerance for objectionable content or abusive
+    behaviour on CoLabRoom.</strong> We may remove anything that breaks these
+    terms, and we don't have to keep up anything we decide is harmful.
+  </p>
+
+  <h3 id="intimate-images">Intimate images</h3>
+  <p>
+    Never share a sexual or intimate picture or video of anyone without their
+    consent, and never share any such image of someone under 18. If someone
+    has shared an intimate image of you without your consent, you do not need
+    an account to ask us to take it down. Write to
+    <a href="mailto:hotline@colabroom.com">hotline@colabroom.com</a> with:
+  </p>
+  <ul>
+    <li>your name and how to reach you;</li>
+    <li>where the image is: a link, a song or room name, or a
+      description;</li>
+    <li>a statement that you believe in good faith it was shared without the
+      consent of the person shown;</li>
+    <li>your name typed as your signature.</li>
+  </ul>
+  <p>
+    Someone you have authorised to act for you can send it. Please don't
+    attach the image. We remove it within 48 hours of a complete request,
+    and we look for copies of the same file on CoLabRoom and remove any we
+    find. We report child sexual abuse material to the National Center for
+    Missing &amp; Exploited Children, as the law requires, and close the
+    accounts involved.
+  </p>
+
+  <h2 id="reports">Reports, takedowns and copyright</h2>
+
+  <h3>Reporting</h3>
+  <p>
+    Every song, take, profile, picture, link, ask and call in the app has a
+    way to report it, and a way to block the person who put it there.
+    Blocking closes what is open between the two of you. You can also write
+    to <a href="mailto:support@colabroom.com">support@colabroom.com</a>.
+    Reports of child abuse or exploitation go to
+    <a href="mailto:hotline@colabroom.com">hotline@colabroom.com</a> or
+    <a href="mailto:abuse@colabroom.com">abuse@colabroom.com</a>: please never
+    attach an image, and report it to the
+    <a href="https://report.cybertip.org/" rel="noopener">NCMEC CyberTipline</a>
+    as well. If a child is in danger, call 911. If we learn that a child may
+    be at risk, we report it to the authorities.
+  </p>
+  <p>
+    Except for an automatic check on pictures, nothing from somebody you
+    don't know is checked by us before you see it. We don't read messages as
+    a matter of course. When something is reported, we look at what was
+    reported.
+  </p>
+
+  <h3>How we handle reports</h3>
+  <p>A person reads every report. This is the order we act in:</p>
+  <ul>
+    <li>Child sexual abuse material is removed at once, reported to the
+      National Center for Missing &amp; Exploited Children, and the accounts
+      involved are closed.</li>
+    <li>An intimate image shared without consent is removed within 48 hours
+      of a complete request.</li>
+    <li>Other sexual content can be hidden as soon as it is reported, until a
+      person decides: a page or picture from everybody but its owner, a song
+      or take from everybody outside its room.</li>
+    <li>Everything else stays up until a person has looked at it, and we tell
+      the person who reported it what we decided.</li>
+  </ul>
+  <p>
+    We don't tell the person reported who reported them, except that a
+    formal copyright notice is passed on to the person whose material was
+    removed, as the law expects, and except where the law requires us to
+    say.
+  </p>
+  <p>
+    When you report something, or something you wrote or posted is reported,
+    we keep a copy of it with the report, the exact words included, so we
+    can decide the report, deal with repeat problems and meet our legal
+    duties. Taking the words back, or deleting your account, does not remove
+    that copy. A recording or picture an open report names is kept until the
+    report is decided, even if it is deleted in the app. How long we keep
+    reports is in our Privacy Policy.
+  </p>
+
+  <h3>Copyright</h3>
+  <p>
+    If something on CoLabRoom uses your work without permission, our
+    <a href="/copyright.html">copyright page</a> says how to send a notice to
+    our designated agent at
+    <a href="mailto:copyright@colabroom.com">copyright@colabroom.com</a>, what
+    happens next, and how the person whose material was removed can send a
+    counter-notice. Reporting “It uses music that is not theirs” in the app
+    reaches the same place, but it is not a formal notice. We end the
+    accounts of people who repeatedly infringe copyright, as the copyright
+    page explains, and we don't interfere with the standard measures
+    copyright owners use to identify and protect their work.
+  </p>
+
+  <h2 id="what-the-app-tells-you">What the app tells you</h2>
+
+  <h3>Reading a recording</h3>
+  <p>
+    When you ask, CoLabRoom reads a recording to work out its key, tempo,
+    chords, beats, sections, tune and words. What it works out is a first
+    pass from what it heard, not a guarantee. It can be wrong, so check it
+    against your own ears, and correct it in the app. Nothing it shows is a
+    promise that a song is yours, original or free to use.
+  </p>
+
+  <h3>Your voice</h3>
+  <p>
+    When CoLabRoom analyses a recording, it works out the music and the
+    words. It never uses your voice to recognise who you are, and never makes
+    a voiceprint. We will not start doing so without asking you first, in
+    writing, separately from these terms.
+  </p>
+
+  <h3>Clef</h3>
+  <p>
+    Clef is an AI guide, not a person. It answers what you ask about a song
+    in the song's Ask box (our Privacy Policy calls this asking the app about
+    a song). Its answers are written by an AI model, from Anthropic or
+    OpenAI, from what the app has measured in your song; it never hears the
+    recording. It can be wrong, and nothing it says is professional, medical
+    or legal advice. Clef never writes your song for you: no words, melodies,
+    parts or chords. We keep each question you ask Clef and its answer on
+    your account, where only you can read them. You can't take one back yet,
+    but they go when the song or your account is deleted. You can ask Clef
+    30 questions an hour. Clef isn't on in lesson rooms, and for now it is
+    for people 18 and over.
+  </p>
+
+  <h3>Split drafts and music releases</h3>
+  <p>
+    A room can show a draft of who wrote a song and how the shares might
+    divide, and CoLabRoom can print it, and print a music release filled in
+    from your room's record. They are forms for you and the other musicians.
+    The shares on a split draft are what the room's owner or an editor typed.
+    The law usually treats people who write a song together as equal owners
+    unless they agree otherwise in writing, so each of you should check it,
+    and you may want your own lawyer or your songwriter society to look at
+    it. These forms are not agreements with us, not a registration of
+    ownership, and not legal advice. We are not a party to them, we sign
+    nothing, and we have not checked them. What they say is what your room
+    recorded and what you typed. Agree your splits with each other, and
+    register them with your songwriter society yourselves. Printing a music
+    release is for people 18 and over, and everyone on the song must be 18 or
+    over too.
+  </p>
+
+  <h3>The free tools on colabroom.com</h3>
+  <p>
+    The chord finder and key finder read a recording you choose and give back
+    a first guess at its chords or its key. The transpose, capo and numbers
+    pages work in your browser. Use the tools only with recordings you made
+    or have the right to use. We read the recording, send back the answer and
+    let it go. We don't keep it, and nothing you send is used to train any
+    model. The answer can be wrong. Together, the chord finder and key finder
+    take 25 songs a day from each internet address. The tools are free, they
+    can change or stop, and they are not meant for children under 13. What
+    the site counts, and the one code it may remember in your browser, are
+    described in our Privacy Policy.
+  </p>
+
+  <h2 id="people">Meeting people</h2>
+  <p>
+    CoLabRoom does not check anyone's identity or run background checks, and
+    people may not be who they say they are. Everything that puts you in
+    front of people you haven't worked with is your choice, can be undone,
+    and is for people 18 and over for now.
+  </p>
+
+  <h3>The Open Mic, and your public page</h3>
+  <p>
+    The Open Mic is where you can list yourself, put a song where other
+    musicians can hear it, and ask somebody you have never met to play on
+    it. When you list yourself, other people on the Open Mic who may meet you
+    can see your card. If you're 18 or over and have said what you play, who
+    you sound like or a few words about yourself, a public page about you is
+    also made on colabroom.com that anyone, and search engines, can read.
+    When you take yourself off, the page comes down the next time the site
+    updates, within a day. A search engine may keep its own copy for a while,
+    and an earlier copy can stay in our website's public history.
+  </p>
+  <p>
+    The Open Mic puts people in an order: a song that asks for a part you
+    play comes first, then people you have played with, then people who share
+    your sound, then your town, and every fourth card is somebody picked at
+    random from those you may meet. It never scores anybody. Only put up
+    music that you, and everybody on it, have the right to share, and never a
+    cover. We never use your face, name or music to advertise CoLabRoom
+    unless we ask you first, separately, and you say yes.
+  </p>
+
+  <h3>Doors</h3>
+  <p>
+    Opening a door tells your people you're up for company, for two hours, or
+    for the night at a place. If you're 18 or over and listed on the Open
+    Mic, you can choose to show your door there too, where other adults who
+    may meet you can see it and knock. Letting someone in makes a small room
+    for the two of you. It goes by itself when the door's time is over,
+    unless it holds a song, a set or a picture, or the person whose door it
+    was keeps it; only somebody 18 or over can keep one. If they keep it,
+    everyone in it becomes each other's people in the app: you can message
+    each other, see when the other is here, and see each other's pages and
+    doors. You're told when that happens, and you can leave the room, or
+    block anyone, at any time. We keep a private note of who opened the door
+    and who was let in for as long as the room exists. Open a door only on
+    songs that are yours to share.
+  </p>
+
+  <h3 id="in-person">Meeting people in person</h3>
+  <p>
+    Here tonight, doors and meet-ups help musicians find each other. Making a
+    place, and meeting anybody you have not played with, are for people 18
+    and over. Whether to meet someone is your choice and your
+    responsibility. Meet in the public part of the venue, let a friend know
+    where you are, and leave if anything feels wrong. If something goes
+    wrong, report it in the app, and call 911 in an emergency. If you are 18
+    or over, then to the extent the law allows, you agree that Decibel Zero
+    LLC is not responsible for what another person does when you meet them,
+    online or in person.
+  </p>
+
+  <h3>Posters, stickers and We met</h3>
+  <p>
+    If you make a place for a venue, you need the venue's permission to put
+    up its poster or a “Tap here” sticker. Put them only where the venue has
+    said you can, take them down when you're done, and don't change or cover
+    anybody else's. Don't suggest the venue organised or endorses the night
+    unless it did. When your phone sends a code out over Bluetooth for We
+    met, anyone nearby can pick it up. It's your meeting code, the same as on
+    your QR code, so use We met only with people in front of you. Under 18,
+    We met and checking in at a place find only people you already play
+    with.
+  </p>
+
+  <h3>Calls, and recording</h3>
+  <p>
+    You can call the people in a room. Calls are for people 18 and over, for
+    now. CoLabRoom never records calls. When a call has a song up, you can
+    record your own part, on your own phone, as a take on the song. Tell the
+    others on the call before you do. Your phone's microphone hears the room,
+    so use headphones if you don't want other people's voices in your take.
+    Don't record anyone without their consent: in Florida and several other
+    states, recording a private conversation needs everybody's agreement.
+    Time on calls is counted, so that calls can have a monthly limit.
+  </p>
+
+  <h3>Call notes</h3>
+  <p>
+    After a call, the room keeps a short note for the people who were on it:
+    who was there, when each person was first and last heard, how long the
+    call ran, which songs went up, the takes each person recorded, whose
+    words changed, and a line each person may write, as our Privacy Policy
+    lists. A call's note lasts as long as its room. When a room that was made
+    at a door goes, or ends because one person blocked the other, the note
+    may be kept for 30 days for the people who were still in the room at the
+    end, and then deleted. Anyone who left before then is taken off the note,
+    along with their line. You can take your own line back from a note at any
+    time from After the call; if your version of the app cannot, write to
+    <a href="mailto:support@colabroom.com">support@colabroom.com</a> and we
+    will take it out. We may remove a line that breaks these terms, and with
+    it the same words by the same person in other notes the report covers.
+  </p>
+
+  <h3>Talking to each other</h3>
+  <p>
+    You can write to somebody you are connected with or share a room with;
+    the app does not deliver a message to anybody else, except the few words
+    you send with an ask to play on somebody's song. A room's thread is read
+    by everybody in that room, including people who join later, so treat it
+    as the band's rather than yours.
+  </p>
+  <p>
+    You can take back most of what you wrote, and delete your recordings,
+    from inside the app. Some things can't be taken back, or stay for a
+    while: your questions to Clef (until the song or your account is
+    deleted), the few words you write with an ask to play (which stay with
+    the song), a copy kept with a report until it is decided (and longer if
+    the law requires it), what a notification already showed on somebody's
+    phone, and our encrypted backups, for the time our Privacy Policy says.
+    Our Privacy Policy lists each one.
+  </p>
+
+  <h2 id="teachers">Teachers and lessons</h2>
+  <p>
+    CoLabRoom gives teachers tools to teach. We are not a teacher's employer,
+    school or agent; we don't choose, screen, check or recommend teachers; we
+    take no cut of what students pay; and we are not part of any arrangement
+    between a teacher and a student. Teachers are responsible for how they
+    teach, for their students' agreement to use CoLabRoom, and for any
+    licence or check their state asks of them. In Florida everyone must
+    report suspected child abuse, teachers included; use Report in the app
+    as well.
+  </p>
+  <p>
+    For now, lessons (a teacher's lesson link, lesson rooms and lesson
+    records) are for people 18 and over at both ends. If they open to younger
+    musicians, it will be only with a teacher their parent or guardian
+    invites, and the parent or guardian will be able to see when lessons
+    happen and join them. A teacher can work with students who are 13 or
+    older in an ordinary room, each student with their own account, but
+    one-to-one calls between a teacher and a student under 18 aren't
+    available.
+  </p>
+  <p>
+    A lesson record holds what a lesson worked on in the music (the
+    passages, the speeds and which notes were said) and is kept only if you
+    choose, for the teacher and the student only. Either of you can take a
+    lesson record back at any time, and it's then gone for both of you.
+    Teachers: write about the music, not about a student's health or private
+    life.
+  </p>
+  <p>
+    CoLabRoom isn't offered to schools as a school service yet, and nobody
+    under 13 may use it, even through a school.
+  </p>
+
+  <h2 id="money">Studio, credits and limits</h2>
+
+  <h3>Nothing is for sale yet</h3>
+  <p>
+    Nothing in CoLabRoom can be bought yet, and we don't hold or move money
+    for anyone. During the test we may turn Studio, the paid plan, on for
+    some accounts at no charge.
+  </p>
+
+  <h3>Credits</h3>
+  <p>
+    A credit pays for one full listen to a recording: the app separating
+    every instrument into its own track and naming the song's parts. The
+    quick sheet of chords and words doesn't use a credit. Every account gets
+    3 credits to start, and they don't run out. Studio adds 60 credits a
+    month, which last until the end of that month. If a full listen fails,
+    its credit comes back, and a recording that has already had a full
+    listen is never charged for again. Credits have no cash value, can't be
+    sold or moved to another account, and can't be exchanged for money. In a
+    room of eight people or fewer, a Studio member can let the others in it
+    use the member's credits. Those credits stay the member's, and only the
+    member can say yes.
+  </p>
+
+  <h3>When Studio and credits go on sale</h3>
+  <p>
+    Before you pay for anything, the app will show you the price, how renewal
+    works and how to cancel, and ask you to agree to renewal separately.
+    Studio is planned at $9.99 a month or $99.99 a year, plus any tax. It
+    will renew automatically at the end of each period, at the then-current
+    price, until you cancel. We will remind you before a yearly plan renews,
+    and tell you before any price change. You will be able to cancel at any
+    time, in the app or in your app store's subscription settings if you
+    subscribed there; Studio then stays on until the end of the period you
+    paid for. We don't refund part of a period unless the law requires it.
+    Credits you buy won't run out, and we will refund unused credits bought
+    on our website within 14 days of buying them. Purchases made through
+    Apple or Google follow their refund rules. Anyone under 18 needs a parent
+    or guardian to buy, through the store's family controls or with the
+    parent's or guardian's card on the web.
+  </p>
+
+  <h3>Fair limits</h3>
+  <p>
+    Some things have limits, so CoLabRoom works for everyone. A recording you
+    send to be read can be up to 12 minutes long and 80 MB. The app turns
+    longer or bigger ones away before they are sent, so no credit is used,
+    and tells you how to trim or shrink them. We don't offer a way to read
+    longer recordings yet. You can ask Clef 30 questions an hour, the quick
+    sheet has a monthly limit, time on calls can have a monthly limit, and
+    the free tools on colabroom.com take 25 songs a day from each internet
+    address. The app tells you when you reach a limit, and we may change
+    limits with notice.
+  </p>
+
+  <h2 id="library">Songs other people can use, and verified marks</h2>
+
+  <h3>Our licensing library is not open</h3>
+  <p>
+    Today CoLabRoom does not sell your music, and does not license it for
+    anyone to use outside CoLabRoom. The song screen can show what it would
+    take for other people to use a finished song, but nothing happens from
+    it. If we open a library where you can license your finished songs, it
+    will have its own agreement. You would read and sign it separately, only
+    if you are 18 or over and have confirmed who you are, and you would
+    choose song by song whether to offer anything. A song could be offered
+    only when everyone on it is 18 or over and has said yes. If that
+    agreement and these terms ever differ, that agreement wins, and nothing
+    in these terms, or in a change to them, lowers what it promises you.
+  </p>
+  <p>
+    We are not your publisher, your label, your agent or your manager. We
+    never own your songs, we never collect royalties for them, we don't find
+    you paid work, and we take no cut of anything anyone pays you outside
+    CoLabRoom.
+  </p>
+
+  <h3>Verified marks</h3>
+  <p>
+    We don't give out a verified mark yet. If we do, it will mean one thing:
+    that we confirmed the person runs the music pages they link to. It won't
+    mean we checked who they are, how old they are, their background or
+    their songs, and it won't be a promise that anyone is safe to meet. It
+    will be free, never for sale, and paying for Studio won't get you one.
+  </p>
+
+  <h2 id="notifications">Notifications and email</h2>
+  <p>
+    We send notifications about things that involve you. Some kinds have
+    their own switch in Account → Notifications, and you can turn all of
+    them off in your phone's settings. Some have no switch inside the app
+    yet, such as a knock on your door, a song you sent being ready, the
+    answer to a report you made, or a room you were in being closed; our
+    Privacy Policy lists every one. Reminders, like Open Mic Night's, come
+    only if you ask for them. We never use notifications to advertise.
+  </p>
+  <p>
+    We send you the emails your account needs, such as confirmations,
+    password resets and security notices, and we write to you about support
+    questions and reports you are part of, and about changes to these terms.
+    We don't send news or marketing email. If we ever do, it will be only if
+    you ask for it, and every news email will have a one-click unsubscribe.
+  </p>
+
+  <h2 id="ending">Deleting your account, and ending this</h2>
+
+  <h3>Deleting your account</h3>
+  <p>
+    You can delete your account at any time from Account → Delete account. It
+    removes your account from CoLabRoom at once: your profile, your words,
+    every message you sent (a message thread with one person goes whole,
+    their side included), and every room nobody else is in, with its songs.
+  </p>
+  <p>
+    A room other people are in is settled first. The app lists each one, and
+    your account can be deleted once every one is settled.
+    <strong>Hand it over</strong> moves the room and every song in it to
+    somebody 18 or over in it, once they say yes. <strong>Close the
+    room</strong> gives every song somebody else in it started, played on or
+    wrote on to them, in a room of their own, and deletes the rest.
+  </p>
+  <p>
+    Your files usually leave our file storage within about a week. Copies can
+    stay in our encrypted backups for at least 60 days, until we next clear
+    old copies, as our Privacy Policy says. A few things stay after an
+    account is deleted, as our Privacy Policy explains: songs and takes you
+    shared in other people's rooms, which stay with those rooms without your
+    name; reports, and anything kept with them; what the law requires us to
+    keep; and records that no longer say whose they were.
+  </p>
+
+  <h3>If we need to keep something</h3>
+  <p>
+    If the law requires us to keep something, for example after a report to
+    the National Center for Missing &amp; Exploited Children or a request
+    from the police, we keep what is needed for as long as the law says, even
+    if you delete your account. Your account still closes for you, and we
+    delete what we kept as soon as we are allowed.
+  </p>
+
+  <h3>When we can suspend or close an account</h3>
+  <p>
+    We can suspend or close your account, or remove something you posted, if
+    you break these terms or the law, if it's needed to protect somebody, or
+    if the law requires it. If we do, we will tell you why, unless the law or
+    someone's safety stops us, and you can write to
+    <a href="mailto:support@colabroom.com">support@colabroom.com</a> if you
+    think we got it wrong. Where an account is closed for repeated copyright
+    infringement, the person can get their own original work back first, as
+    our copyright page says.
+  </p>
+
+  <h3>What lasts after an account ends</h3>
+  <p>
+    The parts of these terms that by their nature should last continue after
+    an account ends, such as the permission you gave the people in your
+    rooms, what we keep and why, the limits in the next section, and
+    Disputes.
+  </p>
+
+  <h2 id="limits">What we promise, and what we don't</h2>
+
+  <h3>Keeping your information safe</h3>
+  <p>
+    We work to keep your information safe, but no online service can promise
+    perfect security. If something goes wrong that the law says we must tell
+    you about, we will.
+  </p>
+
+  <h3>No promises about the service</h3>
+  <p>
+    <strong>CoLabRoom is provided as it is and as available, and it is still
+    being tested. To the fullest extent the law allows, we make no
+    warranties, spoken or written, express or implied, including any implied
+    promise that it is merchantable (fit for ordinary use), fit for a
+    particular purpose, or that it won't infringe anyone's rights. We don't
+    promise that CoLabRoom, its analysis or Clef will be accurate,
+    uninterrupted, secure or free of errors, or that anything you keep in it
+    will never be lost.</strong>
+  </p>
+
+  <h3>The most we are responsible for</h3>
+  <p>
+    <strong>To the fullest extent the law allows, Decibel Zero LLC is not
+    liable for indirect, incidental, special or consequential losses, or for
+    lost profits, data or songs. Our total liability for any claim about
+    CoLabRoom is the greater of $100 or what you paid us in the 12 months
+    before the claim.</strong> Nothing in these terms limits liability that
+    the law does not allow to be limited, including for harm we cause on
+    purpose or through gross negligence.
+  </p>
+
+  <h3>If you break these terms</h3>
+  <p>
+    If what you upload, or your breaking of these terms or the law, leads to
+    a claim against us by somebody else, you agree to cover our reasonable
+    costs of that claim, including reasonable lawyers' fees. We will tell you
+    about the claim promptly. This doesn't apply to the extent the claim was
+    caused by us.
+  </p>
+
+  <h2 id="disputes">Disputes</h2>
+
+  <h3>Which law</h3>
+  <p>
+    Florida law applies to these terms and to anything about CoLabRoom,
+    without regard to Florida's rules about which law applies. The Federal
+    Arbitration Act governs the agreement to arbitrate below.
+  </p>
+
+  <h3>Talk to us first</h3>
+  <p>
+    If something goes wrong, write to
+    <a href="mailto:support@colabroom.com">support@colabroom.com</a> with your
+    name, what happened and what you want. We will do the same if we have a
+    problem with you. Each of us gives the other 60 days to put it right
+    before starting a case. While we are talking, the time limit for bringing
+    the claim is paused.
+  </p>
+
+  <h3>Arbitration instead of court</h3>
+  <p>
+    If we can't put it right, you and Decibel Zero LLC agree to settle the
+    dispute by binding arbitration, one person at a time, run by the American
+    Arbitration Association (AAA). It uses the AAA's Consumer Arbitration
+    Rules if you are an individual, or its Commercial Rules if you are a
+    business. When 25 or more similar claims are filed together, the AAA's
+    mass arbitration rules apply. A hearing can be by video or phone, or in
+    the county where you live. If you are an individual, you pay no more than
+    the filing fee the AAA's consumer rules set for you, and we pay every
+    other AAA and arbitrator fee, whichever AAA rules apply. The arbitrator
+    can give you any relief a court could, but only for you. If the AAA will
+    not run an arbitration under this section, the dispute goes to the courts
+    named below instead.
+  </p>
+
+  <h3>No class actions</h3>
+  <p>
+    <strong>You and we each bring claims only for ourselves, never as part of
+    a class, group or representative action.</strong> If this paragraph can't
+    be enforced for a claim, that claim goes to court, not to arbitration.
+  </p>
+
+  <h3>What can still go to court</h3>
+  <p>
+    Either of us can bring a claim in small claims court if it qualifies
+    there, or ask a court to stop someone using songs, recordings, names or
+    the app without permission. You can also take a copyright claim to the US
+    Copyright Claims Board, and take a claim of sexual harassment or sexual
+    assault to court if you choose to. Where the law does not let a claim for
+    an order protecting the public be arbitrated, that claim goes to court
+    after your own claim is decided.
+  </p>
+
+  <h3>Who decides what</h3>
+  <p>
+    A court, not an arbitrator, decides whether “No class actions” and “What
+    can still go to court” can be enforced and what they cover. Everything
+    else about whether a dispute must be arbitrated is for the arbitrator.
+  </p>
+
+  <h3>You can say no to arbitration</h3>
+  <p>
+    Email <a href="mailto:support@colabroom.com">support@colabroom.com</a>
+    with the subject “Arbitration opt-out”, your name and the email address
+    on your account, within 30 days of the first time you agree to a version
+    of these terms that includes this section. Opting out changes nothing
+    else.
+  </p>
+
+  <h3>Which court</h3>
+  <p>
+    Anything that goes to court goes only to the state courts in Volusia
+    County, Florida, or the United States District Court for the Middle
+    District of Florida, Orlando Division, and you and we agree to those
+    courts. Small claims may also be brought in your own county.
+    <strong>You and we both give up the right to a jury trial.</strong>
+  </p>
+
+  <h3>Changes to this section</h3>
+  <p>
+    If we change this section, the change never applies to a dispute either
+    of us has already raised. You can reject the change by emailing us within
+    30 days of being told about it.
+  </p>
+
+  <h2 id="app-stores">If you got CoLabRoom from an app store</h2>
+  <p>
+    <strong>Apple's App Store.</strong> These terms are between you and
+    Decibel Zero LLC, not Apple. Apple has no duty to support the app. If the
+    app fails a warranty that applies, you can tell Apple, who may refund the
+    price you paid for it, and Apple has no other warranty duty. Apple is not
+    responsible for claims about the app, including product liability, legal
+    compliance, consumer protection or intellectual property claims; we are,
+    to the extent these terms say. You confirm you are not in a country under
+    a US embargo and not on a US list of restricted people. Apple and its
+    subsidiaries can enforce these terms against you as a third-party
+    beneficiary.
+  </p>
+  <p>
+    <strong>Google Play.</strong> Google Play's own terms also apply to how
+    you got the app and to anything you buy through Google Play.
+  </p>
+
+  <h2 id="changes">Changes to these terms</h2>
+  <p>
+    If we change these terms or our Privacy Policy in a way that matters, or
+    find that something we told you was wrong, we will update the date at
+    the top, add a dated line under “What changed” below, email the address
+    on your account, and show a notice in the app. Unless the law or
+    someone's safety needs a change sooner, we tell you at least 30 days
+    before a change takes effect, and a change never applies before the day
+    we tell you. If a change would let us use something you already gave us
+    in a way we said we would not, we will ask you first; if you say no, what
+    you already gave us stays under the old promise, or we offer to delete
+    it. If you don't agree with a change, you can stop using CoLabRoom and
+    delete your account at any time. If you would like an earlier version of
+    these terms, write to us and we'll send it.
+  </p>
+
+  <h2 id="rest">The rest</h2>
+  <p>
+    These terms, with the Privacy Policy and the copyright page, are the
+    whole agreement between you and us about CoLabRoom. If a part cannot be
+    enforced, the rest still applies. Not enforcing a part is not giving it
+    up. We may transfer these terms if the business is sold or reorganised;
+    you may not transfer them without our agreement. Neither of us is
+    responsible for delays caused by events outside reasonable control.
+    Nothing in these terms makes either of us the other's employee, partner
+    or agent, and nobody else can enforce them, except Apple as the section
+    above says. The headings are only there to help you find your way.
+  </p>
+
+  <h2 id="notices">Notices and contact</h2>
+  <p>
+    Copyright notices and counter-notices go to
+    <a href="mailto:copyright@colabroom.com">copyright@colabroom.com</a>, as
+    our <a href="/copyright.html">copyright page</a> explains. Requests to
+    take down an intimate image, and reports of child abuse or exploitation,
+    go to <a href="mailto:hotline@colabroom.com">hotline@colabroom.com</a>.
+    Everything else, including legal notices, goes to
+    <a href="mailto:support@colabroom.com">support@colabroom.com</a>. If the
+    law asks for a notice in writing, send it to Decibel Zero LLC, 3259
+    Alling Court, Deltona, Florida 32725, United States.
+  </p>
+
+  <h2 id="what-changed">What changed</h2>
+  <p>
+    <strong>October 14, 2026.</strong> Rewritten in full, replacing the terms
+    of September 24, 2026. They now say who we are and where to write; who
+    can use what from 13 and what is for people 18 and over; what happens to
+    an account that belongs to a child under 13; the permission you give the
+    people in your rooms; test versions; intimate images and how to ask us to
+    take one down; Clef; Studio, credits and the 12-minute limit on a
+    recording sent to be read; meeting people in person; Florida law, and
+    settling disagreements by arbitration, with a way to opt out; and the
+    limits of what we are responsible for. They correct three things the old
+    terms got wrong: deleting your account is immediate in the app, but files
+    leave our storage within about a week and our backups later; not
+    everything you write can be taken back; and the words of something
+    reported stay with the report.
   </p>
 
   <footer>

@@ -657,6 +657,27 @@
     working.
   </p>
 
+  <h3>Bluetooth, stickers and We met</h3>
+  <p>
+    While the Open Mic, Tonight at a place or We met is open on your
+    screen, your phone can listen over Bluetooth for a place's code or
+    another person's code, and only then, never in the background. The app
+    says so before your phone first asks you to allow it. A host's phone, or
+    a beacon the host sets up at the venue, can send out the place's code,
+    the same one on its poster. When your phone hears one, the app looks
+    the code up on our server, as it would if you typed it, to show you the
+    place's name; you are not checked in until you tap. In We met, your
+    phone sends out your meeting code for ten seconds, and looks up on our
+    server any code it hears close by, to show you that person's card; the
+    two of you are connected only when you both tap. Your meeting code is
+    the same code your QR code carries, so anyone nearby who picks it up,
+    with any Bluetooth scanner and not only CoLabRoom, could open your card
+    the way scanning your code would, if the app lets the two of you meet.
+    You can make a new meeting code at any time. We never ask your phone
+    where you are. A Tap here sticker holds only the place's link, the same
+    one as its poster.
+  </p>
+
   <h3>Notifications on your phone</h3>
   <p>
     If you turn notifications on, your phone hands us a delivery token. We
@@ -712,6 +733,15 @@
     them on a clock yet.
   </p>
   <p>
+    If you ask us to take down an intimate picture or video of you, by
+    writing to hotline@colabroom.com, we keep your request: your name, how
+    to reach you, what you asked us to remove, and what we did and when. We
+    keep it so we can show we acted and stop the same file coming back.
+    Like a report, it has no end date today. Only whoever reviews reports
+    reads it, and we don't tell the person who posted it who asked. Like all
+    mail to us, it reaches us through Porkbun and Gmail, as “Account” says.
+  </p>
+  <p>
     If you block somebody, we store that you did, so the app can keep the two
     of you apart. If the two of you share a room made at a door that nobody
     kept, blocking ends it between you at once. If it holds a song, a set or
@@ -724,6 +754,21 @@
     deletes nothing from a note already kept: the person you blocked stays
     on it as “Somebody”, and your lines and theirs are hidden from each
     other.
+  </p>
+
+  <h3>Credits</h3>
+  <p>
+    Every account has a record of its credits, kept on our server where
+    nothing in the app can change it: the credits it was given (three to
+    start, and a Studio member's monthly ones) and when, and each full
+    listen that used one — the song, the room, the recording's fingerprint,
+    who asked, and whose credits paid. In a room of eight people or fewer, a
+    Studio member can let the others in it use the member's credits; the
+    member's own record then shows which room and song each credit went to
+    and who asked, and the bandmate is told that before they ask. Only you
+    can read your own record. Nothing can be bought yet. Your record is
+    deleted with your account; a credit a member spent on your ask stays in
+    their record without your name.
   </p>
 
   <h3>Feedback and diagnostics</h3>
@@ -787,7 +832,7 @@
     <div class="row"><span class="who">RunPod</span><span>Also transcribes the words for most song sheets. That runs on the same worker as the separation, on our own code, and what it hears does not leave that machine.</span></div>
     <div class="row"><span class="who">OpenAI</span><span>Hears the recording when our own worker gives a song sheet no words — a song where it found no vocal, a worker from before it could transcribe, or chords worked out on your phone instead — and every time you ask the sheet to listen for the words again. The recording goes to OpenAI's transcription API: the isolated vocal when separation made one, and otherwise the whole recording. With it go the start of the words already on the sheet, as a hint, and the language the room said the song is sung in. A recording it has already heard with the same hint is not sent again. Governed by <a href="https://openai.com/policies/api-data-usage-policies" target="_blank" rel="noopener">OpenAI's own API data terms</a>.</span></div>
     <div class="row"><span class="who">RunPod</span><span>Also works out the tune of the isolated vocal. That is where the sung range shown on a song sheet — and on your profile page, if you play a singing part — comes from. Same worker, our own code.</span></div>
-    <div class="row"><span class="who">Anthropic or OpenAI</span><span>Only when you ask the app a question about a song. Your question and what the app has already worked out — the title, key, tempo, length, chords, sections, up to sixty lines of the words, which parts have been shared on it and the display names of the people who recorded them, which parts it is still asking for, how many beats the band counts in a cycle, and the way you name notes — go to a language model that writes the answer. The recording never does. Which model depends on how we have configured it: Anthropic's API when a key for it is set, otherwise OpenAI's. Both publish API terms under which what is sent is not used to train their models. We keep your question and the answer too, readable from our service by you alone, until the song or your account is deleted; if the model does not answer, the question is kept with no answer. A question turned away because you have asked too many this hour is not kept. Some questions the app answers by itself: those go to no model, and are not kept. Asking is for people 18 and over, and is not on in rooms made by a lesson link.</span></div>
+    <div class="row"><span class="who">Anthropic or OpenAI</span><span>Only when you ask the app a question about a song: Clef, the guide in the app, is an AI, and its answers are written this way. Your question and what the app has already worked out — the title, key, tempo, length, chords, sections, up to sixty lines of the words, which parts have been shared on it and the display names of the people who recorded them, which parts it is still asking for, how many beats the band counts in a cycle, and the way you name notes — go to a language model that writes the answer. The recording never does. Which model depends on how we have configured it: Anthropic's API when a key for it is set, otherwise OpenAI's. Both publish API terms under which what is sent is not used to train their models. We keep your question and the answer too, readable from our service by you alone, until the song or your account is deleted; if the model does not answer, the question is kept with no answer. A question turned away because you have asked too many this hour is not kept. Some questions the app answers by itself: those go to no model, and are not kept. Asking is for people 18 and over, and is not on in rooms made by a lesson link.</span></div>
     <div class="row"><span class="who">Apple or Google</span><span>If you dictate lyrics rather than type them, your phone's or browser's own speech recogniser is used. On an iPhone that may send what you say to Apple; on Android, or in a browser such as Chrome, it may send it to Google. It's the system feature, not ours, and it only runs while you're dictating. A question you speak to the app is different: it is heard only on the phone itself, and where the phone cannot do that, it is not heard at all.</span></div>
   </div>
   <p>
@@ -799,11 +844,13 @@
     vocal when there is one, otherwise the whole recording.
   </p>
   <p>
-    Outside the app, we sometimes run tests of our own on recordings already
-    stored, to measure how well the analysis works. Those tests run on
-    GitHub's computers and send the recordings, or their separated vocals,
+    Outside the app, we have sometimes run tests of our own on recordings
+    already stored, to measure how well the analysis works. Those tests ran
+    on GitHub's computers and sent the recordings, or their separated vocals,
     to the same services in the table: OpenAI, RunPod and our chord
-    detector. Nobody asks you first. The last ones ran in August 2026.
+    detector. Nobody was asked first. The last ones ran in August 2026.
+    Before a test like that runs again, we will make it use only our own
+    recordings and recordings whose owners have said yes.
   </p>
   <p>
     One thing that is not a recording also goes to OpenAI: every profile
@@ -1206,7 +1253,7 @@
     <li>Delete a voice note, a recording, or a song at any time from inside the app.</li>
     <li>Export a song or setlist as text or a printable PDF. If the PDF needs letters beyond the Latin alphabet, the app downloads a font for them from Google Fonts the first time, so Google sees your network address.</li>
     <li>Take back any message, reply or note you wrote, from the line itself. A notification that already reached somebody keeps its start until they clear it. Questions you asked the app about a song, and the words you wrote with an ask to play, are the exceptions: they cannot be taken back. A note looking for somebody can be removed while it is working; after its month it no longer shows in the app. A line in a call note that was kept after its room went is taken back under <strong style="color: var(--text)">Your music → After the call</strong>, until the note's last day, and that is for good.</li>
-    <li>Choose some of the notifications you get under <strong style="color: var(--text)">Account → Notifications</strong>: invites, answers to them, being asked to play, messages, calls and new takes each have a switch, and the Open Mic Night reminder comes only if you ask for it. Other notifications have no switch yet, among them a knock on your door, being let in, an ask to meet and its yes, a room you are in being kept, and the answer to a report you made.</li>
+    <li>Choose some of the notifications you get under <strong style="color: var(--text)">Account → Notifications</strong>: invites, answers to them, being asked to play, messages, calls and new takes each have a switch, and the Open Mic Night reminder comes only if you ask for it. These have no switch inside the app yet: a knock on your door; being let in; a room made at a door being kept; an ask to meet and its yes; somebody asking you to invite a person to your room; somebody offering to hand you a room, a hand-over finishing, and your role in a room changing; a question about whether your take may go on the Open Mic; a bandmate asking to use your credits, and the yes; somebody who plays a part you left a note looking for turning up on the Open Mic; something of yours being looked at after a report; the answer to a report you made; the answer to a question you sent through Help; a song you sent to be listened to being ready; and a room you were in being closed. Your phone's settings can turn off every notification from the app.</li>
     <li>Make a new code for meeting people, which stops the old one working.</li>
     <li>Turn on Appear away, so your people do not see that you have the app open. It does not hide a song you have open from the people on that song.</li>
     <li>Leave a room you no longer want to be in. You lose its songs and its thread, and its songs leave your sets. What you put there — takes, words, comments, lines in its thread, your place on its calls and your lines in their notes — stays with the room for the people still in it. A room made at a door is the exception: if it goes by itself, they are deleted from its notes when it goes; if it stays, because its owner kept it or it holds a song, a set or a picture, they stay as in any room.</li>
@@ -1228,38 +1275,63 @@
     <li>Can't sign in? Email <a href="mailto:support@colabroom.com">support@colabroom.com</a> from the address you signed up with.</li>
   </ul>
 
-  <h2>Children</h2>
+  <h2>Children, and people under 18</h2>
   <p>
-    CoLabRoom isn't directed at children under 13, and making an account
-    asks you to confirm that you are 13 or over. Calls are for people 18 and
-    over; when somebody gives a birth month and year that makes them under
-    13, the app refuses it and does not store the month or year, only that
-    an answer like that was given, and when, so it cannot be answered again.
-    From then on, everything that needs an adult stays closed to that
-    account. Nothing else happens to the account by itself today: it is not
-    deleted or locked, and nobody here is told. If you believe a child has
-    created an account, contact
-    <a href="mailto:support@colabroom.com">support@colabroom.com</a> and we'll
-    remove it.
+    CoLabRoom isn't for children under 13. Making an account asks you to
+    confirm that you are 13 or over, and the first time you reach something
+    that depends on your age, the app asks the month and year you were born,
+    as “Calls” says. When somebody gives a month and year that make them
+    under 13, the app refuses it and does not store the month or year, only
+    that an answer like that was given, and when, so it cannot be answered
+    again. From then on, everything that needs an adult stays closed to that
+    account. The app does not yet tell anybody here about such an answer by
+    itself, so we look through those answers ourselves.
   </p>
   <p>
-    The Open Mic is for adults. Under 18, the rooms you are invited into work
-    as they always do. Under 18, you can open your door, but it is shown only
-    to people who already play with you, as “Your door” says. You can check
-    in at a place on Here tonight, but there you see, and are seen by, only
-    people you already play with.
+    If we learn that an account belongs to a child under 13, from that
+    answer or any other way, we stop the account working as soon as we learn
+    of it. Within 14 days we delete it and everything the child put on
+    CoLabRoom, including takes and words in other people's rooms; the people
+    in those rooms see only that a part was removed. Copies in our backups
+    go as “Backups” says. A parent who thinks their child has an account, or
+    wants a child's information deleted, can write to
+    <a href="mailto:support@colabroom.com">support@colabroom.com</a>.
+  </p>
+  <p>
+    Under 18, CoLabRoom works inside your own rooms and with people you have
+    worked with. Calls, asking the app about a song, lessons, being handed a
+    room, keeping a room made at a door, and everything that would show you
+    to people you have not worked with, the Open Mic included, are for
+    people 18 and over for now. Anybody can still be invited into a room by
+    email, whatever their age. Under 18, you can open your door, but it is
+    shown only to people who already play with you, as “Your door” says. You
+    can check in at a place on Here tonight, but there you see, and are seen
+    by, only people you already play with, and the same goes for We met. On
+    iPhone and Android we may one day use the age range the App Store or
+    Google Play gives us instead of the one you told us, whichever is more
+    careful; the versions of the app people have today do not read it.
   </p>
 
   <h2>Changes</h2>
   <p>
     If this policy changes in a way that matters — a new third party, in the
-    analysis chain or anywhere else, a change to what we keep — we'll update
-    the date at the top, and say so inside the app: a card on the app's
-    home screen, for a week, the way the app announces anything that
-    changed in it. The first such card went out on 12 October 2026, for the
+    analysis chain or anywhere else, a change to what we keep — or we find
+    that it said something wrong, we'll update the date at the top, add a
+    dated line below, email the address on every account, and say so inside
+    the app: a card on the app's home screen, for a week, the way the app
+    announces anything that changed in it. The first such card went out on 12 October 2026, for the
     correction of 6 October. The app's own short privacy note is being
     brought in line with this page; until a build with that change reaches
     you, this page and the date above are the ones to trust.
+  </p>
+  <p>
+    14 October 2026: the Terms of Service were rewritten, and this page
+    follows them. It now says what happens to an account that belongs to a
+    child under 13, what is open under 18, how Bluetooth, stickers and We
+    met work, what the record of your credits holds, which notifications
+    have no switch, what we keep from a request to take down an intimate
+    image, and that Clef is an AI; and that our own tests on stored
+    recordings will not run again without the owner's yes.
   </p>
   <p>
     12 October 2026: the server now tells which parts you play only to the
@@ -1271,7 +1343,10 @@
 
   <h2>Contact</h2>
   <p>
-    Decibel Zero LLC — <a href="mailto:support@colabroom.com">support@colabroom.com</a>
+    CoLabRoom is run by Decibel Zero LLC, 3259 Alling Court, Deltona,
+    Florida 32725, which is responsible for the information described on
+    this page. Write to us at
+    <a href="mailto:support@colabroom.com">support@colabroom.com</a>.
   </p>
 
   <footer>
