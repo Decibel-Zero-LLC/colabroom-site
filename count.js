@@ -12,6 +12,7 @@
   var REFUSAL_KEY = 'colabroom_flier_opt_out';
   var refused = false;
   var current = null;
+  var UNREADABLE = {};
   var page = (function () {
     var tag = document.currentScript
       || document.querySelector('script[data-page]');
@@ -27,7 +28,8 @@
     try { raw = localStorage.getItem(key); } catch (_) {
       // An unread preference is not permission. Preserve it and suppress
       // attribution while its state is unknown; a later read may recover.
-      return key === REFUSAL_KEY ? {} : null;
+      // An unread code also has unknown age: never give it a new timestamp.
+      return UNREADABLE;
     }
     try {
       if (raw === null) return null;
@@ -62,7 +64,8 @@
     var address = new URL(location.href);
     var incoming = address.searchParams.get('c');
     var remembered = read(CODE_KEY, CODE_LIFE);
-    if (!optedOut()) {
+    var blocked = optedOut();
+    if (!blocked && remembered !== UNREADABLE) {
       current = remembered;
       if (incoming && /^[a-z0-9-]{1,32}$/i.test(incoming)) {
         var code = incoming.toLowerCase();
@@ -73,7 +76,7 @@
         current = write(CODE_KEY, next) ? next : null;
         fresh = current !== null;
       }
-    } else { remove(CODE_KEY); }
+    } else if (blocked) { remove(CODE_KEY); }
     // Consumed once: reloading a long-open page cannot revive an expired code.
     // Leave chart parameters, fragments and every other part of navigation alone.
     if (address.searchParams.has('c')) {

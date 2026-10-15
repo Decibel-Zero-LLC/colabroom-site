@@ -411,3 +411,21 @@ Deno.test('a transient code read failure preserves unread storage and drops only
   result.focus();
   assertEquals(result.api.code, '', 'recovery does not silently adopt a remembered code');
 });
+
+
+Deno.test('unread code age cannot restart through a carried URL and later reads recover original age', () => {
+  for (const incoming of ['board', 'new-board']) {
+    const stored = record('board', NOW - 29 * DAY);
+    const result = run({ href: HOME + '?c=' + incoming, stored,
+      failedReads: { colabroom_code: 1 }, links: [APP] });
+    assertEquals(result.api.code, '', 'unknown stored age suppresses this load');
+    assertEquals(result.store.get('colabroom_code'), stored, 'timestamp is untouched');
+    assertFalse(result.nodes[0].href.includes('from='));
+    assertFalse(result.sent[0].includes('&c='));
+    const recovered = run({ href: HOME + '?c=board', stored: result.store.get('colabroom_code') });
+    assertEquals(recovered.api.code, 'board');
+    assertEquals(recovered.store.get('colabroom_code'), stored);
+    recovered.setTime(NOW + DAY);
+    assertEquals(recovered.api.code, '', 'original thirty-day boundary still expires');
+  }
+});
