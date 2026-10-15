@@ -23,8 +23,13 @@
     try { localStorage.removeItem(key); } catch (_) { /* Storage is optional. */ }
   }
   function read(key, life) {
+    var raw;
+    try { raw = localStorage.getItem(key); } catch (_) {
+      // An unread preference is not permission. Preserve it and suppress
+      // attribution while its state is unknown; a later read may recover.
+      return key === REFUSAL_KEY ? {} : null;
+    }
     try {
-      var raw = localStorage.getItem(key);
       if (raw === null) return null;
       var value = JSON.parse(raw);
       var now = Date.now();

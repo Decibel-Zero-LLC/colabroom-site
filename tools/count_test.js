@@ -42,7 +42,7 @@ const record = (code, savedAt = NOW) => JSON.stringify({ code, savedAt });
 /* Fake only the browser APIs: each test executes the real count.js bytes. */
 function run({ href, stored = null, page = 'home', links = [], tools = [],
                storageThrows = false, denied = [], optOut = null,
-               now = NOW, footer = true } = {}) {
+               now = NOW, footer = true, failedReads = {} } = {}) {
   const sent = [], requests = [], store = new Map(), timers = [];
   if (stored !== null) store.set('colabroom_code', stored);
   if (optOut !== null) store.set('colabroom_flier_opt_out', optOut);
@@ -51,6 +51,9 @@ function run({ href, stored = null, page = 'home', links = [], tools = [],
   const localStorage = Object.fromEntries(['getItem', 'setItem', 'removeItem'].map(method =>
     [method, (key, value) => {
       if (storageThrows || blocked.has(method)) throw new Error('blocked');
+      if (method === 'getItem' && failedReads[key] > 0) {
+        failedReads[key] -= 1; throw new Error('transient read failure');
+      }
       if (method === 'getItem') return store.get(key) ?? null;
       if (method === 'setItem') store.set(key, value);
       if (method === 'removeItem') store.delete(key);
@@ -367,4 +370,44 @@ Deno.test('requests remain credential-free GETs with only public counting fields
     assertEquals(options, { cache: 'no-store', keepalive: true });
   }
   assertEquals([...new URL(result.sent.at(-1)).searchParams.keys()].sort(), ['page', 'step']);
+});
+
+Deno.test('Privacy links directly to the refusal action without loading counters', async () => {
+  const privacy = await Deno.readTextFile(new URL('../privacy.html', import.meta.url));
+  assertStringIncludes(privacy, 'href="index.html#flier-preference">Don\'t remember my flier</a>');
+  assertFalse(/<script[^>]+src=["']count\.js["']/.test(privacy));
+  assertEquals(run({ href: HOME }).preference.id, 'flier-preference');
+});
+
+
+Deno.test('an unread refusal is preserved and suppresses new attribution through recovery', () => {
+  const refusal = JSON.stringify({ savedAt: NOW - DAY });
+  const result = run({ href: HOME + '?c=new-board',
+    stored: record('old-board'), optOut: refusal,
+    failedReads: { colabroom_flier_opt_out: 1 },
+    links: [APP], tools: [HOME + 'chords.html'] });
+  assertEquals(result.api.code, '');
+  assertEquals(result.store.get('colabroom_flier_opt_out'), refusal,
+    'a read error must not delete a valid refusal');
+  assertFalse(result.sent[0].includes('&c='));
+  assertFalse(result.nodes[0].href.includes('from='));
+  assertFalse(result.toolNodes[0].href.includes('c='));
+  result.focus(); result.storage('colabroom_flier_opt_out');
+  result.api.note('analyzed_ok');
+  assertEquals(result.api.code, '', 'later successful reads do not restore a code');
+  assertEquals(result.store.get('colabroom_flier_opt_out'), refusal);
+  assertFalse(result.sent.at(-1).includes('&c='));
+  const reloaded = run({ href: HOME + '?c=new-board', optOut: refusal });
+  assertEquals(reloaded.api.code, '');
+  const allowed = run({ href: HOME + '?c=new-board' });
+  assertEquals(allowed.api.code, 'new-board', 'absence of refusal still accepts a valid arrival');
+});
+
+Deno.test('a transient code read failure preserves unread storage and drops only this page code', () => {
+  const stored = record('board');
+  const result = run({ href: HOME, stored, failedReads: { colabroom_code: 1 } });
+  assertEquals(result.api.code, '');
+  assertEquals(result.store.get('colabroom_code'), stored);
+  result.focus();
+  assertEquals(result.api.code, '', 'recovery does not silently adopt a remembered code');
 });
