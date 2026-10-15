@@ -2095,18 +2095,8 @@ function wireShared() {
   }
   // A link into the app is count.js's: it counts the click as clicked_app
   // and carries the code on as ?from=.
-  // And on to the chord tool, which reads ?c= the same way this page did.
-  // Written onto the attribute rather than through URL, so the link stays the
-  // relative one it was and a flier code still reaches the page it points at.
-  const code = counter()?.code ?? '';
-  if (code) {
-    for (const link of document.querySelectorAll('a[data-carry-code]')) {
-      const raw = link.getAttribute('href');
-      if (raw === null || /[?&]c=/.test(raw)) continue;
-      link.setAttribute('href',
-        raw + (raw.includes('?') ? '&' : '?') + 'c=' + encodeURIComponent(code));
-    }
-  }
+  // count.js also owns a[data-carry-code] links, so refusal and expiry
+  // clear a code that has already been carried into a tool link.
 }
 
 if (typeof document !== 'undefined') {

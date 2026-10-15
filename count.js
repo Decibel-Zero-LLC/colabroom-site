@@ -1,30 +1,17 @@
-/* Where a visitor came from, and that they arrived.
-
-   This used to live inside chords.js, which only two of the nine pages
-   load. So a flier QR, a link under a video or a Show HN post pointed at
-   the front door dropped its `?c=` code on the floor: the code was never
-   kept, never carried onward to the app, and the arrival was never
-   counted. That is most of why the arrivals report has never returned a
-   single row since the day it was built.
-
-   Now every marketing page loads this, and the tool keeps its own file
-   for the parts that are about the tool.
-
-   There is no identifier of any kind in here. No cookie, no visitor id,
-   no fingerprint, nothing that could be joined back to a person. A code
-   names a board, a venue or a video; a page name names a page. Both are
-   things we chose and printed ourselves. */
+/* Anonymous step totals, plus an optional code naming a board, venue or video.
+   Codes are never made for one person. Browser storage, app attribution and
+   hosting logs have different lifetimes; privacy.html describes each. */
 (function () {
-  /* The same Edge Function the tool posts a recording to. Written out
-     again rather than shared, so a page that only counts needs nothing
-     else on it. */
   var ENDPOINT =
     'https://gzcoclsfvazfhcheefhz.supabase.co/functions/v1/analyze-public';
-
-  /* Which page this is, said by the page rather than read off the
-     address. GitHub Pages serves both /chords and /chords.html, and a
-     404 is served at whatever was mistyped, so the address is the one
-     thing here that cannot be trusted to name the page. */
+  // A code gets thirty days from arrival, never thirty more on each read.
+  var CODE_LIFE = 30 * 24 * 60 * 60 * 1000;
+  // Remember a refusal for one year without sending that preference anywhere.
+  var REFUSAL_LIFE = 365 * 24 * 60 * 60 * 1000;
+  var CODE_KEY = 'colabroom_code';
+  var REFUSAL_KEY = 'colabroom_flier_opt_out';
+  var refused = false;
+  var current = null;
   var page = (function () {
     var tag = document.currentScript
       || document.querySelector('script[data-page]');
@@ -32,109 +19,159 @@
     return /^[a-z0-9-]{1,24}$/.test(name) ? name : '';
   })();
 
-  /* Where this visitor came from.
-
-     A flier on a board, a card on a merch table, a link under a video:
-     each carries ?c=<code>. The page keeps the code for the visit and
-     for next time, the steps below carry it, and the link onward to the
-     app carries it as ?from=, so an account made there can say which
-     board it came from. The code names a place, never a person.
-
-     `fresh` says the code was on the address bar of *this* load — the
-     moment somebody actually walked through that door. A code read back
-     out of storage is the same person still reading, which is a
-     different thing and must not be counted as another arrival. */
-  var arrival = (function () {
+  function remove(key) {
+    try { localStorage.removeItem(key); } catch (_) { /* Storage is optional. */ }
+  }
+  function read(key, life) {
     try {
-      var raw = new URL(location.href).searchParams.get('c');
-      if (raw && /^[a-z0-9-]{1,32}$/i.test(raw)) {
-        localStorage.setItem('colabroom_code', raw.toLowerCase());
-        return { code: raw.toLowerCase(), fresh: true };
+      var raw = localStorage.getItem(key);
+      if (raw === null) return null;
+      var value = JSON.parse(raw);
+      var now = Date.now();
+      if (!value || typeof value.savedAt !== 'number'
+          || !Number.isSafeInteger(value.savedAt) || value.savedAt < 0
+          || value.savedAt > now || now - value.savedAt >= life
+          || (key === CODE_KEY && (typeof value.code !== 'string'
+            || !/^[a-z0-9-]{1,32}$/i.test(value.code)))) {
+        remove(key);
+        return null;
       }
-      return { code: localStorage.getItem('colabroom_code') || '', fresh: false };
+      if (key === CODE_KEY) value.code = value.code.toLowerCase();
+      return value;
     } catch (_) {
-      return { code: '', fresh: false };
-    }
-  })();
-  var code = arrival.code;
-
-  /* Add one to a daily counter.
-
-     `keepalive` matters on the steps that precede a navigation: without
-     it, following a link cancels the request that was recording that the
-     link was followed.
-
-     **A GET, deliberately, for a call that changes a number.** The live
-     function treats every POST as an audio upload and claims a slot from
-     the daily quota *before* it looks at the body — so a POST beacon
-     shipped a moment before the function is redeployed would spend one of
-     a visitor's five free songs on loading the page. It refuses anything
-     that is not a POST first, without touching the quota, which makes GET
-     the one shape that is harmless against both the old deployment and
-     the new one. Correctness under a version skew beats REST here.
-
-     `page` rides along so the counters can be split per page. The
-     function ignores it today — the step allowlist is a check constraint
-     in migration 0098 and only knows the ten steps the tool records, so
-     until the endpoint reads `page`, `opened` is the sum of every page
-     that loads this file. Sending it now means the day the endpoint
-     learns to read it, nothing here has to be republished. */
-  function send(step, stepCode) {
-    try {
-      fetch(ENDPOINT + '/note?step=' + encodeURIComponent(step)
-          + (stepCode ? '&c=' + encodeURIComponent(stepCode) : '')
-          + (page ? '&page=' + encodeURIComponent(page) : ''), {
-        cache: 'no-store',
-        keepalive: true,
-      }).catch(function () {});
-    } catch (_) {
-      /* Measurement never breaks the page it measures. */
+      remove(key); // Includes old raw strings whose age cannot be established.
+      return null;
     }
   }
+  function write(key, value) {
+    try {
+      var raw = JSON.stringify(value);
+      localStorage.setItem(key, raw);
+      return localStorage.getItem(key) === raw;
+    } catch (_) { return false; }
+  }
+  function optedOut() { return refused || read(REFUSAL_KEY, REFUSAL_LIFE) !== null; }
 
-  /* The ordinary shape, used by everything that happens after the page
-     is up: the code it was found on rides along. */
-  function note(step) { send(step, code); }
+  var fresh = false;
+  try {
+    var address = new URL(location.href);
+    var incoming = address.searchParams.get('c');
+    var remembered = read(CODE_KEY, CODE_LIFE);
+    if (!optedOut()) {
+      current = remembered;
+      if (incoming && /^[a-z0-9-]{1,32}$/i.test(incoming)) {
+        var code = incoming.toLowerCase();
+        // Internal tool links carry the same code. They are arrivals for the
+        // step counter, but do not give the browser copy a new lifetime.
+        var next = remembered && remembered.code === code
+          ? remembered : { code: code, savedAt: Date.now() };
+        current = write(CODE_KEY, next) ? next : null;
+        fresh = current !== null;
+      }
+    } else { remove(CODE_KEY); }
+    // Consumed once: reloading a long-open page cannot revive an expired code.
+    // Leave chart parameters, fragments and every other part of navigation alone.
+    if (address.searchParams.has('c')) {
+      address.searchParams.delete('c');
+      window.history.replaceState(window.history.state, '', address.toString());
+    }
+  } catch (_) { current = null; }
 
-  /* The page loaded. Counted on every page, every time.
-
-     The code only rides on this one when it was on the address bar of
-     this load, because a step carrying a code is written to `arrivals`
-     and `arrival_report` adds those up. Attaching a remembered code here
-     would mean one person who scans a flier and then reads six pages
-     records six arrivals for that board, and more on every return visit
-     for as long as their browser keeps the code — so a board whose
-     visitors browse would beat a board whose visitors sign up. The
-     report exists to compare boards; this is the line that keeps it
-     able to. `clicked_app` and the tool's `analyzed_ok` still carry the
-     remembered code, because those are things the visitor did, not
-     pages they loaded. */
-  send('opened', arrival.fresh ? code : '');
-
-  /* Somebody went from a page towards the app. The same selector the
-     tool used, so the tool pages count exactly what they counted before
-     — and now the other seven do too.
-
-     The code rides on to the app, where an account claims it. A mailto
-     cannot carry it, which is the whole reason the tool's "Get the app"
-     button became a link into the app. */
-  var onward = document.querySelectorAll(
+  var appLinks = document.querySelectorAll(
     'a[href*="app.colabroom.com"], a[href^="mailto:beta@"]');
-  for (var i = 0; i < onward.length; i += 1) {
-    (function (link) {
-      link.addEventListener('click', function () { note('clicked_app'); });
-      if (code && link.href.indexOf('app.colabroom.com') !== -1) {
-        try {
-          var url = new URL(link.href);
-          url.searchParams.set('from', code);
-          link.href = url.toString();
-        } catch (_) {
-          /* A link that cannot be rewritten still works as it was. */
-        }
-      }
-    }(onward[i]));
+  var toolLinks = document.querySelectorAll('a[data-carry-code]');
+  function rewrite(links, parameter, code, appOnly) {
+    for (var i = 0; i < links.length; i += 1) {
+      var link = links[i];
+      try {
+        var url = new URL(link.href, location.href);
+        if (appOnly && url.hostname !== 'app.colabroom.com') continue;
+        if (code) url.searchParams.set(parameter, code);
+        else url.searchParams.delete(parameter);
+        if (url.toString() !== link.href) link.href = url.toString();
+      } catch (_) { /* A link that cannot be rewritten still navigates. */ }
+    }
   }
+  function linksFor(code) {
+    rewrite(appLinks, 'from', code, true);
+    rewrite(toolLinks, 'c', code, false);
+  }
+  function effectiveCode() {
+    if (current) {
+      var stored = read(CODE_KEY, CODE_LIFE);
+      if (optedOut() || !stored || stored.code !== current.code
+          || stored.savedAt !== current.savedAt) current = null;
+    }
+    var code = current ? current.code : '';
+    linksFor(code);
+    return code;
+  }
+  function send(step, code) {
+    try {
+      // GET stays harmless against older endpoints; never send the preference.
+      fetch(ENDPOINT + '/note?step=' + encodeURIComponent(step)
+          + (code ? '&c=' + encodeURIComponent(code) : '')
+          + (page ? '&page=' + encodeURIComponent(page) : ''), {
+        cache: 'no-store', keepalive: true,
+      }).catch(function () {});
+    } catch (_) { /* Measurement never breaks the page it measures. */ }
+  }
+  function note(step) { send(step, effectiveCode()); }
+  send('opened', fresh ? effectiveCode() : '');
+  effectiveCode();
+  for (var i = 0; i < appLinks.length; i += 1) {
+    appLinks[i].addEventListener('click', function () { note('clicked_app'); });
+  }
+  // Recheck before normal, keyboard, middle-click and context-menu navigation.
+  function watchLinks(links) {
+    for (var i = 0; i < links.length; i += 1) {
+      ['click', 'auxclick', 'contextmenu'].forEach(function (event) {
+        links[i].addEventListener(event, effectiveCode, true);
+      });
+    }
+  }
+  watchLinks(appLinks);
+  watchLinks(toolLinks);
+  window.addEventListener('storage', function (event) {
+    if (event.key === null || event.key === CODE_KEY || event.key === REFUSAL_KEY) {
+      effectiveCode();
+    }
+  });
+  window.addEventListener('focus', effectiveCode);
+  document.addEventListener('visibilitychange', effectiveCode);
+  function expireLater() {
+    effectiveCode();
+    if (current) {
+      // Browser timers cap at a signed 32-bit delay, shorter than thirty days.
+      window.setTimeout(expireLater,
+        Math.min(2147483647, Math.max(1, current.savedAt + CODE_LIFE - Date.now())));
+    }
+  }
+  expireLater();
 
-  /* For chords.js, which counts the rest of the tool's own steps. */
-  window.CoLab = { code: code, page: page, note: note };
+  var footer = document.querySelector('footer');
+  if (footer) {
+    var choice = document.createElement('button');
+    choice.type = 'button';
+    choice.id = 'flier-preference';
+    choice.textContent = "Don't remember my flier";
+    // The existing quiet footer-link treatment, with native button semantics.
+    choice.style.cssText = 'font:inherit;color:inherit;background:none;border:0;'
+      + 'padding:0;cursor:pointer;text-align:left;max-width:100%;white-space:normal';
+    var status = document.createElement('span');
+    status.setAttribute('role', 'status');
+    choice.addEventListener('click', function () {
+      refused = true;
+      current = null;
+      var saved = write(REFUSAL_KEY, { savedAt: Date.now() });
+      remove(CODE_KEY);
+      effectiveCode();
+      status.textContent = saved
+        ? "This browser won’t remember flier codes for a year. The code on this page is cleared."
+        : "The code on this page is cleared. Your browser blocked saving this choice; another visit may remember a flier again.";
+    });
+    footer.appendChild(choice);
+    footer.appendChild(status);
+  }
+  window.CoLab = { get code() { return effectiveCode(); }, page: page, note: note };
 }());
