@@ -312,7 +312,7 @@ Deno.test('separately denied reads writes and removes never break counting or re
     assertEquals(result.api.code, '');
     assertFalse(result.nodes[0].href.includes('from='));
     assertStringIncludes(result.status.textContent,
-      method === 'removeItem' ? 'for a year' : 'blocked saving');
+      method === 'removeItem' ? 'for a year' : 'confirm this choice');
     result.api.note('analyzed_ok');
     assertFalse(result.sent.at(-1).includes('&c='));
   }
@@ -324,7 +324,7 @@ Deno.test('failed persistence cannot restore attribution on the current page', (
   result.preference.click(); result.focus(); result.storage('colabroom_code');
   assertEquals(result.api.code, '');
   assertFalse(result.nodes[0].href.includes('from='));
-  assertStringIncludes(result.status.textContent, 'blocked saving');
+  assertStringIncludes(result.status.textContent, 'confirm this choice');
 });
 
 Deno.test('another tab opting out or clearing storage clears existing carried links', () => {

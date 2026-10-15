@@ -176,7 +176,7 @@
       effectiveCode();
       status.textContent = saved
         ? "This browser won’t remember flier codes for a year. The code on this page is cleared."
-        : "The code on this page is cleared. Your browser blocked saving this choice; another visit may remember a flier again.";
+        : "The code on this page is cleared. We couldn’t confirm this choice was saved; another visit may remember a flier again.";
     });
     footer.appendChild(choice);
     footer.appendChild(status);
