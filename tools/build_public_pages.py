@@ -133,6 +133,7 @@ FOOT = """
     <a href="{origin}/privacy.html">Privacy</a>
     <a href="{origin}/terms.html">Terms</a>
     <a href="{origin}/copyright.html">Copyright</a>
+    <a href="{origin}/child-safety.html">Child safety</a>
   </footer>
 </div>
 </body>
