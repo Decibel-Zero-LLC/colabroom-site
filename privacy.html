@@ -184,7 +184,7 @@
   <a class="back" href="/">← CoLabRoom</a>
 
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated October 14, 2026</p>
+  <p class="updated">Last updated October 18, 2026</p>
 
   <p class="notice">
     CoLabRoom is published by <strong style="color: var(--text)">Decibel Zero LLC</strong>
@@ -832,7 +832,7 @@
     <div class="row"><span class="who">RunPod</span><span>Also transcribes the words for most song sheets. That runs on the same worker as the separation, on our own code, and what it hears does not leave that machine.</span></div>
     <div class="row"><span class="who">OpenAI</span><span>Hears the recording when our own worker gives a song sheet no words — a song where it found no vocal, a worker from before it could transcribe, or chords worked out on your phone instead — and every time you ask the sheet to listen for the words again. The recording goes to OpenAI's transcription API: the isolated vocal when separation made one, and otherwise the whole recording. With it go the start of the words already on the sheet, as a hint, and the language the room said the song is sung in. A recording it has already heard with the same hint is not sent again. Governed by <a href="https://openai.com/policies/api-data-usage-policies" target="_blank" rel="noopener">OpenAI's own API data terms</a>.</span></div>
     <div class="row"><span class="who">RunPod</span><span>Also works out the tune of the isolated vocal. That is where the sung range shown on a song sheet — and on your profile page, if you play a singing part — comes from. Same worker, our own code.</span></div>
-    <div class="row"><span class="who">Anthropic or OpenAI</span><span>Only when you ask the app a question about a song: Clef, the guide in the app, is an AI, and its answers are written this way. Your question and what the app has already worked out — the title, key, tempo, length, chords, sections, up to sixty lines of the words, which parts have been shared on it and the display names of the people who recorded them, which parts it is still asking for, how many beats the band counts in a cycle, and the way you name notes — go to a language model that writes the answer. The recording never does. Which model depends on how we have configured it: Anthropic's API when a key for it is set, otherwise OpenAI's. Both publish API terms under which what is sent is not used to train their models. We keep your question and the answer too, readable from our service by you alone, until the song or your account is deleted; if the model does not answer, the question is kept with no answer. A question turned away because you have asked too many this hour is not kept. Some questions the app answers by itself: those go to no model, and are not kept. Asking is for people 18 and over, and is not on in rooms made by a lesson link.</span></div>
+    <div class="row"><span class="who">Anthropic or OpenAI</span><span>For questions about a song: Clef, the guide in the app, is an AI, and its answers are written this way. Your question and what the app has already worked out — the title, key, tempo, length, chords, sections, up to sixty lines of the words, which parts have been shared on it and the display names of the people who recorded them, which parts it is still asking for, how many beats the band counts in a cycle, and the way you name notes — go to a language model that writes the answer. The recording never does. Which model depends on how we have configured it: Anthropic's API when a key for it is set, otherwise OpenAI's. Both publish API terms under which what is sent is not used to train their models. We keep your question and the answer too, readable from our service by you alone, until the song or your account is deleted; if the model does not answer, the question is kept with no answer. A question turned away because you have asked too many this hour is not kept. Some questions the app answers by itself: those go to no model, and are not kept. Asking is for people 18 and over, and is not on in rooms made by a lesson link.</span></div>
     <div class="row"><span class="who">Apple or Google</span><span>If you dictate lyrics rather than type them, your phone's or browser's own speech recogniser is used. On an iPhone that may send what you say to Apple; on Android, or in a browser such as Chrome, it may send it to Google. It's the system feature, not ours, and it only runs while you're dictating. A question you speak to the app is different: it is heard only on the phone itself, and where the phone cannot do that, it is not heard at all.</span></div>
   </div>
   <p>
@@ -1151,6 +1151,14 @@
     <div class="row"><span class="who">GitHub</span><span>Our scheduled jobs run on GitHub Actions, GitHub's computers. They read our database to tidy and to count, among them: taking each new take's fingerprint, which reads its file on GitHub's computers and keeps nothing there, deleting the old records of each run of the app, the weekly totals, whether a Help question or a report is waiting, the error check described under “Feedback and diagnostics”, removing files a deleted song, room or account left behind, putting away separated parts nobody plays, building the pages of this website, and the nightly backup, which passes everything it copies through GitHub's computers on its way to Backblaze. The backup writes only counts to GitHub's logs and keeps no copy there.</span></div>
   </div>
 
+  <p>
+    We use Anthropic to compare this notice with a summary of how the app
+    handles information. These automated checks use this notice and
+    descriptions drawn from our code, not your account details, messages
+    or music. They flag possible differences for us to review; they do not
+    change the app or this notice themselves.
+  </p>
+
   <h2>How long we keep it</h2>
   <p>
     Most of it, until you delete it or delete your account. Some things go
@@ -1315,6 +1323,11 @@
   </p>
 
   <h2>Changes</h2>
+  <p>
+    18 October 2026: this page now describes the automated checks we use to
+    compare the notice with how the app handles information. Those checks
+    do not use your account details, messages or music.
+  </p>
   <p>
     If this policy changes in a way that matters — a new third party, in the
     analysis chain or anywhere else, a change to what we keep — or we find
