@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CoLabRoom Child Safety</title>
+<meta name="description" content="CoLabRoom’s age rules, how to report a child at risk, and where to get help.">
+<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  :root {
+    --ink: #050B16;
+    --surface: #0A1728;
+    --line: #16304F;
+    --line-soft: #102743;
+    --text: #F2F7FF;
+    --body: #C6D3E8;
+    --muted: #8A9AB6;
+    --cyan: #3AD3FF;
+    --gold: #E3B34D;
+
+    --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --measure: 38rem;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--body);
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  a { color: var(--cyan); overflow-wrap: anywhere; }
+  a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+
+  .page {
+    overflow-wrap: anywhere;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 4.5rem) 1.25rem 5rem;
+  }
+
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    margin-bottom: 2.5rem;
+  }
+  .back:hover { color: var(--cyan); }
+
+  h1 {
+    font-family: var(--display);
+    color: var(--text);
+    font-size: clamp(1.9rem, 1.5rem + 1.8vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin: 0 0 0.6rem;
+  }
+
+  .updated {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin: 0 0 2.75rem;
+  }
+
+  .notice {
+    font-size: 0.94rem;
+    color: var(--muted);
+    border-left: 2px solid var(--gold);
+    padding-left: 1rem;
+    margin-bottom: 3rem;
+    max-width: var(--measure);
+  }
+
+  h2 {
+    font-family: var(--display);
+    color: var(--text);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.008em;
+    margin: 3rem 0 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line-soft);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+
+  h3 {
+    font-family: var(--display);
+    color: var(--text);
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin: 1.6rem 0 0.5rem;
+  }
+
+  p { margin: 0 0 1.05rem; max-width: var(--measure); }
+
+  ul, ol { margin: 0 0 1.05rem; padding-left: 1.25rem; max-width: var(--measure); }
+  li { margin-bottom: 0.5rem; }
+
+  .table {
+    border: 1px solid var(--line-soft);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    margin: 0 0 1.3rem;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 0.25rem 1rem;
+    padding: 0.75rem 0.9rem;
+    background: var(--surface);
+    font-size: 0.94rem;
+  }
+  .row + .row { border-top: 1px solid var(--line-soft); }
+  .row .who {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  @media (max-width: 34rem) {
+    .row { grid-template-columns: 1fr; }
+  }
+
+  code {
+    font-family: var(--mono);
+    font-size: 0.88em;
+    color: var(--text);
+    background: var(--surface);
+    padding: 0.1em 0.35em;
+    border-radius: 0.3em;
+  }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line-soft);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--cyan); }
+</style>
+  <link rel="canonical" href="https://colabroom.com/child-safety.html">
+  <meta property="og:url" content="https://colabroom.com/child-safety.html">
+  <meta property="og:site_name" content="CoLabRoom">
+  <meta property="og:title" content="CoLabRoom Child Safety">
+  <meta property="og:description" content="CoLabRoom’s age rules, how to report a child at risk, and where to get help.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://colabroom.com/share.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CoLabRoom — songwriting for musicians who aren't in the same room.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CoLabRoom Child Safety">
+  <meta name="twitter:description" content="CoLabRoom’s age rules, how to report a child at risk, and where to get help.">
+  <meta name="twitter:image" content="https://colabroom.com/share.png">
+  <meta name="theme-color" content="#06101F">
+</head><body>
+<div class="page">
+
+  <a class="back" href="/">← CoLabRoom</a>
+  <h1>Child safety</h1>
+  <p class="updated">Last updated October 15, 2026</p>
+
+  <p class="notice">CoLabRoom is published by Decibel Zero LLC. Child sexual
+    abuse, exploitation, grooming and sexual content involving children are
+    forbidden here. This page explains our age rules and how to tell us that
+    a child may be at risk.</p>
+
+  <h2>If a child needs help now</h2>
+  <p>If someone is in immediate danger, call <strong>911</strong> in the United
+    States, or your local emergency number. In Florida, then call the
+    <a href="tel:+18009622873">Florida Abuse Hotline (1-800-96-ABUSE)</a>
+    — <strong>1-800-962-2873</strong>. The
+    <a href="https://www.myflfamilies.com/services/abuse/abuse-hotline/how-report-abuse">Florida Department of Children and Families</a>
+    explains how to report suspected abuse, abandonment or neglect.</p>
+  <p>A report to CoLabRoom does not contact emergency services or the hotline.
+    Do not wait for an answer from us when a child needs urgent help.</p>
+
+  <h2>Who may use CoLabRoom</h2>
+  <p>CoLabRoom is for musicians <strong>13 and over</strong>. People aged 13 to
+    17 may work on music in ordinary rooms with people they know. Read the
+    <a href="terms.html#who">age rules in our Terms</a> with a parent or guardian.</p>
+  <p>Calls, Clef, lesson links and lesson rooms, meeting people you have not
+    worked with, and receiving ownership of a room are for people
+    <strong>18 and over</strong> for now. The Terms explain the other adult
+    features. Only join rooms with people you know and trust.</p>
+  <p>CoLabRoom does not choose, check, employ or recommend teachers. Lessons
+    stay for adults until a parent or guardian can invite the teacher and
+    see and join the lesson. CoLabRoom is not offered to schools as a school
+    service, and children under 13 may not use it through a school.</p>
+
+  <h2>The under-13 rule</h2>
+  <p>A child under 13 may not have an account. Our Terms require us to stop an
+    account working as soon as we learn it belongs to a child under 13, and
+    to delete the account and what the child put on CoLabRoom within 14 days,
+    including their takes and words in other people’s rooms. Backups follow
+    the <a href="privacy.html">Privacy Policy</a>.</p>
+  <p>If you believe your child has an account, or want their information
+    deleted, write to <a href="mailto:support@colabroom.com">support@colabroom.com</a>.
+    Tell us enough to find the account. Do not send identity documents unless
+    we ask for what is needed to handle your request.</p>
+
+  <h2>Tell us about a concern</h2>
+  <p>In the app, open the profile, song or recording, choose <strong>Report</strong>,
+    and choose <strong>A child may be in danger</strong> when it is offered.
+    On an older version, choose <strong>Something else</strong> and explain
+    the concern. You can also write to
+    <a href="mailto:hotline@colabroom.com">hotline@colabroom.com</a> or
+    <a href="mailto:abuse@colabroom.com">abuse@colabroom.com</a>.</p>
+  <p>Say where we can find the account or material and why you are concerned.
+    <strong>Do not download, attach or forward suspected child sexual abuse
+    material.</strong> Tell us where it is instead. You do not need to collect
+    evidence yourself.</p>
+  <p>Child-safety reports need a person’s urgent attention. We review the
+    concern, restrict or remove material or accounts where appropriate, and
+    report to the authorities where the law requires it. Reporting a concern
+    does not itself decide that someone has done something wrong.</p>
+
+  <h2>Reporting sexual exploitation</h2>
+  <p>You can report suspected online child sexual exploitation to the
+    <a href="https://report.cybertip.org/">NCMEC CyberTipline</a>.
+    The <a href="https://www.missingkids.org/gethelpnow/cybertipline">National Center for Missing &amp; Exploited Children</a>
+    explains what it receives and how it handles a report.</p>
+  <p>When we learn of apparent child sexual abuse material or other child
+    sexual exploitation that we are required to report, we report what we
+    have to NCMEC and preserve the report and associated material as the law
+    requires. A person handles that report; pressing Report in CoLabRoom
+    does not automatically file with NCMEC. The Florida hotline is a separate
+    route for suspected child abuse.</p>
+
+  <h2>Contact</h2>
+  <div class="table">
+    <div class="row"><span class="who">Child safety</span>
+      <span>Taylor Williams, Decibel Zero LLC</span></div>
+    <div class="row"><span class="who">Concerns and notices</span>
+      <span><a href="mailto:hotline@colabroom.com">hotline@colabroom.com</a><br>
+        <a href="mailto:abuse@colabroom.com">abuse@colabroom.com</a></span></div>
+    <div class="row"><span class="who">Account help</span>
+      <span><a href="mailto:support@colabroom.com">support@colabroom.com</a></span></div>
+  </div>
+
+  <footer>
+    <a href="/">CoLabRoom</a> · <a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy</a> · <a href="/child-safety.html">Child safety</a> · © 2026 <a href="https://decibelzerollc.com">Decibel Zero LLC</a>
+  </footer>
+</div>
+</body>
+</html>
