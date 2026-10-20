@@ -184,7 +184,7 @@
   <a class="back" href="/">← CoLabRoom</a>
 
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated October 14, 2026</p>
+  <p class="updated">Last updated October 19, 2026</p>
 
   <p class="notice">
     CoLabRoom is published by <strong style="color: var(--text)">Decibel Zero LLC</strong>
@@ -201,9 +201,11 @@
     Your email address, a password, a display name, and an optional profile
     picture. Your password is kept by Supabase, who run our sign-in, and
     only in a scrambled form (a hash), not as you typed it. When you make
-    an account we also record that you agreed to the Terms and confirmed
-    you are 13 or over, and when, and, if you came from a flier or one of
-    our links, which one, as “What this website counts” says. Your profile
+    an account we record which version of the Terms and of this page you
+    agreed to, when, and from which kind of device and which version of the
+    app, and the month and year you were born, never the day, which we keep
+    where nobody else can see them. If you came from a flier or one of
+    our links, we record which one, as “What this website counts” says. Your profile
     also notes which plan you are on.
   </p>
   <p>
@@ -225,6 +227,33 @@
     to a <strong style="color: var(--text)">Gmail</strong> inbox, where we
     read it. So Porkbun and Google receive what you write to us, and your
     address.
+  </p>
+
+  <p>
+    When you ask for words about your sound, your own public instruments,
+    genres and the titles of songs you chose to show are sent to Anthropic
+    for a two-sentence draft. No audio or private song is sent for this.
+    You can edit the draft, use it in your About you words, or leave it;
+    it is not saved to your profile automatically. Saving uses your ordinary
+    profile visibility settings. We keep request and model-usage records
+    without the supplied facts or generated draft in those records.
+  </p>
+
+  <h3>Mail to support</h3>
+  <p>
+    Mail to <a href="mailto:support@colabroom.com">support@colabroom.com</a>
+    may be read first by an AI that drafts the reply. For this support
+    service, Resend receives your email address and message, and Anthropic
+    receives the subject and message text to draft an answer from our public
+    help information. A straightforward question about how the app works
+    may receive an automatic reply, which identifies itself as AI. Reply
+    “speak to a human” to ask for a person; other questions are left for our
+    support reviewers. This helper does not look up your account data.
+  </p>
+  <p>
+    We store support messages, AI drafts and replies for our support
+    reviewers, with no automatic expiry. This correspondence is used only
+    to provide support.
   </p>
 
   <h3>What you write and record</h3>
@@ -284,6 +313,15 @@
     shown it until the app's data there is cleared, or until it has been
     taken back and that phone next opens the song. In a band room the
     same summary stays on your phone only and is never sent to us.
+  </p>
+  <p>
+    When you ask for a plain-words call or lesson-record draft, the written
+    notes and take descriptions you can read are sent to Anthropic. Only an
+    already shared call record or a kept lesson record can be used; a summary
+    kept only on your phone stays there. The editable draft stays only on the
+    open screen and is not saved or sent to other people. Closing the screen
+    discards it. We record the model and token usage, without including your
+    notes, take descriptions or draft in those usage records.
   </p>
 
   <h3>What you import</h3>
@@ -535,9 +573,10 @@
     keep who put it there: the app does not show that, but anybody who can
     see the song on the list can read it from our service. The list is
     deleted eight weeks after the night. You can take a song you put there
-    off the list. If you ask to be reminded of the night, we keep which of four
-    broad time-zone bands your phone is in, and nothing finer, until you
-    turn the reminder off. Each night belongs to one of those bands, so the
+    off the list. Your phone tells us which of four broad time-zone bands it
+    is in, and nothing finer; we use it for the night reminder and to hold
+    notifications to anyone not known to be 18 or over between midnight and
+    6 am. Each night belongs to one of those bands, so the
     night a song went on also says which band that was.
   </p>
 
@@ -621,21 +660,22 @@
   </p>
   <p>
     Calls, and asking the app about a song, are for people 18 and over for
-    now. The first time you do something that depends on your age, unless
-    you have already said, you are asked the month and year you were born,
-    once. That can be a call, a lesson link, listing yourself on the Open
-    Mic, making a place on Here tonight or checking in at one, asking or
-    offering to play with somebody new, or another way of meeting people
-    you have not worked with. The Android and web versions of the app also
+    now. When you make an account you are asked the month and year you were
+    born, once. If you made your account before we asked at sign-up, you are
+    asked the month and year once, the first time you record, upload, send a
+    message, make or join a room or song, or invite somebody, and none of
+    those go through until you have answered. The Android and web versions of the app also
     ask before your first question about a song. The iPhone version
     available today does not ask there, and our server turns the question
     away until you have answered somewhere else. We keep that
     month and year against your account, and nobody else can see it; the
-    app only ever uses it to answer whether you are 18 or over, which calls,
-    asking the app about a song, lesson links, meeting people you have not
-    worked with, whether a room can be handed to you, who can see your door
+    app only ever uses it to answer whether you are 13 or over and whether
+    you are 18 or over. The second answer is what calls, asking the app
+    about a song, lesson links, meeting people you have not
+    worked with, who can see your door
     or see you at a place on Here tonight, and whether a room made at a door
-    can be kept all depend on.
+    can be kept all depend on, and what the Open Mic shows you and when a
+    notification may reach you, as “Children, and people under 18” says.
     On a song marked finished, the list under Let people use it also says
     whether everybody on the song has said they are 18 or over: one
     answer for the whole song, read by the people on it, that names
@@ -829,10 +869,14 @@
     <div class="row"><span class="who">Supabase</span><span>Stores the recording, your account data, and every song in the app. Our database and file storage provider.</span></div>
     <div class="row"><span class="who">RunPod</span><span>Runs our own instrument-separation code on their GPUs, to split the recording into stems.</span></div>
     <div class="row"><span class="who">Google Cloud Run</span><span>Runs our own chord-detection code, to work out what's being played.</span></div>
-    <div class="row"><span class="who">RunPod</span><span>Also transcribes the words for most song sheets. That runs on the same worker as the separation, on our own code, and what it hears does not leave that machine.</span></div>
+    <div class="row"><span class="who">RunPod</span><span>Also transcribes the words for most song sheets. Transcription runs on the same worker as the separation, using our own code. The transcribed words come back to CoLabRoom and, when the song-sheet check is enabled, are sent to Anthropic as described below.</span></div>
     <div class="row"><span class="who">OpenAI</span><span>Hears the recording when our own worker gives a song sheet no words — a song where it found no vocal, a worker from before it could transcribe, or chords worked out on your phone instead — and every time you ask the sheet to listen for the words again. The recording goes to OpenAI's transcription API: the isolated vocal when separation made one, and otherwise the whole recording. With it go the start of the words already on the sheet, as a hint, and the language the room said the song is sung in. A recording it has already heard with the same hint is not sent again. Governed by <a href="https://openai.com/policies/api-data-usage-policies" target="_blank" rel="noopener">OpenAI's own API data terms</a>.</span></div>
     <div class="row"><span class="who">RunPod</span><span>Also works out the tune of the isolated vocal. That is where the sung range shown on a song sheet — and on your profile page, if you play a singing part — comes from. Same worker, our own code.</span></div>
-    <div class="row"><span class="who">Anthropic or OpenAI</span><span>Only when you ask the app a question about a song: Clef, the guide in the app, is an AI, and its answers are written this way. Your question and what the app has already worked out — the title, key, tempo, length, chords, sections, up to sixty lines of the words, which parts have been shared on it and the display names of the people who recorded them, which parts it is still asking for, how many beats the band counts in a cycle, and the way you name notes — go to a language model that writes the answer. The recording never does. Which model depends on how we have configured it: Anthropic's API when a key for it is set, otherwise OpenAI's. Both publish API terms under which what is sent is not used to train their models. We keep your question and the answer too, readable from our service by you alone, until the song or your account is deleted; if the model does not answer, the question is kept with no answer. A question turned away because you have asked too many this hour is not kept. Some questions the app answers by itself: those go to no model, and are not kept. Asking is for people 18 and over, and is not on in rooms made by a lesson link.</span></div>
+    <div class="row"><span class="who">Anthropic, for a song-sheet check</span><span>When enabled, Anthropic checks the detected chords, timing, song sections and transcribed words before the song sheet is shown. The recording is not sent for this check. It can choose among chords already detected and adjust labels or timing; it cannot add lyrics or music. We record which provider and model answered and token counts to measure usage. Those usage records do not include the words or other song content.</span></div>
+    <div class="row"><span class="who">Anthropic or OpenAI</span><span>For questions about a song: Clef, the guide in the app, is an AI, and its answers are written this way. Your question and what the app has already worked out — the title, key, tempo, length, chords, sections, up to sixty lines of the words, which parts have been shared on it and the display names of the people who recorded them, which parts it is still asking for, how many beats the band counts in a cycle, and the way you name notes — go to a language model that writes the answer. The recording never does. Which model depends on how we have configured it: Anthropic's API when a key for it is set, otherwise OpenAI's. Both publish API terms under which what is sent is not used to train their models. We also record which provider and model answered and token counts, including counts of tokens reused from a cache, to measure usage; those usage records do not include your question or song content. We keep your question and the answer too, readable from our service by you alone, until the song or your account is deleted; if the model does not answer, the question is kept with no answer. A question turned away because you have asked too many this hour is not kept. Some questions the app answers by itself: those go to no model, and are not kept. Asking is for people 18 and over, and is not on in rooms made by a lesson link.</span></div>
+    <div class="row"><span class="who">Anthropic, for support</span><span>Mail sent for support can go to Anthropic to draft an answer from public help information. Resend receives the message and address to handle receiving and sending. An eligible answer can be sent automatically and identifies itself as AI-assisted; otherwise a person reviews the private thread. You can ask for a human. The helper does not look up your account data. Support correspondence is retained privately, as the Account section explains.</span></div>
+    <div class="row"><span class="who">Anthropic, for a record draft</span><span>When you choose a plain-words draft from an existing call or kept lesson record, the written notes and take descriptions you can read go to Anthropic. The result is editable and stays only on the open screen; it is not saved or sent to other people. A summary kept only on your phone is not uploaded through this option.</span></div>
+    <div class="row"><span class="who">Anthropic, for About you</span><span>When you request a description of your sound, your own public instruments, genres and the titles of songs you chose to show go to Anthropic. The two-sentence draft is editable. It is saved to your profile only when you choose to save it, under your ordinary profile visibility settings. No audio or private song goes through this option.</span></div>
     <div class="row"><span class="who">Apple or Google</span><span>If you dictate lyrics rather than type them, your phone's or browser's own speech recogniser is used. On an iPhone that may send what you say to Apple; on Android, or in a browser such as Chrome, it may send it to Google. It's the system feature, not ours, and it only runs while you're dictating. A question you speak to the app is different: it is heard only on the phone itself, and where the phone cannot do that, it is not heard at all.</span></div>
   </div>
   <p>
@@ -849,10 +893,12 @@
     on GitHub's computers and sent the recordings, or their separated vocals,
     to the same services in the table: OpenAI, RunPod and our chord
     detector. Nobody was asked first. The last ones ran in August 2026.
-    Those tests now refuse any recording whose owner is not on a short list
-    we keep by hand: our own accounts, and people who have told us yes in
-    writing. They refuse to run at all when the list is empty, and every
-    recording a test reads is written down with that run.
+    Those tests now use a recording only when every person on the song has
+    said yes, and a person says it inside the app, under Account, “Our own
+    tests”. The switch is off until you turn it on, only an account the app
+    already knows is 18 or over can turn it on, and you can turn it off
+    whenever you like; work already sent to a test cannot be taken back.
+    Every recording a test reads is written down with that run.
   </p>
   <p>
     One thing that is not a recording also goes to OpenAI: every profile
@@ -1151,6 +1197,14 @@
     <div class="row"><span class="who">GitHub</span><span>Our scheduled jobs run on GitHub Actions, GitHub's computers. They read our database to tidy and to count, among them: taking each new take's fingerprint, which reads its file on GitHub's computers and keeps nothing there, deleting the old records of each run of the app, the weekly totals, whether a Help question or a report is waiting, the error check described under “Feedback and diagnostics”, removing files a deleted song, room or account left behind, putting away separated parts nobody plays, building the pages of this website, and the nightly backup, which passes everything it copies through GitHub's computers on its way to Backblaze. The backup writes only counts to GitHub's logs and keeps no copy there.</span></div>
   </div>
 
+  <p>
+    We use Anthropic to compare this notice with a summary of how the app
+    handles information. These automated checks use this notice and
+    descriptions drawn from our code, not your account details, messages
+    or music. They flag possible differences for us to review; they do not
+    change the app or this notice themselves.
+  </p>
+
   <h2>How long we keep it</h2>
   <p>
     Most of it, until you delete it or delete your account. Some things go
@@ -1279,33 +1333,44 @@
 
   <h2>Children, and people under 18</h2>
   <p>
-    CoLabRoom isn't for children under 13. Making an account asks you to
-    confirm that you are 13 or over, and the first time you reach something
-    that depends on your age, the app asks the month and year you were born,
-    as “Calls” says. When somebody gives a month and year that make them
-    under 13, the app refuses it and does not store the month or year, only
-    that an answer like that was given, and when, so it cannot be answered
-    again. From then on, everything that needs an adult stays closed to that
-    account. The app does not yet tell anybody here about such an answer by
-    itself, so we look through those answers ourselves.
+    CoLabRoom isn't for children under 13. When you make an account we ask
+    the month and year you were born, never the day, and keep them where
+    nobody else can see them. We use them only to decide what is open to
+    you. An under-13 answer makes no account and sends nothing to us. If you
+    made your account before we asked at sign-up, the app asks once, before
+    you record, upload, send a message, or make or join a room or song, as
+    “Calls” says. When somebody who already has an account gives a month and
+    year that make them under 13, the app does not store the month or year,
+    only that an answer like that was given, and when, so it cannot be
+    answered again. The account is paused at once and the fourteen days
+    below start; we see it on our review desk.
   </p>
   <p>
-    If we learn that an account belongs to a child under 13, from that
-    answer or any other way, we stop the account working as soon as we learn
-    of it. Within 14 days we delete it and everything the child put on
+    An existing account found to be under 13, from that answer or any other
+    way, is paused at once, and the account stops working as soon as we
+    learn of it. Within 14 days we delete it and everything the child put on
     CoLabRoom, including takes and words in other people's rooms; the people
-    in those rooms see only that a part was removed. Copies in our backups
+    in those rooms see only that a part was removed. If it may be a mistake,
+    support can hold the deletion while it looks into the account, and
+    nothing is deleted while it does. Copies in our backups
     go as “Backups” says. A parent who thinks their child has an account, or
     wants a child's information deleted, can write to
     <a href="mailto:support@colabroom.com">support@colabroom.com</a>.
   </p>
   <p>
     Under 18, CoLabRoom works inside your own rooms and with people you have
-    worked with. Calls, asking the app about a song, lessons, being handed a
-    room, keeping a room made at a door, and everything that would show you
-    to people you have not worked with, the Open Mic included, are for
-    people 18 and over for now. Anybody can still be invited into a room by
-    email, whatever their age. Under 18, you can open your door, but it is
+    worked with. Calls, asking the app about a song, lessons, keeping a room
+    made at a door, and everything that would show you to people you have not
+    worked with, listing on the Open Mic included, are for
+    people 18 and over for now. Nothing shows you to people you have not
+    worked with. If you are under 18, what you see on the Open Mic is only
+    your own people's songs, newest first, chosen by nothing we know about
+    you. We never send a notification to anyone under 18 between midnight
+    and 6 am where they are; an account that has not said its age is held
+    the same way. Anybody can still be invited into a room by
+    email, whatever their age. A room can be handed to you from the age of
+    13, and a room's picture has no age rule. Under 18, you can open your
+    door, but it is
     shown only to people who already play with you, as “Your door” says. You
     can check in at a place on Here tonight, but there you see, and are seen
     by, only people you already play with, and the same goes for We met. On
@@ -1325,6 +1390,56 @@
     correction of 6 October. The app's own short privacy note is being
     brought in line with this page; until a build with that change reaches
     you, this page and the date above are the ones to trust.
+  </p>
+  <p>
+    19 October 2026: this page now describes an automated check of
+    a song sheet, which information goes to Anthropic for that check, and
+    the content-free usage records it keeps.
+  </p>
+  <p>
+    19 October 2026: this page now describes the automated checks we use to
+    compare the notice with how the app handles information. Those checks
+    do not use your account details, messages or music.
+  </p>
+  <p>
+    19 October 2026: the age line of 14 October is now built in the app, and
+    this page says what it does. Making an account asks the month and year
+    you were born, in place of a tick, and an under-13 answer makes no
+    account; an account made before that is asked once, before it records,
+    sends, or makes or joins a room. An account found to be under 13 is
+    paused at once and deleted within 14 days, which before was a promise
+    the app did not yet keep. A room can be handed to you from 13. Under 18,
+    the Open Mic shows only your own people's songs, newest first, and no
+    notification reaches anyone under 18 between midnight and 6 am where
+    they are, for which your phone tells us one of four broad time-zone
+    bands whenever the app is open and you are signed in.
+  </p>
+  <p>
+    19 October 2026: a yes to our own tests on stored recordings is now
+    given in the app, under Account, “Our own tests”, and not written to us.
+    A recording is used only when every person on the song has said yes, the
+    switch is off until you turn it on, only an account the app already
+    knows is 18 or over can turn it on, and you can turn it off at any time.
+  </p>
+  <p>
+    19 October 2026: this page now explains optional wording for About you,
+    the public musical facts sent to Anthropic, and the choice to edit or
+    save the draft.
+  </p>
+  <p>
+    19 October 2026: this page now explains optional AI drafts from call
+    and lesson records, which information goes to Anthropic, and that the
+    editable draft is kept only on the open screen.
+  </p>
+  <p>
+    19 October 2026: this page now explains how mail to support@colabroom.com
+    may use AI to draft a reply, which services receive it, what we keep,
+    and how to ask for a person.
+  </p>
+  <p>
+    19 October 2026: this page now says that Clef records which provider
+    and model answered and token counts, including cached-token counts,
+    to measure usage, without question or song content in those usage records.
   </p>
   <p>
     14 October 2026: the Terms of Service were rewritten, and this page
