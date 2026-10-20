@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>A private room for a band, a duo, or you and a friend — CoLabRoom</title>
-<meta name="description" content="A private room for each band or project, invitations by email, calls with the room for adults, setlists you can print, and a record of who wrote and played what.">
+<meta name="description" content="A private room for each band or project, invitations by email, calls with the room from 13, setlists you can print, and a record of who wrote and played what.">
 <meta property="og:title" content="Your room — CoLabRoom">
 <meta property="og:description" content="Open it and see what happened. Songwriting for musicians who aren't in the same room.">
 <meta property="og:type" content="website">
@@ -125,8 +125,8 @@
   <!-- Calls: app lib/features/calls on main (e3276c8a). A call always
        happens in a room; one person is called straight in only from a
        room of just the two of you, and a band you share rings the band
-       (person_call_door.dart). Calls are for people 18 and over
-       (lib/domain/calls.dart). "Call · nothing is recorded" is the call
+       (person_call_door.dart). Calls are for people 13 and over
+       inside their own rooms (migration 0359, lib/domain/calls.dart). "Call · nothing is recorded" is the call
        screen's own line. -->
   <section class="moment reveal" id="calls">
     <div class="eyebrow">Calls</div>
@@ -135,7 +135,7 @@
       Call the whole room, or one person in a room of just the two of you.
       Audio and video. Put a song up and its chords and words take the
       screen, with the faces along the top. The call itself is never
-      recorded. Calls are for adults, 18 and over.
+      recorded. Calls are for the people in your room, from 13; a call with just one adult and someone under 18 waits for a third person.
     </p>
     <div class="art call" aria-hidden="true">
       <div class="art-head">
