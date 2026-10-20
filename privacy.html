@@ -659,8 +659,15 @@
     what was said or shown.
   </p>
   <p>
-    Calls, and asking the app about a song, are for people 18 and over for
-    now. When you make an account you are asked the month and year you were
+    Calls are open from 13, inside your own rooms. When a call in a room is
+    just one adult and someone under 18, the under-18 person's sound and
+    video wait until somebody else joins. The app can tell that from who is
+    on the call: our server knows each person's standing, and nobody is
+    told anyone else's age, only how many are on the call and whether the
+    call is held. In a room of two, that is in effect about the other
+    person. Asking the app about a song is open from 13 on Anthropic's
+    model and for people 18 and over on OpenAI's, as the list of who
+    receives what says. When you make an account you are asked the month and year you were
     born, once. If you made your account before we asked at sign-up, you are
     asked the month and year once, the first time you record, upload, send a
     message, make or join a room or song, or invite somebody, and none of
@@ -670,8 +677,9 @@
     away until you have answered somewhere else. We keep that
     month and year against your account, and nobody else can see it; the
     app only ever uses it to answer whether you are 13 or over and whether
-    you are 18 or over. The second answer is what calls, asking the app
-    about a song, lesson links, meeting people you have not
+    you are 18 or over. The second answer is what a call between an adult and
+    someone under 18, asking the app about a song when OpenAI's model
+    answers, lesson links, meeting people you have not
     worked with, who can see your door
     or see you at a place on Here tonight, and whether a room made at a door
     can be kept all depend on, and what the Open Mic shows you and when a
@@ -771,6 +779,21 @@
     address and account identifier of the account it is about, and who
     reported it, are kept after the report is decided, and nothing deletes
     them on a clock yet.
+  </p>
+  <p>
+    Two reasons for a report are about age. “An adult I don't know is
+    contacting me” goes to the top of the queue. “This person may be under
+    18” closes that account's doors to people it has not worked with (the
+    Open Mic, asking and offering to play, lesson links and lesson rooms,
+    and their page to strangers): straight away only while the person
+    reporting has no other such report open, otherwise only if the person
+    reviewing it agrees, and then until the age is sorted out. The person
+    reported is never told a report was made. We keep a door closure tied to
+    a report: an automatic one is deleted once the report is decided; a
+    reviewer's is kept until support ends it. When an under-18 person joins
+    a room on an invitation from an adult they have not worked with, we
+    also keep which two people are in that week and when it ends, and delete
+    it within the hour after it ends.
   </p>
   <p>
     If you ask us to take down an intimate picture or video of you, by
@@ -873,7 +896,7 @@
     <div class="row"><span class="who">OpenAI</span><span>Hears the recording when our own worker gives a song sheet no words — a song where it found no vocal, a worker from before it could transcribe, or chords worked out on your phone instead — and every time you ask the sheet to listen for the words again. The recording goes to OpenAI's transcription API: the isolated vocal when separation made one, and otherwise the whole recording. With it go the start of the words already on the sheet, as a hint, and the language the room said the song is sung in. A recording it has already heard with the same hint is not sent again. Governed by <a href="https://openai.com/policies/api-data-usage-policies" target="_blank" rel="noopener">OpenAI's own API data terms</a>.</span></div>
     <div class="row"><span class="who">RunPod</span><span>Also works out the tune of the isolated vocal. That is where the sung range shown on a song sheet — and on your profile page, if you play a singing part — comes from. Same worker, our own code.</span></div>
     <div class="row"><span class="who">Anthropic, for a song-sheet check</span><span>When enabled, Anthropic checks the detected chords, timing, song sections and transcribed words before the song sheet is shown. The recording is not sent for this check. It can choose among chords already detected and adjust labels or timing; it cannot add lyrics or music. We record which provider and model answered and token counts to measure usage. Those usage records do not include the words or other song content.</span></div>
-    <div class="row"><span class="who">Anthropic or OpenAI</span><span>For questions about a song: Clef, the guide in the app, is an AI, and its answers are written this way. Your question and what the app has already worked out — the title, key, tempo, length, chords, sections, up to sixty lines of the words, which parts have been shared on it and the display names of the people who recorded them, which parts it is still asking for, how many beats the band counts in a cycle, and the way you name notes — go to a language model that writes the answer. The recording never does. Which model depends on how we have configured it: Anthropic's API when a key for it is set, otherwise OpenAI's. Both publish API terms under which what is sent is not used to train their models. We also record which provider and model answered and token counts, including counts of tokens reused from a cache, to measure usage; those usage records do not include your question or song content. We keep your question and the answer too, readable from our service by you alone, until the song or your account is deleted; if the model does not answer, the question is kept with no answer. A question turned away because you have asked too many this hour is not kept. Some questions the app answers by itself: those go to no model, and are not kept. Asking is for people 18 and over, and is not on in rooms made by a lesson link.</span></div>
+    <div class="row"><span class="who">Anthropic or OpenAI</span><span>For questions about a song: Clef, the guide in the app, is an AI, and its answers are written this way. Your question and what the app has already worked out — the title, key, tempo, length, chords, sections, up to sixty lines of the words, which parts have been shared on it and the display names of the people who recorded them, which parts it is still asking for, how many beats the band counts in a cycle, and the way you name notes — go to a language model that writes the answer. The recording never does. Which model depends on how we have configured it: Anthropic's API when a key for it is set, otherwise OpenAI's. Both publish API terms under which what is sent is not used to train their models. We also record which provider and model answered and token counts, including counts of tokens reused from a cache, to measure usage; those usage records do not include your question or song content. We keep your question and the answer too, readable from our service by you alone, until the song or your account is deleted; if the model does not answer, the question is kept with no answer. A question turned away because you have asked too many this hour is not kept. Some questions the app answers by itself: those go to no model, and are not kept. Every answer says Clef is an AI. From 13, Clef answers only about your own songs, refuses relationship, sexual and self-harm topics, and says where to get help; on OpenAI it stays for people 18 and over. It is not on in rooms made by a lesson link. A question Clef turns down about relationships or sex is kept with its refusal, like any other question, and readable only by you; a question about hurting yourself is answered with where to get help and is not kept.</span></div>
     <div class="row"><span class="who">Anthropic, for support</span><span>Mail sent for support can go to Anthropic to draft an answer from public help information. Resend receives the message and address to handle receiving and sending. An eligible answer can be sent automatically and identifies itself as AI-assisted; otherwise a person reviews the private thread. You can ask for a human. The helper does not look up your account data. Support correspondence is retained privately, as the Account section explains.</span></div>
     <div class="row"><span class="who">Anthropic, for a record draft</span><span>When you choose a plain-words draft from an existing call or kept lesson record, the written notes and take descriptions you can read go to Anthropic. The result is editable and stays only on the open screen; it is not saved or sent to other people. A summary kept only on your phone is not uploaded through this option.</span></div>
     <div class="row"><span class="who">Anthropic, for About you</span><span>When you request a description of your sound, your own public instruments, genres and the titles of songs you chose to show go to Anthropic. The two-sentence draft is editable. It is saved to your profile only when you choose to save it, under your ordinary profile visibility settings. No audio or private song goes through this option.</span></div>
@@ -1366,16 +1389,18 @@
   </p>
   <p>
     Under 18, CoLabRoom works inside your own rooms and with people you have
-    worked with. Calls, asking the app about a song, lessons, keeping a room
-    made at a door, and everything that would show you to people you have not
-    worked with, listing on the Open Mic included, are for
-    people 18 and over for now. Nothing shows you to people you have not
-    worked with. If you are under 18, what you see on the Open Mic is only
+    worked with, except one-to-one calls with an adult and lessons, which
+    open later. Nothing shows you to people you have not worked with.
+    Listing on the Open Mic and keeping a room made at a door are for people
+    18 and over for now. If you are under 18, what you see on the Open Mic is only
     your own people's songs, newest first, chosen by nothing we know about
     you. We never send a notification to anyone under 18 between midnight
     and 6 am where they are; an account that has not said its age is held
-    the same way. Anybody can still be invited into a room by
-    email, whatever their age. A room can be handed to you from the age of
+    the same way. Anybody can be invited into a room by email or
+    with a code. Under 18, when the invitation comes from an adult you have
+    not worked with, the app asks first whether you know them in real life,
+    and for a week after you join, messages and calls with just the two of
+    you wait; the room thread works. A room can be handed to you from the age of
     13, and a room's picture has no age rule. Under 18, you can open your
     door, but it is
     shown only to people who already play with you, as “Your door” says. You
@@ -1407,6 +1432,16 @@
     19 October 2026: this page now describes the automated checks we use to
     compare the notice with how the app handles information. Those checks
     do not use your account details, messages or music.
+  </p>
+  <p>
+    19 October 2026: calls are open from 13 inside your own rooms, and when
+    a call is just one adult and someone under 18 the younger person's sound
+    and video wait for a third person. Clef answers from 13 about your own
+    songs on Anthropic's model, says in every answer that it is an AI, and
+    refuses relationship, sexual and self-harm topics, saying where to get
+    help. Under 18, an invitation from an adult you have not worked with
+    brings a question first, and a week's hold on one-to-one messages and
+    calls, and two new report reasons are about age.
   </p>
   <p>
     19 October 2026: the age line of 14 October is now built in the app, and
