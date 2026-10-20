@@ -219,7 +219,8 @@ def musician_page(row):
     plays = [p for p in (row.get('plays') or []) if p]
     sounds = [s for s in (row.get('sounds_like') or []) if s]
     city = row.get('city')
-    songs = row.get('songs_on_showcase') or 0
+    # No count of songs: the app shows no social counts (migration 0215),
+    # and a musician's page says what they play, never how much.
     url = '%s/musician/%s.html' % (ORIGIN, slug(name, row['id']))
 
     bits = []
@@ -250,9 +251,6 @@ def musician_page(row):
                     % e(', '.join(sounds)))
     if city:
         rows.append('<li><span>Near</span><b>%s</b></li>' % e(city))
-    if songs:
-        rows.append('<li><span>On the showcase</span><b>%d song%s</b></li>'
-                    % (songs, '' if songs == 1 else 's'))
 
     body = """
   <article class="page">
