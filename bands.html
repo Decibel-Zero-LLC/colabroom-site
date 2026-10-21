@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A private room for a band, a duo, or you and a friend — CoLabRoom</title>
-<meta name="description" content="A private room for each band or project, invitations by email, calls with the room from 13, setlists you can print, and a record of who wrote and played what.">
-<meta property="og:title" content="Your room — CoLabRoom">
+<title>A private room for a band, a duo, or you and a friend · CoLabRoom</title>
+<meta name="description" content="A private room for each band or project, invitations by email or with a code, calls with the room from 13, the band's sets, and a team for a band that plays out.">
+<meta property="og:title" content="Rooms · CoLabRoom">
 <meta property="og:description" content="Open it and see what happened. Songwriting for musicians who aren't in the same room.">
 <meta property="og:type" content="website">
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -20,7 +20,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="CoLabRoom — songwriting for musicians who aren't in the same room.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Your room — CoLabRoom">
+  <meta name="twitter:title" content="Rooms · CoLabRoom">
   <meta name="twitter:description" content="Open it and see what happened. Songwriting for musicians who aren't in the same room.">
   <meta name="twitter:image" content="https://colabroom.com/share.png">
   <meta name="theme-color" content="#06101F">
@@ -30,7 +30,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "CoLabRoom", "item": "https://colabroom.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Your room", "item": "https://colabroom.com/bands.html" }
+    { "@type": "ListItem", "position": 2, "name": "Rooms", "item": "https://colabroom.com/bands.html" }
   ]
 }
 </script>
@@ -42,15 +42,16 @@
   <header class="top">
     <a class="brand" href="index.html">CoLabRoom</a>
     <nav class="pages">
-      <a href="chords.html">Chords</a>
-      <a href="what-key.html">What key</a>
-      <a href="takes.html">Takes</a>
       <a href="analysis.html">What it heard</a>
       <a href="songbook.html">Song sheet</a>
       <a href="practise.html">Practise</a>
-      <a href="learn.html">Learn</a>
-      <a href="bands.html" aria-current="page">Your room</a>
+      <a href="takes.html">Takes</a>
+      <a href="bands.html" aria-current="page">Rooms</a>
+      <a href="teams.html">Teams</a>
       <a href="openmic.html">Open Mic</a>
+      <a href="learn.html">Learn</a>
+      <a href="chords.html">Chords</a>
+      <a href="what-key.html">What key</a>
     </nav>
     <span class="sp"></span>
     <!-- Somebody who already has an account had no way in from here. -->
@@ -59,11 +60,10 @@
   </header>
 
   <div class="hero inner">
-    <p class="kicker">Your room</p>
+    <p class="kicker">Rooms</p>
     <h1>Open it and see what happened.</h1>
     <p>
-      One room per band, or per project, or per person you write with.
-      Private to whoever's in it.
+      A private room per band or project. Private to whoever is in it.
     </p>
   </div>
 
@@ -71,8 +71,8 @@
     <div class="eyebrow">Rooms</div>
     <h2>The band you are in, not a folder.</h2>
     <p class="lede">
-      Its own songs, its own people, its own colours. Invite someone by email
-      and their face shows up on the songs they start.
+      Its own songs, its own people. Start a private room and invite your
+      collaborators, by email or with a code.
     </p>
     <div class="art" aria-hidden="true">
       <div class="take">
@@ -98,17 +98,34 @@
     <h2>The song moves while you are asleep.</h2>
     <p class="lede">
       A verse from a train, a lead at midnight, all there in the morning.
-      Anything you haven't heard yet says so.
+      When somebody plays on a song you have not heard yet, the song says New.
     </p>
   </section>
 
-  <section class="moment reveal">
-    <div class="eyebrow">Gigs</div>
-    <h2>Setlists that leave the app.</h2>
+  <section class="moment reveal" id="sets">
+    <div class="eyebrow">Sets</div>
+    <h2>The band's sets.</h2>
     <p class="lede">
-      Build a set, drag it into order, print it or send a PDF. Whoever's
-      standing in tonight doesn't need an account.
+      Build a set, put it in order, and Give this set to the room. Play the
+      set walks it one song at a time, in the keys you play them in.
     </p>
+    <p class="lede">
+      Under Hand this out: Print it, Send the pack as a PDF, or Send it as
+      text.
+    </p>
+    <a class="more" href="teams.html">Playing out? Make the room a team →</a>
+  </section>
+
+  <section class="moment reveal" id="team">
+    <div class="eyebrow">Teams</div>
+    <h2>A band that plays out can be a team.</h2>
+    <p class="lede">
+      The owner taps Make this a team: a leader, a chair for every part, and
+      one set that every stand reads its own way. Leading a team is for
+      people 18 and over.
+    </p>
+    <p class="note">New in October 2026 · not on the beta's phones yet</p>
+    <a class="more" href="teams.html">Teams →</a>
   </section>
 
   <section class="moment reveal">
@@ -116,9 +133,8 @@
     <h2>The band talks in the room.</h2>
     <p class="lede">
       Every room is a thread. Say something and the band hears about it;
-      write to one person and only they do. Messages is the one place for
-      all of it — your people, who is here right now, and every room you
-      are in.
+      write to one person and only they read it. Messages is the one place
+      for all of it: your people, and every room you are in.
     </p>
   </section>
 
@@ -135,7 +151,15 @@
       Call the whole room, or one person in a room of just the two of you.
       Audio and video. Put a song up and its chords and words take the
       screen, with the faces along the top. The call itself is never
-      recorded. Calls are for the people in your room, from 13; a call with just one adult and someone under 18 waits for a third person.
+      recorded.
+    </p>
+    <p class="lede">
+      On the call's Stage: Record a pass, Hear the band, Take turns.
+    </p>
+    <p class="lede">
+      Calls are for the people in your room, from 13. For now, a room of just
+      one adult and someone under 18 has no call, and a call that drops to
+      just those two waits for a third person.
     </p>
     <div class="art call" aria-hidden="true">
       <div class="art-head">
@@ -148,7 +172,6 @@
       </div>
       <div class="pill-row">
         <span class="pill">Mute</span>
-        <span class="pill">Camera off</span>
         <span class="pill on">Put the song up</span>
         <span class="pill leave">Leave</span>
       </div>
@@ -169,6 +192,9 @@
     <p class="lede">
       It is not a recording, and only the people who were there can read
       it.
+    </p>
+    <p class="lede">
+      Draft with Claude makes a draft from the note, never from the audio.
     </p>
     <div class="art" aria-hidden="true">
       <div class="art-head">
@@ -193,32 +219,33 @@
     <div class="eyebrow">Credit</div>
     <h2>Who brought what, on the record.</h2>
     <p class="lede">
-      Lines carry the colour of whoever wrote them, takes the name of whoever
-      played them. A year later, nobody has to remember.
+      Lines carry the colour of whoever wrote them. Who was in the room
+      drafts a writers' split for the song.
     </p>
   </section>
 
   <div class="close">
     <h2>Bring your band.</h2>
     <p>The beta is small and free, and I read everything that comes back.</p>
-    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Email for an invite</a>
-    <div class="meta">Free during the beta · works in your browser</div>
+    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a>
+    <a class="cta quiet" href="https://app.colabroom.com/">Already have an account? Sign in</a>
+    <div class="meta">Free during the beta</div>
   </div>
 
   <nav class="keep-reading" aria-label="More about CoLabRoom">
     <p class="eyebrow">Keep reading</p>
     <div class="onward-row">
+      <a class="onward" href="teams.html">
+        <span class="where">Teams</span>
+        <span class="what">One set. Every stand its own reading.</span>
+      </a>
       <a class="onward" href="takes.html">
         <span class="where">Takes</span>
         <span class="what">Everybody plays on it.</span>
       </a>
-      <a class="onward" href="analysis.html">
-        <span class="where">What it heard</span>
-        <span class="what">It listens back and writes it down.</span>
-      </a>
-      <a class="onward" href="songbook.html">
-        <span class="where">Song sheet</span>
-        <span class="what">A page, not a form.</span>
+      <a class="onward" href="openmic.html">
+        <span class="where">Open Mic</span>
+        <span class="what">Meet somebody you haven't met.</span>
       </a>
     </div>
   </nav>

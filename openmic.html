@@ -42,15 +42,16 @@
   <header class="top">
     <a class="brand" href="index.html">CoLabRoom</a>
     <nav class="pages">
-      <a href="chords.html">Chords</a>
-      <a href="what-key.html">What key</a>
-      <a href="takes.html">Takes</a>
       <a href="analysis.html">What it heard</a>
       <a href="songbook.html">Song sheet</a>
       <a href="practise.html">Practise</a>
-      <a href="learn.html">Learn</a>
-      <a href="bands.html">Your room</a>
+      <a href="takes.html">Takes</a>
+      <a href="bands.html">Rooms</a>
+      <a href="teams.html">Teams</a>
       <a href="openmic.html" aria-current="page">Open Mic</a>
+      <a href="learn.html">Learn</a>
+      <a href="chords.html">Chords</a>
+      <a href="what-key.html">What key</a>
     </nav>
     <span class="sp"></span>
     <!-- Somebody who already has an account had no way in from here. -->
@@ -72,8 +73,8 @@
     <h2>Nothing here is public because you made it.</h2>
     <p class="lede">
       Being findable is a switch, and it starts off. Your songs stay in your
-      room until you put one up. Three decisions make something public. Each
-      one is yours, and undoable.
+      room until you put one up. Everything you make stays yours, and stays
+      private until you move it.
     </p>
     <!-- What app migration 0356 enforces in the database, said where
          strangers meet rather than only in the terms. -->
@@ -181,6 +182,26 @@
     </div>
   </section>
 
+  <!-- Here tonight and We met: lib/widgets/nearby_disclosure.dart (a place
+       is a code, it never asks where you are), lib/domain/a_tap_at_the_door.dart
+       (We met), lib/features/here/check_in.dart (strangers at a place are
+       for adults). -->
+  <section class="moment reveal" id="tonight">
+    <div class="eyebrow">Here tonight</div>
+    <h2>A place is a code.</h2>
+    <p class="lede">
+      Tonight at a place: a place is a code, the same one on its poster. It
+      never asks where you are.
+    </p>
+    <p class="lede">
+      Met somebody? Hold your phones close. Both of you tap We met. It
+      connects nobody until you both tap.
+    </p>
+    <p class="lede">
+      Strangers at a place are for people 18 and over.
+    </p>
+  </section>
+
   <section class="moment reveal">
     <div class="eyebrow">No ladder</div>
     <h2>Nobody is ranked.</h2>
@@ -215,7 +236,7 @@
     <h2>Bring a song.</h2>
     <p>The beta is small and free, and I read everything that comes back.</p>
     <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Email for an invite</a>
-    <div class="meta">Free during the beta · works in your browser</div>
+    <div class="meta">Free during the beta</div>
   </div>
 
   <nav class="keep-reading" aria-label="More about CoLabRoom">
@@ -226,7 +247,7 @@
         <span class="what">Everybody plays on it.</span>
       </a>
       <a class="onward" href="bands.html">
-        <span class="where">Your room</span>
+        <span class="where">Rooms</span>
         <span class="what">Open it and see what happened.</span>
       </a>
       <a class="onward" href="songbook.html">
