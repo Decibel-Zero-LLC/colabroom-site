@@ -34,6 +34,28 @@
   --lane-rest: 0.06;
   --inst-peak: 0.07;
   --inst-rest: 0.05;
+
+  /* The type and spacing scales (October 2026). index.html and teams.html
+     use only these sizes, inside main.story. The older selectors keep their
+     own values for now; each is within a pixel or two of a step here. */
+  --t-1: clamp(0.6875rem, 0.66rem + 0.12vw, 0.75rem);   /* 11-12px: mono labels, eyebrows, the road, pills */
+  --t-2: clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem);  /* 13-14px: picture text, chord cells, buttons, links on */
+  --t-3: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);       /* 16-17px: body, lists */
+  --t-4: clamp(1.125rem, 1.04rem + 0.45vw, 1.3125rem);  /* 18-21px: scene lines, ledes */
+  --t-5: clamp(1.375rem, 1.18rem + 0.95vw, 1.875rem);   /* 22-30px: hero line, big chord names */
+  --t-6: clamp(1.875rem, 1.35rem + 2.7vw, 3.25rem);     /* 30-52px: scene and section headlines */
+  --t-7: clamp(2.75rem, 1.4rem + 7.5vw, 7rem);          /* 44-112px: page headlines */
+  --lh-tight: 0.95;
+  --lh-head: 1.05;
+  --lh-body: 1.55;
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2.5rem;
+  --s-7: clamp(3.25rem, 2.5rem + 3vw, 5rem);   /* section padding */
+  --s-8: clamp(4rem, 3rem + 5vw, 7.5rem);      /* hero and close */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -484,8 +506,8 @@ footer .sp { flex: 1; }
 
 .reveal { opacity: 1; }
 @media (prefers-reduced-motion: no-preference) {
-  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
-  .reveal.in { opacity: 1; transform: none; }
+  html.reveal-on .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+  html.reveal-on .reveal.in { opacity: 1; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
@@ -565,7 +587,7 @@ footer .sp { flex: 1; }
 @keyframes inst-2 { 0% { opacity: 0 } 24% { opacity: 0 } 36% { opacity: var(--inst-peak) } 50% { opacity: var(--inst-peak) } 62% { opacity: 0 } 100% { opacity: 0 } }
 @keyframes inst-3 { 0% { opacity: 0 } 52% { opacity: 0 } 64% { opacity: var(--inst-peak) } 78% { opacity: var(--inst-peak) } 88% { opacity: 0 } 100% { opacity: 0 } }
 @keyframes inst-4 { 0% { opacity: 0 } 78% { opacity: 0 } 90% { opacity: var(--inst-peak) } 100% { opacity: var(--inst-rest) } }
-@keyframes head   { 0% { top: 0 } 100% { top: 100% } }
+@keyframes head   { 0% { transform: translateY(0) } 100% { transform: translateY(100vh); transform: translateY(100dvh) } }
 
 @supports (animation-timeline: scroll()) {
   @media (prefers-reduced-motion: no-preference) {
@@ -597,7 +619,7 @@ footer .sp { flex: 1; }
     .inst.i2 { opacity: calc(var(--inst-peak) * clamp(0, min((var(--scroll) - 0.24) * 8, (0.62 - var(--scroll)) * 8), 1)); }
     .inst.i3 { opacity: calc(var(--inst-peak) * clamp(0, min((var(--scroll) - 0.52) * 8, (0.88 - var(--scroll)) * 8), 1)); }
     .inst.i4 { opacity: calc(var(--inst-peak) * clamp(0, (var(--scroll) - 0.78) * 8, 1)); }
-    .playhead { top: calc(var(--scroll) * 100%); }
+    .playhead { transform: translateY(calc(var(--scroll) * 100vh)); transform: translateY(calc(var(--scroll) * 100dvh)); }
   }
 }
 
@@ -611,9 +633,10 @@ footer .sp { flex: 1; }
 /* The line that tells a first-time visitor what they are looking at.
    Without it the hero is a poem next to a button — memorable, and no help
    at all to somebody who has never heard of this. */
-.kicker {
-  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
+.kicker,
+.hero p.kicker {
+  font-family: var(--mono); font-size: 0.72rem; line-height: 1.6; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold); margin: 0 0 1.5rem; max-width: none;
 }
 
 

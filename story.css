@@ -1,0 +1,473 @@
+/* The story: index.html and teams.html only, after site.css. Every picture
+   is drawn finished; start states sit under html.motion, which only
+   story.js adds. Only transform and opacity move. Gold once per picture. */
+
+/* --- scope and sizes --- */
+
+.story { --road-h: 2.25rem; font-size: var(--t-3); }
+.story .hero .kicker, .story .eyebrow, .story .meta, .story .hero-note, .story .pill, .lbl { font-size: var(--t-1); }
+.story .cta, .story .more, .story ul.log b, .story .onward .what { font-size: var(--t-2); }
+.story ul.log span, .story .onward .where, .story .note,
+.story details.legal summary, .story details.legal .inner, .story details.legal h3 { font-size: var(--t-3); }
+.story section.moment .lede { font-size: var(--t-4); line-height: var(--lh-body); }
+.story .hero p { font-size: var(--t-5); }
+.story section.moment h2, .story .scene h2, .story .close h2 {
+  font-size: var(--t-6); line-height: var(--lh-head);
+  font-weight: 900; letter-spacing: -0.035em; color: var(--text);
+}
+.story .hero h1 { font-size: var(--t-7); line-height: var(--lh-tight); }
+.story h1, .story h2 { overflow-wrap: break-word; }
+.story .hero .kicker { max-width: none; margin-top: 0; line-height: 1.6; color: var(--gold); }
+.story section.moment { padding: var(--s-7) 0; }
+.story .hero, .story .close { padding: var(--s-8) 0; }
+.story .art-head .t { font-size: var(--t-3); }
+.story .art-head .s, .story .entry .side { font-size: var(--t-1); }
+.story .entry .name { font-size: var(--t-2); }
+
+.lbl { font-family: var(--mono); letter-spacing: 0.04em; color: var(--muted); }
+
+/* --- the road --- */
+
+.road { padding: var(--s-4) 0; border-top: 1px solid var(--line); }
+.road ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-3); }
+@media (max-width: 22rem) { .road ol { column-gap: var(--s-2); } }
+.road a {
+  display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.2rem 0;
+  font-family: var(--mono); font-size: var(--t-1); color: var(--muted); text-decoration: none;
+}
+.road a:hover, .road a[aria-current] { color: var(--text); }
+.road a::before { content: ''; flex: none; width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--line); }
+.road-line, .road-now { display: none; }
+
+/* --- the scenes --- */
+
+.scene { --steps: 3; padding: var(--s-7) 0; border-top: 1px solid var(--line); }
+.scene[data-steps="2"] { --steps: 2; }
+.frame-in { display: grid; gap: var(--s-6); }
+.words, .pic { min-width: 0; }
+.scene .eyebrow { margin-bottom: var(--s-4); }
+/* Not on the beta's phones yet: one element, a one-line delete. */
+.newmark { margin: calc(-1 * var(--s-2)) 0 var(--s-4); }
+.lines { margin-top: var(--s-4); }
+.ln { max-width: 34ch; font-size: var(--t-4); line-height: var(--lh-body); }
+.ln + .ln { margin-top: var(--s-2); }
+.scene .more { display: block; width: fit-content; margin-top: var(--s-4); font-family: var(--display); font-weight: 700; text-decoration: none; }
+.scene .more + .more { margin-top: var(--s-2); }
+.story .frame .art { margin-top: 0; }
+.inapp { margin-top: var(--s-3); }
+
+@media (min-width: 60rem) {
+  .frame-in { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; }
+  .lines { margin-top: var(--s-5); }
+}
+
+/* --- shared picture parts --- */
+
+/* Never display: none, or some browsers drop the symbols. */
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.wave { display: block; width: 100%; height: 100%; fill: currentColor; }
+
+.seg { display: inline-flex; flex-direction: column; align-items: flex-start; vertical-align: top; }
+.seg > b { position: relative; font: 500 var(--t-2)/1.4 var(--mono); color: var(--text); }
+.seg > span { font: 300 var(--t-3)/1.35 var(--serif); color: var(--text); }
+
+.cells { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; }
+.cells b {
+  display: flex; align-items: center; justify-content: center; min-width: 0; height: 1.9rem;
+  border: 1px solid var(--line); border-radius: 4px; white-space: nowrap;
+  font: 800 var(--t-2)/1 var(--display); letter-spacing: -0.01em; color: var(--text);
+}
+
+.cover { position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: var(--surface); transform-origin: right; transform: scaleX(0); }
+
+.p-hum .track, .p-sheet .shape, .p-perform .window, .p-takes .rows, .p-lanes .lane-track, .p-stands .flip {
+  position: relative; overflow: hidden; overflow: clip;
+}
+
+.btn {
+  display: flex; align-items: center; gap: 0.45rem; width: fit-content; padding: 0.35rem 0.8rem;
+  border: 1px solid var(--gold); border-radius: 100px;
+  font-family: var(--mono); font-size: var(--t-1); color: var(--gold);
+}
+.btn.rec::before { content: ''; flex: none; width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--gold); }
+.btn.plain { border-color: var(--line); color: var(--body); }
+.btn.plain::before { background: var(--muted); }
+
+/* --- Hum it. Gold: Record --- */
+
+.p-hum { container-type: inline-size; }
+.p-hum .rec-row { display: flex; align-items: center; gap: var(--s-3); }
+.p-hum .rec { flex: none; display: flex; align-items: center; gap: var(--s-2); font: 500 var(--t-2) var(--mono); color: var(--text); }
+.p-hum .disc { position: relative; flex: none; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--gold); }
+.p-hum .disc::after { content: ''; position: absolute; left: 50%; top: 50%; width: 0.6rem; height: 0.6rem; margin: -0.3rem 0 0 -0.3rem; border-radius: 50%; background: var(--ink); }
+.p-hum .track { flex: 1; min-width: 0; height: 2.5rem; }
+.p-hum .ph { position: absolute; top: 0; right: 0; bottom: 0; left: 0; border-left: 1px solid var(--text); opacity: 0; }
+.p-hum .got { display: grid; align-items: baseline; gap: var(--s-1) var(--s-4); margin-top: var(--s-4); padding-top: var(--s-4); border-top: 1px solid var(--line); }
+.p-hum .chords { font: 800 var(--t-5)/1.1 var(--display); letter-spacing: -0.01em; word-spacing: 0.3em; color: var(--text); }
+.p-hum .keep { color: var(--text); border-color: var(--body); }
+.p-hum .quiet { color: var(--muted); }
+/* Very large text: the waveform gets a row of its own. */
+@container (max-width: 15em) {
+  .p-hum .rec-row { flex-wrap: wrap; row-gap: var(--s-2); }
+  .p-hum .track { flex-basis: 100%; }
+}
+
+/* --- The sheet. Gold: the doubted chord --- */
+
+.p-sheet .sheet-head .t { display: block; font: 800 var(--t-3) var(--display); color: var(--text); }
+.p-sheet .sheet-head .s { display: block; margin-top: 0.15rem; }
+.p-sheet .shape { display: flex; gap: 2px; margin-top: var(--s-3); }
+.p-sheet .shape span {
+  flex: var(--w) 1 0%; min-width: 0; height: 1.6rem; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 3px; background: var(--c); font: 500 var(--t-1) var(--mono); color: var(--ink);
+}
+.p-sheet .key { display: none; margin-top: var(--s-2); }
+.p-sheet .key i { display: inline-block; width: 0.45rem; height: 0.45rem; margin: 0 0.3rem 0 0.5rem; border-radius: 50%; background: var(--c); }
+.p-sheet .key i:first-child { margin-left: 0; }
+.p-sheet .lyr { margin-top: var(--s-4); }
+.p-sheet .lyr p + p { margin-top: var(--s-2); }
+.p-sheet .doubt::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; border-bottom: 2px dotted var(--gold); }
+.p-sheet .tapped::before, .p-perform .dash::before, .p-perform .dash::after {
+  content: ''; position: absolute; top: -3px; right: -5px; bottom: -3px; left: -5px;
+  border: 1px solid var(--text); border-radius: 6px;
+}
+.p-sheet .unsure { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); margin-top: var(--s-4); padding: var(--s-3); border: 1px solid var(--line); border-radius: 0.75rem; }
+.p-sheet .unsure .q { flex: 1 0 100%; font: 700 var(--t-2) var(--display); color: var(--text); }
+.p-sheet .chip { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-1) var(--s-3); margin-top: var(--s-3); }
+.p-sheet .chip b { font: 800 var(--t-4) var(--display); color: var(--text); }
+
+/* --- Play it. Gold: Hear me play --- */
+
+.p-perform .window { margin: 0 -6px; padding: 4px 6px 0; }
+.p-perform .line + .line { margin-top: var(--s-2); }
+.p-perform .seg > b { font: 800 var(--t-3)/1.4 var(--display); }
+.p-perform .seg > span { font-size: var(--t-4); }
+.p-perform .dash::before { border-style: dashed; border-color: var(--muted); opacity: 0; }
+.p-perform .pill-row { margin-top: var(--s-4); }
+.p-perform .hear { color: var(--gold); border-color: var(--gold); }
+.p-perform .status { margin-top: var(--s-3); color: var(--body); }
+
+/* --- Overnight. Gold: the playhead --- */
+
+.p-takes .rows { margin-top: var(--s-2); }
+.p-takes .row { display: grid; grid-template-columns: 0.5rem minmax(0, 1fr) auto; align-items: center; gap: 0.3rem 0.7rem; padding: 0.55rem 0; }
+.p-takes .row + .row { border-top: 1px solid var(--line); }
+.p-takes .row b { font: 700 var(--t-2) var(--display); color: var(--text); }
+.p-takes .row .wave { grid-column: 2 / 4; height: 1rem; }
+.p-takes .dots { position: relative; width: 0.5rem; height: 0.5rem; }
+.p-takes .dots .dot { position: absolute; top: 0; left: 0; }
+.p-takes .mute { background: var(--muted); }
+.p-takes .ph { position: absolute; top: 0; right: 0; bottom: 0; left: 1.2rem; border-left: 2px solid var(--gold); transform: translateX(62%); }
+
+/* --- Rehearse. Gold: the button --- */
+
+.p-lanes .lanes-head { margin-top: var(--s-3); color: var(--body); }
+.p-lanes .lanes { display: grid; gap: 0.4rem; margin-top: var(--s-3); }
+.p-lanes .lane-row { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); align-items: center; column-gap: var(--s-2); }
+.p-lanes .seat { display: flex; align-items: center; gap: 0.45rem; min-width: 0; color: var(--text); }
+.p-lanes .phone { flex: none; width: 0.55rem; height: 0.9rem; border: 1px solid var(--muted); border-radius: 2px; opacity: 0.7; }
+.p-lanes .lane-track { display: block; height: 1.6rem; }
+.p-lanes .mine .wave { opacity: 0.25; }
+.p-lanes .without { margin-top: var(--s-3); font: 700 var(--t-2) var(--display); color: var(--text); }
+.p-lanes .btn ~ .btn, .p-lanes .lanes + .btn { margin-top: var(--s-3); }
+
+/* --- The night. Gold: the called bar --- */
+
+.p-stands .setlist { display: grid; grid-template-columns: minmax(0, 1fr); }
+.p-stands .set-head { margin-bottom: var(--s-2); }
+.p-stands .setlist ol, .p-stands .called { grid-column: 1; grid-row: 2; }
+.p-stands .setlist ol { position: relative; z-index: 1; list-style: none; margin: 0; padding: 0; }
+.p-stands .setlist li { height: 1.6rem; padding-left: 0.7rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 700 var(--t-2)/1.6rem var(--display); color: var(--text); }
+.p-stands .called {
+  align-self: start; height: 1.6rem; border-left: 3px solid var(--gold); border-radius: 0 4px 4px 0;
+  background: rgba(227, 179, 77, 0.12); background: color-mix(in srgb, var(--gold) 12%, transparent);
+  transform: translateY(100%);
+}
+.p-stands .stands { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3); margin-top: var(--s-4); }
+.p-stands .stand { min-width: 0; padding: var(--s-3); border: 1px solid var(--line); border-radius: 0.6rem; }
+.p-stands .who { color: var(--text); }
+.p-stands .reading, .p-stands .heard, .p-stands .lostline, .p-stands .flip { margin-top: var(--s-2); }
+.p-stands .heard, .p-stands .lostline { color: var(--body); }
+.p-stands .flip { container-type: inline-size; }
+.p-stands .was { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
+.p-stands .stand:not(.lost) .was { opacity: 0; transform: translateY(-100%); }
+.p-stands .lost .was { position: static; }
+@container (max-width: 8em) {
+  .p-stands .cells { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* --- Yours. Gold: the foot --- */
+
+.p-folder .entry { padding: 0.5rem 0; }
+.p-folder .sub, .p-folder .foot { margin-top: var(--s-2); padding-top: var(--s-3); border-top: 1px solid var(--line); }
+.p-folder .file { padding-left: var(--s-3); }
+.p-folder .foot { color: var(--gold); }
+.p-folder .pill-row { margin-top: var(--s-3); }
+
+/* === Motion: behind html.motion and a media query that agrees === */
+
+@keyframes cover-off { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+@keyframes hum-ph { 0% { transform: translateX(0); opacity: 0; } 3%, 97% { opacity: 1; } 100% { transform: translateX(100%); opacity: 0; } }
+@keyframes lines-rise { from { transform: translateY(3.5rem); } to { transform: none; } }
+@keyframes head-62 { from { transform: translateX(0); } to { transform: translateX(62%); } }
+@keyframes lane-in { from { transform: translateX(var(--off, 0)); } to { transform: none; } }
+@keyframes mine-back { from { opacity: 1; } to { opacity: 0.25; } }
+@keyframes fade-up { from { opacity: 0; } to { opacity: 1; } }
+
+@media (prefers-reduced-motion: no-preference) {
+
+  .motion .scene [data-at] { transition: opacity .45s ease, transform .45s ease; transition-delay: var(--d, 0s); }
+  .motion .scene [data-at="2"] { transition-delay: calc(var(--f2, 0s) + var(--d, 0s)); }
+  .motion .scene [data-at="3"] { transition-delay: calc(var(--f3, 0s) + var(--d, 0s)); }
+  .motion .scene[data-flow] { --f2: .45s; --f3: .9s; }
+  .motion .scene:not(.s1) [data-at="1"],
+  .motion .scene:not(.s2) [data-at="2"],
+  .motion .scene:not(.s3) [data-at="3"] { opacity: 0; transform: translateY(.75rem); }
+
+  .motion .scene .disc { transition: opacity .45s ease, transform .45s ease; }
+  .motion .scene:not(.s1) .disc { opacity: .6; transform: scale(.94); }
+
+  .motion .scene .doubt::after { transition: opacity .45s ease var(--f2, 0s); }
+  .motion .scene .tapped::before, .motion .scene .dash::before, .motion .scene .dash::after { transition: opacity .45s ease var(--f3, 0s); }
+  .motion .scene:not(.s2) .doubt::after, .motion .scene:not(.s3) .tapped::before, .motion .scene:not(.s3) .dash::after { opacity: 0; }
+  .motion .scene:not(.s2) .unsure { transform: translateY(.5rem); }
+  .motion .scene:not(.s3) .dash::before { opacity: 1; }
+
+  .motion .scene .you, .motion .scene .p-takes .ph { transition: opacity .45s ease var(--f2, 0s); }
+  .motion .scene:not(.s2) .you, .motion .scene:not(.s2) .p-takes .ph { opacity: 0; }
+  .motion .scene:not(.s2) .row[data-at] { transform: translateY(-.5rem); }
+
+  .motion .scene .p-lanes .cover { transition: transform .7s ease calc(var(--f2, 0s) + var(--i, 0) * 100ms); }
+  .motion .scene:not(.s2) .p-lanes .cover { transform: scaleX(1); }
+  .motion .scene .p-lanes .wave { transition: transform .6s ease, opacity .6s ease; transition-delay: var(--f3, 0s); }
+  .motion .scene[data-flow] .p-lanes .wave { transition-delay: 1.5s; }
+  .motion .scene:not(.s3) .p-lanes .wave { transform: translateX(var(--off, 0)); }
+  .motion .scene:not(.s3) .p-lanes .mine .wave { opacity: 1; }
+
+  .motion .called { transition: transform .45s ease; }
+  .motion .scene:not(.s1) .called { transform: none; }
+  .motion .stand:not(.still):not(.lost) > .flip > * { transition: opacity .45s ease, transform .45s ease; transition-delay: calc(var(--f2, 0s) + var(--i, 0) * 40ms); }
+  .motion .scene:not(.s2) .stand:not(.still):not(.lost) .was { opacity: 1; transform: none; }
+  .motion .scene:not(.s2) .stand:not(.still):not(.lost) .now { opacity: 0; transform: translateY(100%); }
+  .motion .scene .heard { --d: calc(150ms + var(--i, 0) * 40ms); }
+
+  .motion [data-seen] .stand:not(.still):not(.lost) > .flip > * { transition-delay: calc(500ms + var(--i, 0) * 40ms); }
+  .motion [data-seen]:not(.seen) .called { transform: none; }
+  .motion [data-seen]:not(.seen) .stand:not(.still):not(.lost) .was { opacity: 1; transform: none; }
+  .motion [data-seen]:not(.seen) .stand:not(.still):not(.lost) .now { opacity: 0; transform: translateY(100%); }
+  .motion .p-stands[data-seen] .heard { transition: opacity .45s ease .7s; }
+  .motion .p-stands[data-seen] .reading { transition: opacity .45s ease 1s; }
+  .motion .p-stands[data-seen] .lostline { transition: opacity .45s ease 1.4s; }
+  .motion .p-stands[data-seen]:not(.seen) :is(.heard, .reading, .lostline) { opacity: 0; }
+
+  .drive-js.motion [data-scrub] .wave { transform: translateX(calc(var(--off, 0px) * (1 - clamp(0, (var(--view, 1) - .25) / .4, 1)))); }
+  .drive-js.motion [data-scrub] .mine .wave { opacity: calc(1 - .75 * clamp(0, (var(--view, 1) - .57) / .08, 1)); }
+  .drive-js.motion [data-scrub] .without { opacity: clamp(0, (var(--view, 1) - .57) / .08, 1); }
+
+  .motion .near:not([data-flow]) :is(.cover, .ph, .window-in), .motion [data-scrub].near .wave { will-change: transform; }
+}
+
+/* Pinning and the stuck road: only on a screen tall enough. */
+@media (prefers-reduced-motion: no-preference) and (min-height: 36.0625rem) {
+
+  .motion .scene { scroll-margin-top: var(--road-h); }
+  .motion #life .scene a { scroll-margin-top: calc(var(--road-h) + var(--s-2)); }
+  .motion .scene:not([data-flow]) {
+    height: calc(100vh - var(--road-h) + (var(--steps) - 1) * 26vh + 16vh);
+    height: calc(100svh - var(--road-h) + (var(--steps) - 1) * 26svh + 16svh);
+    padding-top: 0; padding-bottom: 0;
+  }
+  .motion .scene:not([data-flow]) .frame {
+    position: sticky; top: var(--road-h); display: grid; align-content: center; align-content: safe center;
+    height: calc(100vh - var(--road-h));
+    height: calc(100svh - var(--road-h));
+  }
+
+  .motion .road {
+    position: sticky; top: 0; z-index: 3; height: var(--road-h); padding: 0;
+    background: var(--ink); border: 0; border-bottom: 1px solid var(--line);
+  }
+  .motion .road ol { position: relative; z-index: 1; height: 100%; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0; }
+  .motion .road a { display: block; position: relative; height: 100%; padding: 1.05rem 0.15rem 0; text-align: center; overflow: hidden; white-space: nowrap; }
+  .motion .road a:focus-visible { outline-offset: -2px; }
+  .motion .road a::before, .motion .road a::after { position: absolute; left: 50%; top: calc(0.7rem - 4px); margin-left: -4px; background: var(--ink); }
+  .motion .road a::after { content: ''; width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--gold); opacity: 0; transition: opacity .2s ease; }
+  .motion .road .past a::after { opacity: 1; }
+  .motion .road a[aria-current]::after { background: var(--gold); }
+  .motion .road-line { display: block; position: absolute; left: 0; right: 0; top: 0.7rem; height: 1px; background: var(--line); }
+  .motion .road-fill { position: absolute; left: 0; top: -0.5px; width: 100%; height: 2px; background: var(--gold); transform-origin: left; transform: scaleX(var(--road, 0)); }
+
+  /* The JS driver: --view from story.js, the same numbers. */
+  .drive-js.motion .scene:not([data-flow]) :is(.p-hum, .p-sheet) .cover { transform: scaleX(calc(1 - clamp(0, var(--view, 0) / .382, 1))); }
+  .drive-js.motion .scene:not([data-flow]) .p-hum .ph {
+    --q: clamp(0, var(--view, 0) / .382, 1);
+    transform: translateX(calc(var(--q) * 100%));
+    opacity: clamp(0, min(var(--q), 1 - var(--q)) * 33, 1);
+  }
+  .drive-js.motion .scene:not([data-flow]) .window-in { transform: translateY(calc((1 - var(--view, 0)) * 3.5rem)); }
+  .drive-js.motion .scene:not([data-flow]) .p-takes .ph { transform: translateX(calc(clamp(0, (var(--view, 0) - .619) / .381, 1) * 62%)); }
+}
+
+@media (prefers-reduced-motion: no-preference) and (min-height: 36.0625rem) and (max-width: 45.99rem) {
+  .motion .road a span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+  .motion .road-now { display: grid; position: absolute; right: 0; top: 1.05rem; margin: 0; pointer-events: none; font-family: var(--mono); font-size: var(--t-1); color: var(--text); }
+  .motion .road-now span { grid-area: 1 / 1; text-align: right; opacity: 0; transition: opacity .2s ease; }
+  .motion .road-now .on { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) and (min-height: 36.0625rem) and (max-width: 59.99rem) {
+  .motion .scene:not([data-flow]) .lines { display: grid; }
+  .motion .scene:not([data-flow]) .ln { grid-area: 1 / 1; margin: 0; }
+  .motion .scene:not([data-flow]).s2 .ln[data-at="1"],
+  .motion .scene:not([data-flow]).s3 .ln[data-at="2"] { opacity: 0; transform: translateY(-.5rem); transition-duration: .25s; }
+}
+
+/* The CSS driver. Longhands: the shorthand resets the timeline. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) and (min-height: 36.0625rem) {
+    .motion:not(.drive-js) .scene:not([data-flow]) { view-timeline: --sc block; view-timeline-inset: var(--road-h) 0px; }
+    .motion:not(.drive-js) .scene:not([data-flow]) :is(.cover, .ph, .window-in) {
+      animation-duration: 1ms; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: --sc;
+    }
+    .motion:not(.drive-js) .scene:not([data-flow]) :is(.p-hum, .p-sheet) .cover { animation-name: cover-off; animation-range: contain 0% contain 38.2%; }
+    .motion:not(.drive-js) .scene:not([data-flow]) .p-hum .ph { animation-name: hum-ph; animation-range: contain 0% contain 38.2%; }
+    .motion:not(.drive-js) .scene:not([data-flow]) .window-in { animation-name: lines-rise; animation-range: contain 0% contain 100%; }
+    .motion:not(.drive-js) .scene:not([data-flow]) .p-takes .ph { animation-name: head-62; animation-range: contain 61.9% contain 100%; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .motion:not(.drive-js) [data-scrub] { view-timeline: --rh block; }
+    .motion:not(.drive-js) [data-scrub] :is(.wave, .without) {
+      animation-duration: 1ms; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: --rh;
+      animation-name: lane-in; animation-range: cover 25% cover 65%;
+    }
+    .motion:not(.drive-js) [data-scrub] .mine .wave { animation-name: lane-in, mine-back; animation-range: cover 25% cover 65%, cover 57% cover 65%; }
+    .motion:not(.drive-js) [data-scrub] .without { animation-name: fade-up; animation-range: cover 57% cover 65%; }
+  }
+}
+
+/* === Phones: fitted by layout, never by clipping === */
+
+@media (min-width: 22rem) {
+  .p-hum .got { grid-template-columns: max-content minmax(0, 1fr); row-gap: var(--s-2); }
+}
+
+@media (max-width: 29.99rem) {
+  .p-sheet .shape b { display: none; }
+  .p-sheet .key { display: block; }
+  .p-stands .later { display: none; }
+  .p-stands .stands { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: var(--s-3); }
+  .p-stands .stand {
+    display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); align-items: center; gap: var(--s-1) var(--s-3);
+    padding: var(--s-2) 0; border: 0; border-radius: 0; border-top: 1px solid var(--line);
+  }
+  .p-stands .stand > * { margin-top: 0; }
+  .p-stands .who { grid-area: 1 / 1; }
+  .p-stands .flip { grid-area: 1 / 2; }
+  .p-stands .reading { grid-area: 2 / 1; align-self: start; }
+  .p-stands .heard, .p-stands .lostline { grid-area: 2 / 2; align-self: start; }
+}
+
+@media (max-width: 22rem) {
+  .p-lanes .lane-row { grid-template-columns: minmax(0, 1fr); row-gap: 0.2rem; }
+  .story details.legal .inner { overflow-wrap: anywhere; }
+  .p-takes .row { grid-template-columns: 0.5rem minmax(0, 1fr); }
+  .p-takes .row .side { grid-column: 2; text-align: left; }
+  .p-takes .row .wave { grid-column: 2; }
+  .p-stands .stand { grid-template-columns: minmax(0, 1fr) auto; }
+  .p-stands .reading { grid-area: 1 / 2; text-align: right; }
+  .p-stands .flip { grid-area: 2 / 1 / 3 / 3; }
+  .p-stands .heard, .p-stands .lostline { grid-area: 3 / 1 / 4 / 3; }
+}
+
+@media (min-width: 60rem) {
+  section.moment .p-stands .stands { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* === teams.html === */
+
+.p-team, .p-chairs, .p-desk { max-width: 34rem; }
+
+/* --- Make this a team. Gold: the field --- */
+
+.p-team .chairs { display: grid; margin-top: var(--s-2); }
+.p-team .chairs b { padding: 0.45rem 0; font: 700 var(--t-2) var(--display); color: var(--text); }
+.p-team .chairs b + b { border-top: 1px solid var(--line); }
+.p-team .field { margin-top: var(--s-3); }
+.p-team .input {
+  display: flex; align-items: center; height: 2.2rem; margin-top: var(--s-2); padding: 0 var(--s-3);
+  border: 1px solid var(--gold); border-radius: 8px; font-size: var(--t-3); color: var(--text);
+}
+
+/* --- Who sits where. Gold: your chair --- */
+
+.p-chairs .entry { padding: 0.55rem 0; }
+.p-chairs .seat { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--text); }
+.p-chairs .ring { background: none; border: 1.5px solid var(--a4); }
+.p-chairs .then { margin-top: var(--s-2); padding-top: var(--s-3); border-top: 1px solid var(--line); }
+.p-chairs .then .entry { padding-bottom: 0; }
+.p-chairs .card { margin-top: var(--s-4); padding: var(--s-3); border: 1px solid var(--line); border-radius: 0.6rem; }
+.p-chairs .set { margin-top: 0.2rem; font: 700 var(--t-2) var(--display); color: var(--text); }
+.p-chairs .you { margin-top: 0.15rem; font: 800 var(--t-3) var(--display); color: var(--gold); }
+
+/* --- Send the advance. Gold: Share the link --- */
+
+.p-advance .adv { display: grid; gap: var(--s-4); margin-top: var(--s-4); }
+.p-advance ol { list-style: none; margin: var(--s-2) 0 0; padding: 0; }
+.p-advance li { padding: 0.3rem 0; font: 500 var(--t-2) var(--mono); color: var(--text); }
+.p-advance li + li { border-top: 1px solid var(--line); }
+.p-advance .boxes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; margin-top: var(--s-2); }
+.p-advance .boxes span {
+  display: flex; align-items: center; justify-content: center; min-width: 0; min-height: 2rem; padding: 0.2rem;
+  border: 1px solid var(--line); border-radius: 4px; text-align: center; overflow-wrap: anywhere; color: var(--text);
+}
+.p-advance .boxes .empty { border-style: dashed; }
+.p-advance .share { color: var(--gold); border-color: var(--gold); }
+@media (min-width: 40rem) {
+  .p-advance .adv { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s-6); }
+  .p-advance .inputs { grid-column: 2; grid-row: 1 / 3; }
+}
+
+/* --- Record the night. Gold: the pin --- */
+
+.p-night .strip { position: relative; display: flex; margin-top: 1.1rem; padding: 0 6px; }
+.p-night .blk {
+  flex: 1 1 0%; min-width: 0; height: 3rem; position: relative; overflow: hidden; overflow: clip;
+  background: var(--ink); border-radius: 2px;
+  transform: translateX(calc((var(--k) - 1.5) * 4px));
+}
+.p-night .blk .wave { width: 400%; transform: translateX(calc(var(--k) * -25%)); }
+.p-night .pin { position: absolute; top: -0.9rem; bottom: 0; left: calc(6px + (100% - 12px) * 0.36); width: 2px; margin-left: -1px; background: var(--gold); }
+.p-night .pin::before { content: ''; position: absolute; top: -3px; left: -2px; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.p-night .names { container-type: inline-size; margin-top: var(--s-2); padding: 0 6px; }
+.p-night .names p { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; text-align: center; overflow-wrap: break-word; }
+@container (max-width: 19.5em) {
+  .p-night .names p { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; text-align: left; }
+}
+
+/* --- From the desk. Gold: Keep --- */
+
+.p-desk .t { font: 800 var(--t-4) var(--display); letter-spacing: -0.01em; color: var(--text); }
+.p-desk .s { margin-top: 0.2rem; padding-bottom: var(--s-3); border-bottom: 1px solid var(--line); }
+.p-desk .entry { display: block; }
+.p-desk .name { display: block; }
+.p-desk .entry .pill-row { margin-top: var(--s-2); }
+.p-desk .entry .pill { margin-left: 0; }
+.p-desk .keep { color: var(--gold); border-color: var(--gold); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion [data-seen] :is(.chairs b, .seat) { transition: opacity .45s ease, transform .45s ease; transition-delay: calc(var(--i, 0) * 120ms); }
+  .motion .p-team[data-seen] .field { transition: opacity .45s ease .7s; }
+  .motion .p-chairs[data-seen] .then { transition: opacity .45s ease .8s; }
+  .motion [data-seen]:not(.seen) .chairs b { opacity: 0; transform: translateY(6px); }
+  .motion [data-seen]:not(.seen) .seat { opacity: 0; transform: translateY(-6px); }
+  .motion [data-seen]:not(.seen) :is(.field, .then) { opacity: 0; }
+
+  .motion .p-night[data-seen] .blk { transition: transform .5s ease; }
+  .motion .p-night[data-seen] .names { transition: opacity .45s ease .4s; }
+  .motion .p-night[data-seen] .pin { transition: opacity .45s ease .8s, transform .45s ease .8s; }
+  .motion .p-night[data-seen] .pill-row { transition: opacity .45s ease 1s; }
+  .motion .p-night[data-seen]:not(.seen) .blk { transform: none; }
+  .motion .p-night[data-seen]:not(.seen) .pin { opacity: 0; transform: translateY(-6px); }
+  .motion .p-night[data-seen]:not(.seen) :is(.names, .pill-row) { opacity: 0; }
+}

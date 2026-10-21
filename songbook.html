@@ -42,15 +42,16 @@
   <header class="top">
     <a class="brand" href="index.html">CoLabRoom</a>
     <nav class="pages">
-      <a href="chords.html">Chords</a>
-      <a href="what-key.html">What key</a>
-      <a href="takes.html">Takes</a>
       <a href="analysis.html">What it heard</a>
       <a href="songbook.html" aria-current="page">Song sheet</a>
       <a href="practise.html">Practise</a>
-      <a href="learn.html">Learn</a>
-      <a href="bands.html">Your room</a>
+      <a href="takes.html">Takes</a>
+      <a href="bands.html">Rooms</a>
+      <a href="teams.html">Teams</a>
       <a href="openmic.html">Open Mic</a>
+      <a href="learn.html">Learn</a>
+      <a href="chords.html">Chords</a>
+      <a href="what-key.html">What key</a>
     </nav>
     <span class="sp"></span>
     <!-- Somebody who already has an account had no way in from here. -->
@@ -137,10 +138,11 @@
 
   <!-- How you read notes: app #598, migration 0238 (applied 29 September
        2026), lib/domain/note_names.dart. Three namings and six languages
-       for the words, and it changes only your own page. -->
+       for the words, and it changes only your own page. Numbers and Roman
+       are the app's own readings too (lib/services/number_reading.dart). -->
   <section class="moment reveal" id="how-you-read-notes">
     <div class="eyebrow">How you read notes</div>
-    <h2>Letters, Do Re Mi, or the German H.</h2>
+    <h2>Letters, numbers, Do Re Mi, or the German H.</h2>
     <p class="lede">
       Read the chords the way you learned them. Only your page changes:
       everybody else on the song reads it their own way.
@@ -150,11 +152,17 @@
       Français, Italiano or Deutsch. It is in Account, under How you read
       notes.
     </p>
+    <p class="lede">
+      In a band, every stand reads the same set its own way.
+    </p>
     <div class="art readings" aria-hidden="true">
       <div class="entry"><span class="name">C D E</span><span class="v">D Bm G A</span></div>
+      <div class="entry"><span class="name">Numbers</span><span class="v">1 6- 4 5</span></div>
+      <div class="entry"><span class="name">Roman</span><span class="v">I vi IV V</span></div>
       <div class="entry"><span class="name">Do Re Mi</span><span class="v">Re Sim Sol La</span></div>
       <div class="entry"><span class="name">C D E, with H</span><span class="v">D Hm G A</span></div>
     </div>
+    <a class="more" href="teams.html#stage">How a band reads one set →</a>
   </section>
 
   <section class="moment reveal">
@@ -164,7 +172,7 @@
       Perform scrolls the sheet for you. Words where your eyes are, hands
       on the instrument.
     </p>
-    <a class="more" href="practise.html">Practising →</a>
+    <a class="more" href="practise.html#hear-me-play">Play it, and it listens →</a>
   </section>
 
   <section class="moment reveal" id="bring">
@@ -187,7 +195,7 @@
     <h2>Bring a song.</h2>
     <p>The beta is small and free, and I read everything that comes back.</p>
     <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Email for an invite</a>
-    <div class="meta">Free during the beta · works in your browser</div>
+    <div class="meta">Free during the beta</div>
   </div>
 
   <nav class="keep-reading" aria-label="More about CoLabRoom">
@@ -202,7 +210,7 @@
         <span class="what">It listens back and writes it down.</span>
       </a>
       <a class="onward" href="bands.html">
-        <span class="where">Your room</span>
+        <span class="where">Rooms</span>
         <span class="what">Open it and see what happened.</span>
       </a>
     </div>
