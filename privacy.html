@@ -184,7 +184,7 @@
   <a class="back" href="/">← CoLabRoom</a>
 
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated October 19, 2026</p>
+  <p class="updated">Last updated October 21, 2026</p>
 
   <p class="notice">
     CoLabRoom is published by <strong style="color: var(--text)">Decibel Zero LLC</strong>
@@ -890,10 +890,10 @@
   </p>
   <div class="table">
     <div class="row"><span class="who">Supabase</span><span>Stores the recording, your account data, and every song in the app. Our database and file storage provider.</span></div>
-    <div class="row"><span class="who">RunPod</span><span>Runs our own instrument-separation code on their GPUs, to split the recording into stems.</span></div>
-    <div class="row"><span class="who">Google Cloud Run</span><span>Runs our own chord-detection code, to work out what's being played.</span></div>
-    <div class="row"><span class="who">RunPod</span><span>Also transcribes the words for most song sheets. Transcription runs on the same worker as the separation, using our own code. The transcribed words come back to CoLabRoom and, when the song-sheet check is enabled, are sent to Anthropic as described below.</span></div>
-    <div class="row"><span class="who">OpenAI</span><span>Hears the recording when our own worker gives a song sheet no words — a song where it found no vocal, a worker from before it could transcribe, or chords worked out on your phone instead — and every time you ask the sheet to listen for the words again. The recording goes to OpenAI's transcription API: the isolated vocal when separation made one, and otherwise the whole recording. With it go the start of the words already on the sheet, as a hint, and the language the room said the song is sung in. A recording it has already heard with the same hint is not sent again. Governed by <a href="https://openai.com/policies/api-data-usage-policies" target="_blank" rel="noopener">OpenAI's own API data terms</a>.</span></div>
+    <div class="row"><span class="who">RunPod</span><span>Runs our own instrument-separation code on their GPUs, to split the recording into stems, for a full analysis. A chords sheet does not go to RunPod.</span></div>
+    <div class="row"><span class="who">Google Cloud Run</span><span>Runs our own chord-detection code, to work out what's being played. For a chords sheet the recording goes here, and to no GPU.</span></div>
+    <div class="row"><span class="who">RunPod</span><span>Also transcribes the words for a full analysis. A chords sheet hears no words. Transcription runs on the same worker as the separation, using our own code. The transcribed words come back to CoLabRoom and, when the song-sheet check is enabled, are sent to Anthropic as described below.</span></div>
+    <div class="row"><span class="who">OpenAI</span><span>Hears the recording when a full analysis comes back with no words — a song where our worker found no vocal, a worker from before it could transcribe, or chords worked out on your phone instead — and every time you ask the sheet to listen for the words again. A chords sheet is not sent here unless you ask. The recording goes to OpenAI's transcription API: the isolated vocal when separation made one, and otherwise the whole recording. With it go the start of the words already on the sheet, as a hint, and the language the room said the song is sung in. A recording it has already heard with the same hint is not sent again. Governed by <a href="https://openai.com/policies/api-data-usage-policies" target="_blank" rel="noopener">OpenAI's own API data terms</a>.</span></div>
     <div class="row"><span class="who">RunPod</span><span>Also works out the tune of the isolated vocal. That is where the sung range shown on a song sheet — and on your profile page, if you play a singing part — comes from. Same worker, our own code.</span></div>
     <div class="row"><span class="who">Anthropic, for a song-sheet check</span><span>When enabled, Anthropic checks the detected chords, timing, song sections and transcribed words before the song sheet is shown. The recording is not sent for this check. It can choose among chords already detected and adjust labels or timing; it cannot add lyrics or music. We record which provider and model answered and token counts to measure usage. Those usage records do not include the words or other song content.</span></div>
     <div class="row"><span class="who">Anthropic or OpenAI</span><span>For questions about a song: Clef, the guide in the app, is an AI, and its answers are written this way. Your question and what the app has already worked out — the title, key, tempo, length, chords, sections, up to sixty lines of the words, which parts have been shared on it and the display names of the people who recorded them, which parts it is still asking for, how many beats the band counts in a cycle, and the way you name notes — go to a language model that writes the answer. The recording never does. Which model depends on how we have configured it: Anthropic's API when a key for it is set, otherwise OpenAI's. Both publish API terms under which what is sent is not used to train their models. We also record which provider and model answered and token counts, including counts of tokens reused from a cache, to measure usage; those usage records do not include your question or song content. We keep your question and the answer too, readable from our service by you alone, until the song or your account is deleted; if the model does not answer, the question is kept with no answer. A question turned away because you have asked too many this hour is not kept. Some questions the app answers by itself: those go to no model, and are not kept. Every answer says Clef is an AI. From 13, Clef answers only about your own songs, refuses relationship, sexual and self-harm topics, and says where to get help; on OpenAI it stays for people 18 and over. It is not on in rooms made by a lesson link. A question Clef turns down about relationships or sex is kept with its refusal, like any other question, and readable only by you; a question about hurting yourself is answered with where to get help and is not kept.</span></div>
@@ -904,10 +904,10 @@
   </div>
   <p>
     RunPod and Google Cloud Run are infrastructure we run our own code on —
-    they don't process your recording for their own purposes. Most song
-    sheets get their words on our own worker, and then nothing goes to
-    OpenAI. When the worker gives no words, or you ask the sheet to listen
-    again, the recording goes to OpenAI as the OpenAI row says: the isolated
+    they don't process your recording for their own purposes. A full analysis gets its words on our own worker, and then nothing goes to
+    OpenAI; a chords sheet hears no words and sends nothing there. When a full
+    analysis comes back with no words, or you ask the sheet to listen again, the
+    recording goes to OpenAI as the OpenAI row says: the isolated
     vocal when there is one, otherwise the whole recording.
   </p>
   <p>
