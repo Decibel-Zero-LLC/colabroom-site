@@ -1,0 +1,92 @@
+/* Shared presentation. Legal pages and generated public records keep their
+   existing stylesheet and never opt in to this class. No feature logic here. */
+@media screen {
+.site-redesign {
+  --ink: #05080c; --surface: #0c141e; --line: #253440;
+  --text: #f4f7fa; --body: #c6d0db; --muted: #99a9b8;
+  --cyan: #64dfff; --gold: #E3B34D;
+  background: var(--ink); color: var(--body);
+}
+.site-redesign .wrap { max-width: 80rem; padding-inline: clamp(20px, 4vw, 64px); }
+.site-redesign header.top {
+  position: relative; z-index: 30; display: flex; flex-wrap: wrap;
+  gap: .75rem 1.5rem; min-height: 6rem; padding-block: 1.35rem;
+  border-bottom: 1px solid #ffffff16;
+}
+.site-redesign .brand { display: inline-flex; align-items: center; gap: .7rem; font-size: 1.25rem; letter-spacing: -.055em; white-space: nowrap; margin: 0; }
+.brand-mark { display: flex; align-items: center; gap: 3px; height: 24px; color: var(--cyan); }
+.brand-mark i { display: block; width: 3px; height: 12px; border-radius: 3px; background: currentColor; }
+.brand-mark i:nth-child(2), .brand-mark i:nth-child(4) { height: 19px; }
+.brand-mark i:nth-child(3) { height: 26px; }
+.site-redesign .site-menu { margin: 0; }
+.site-menu > summary {
+  display: flex; gap: .8rem; align-items: center; padding: .65rem .2rem;
+  color: var(--text); font: 600 .875rem/1.4 var(--display); cursor: pointer; list-style: none;
+}
+.site-menu > summary::-webkit-details-marker { display: none; }
+.site-menu > summary::after { content: '+'; font: 400 1.2rem/1 var(--display); color: var(--cyan); }
+.site-menu[open] > summary::after { content: '−'; }
+.site-redesign header.top nav.pages {
+  position: absolute; inset: calc(100% - .5rem) 0 auto; z-index: 31;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem; padding: 2rem; border: 1px solid #3a515e;
+  border-radius: .8rem; background: #0b121b; box-shadow: 0 1.5rem 4rem #000b;
+  max-height: calc(100svh - 7rem); overflow-y: auto;
+}
+.site-redesign header.top .site-menu:not([open]) > nav.pages { display: none; }
+.nav-group { display: flex; flex-direction: column; align-items: stretch; min-width: 0; }
+.nav-group h2 { font: 500 .7rem/1.6 var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--cyan); margin: 0 0 .65rem; }
+.site-redesign nav.pages a { padding: .65rem .5rem; margin-inline: -.5rem; color: var(--body); min-height: 44px; border-radius: .3rem; }
+.site-redesign nav.pages a:hover, .site-redesign nav.pages a[aria-current] { background: #ffffff0a; color: #fff; }
+.site-redesign .header-tool { font: 500 .8rem/1.5 var(--display); text-decoration: none; color: var(--muted); }
+.site-redesign .header-actions { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin-left: auto; }
+.site-redesign header.top .cta { margin: 0; }
+.site-redesign .cta { border-radius: .5rem; padding: .8rem 1.1rem; min-height: 44px; background: #e9f1f6; color: #08121c; border: 1px solid transparent; }
+.site-redesign .cta.quiet { background: #ffffff04; border-color: #ffffff27; color: var(--text); }
+.site-redesign .cta:hover { background: var(--cyan); color: #05131b; }
+.site-redesign :is(a, button, summary, select, textarea, input):focus-visible { outline: 2px solid var(--cyan); outline-offset: 5px; }
+.site-redesign .skip-content { position: fixed; top: .5rem; left: 1rem; z-index: 99; padding: .7rem 1rem; background: #e9f1f6; color: #08121c; transform: translateY(-200%); font: 600 1rem var(--display); }
+.site-redesign .skip-content:focus { transform: none; }
+.site-redesign footer { gap: 1rem; padding-block: 2rem; margin-top: 2rem; font-family: var(--display); line-height: 1.7; }
+.site-redesign .onward { border-radius: .7rem; }
+.site-redesign .eyebrow { color: var(--cyan); }
+.site-redesign .onward .where { color: var(--text); }
+.site-redesign .onward:hover { border-color: var(--cyan); }
+.site-redesign :where([id]) { scroll-margin-top: 2rem; }
+
+/* Working tools retain every form, output and original script. */
+.tool-page .hero { padding-block: clamp(2.5rem, 6vw, 5rem) 2rem; max-width: 60rem; }
+.tool-page .hero h1 { font-size: clamp(2.6rem, 6.5vw, 6rem); letter-spacing: -.065em; }
+.tool-page .hero p { font-family: var(--display); font-size: clamp(1rem, 1.7vw, 1.25rem); max-width: 44ch; line-height: 1.6; }
+.tool-page .hero .meta { font-family: var(--mono); line-height: 1.8; letter-spacing: .02em; margin-top: 1.5rem; }
+.tool-page .tool { border-radius: 1rem; background: linear-gradient(135deg, #111c29, #080e15); border: 1px solid #2d404f; padding: clamp(1rem, 3vw, 2.5rem); margin-top: 1.5rem; margin-bottom: 4rem; box-shadow: 0 1rem 4rem #0005; }
+.tool-page .drop { border-color: #4d6b7d; border-radius: .7rem; background: #ffffff03; }
+.tool-page .drop:hover { border-color: var(--cyan); }
+.tool-page :is(.chartbox, .sheet) { font-size: .95rem; border-radius: .5rem; }
+.tool-page .toolbar { gap: 1.2rem; }
+.tool-page .answer { font-family: var(--display); }
+.tool-page .moment { padding-block: 3.5rem; }
+.tool-page .moment h2 { max-width: 24ch; font-size: clamp(1.8rem, 3.4vw, 3rem); }
+.tool-page .moment .lede { font-family: var(--display); font-size: 1rem; line-height: 1.8; max-width: 64ch; }
+.tool-page .onward-row { gap: 1rem; }
+@media (max-width: 60rem) { .site-redesign .header-tool { display: none; } }
+@media (max-width: 42rem) {
+  .site-redesign header.top { gap: .75rem; min-height: auto; padding-block: 1.1rem; }
+  .site-redesign .site-menu { margin-left: auto; }
+  .site-redesign .header-actions { flex-basis: 100%; margin-left: 0; justify-content: flex-end; }
+  .site-redesign .header-actions .cta { padding: .65rem 1rem; font-size: .8rem; }
+  .site-redesign header.top nav.pages { inset: 100% 0 auto; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 1.2rem; gap: 1.2rem; max-height: calc(100svh - 10rem); }
+  .site-redesign .brand { font-size: 1.2rem; }
+  .tool-page .hero h1 br { display: initial; }
+  .tool-page .chartbox, .tool-page .sheet { max-width: 100%; }
+}
+.tool-page :is(h1,h2,h3) { overflow-wrap: anywhere; }
+.tool-page .capo-row { display: flex; flex-wrap: wrap; gap: .5rem 1rem; }
+.page-bands .hero { margin-inline: 0; padding-inline: 0; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+}
+@media print {
+  .site-redesign { background: #fff; color: #000; }
+  .site-redesign header.top, .site-redesign .skip-content { display: none; }
+  .tool-page .tool { background: none; border: 0; box-shadow: none; padding: 0; }
+}

@@ -89,30 +89,44 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="chrome.css">
 </head>
-<body>
+<body class="site-redesign tool-page">
+<a class="skip-content" href="#main-content">Skip to content</a>
 
 <div class="wrap">
 
-  <header class="top">
-    <a class="brand" href="index.html">CoLabRoom</a>
-    <nav class="pages">
-      <a href="analysis.html">What it heard</a>
-      <a href="songbook.html">Song sheet</a>
-      <a href="practise.html">Practise</a>
-      <a href="takes.html">Takes</a>
-      <a href="bands.html">Rooms</a>
-      <a href="teams.html">Teams</a>
-      <a href="openmic.html">Open Mic</a>
-      <a href="learn.html">Learn</a>
-      <a href="chords.html">Chords</a>
-      <a href="what-key.html" aria-current="page">What key</a>
-    </nav>
-    <span class="sp"></span>
-    <!-- Somebody who already has an account had no way in from here. -->
-    <a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
-    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a>
-  </header>
+  <header class="top no-print">
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CoLabRoom</a>
+<details class="site-menu"><summary>Explore</summary><nav class="pages">
+<div class="nav-group"><h2>Make music</h2>
+<a href="analysis.html">What it heard</a>
+<a href="songbook.html">Song sheet</a>
+<a href="takes.html">Takes</a>
+</div>
+<div class="nav-group"><h2>Play & learn</h2>
+<a href="practise.html">Practise</a>
+<a href="learn.html">Learn</a>
+<a href="help.html">Chord help</a>
+</div>
+<div class="nav-group"><h2>Together</h2>
+<a href="bands.html">Rooms</a>
+<a href="teams.html">Teams</a>
+<a href="openmic.html">Open Mic</a>
+</div>
+<div class="nav-group"><h2>Free tools</h2>
+<a href="chords.html">Chords</a>
+<a href="what-key.html" aria-current="page">What key</a>
+<a href="transpose.html">Transpose</a>
+<a href="capo.html">Capo</a>
+<a href="nashville-numbers.html">Nashville numbers</a>
+</div>
+</nav></details>
+<a class="header-tool" href="chords.html">Try the chord tool ↗</a>
+<div class="header-actions"><a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
+<a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a></div>
+</header>
+<div id="main-content" tabindex="-1"></div>
 
   <div class="hero">
     <h1>What key<br>is this song?</h1>
@@ -288,12 +302,14 @@
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
     <a href="copyright.html">Copyright</a>
-  </footer>
+  <a href="index.html#beta">Account deletion</a>
+</footer>
 
 </div>
 
 <script src="count.js" data-page="what-key"></script>
 <script src="chords.js"></script>
 <script src="reveal.js"></script>
+<script src="site-menu.js" defer></script>
 </body>
 </html>
