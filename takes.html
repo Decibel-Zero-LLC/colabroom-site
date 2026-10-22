@@ -12,6 +12,7 @@
 <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="editorial.css">
   <link rel="canonical" href="https://colabroom.com/takes.html">
   <meta property="og:url" content="https://colabroom.com/takes.html">
   <meta property="og:site_name" content="CoLabRoom">
@@ -34,30 +35,44 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="chrome.css">
 </head>
-<body>
+<body class="site-redesign editorial page-takes">
+<a class="skip-content" href="#main-content">Skip to content</a>
 
 <div class="wrap">
 
-  <header class="top">
-    <a class="brand" href="index.html">CoLabRoom</a>
-    <nav class="pages">
-      <a href="analysis.html">What it heard</a>
-      <a href="songbook.html">Song sheet</a>
-      <a href="practise.html">Practise</a>
-      <a href="takes.html" aria-current="page">Takes</a>
-      <a href="bands.html">Rooms</a>
-      <a href="teams.html">Teams</a>
-      <a href="openmic.html">Open Mic</a>
-      <a href="learn.html">Learn</a>
-      <a href="chords.html">Chords</a>
-      <a href="what-key.html">What key</a>
-    </nav>
-    <span class="sp"></span>
-    <!-- Somebody who already has an account had no way in from here. -->
-    <a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
-    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a>
-  </header>
+  <header class="top no-print">
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CoLabRoom</a>
+<details class="site-menu"><summary>Explore</summary><nav class="pages">
+<div class="nav-group"><h2>Make music</h2>
+<a href="analysis.html">What it heard</a>
+<a href="songbook.html">Song sheet</a>
+<a href="takes.html" aria-current="page">Takes</a>
+</div>
+<div class="nav-group"><h2>Play & learn</h2>
+<a href="practise.html">Practise</a>
+<a href="learn.html">Learn</a>
+<a href="help.html">Chord help</a>
+</div>
+<div class="nav-group"><h2>Together</h2>
+<a href="bands.html">Rooms</a>
+<a href="teams.html">Teams</a>
+<a href="openmic.html">Open Mic</a>
+</div>
+<div class="nav-group"><h2>Free tools</h2>
+<a href="chords.html">Chords</a>
+<a href="what-key.html">What key</a>
+<a href="transpose.html">Transpose</a>
+<a href="capo.html">Capo</a>
+<a href="nashville-numbers.html">Nashville numbers</a>
+</div>
+</nav></details>
+<a class="header-tool" href="chords.html">Try the chord tool ↗</a>
+<div class="header-actions"><a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
+<a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a></div>
+</header>
+<div id="main-content" tabindex="-1"></div>
 
   <div class="hero inner">
     <p class="kicker">Takes</p>
@@ -68,13 +83,16 @@
     </p>
   </div>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-1 has-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">Recording</div>
     <h2>Press record. It plays what is already there.</h2>
     <p class="lede">
       Headphones on, hit record, and the song plays while you're playing.
       You're playing along, not guessing.
     </p>
+
+    </div>
     <div class="art" aria-hidden="true">
       <div class="take">
         <span class="dot" style="background:var(--a1)"></span>
@@ -101,9 +119,11 @@
         <span class="pct">muted</span>
       </div>
     </div>
+
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-2 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">Nobody gets overwritten</div>
     <h2>Mute anything. It only goes quiet for you.</h2>
     <p class="lede">
@@ -115,18 +135,24 @@
       <li><b>Everyone else mutes.</b> Which is what they wanted anyway.</li>
       <li><b>Nothing collides.</b> Two people recording at once both land.</li>
     </ul>
+
+    </div>
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-3 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">Sideways</div>
     <h2>Turn the phone. It becomes a desk.</h2>
     <p class="lede">
       Sideways, the takes line up as faders. Balancing is comparing, not
       scrolling.
     </p>
+
+    </div>
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-4 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">In time</div>
     <h2>Your take lands where you played it.</h2>
     <p class="lede">
@@ -134,9 +160,12 @@
       the song has a sheet, your take is pulled onto the beat where you
       played it.
     </p>
+
+    </div>
   </section>
 
-  <section class="moment reveal" id="yours">
+  <section class="moment editorial-section editorial-section-5 no-art reveal" id="yours">
+    <div class="editorial-copy">
     <div class="eyebrow">Yours</div>
     <h2>Take it with you.</h2>
     <p class="lede">
@@ -153,6 +182,8 @@
     <p class="lede">
       The sheet comes too: Print chords and words, or Send as ChordPro.
     </p>
+
+    </div>
   </section>
 
   <div class="close">
@@ -194,5 +225,6 @@
 <script src="count.js" data-page="takes"></script>
 <script src="stage.js"></script>
 <script src="reveal.js"></script>
+<script src="site-menu.js" defer></script>
 </body>
 </html>

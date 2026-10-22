@@ -20,9 +20,15 @@ What is in here:
 - `count.js` — the arrival code and the anonymous step counters, on every
   marketing page. `chords.js` — the free chord tool. `stage.js`, `reveal.js` —
   a little motion, skipped when reduced motion is asked for. `story.css` and
-  `story.js`: the front page's and the Teams page's drawings and their
-  motion, loaded by those two pages only; every drawing is finished without
-  the script.
+  `story.js` retain the Teams page's drawings and motion.
+- `experience.css` and `experience.js` — the home product tour. Its four
+  scenes and notation control are clearly labelled illustrations; they do
+  not record, upload or play audio. Without JavaScript all scenes are visible.
+- `chrome.css` and `site-menu.js` — shared marketing/tool navigation and
+  presentation; the native Explore disclosure also works without JavaScript.
+  `editorial.css` gives each product chapter its layout. Legal and generated
+  public-record pages retain their original presentation.
+- `assets/` — compressed original campaign images and their provenance.
 - `tools/build_public_pages.py` — the nightly job that writes a page per
   showcased song and discoverable musician, and `sitemap-pages.xml` for them.
 
@@ -37,3 +43,11 @@ notes in `docs/` that have no business being served as a website.
 The account-deletion section is not decoration — Google Play and the App Store
 both require a publicly reachable deletion route, and this page is it. Keep it
 reachable and keep the support address live.
+
+## Reviewing the visual redesign locally
+
+From the checkout, run `python3 -m http.server 8780 --bind 127.0.0.1` and open
+`http://127.0.0.1:8780/`. Explore the four song scenes, switch the sheet from
+letters to numbers, open the grouped navigation, and try a chart tool. Product
+illustrations are distinct from the working free tools. Existing age and beta
+availability notices still apply. Local review does not publish the site.
