@@ -1,19 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CoLabRoom · An app for musicians, from a hum to the stage</title>
-<meta name="description" content="An app for musicians. Hum an idea and a likely set of chords comes back. Your room plays on it, your band takes it to the stage, and everything you make stays yours.">
-<meta property="og:title" content="CoLabRoom">
-<meta property="og:description" content="From a hum in the kitchen to the stage. An app for musicians.">
-<meta property="og:type" content="website">
-<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="site.css">
-<link rel="stylesheet" href="story.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CoLabRoom · Where music lives.</title>
+  <meta name="description" content="Catch an idea. Make it a song. Play it together. CoLabRoom brings your recordings, words, chords and people into one place. Free during the beta.">
   <link rel="canonical" href="https://colabroom.com/">
+  <meta property="og:title" content="CoLabRoom · Where music lives.">
+  <meta property="og:description" content="Catch an idea. Make it a song. Play it together. An app for musicians, free during the beta.">
+  <meta property="og:type" content="website">
   <meta property="og:url" content="https://colabroom.com/">
   <meta property="og:site_name" content="CoLabRoom">
   <meta property="og:image" content="https://colabroom.com/share.png">
@@ -21,401 +16,125 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="CoLabRoom — songwriting for musicians who aren't in the same room.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CoLabRoom">
-  <meta name="twitter:description" content="From a hum in the kitchen to the stage. An app for musicians.">
+  <meta name="twitter:title" content="CoLabRoom · Where music lives.">
+  <meta name="twitter:description" content="Catch an idea. Make it a song. Play it together. Free during the beta.">
   <meta name="twitter:image" content="https://colabroom.com/share.png">
-  <meta name="theme-color" content="#06101F">
-<!-- What a machine reading this page is told.
-
-     Two things are deliberately absent and stay absent: aggregateRating
-     and interactionStatistic. Those are a star score and a headcount,
-     and the rule that keeps a number of people off the Open Mic keeps
-     one out of the head of this page too. It will be tempting the first
-     week something ranks. The answer stays no.
-
-     operatingSystem is "Web" because that is where you can use this
-     today. It does not say iOS or Android until there is a listing
-     somebody can actually open. -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://colabroom.com/#organisation",
-      "name": "CoLabRoom",
-      "url": "https://colabroom.com/",
-      "description": "An app for musicians, from a hum to the stage."
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": "https://colabroom.com/#app",
-      "name": "CoLabRoom",
-      "url": "https://app.colabroom.com/",
-      "applicationCategory": "MusicApplication",
-      "operatingSystem": "Web",
-      "description": "An app for musicians. Hum an idea and a likely set of chords comes back. Your room plays on it, your band takes it to the stage, and everything you make stays yours.",
-      "featureList": [
-        "Hum an idea and get back a likely set of chords",
-        "A Song Sheet from a recording: chords, key, tempo, words and the song's shape",
-        "Takes from everyone in the room, none written over",
-        "One set for the band, each stand in its own reading",
-        "Save the mix, or every take separately"
-      ],
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "description": "Free during the beta."
-      },
-      "publisher": { "@id": "https://colabroom.com/#organisation" }
-    }
-  ]
-}
-</script>
+  <meta name="theme-color" content="#050709">
+  <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="experience.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"Organization","@id":"https://colabroom.com/#organisation","name":"CoLabRoom","url":"https://colabroom.com/","description":"An app for musicians."},
+    {"@type":"SoftwareApplication","@id":"https://colabroom.com/#app","name":"CoLabRoom","url":"https://app.colabroom.com/","applicationCategory":"MusicApplication","operatingSystem":"Web","description":"Keep your recordings, words, chords and shared music together. Phone recording and other features depend on platform and beta availability.","featureList":["Song sheets with words and chords","Private rooms for shared music","Personal music reading","Save the mix or individual takes"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","description":"Free during the beta."},"publisher":{"@id":"https://colabroom.com/#organisation"}}
+  ]}
+  </script>
+<link rel="stylesheet" href="chrome.css">
 </head>
-<body>
-<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false"><!-- The waveforms every drawing below plays from, drawn once. Made with
-     stage.js's own lane shape (seeded, so the same every load) and pasted
-     in, not built at runtime: the pictures are whole with no script. --><defs>
-<symbol id="w-you" viewBox="0 0 100 100" preserveAspectRatio="none"><rect x="0.00" y="44.6" width="1.38" height="10.9" rx="0.3"/><rect x="2.50" y="33.2" width="1.38" height="33.5" rx="0.3"/><rect x="5.00" y="35.4" width="1.38" height="29.1" rx="0.3"/><rect x="7.50" y="28.6" width="1.38" height="42.9" rx="0.3"/><rect x="10.00" y="43.0" width="1.38" height="13.9" rx="0.3"/><rect x="12.50" y="26.7" width="1.38" height="46.5" rx="0.3"/><rect x="15.00" y="35.7" width="1.38" height="28.6" rx="0.3"/><rect x="17.50" y="41.7" width="1.38" height="16.5" rx="0.3"/><rect x="20.00" y="41.0" width="1.38" height="17.9" rx="0.3"/><rect x="22.50" y="19.3" width="1.38" height="61.4" rx="0.3"/><rect x="25.00" y="18.6" width="1.38" height="62.8" rx="0.3"/><rect x="27.50" y="28.7" width="1.38" height="42.6" rx="0.3"/><rect x="30.00" y="30.2" width="1.38" height="39.5" rx="0.3"/><rect x="32.50" y="27.4" width="1.38" height="45.3" rx="0.3"/><rect x="35.00" y="25.5" width="1.38" height="49.0" rx="0.3"/><rect x="37.50" y="20.5" width="1.38" height="58.9" rx="0.3"/><rect x="40.00" y="20.1" width="1.38" height="59.7" rx="0.3"/><rect x="42.50" y="29.7" width="1.38" height="40.6" rx="0.3"/><rect x="45.00" y="28.1" width="1.38" height="43.9" rx="0.3"/><rect x="47.50" y="17.6" width="1.38" height="64.8" rx="0.3"/><rect x="50.00" y="31.0" width="1.38" height="37.9" rx="0.3"/><rect x="52.50" y="27.8" width="1.38" height="44.4" rx="0.3"/><rect x="55.00" y="38.5" width="1.38" height="22.9" rx="0.3"/><rect x="57.50" y="20.7" width="1.38" height="58.6" rx="0.3"/><rect x="60.00" y="18.7" width="1.38" height="62.6" rx="0.3"/><rect x="62.50" y="31.7" width="1.38" height="36.6" rx="0.3"/><rect x="65.00" y="36.7" width="1.38" height="26.6" rx="0.3"/><rect x="67.50" y="16.1" width="1.38" height="67.7" rx="0.3"/><rect x="70.00" y="38.6" width="1.38" height="22.8" rx="0.3"/><rect x="72.50" y="30.6" width="1.38" height="38.8" rx="0.3"/><rect x="75.00" y="31.1" width="1.38" height="37.8" rx="0.3"/><rect x="77.50" y="39.8" width="1.38" height="20.4" rx="0.3"/><rect x="80.00" y="40.0" width="1.38" height="20.0" rx="0.3"/><rect x="82.50" y="29.4" width="1.38" height="41.2" rx="0.3"/><rect x="85.00" y="27.2" width="1.38" height="45.7" rx="0.3"/><rect x="87.50" y="41.9" width="1.38" height="16.2" rx="0.3"/><rect x="90.00" y="32.8" width="1.38" height="34.4" rx="0.3"/><rect x="92.50" y="28.6" width="1.38" height="42.9" rx="0.3"/><rect x="95.00" y="40.8" width="1.38" height="18.4" rx="0.3"/><rect x="97.50" y="37.6" width="1.38" height="24.8" rx="0.3"/></symbol>
-<symbol id="w-mara" viewBox="0 0 100 100" preserveAspectRatio="none"><rect x="0.00" y="43.4" width="1.38" height="13.2" rx="0.3"/><rect x="2.50" y="43.8" width="1.38" height="12.4" rx="0.3"/><rect x="5.00" y="43.9" width="1.38" height="12.2" rx="0.3"/><rect x="7.50" y="24.1" width="1.38" height="51.7" rx="0.3"/><rect x="10.00" y="42.8" width="1.38" height="14.5" rx="0.3"/><rect x="12.50" y="20.6" width="1.38" height="58.7" rx="0.3"/><rect x="15.00" y="21.9" width="1.38" height="56.2" rx="0.3"/><rect x="17.50" y="41.6" width="1.38" height="16.8" rx="0.3"/><rect x="20.00" y="33.5" width="1.38" height="33.1" rx="0.3"/><rect x="22.50" y="30.0" width="1.38" height="40.0" rx="0.3"/><rect x="25.00" y="11.8" width="1.38" height="76.4" rx="0.3"/><rect x="27.50" y="7.0" width="1.38" height="85.9" rx="0.3"/><rect x="30.00" y="8.6" width="1.38" height="82.8" rx="0.3"/><rect x="32.50" y="26.8" width="1.38" height="46.4" rx="0.3"/><rect x="35.00" y="38.1" width="1.38" height="23.7" rx="0.3"/><rect x="37.50" y="3.9" width="1.38" height="92.2" rx="0.3"/><rect x="40.00" y="23.3" width="1.38" height="53.4" rx="0.3"/><rect x="42.50" y="10.1" width="1.38" height="79.8" rx="0.3"/><rect x="45.00" y="15.6" width="1.38" height="68.9" rx="0.3"/><rect x="47.50" y="35.6" width="1.38" height="28.8" rx="0.3"/><rect x="50.00" y="3.1" width="1.38" height="93.9" rx="0.3"/><rect x="52.50" y="1.5" width="1.38" height="97.0" rx="0.3"/><rect x="55.00" y="34.0" width="1.38" height="32.0" rx="0.3"/><rect x="57.50" y="22.5" width="1.38" height="55.0" rx="0.3"/><rect x="60.00" y="15.6" width="1.38" height="68.8" rx="0.3"/><rect x="62.50" y="4.0" width="1.38" height="92.1" rx="0.3"/><rect x="65.00" y="19.9" width="1.38" height="60.3" rx="0.3"/><rect x="67.50" y="26.8" width="1.38" height="46.4" rx="0.3"/><rect x="70.00" y="21.1" width="1.38" height="57.8" rx="0.3"/><rect x="72.50" y="32.1" width="1.38" height="35.7" rx="0.3"/><rect x="75.00" y="22.5" width="1.38" height="55.1" rx="0.3"/><rect x="77.50" y="14.0" width="1.38" height="71.9" rx="0.3"/><rect x="80.00" y="34.9" width="1.38" height="30.2" rx="0.3"/><rect x="82.50" y="37.4" width="1.38" height="25.3" rx="0.3"/><rect x="85.00" y="33.9" width="1.38" height="32.3" rx="0.3"/><rect x="87.50" y="37.0" width="1.38" height="26.1" rx="0.3"/><rect x="90.00" y="39.6" width="1.38" height="20.9" rx="0.3"/><rect x="92.50" y="28.1" width="1.38" height="43.7" rx="0.3"/><rect x="95.00" y="26.3" width="1.38" height="47.5" rx="0.3"/><rect x="97.50" y="43.5" width="1.38" height="13.0" rx="0.3"/></symbol>
-<symbol id="w-jonah" viewBox="0 0 100 100" preserveAspectRatio="none"><rect x="0.00" y="45.2" width="1.38" height="9.7" rx="0.3"/><rect x="2.50" y="44.9" width="1.38" height="10.2" rx="0.3"/><rect x="5.00" y="42.6" width="1.38" height="14.8" rx="0.3"/><rect x="7.50" y="41.6" width="1.38" height="16.8" rx="0.3"/><rect x="10.00" y="43.6" width="1.38" height="12.8" rx="0.3"/><rect x="12.50" y="41.7" width="1.38" height="16.6" rx="0.3"/><rect x="15.00" y="41.2" width="1.38" height="17.7" rx="0.3"/><rect x="17.50" y="35.9" width="1.38" height="28.2" rx="0.3"/><rect x="20.00" y="30.3" width="1.38" height="39.4" rx="0.3"/><rect x="22.50" y="40.0" width="1.38" height="19.9" rx="0.3"/><rect x="25.00" y="29.7" width="1.38" height="40.6" rx="0.3"/><rect x="27.50" y="39.3" width="1.38" height="21.4" rx="0.3"/><rect x="30.00" y="35.7" width="1.38" height="28.5" rx="0.3"/><rect x="32.50" y="38.1" width="1.38" height="23.9" rx="0.3"/><rect x="35.00" y="38.8" width="1.38" height="22.4" rx="0.3"/><rect x="37.50" y="28.9" width="1.38" height="42.1" rx="0.3"/><rect x="40.00" y="31.5" width="1.38" height="37.0" rx="0.3"/><rect x="42.50" y="27.5" width="1.38" height="45.0" rx="0.3"/><rect x="45.00" y="35.0" width="1.38" height="30.0" rx="0.3"/><rect x="47.50" y="29.4" width="1.38" height="41.1" rx="0.3"/><rect x="50.00" y="31.2" width="1.38" height="37.6" rx="0.3"/><rect x="52.50" y="38.6" width="1.38" height="22.7" rx="0.3"/><rect x="55.00" y="33.9" width="1.38" height="32.3" rx="0.3"/><rect x="57.50" y="37.6" width="1.38" height="24.8" rx="0.3"/><rect x="60.00" y="34.3" width="1.38" height="31.4" rx="0.3"/><rect x="62.50" y="39.2" width="1.38" height="21.6" rx="0.3"/><rect x="65.00" y="39.4" width="1.38" height="21.2" rx="0.3"/><rect x="67.50" y="41.2" width="1.38" height="17.5" rx="0.3"/><rect x="70.00" y="41.6" width="1.38" height="16.9" rx="0.3"/><rect x="72.50" y="41.7" width="1.38" height="16.6" rx="0.3"/><rect x="75.00" y="36.9" width="1.38" height="26.3" rx="0.3"/><rect x="77.50" y="41.3" width="1.38" height="17.4" rx="0.3"/><rect x="80.00" y="30.9" width="1.38" height="38.2" rx="0.3"/><rect x="82.50" y="40.2" width="1.38" height="19.7" rx="0.3"/><rect x="85.00" y="36.1" width="1.38" height="27.8" rx="0.3"/><rect x="87.50" y="41.9" width="1.38" height="16.2" rx="0.3"/><rect x="90.00" y="35.8" width="1.38" height="28.5" rx="0.3"/><rect x="92.50" y="34.5" width="1.38" height="30.9" rx="0.3"/><rect x="95.00" y="43.7" width="1.38" height="12.6" rx="0.3"/><rect x="97.50" y="38.9" width="1.38" height="22.2" rx="0.3"/></symbol>
-<symbol id="w-sam" viewBox="0 0 100 100" preserveAspectRatio="none"><rect x="0.00" y="43.7" width="1.38" height="12.6" rx="0.3"/><rect x="2.50" y="44.1" width="1.38" height="11.8" rx="0.3"/><rect x="5.00" y="42.8" width="1.38" height="14.4" rx="0.3"/><rect x="7.50" y="30.7" width="1.38" height="38.6" rx="0.3"/><rect x="10.00" y="27.4" width="1.38" height="45.3" rx="0.3"/><rect x="12.50" y="37.3" width="1.38" height="25.4" rx="0.3"/><rect x="15.00" y="38.2" width="1.38" height="23.6" rx="0.3"/><rect x="17.50" y="37.5" width="1.38" height="25.1" rx="0.3"/><rect x="20.00" y="29.1" width="1.38" height="41.8" rx="0.3"/><rect x="22.50" y="23.7" width="1.38" height="52.7" rx="0.3"/><rect x="25.00" y="16.2" width="1.38" height="67.7" rx="0.3"/><rect x="27.50" y="40.9" width="1.38" height="18.3" rx="0.3"/><rect x="30.00" y="29.2" width="1.38" height="41.6" rx="0.3"/><rect x="32.50" y="30.6" width="1.38" height="38.8" rx="0.3"/><rect x="35.00" y="37.8" width="1.38" height="24.5" rx="0.3"/><rect x="37.50" y="33.9" width="1.38" height="32.2" rx="0.3"/><rect x="40.00" y="12.9" width="1.38" height="74.3" rx="0.3"/><rect x="42.50" y="37.0" width="1.38" height="25.9" rx="0.3"/><rect x="45.00" y="33.8" width="1.38" height="32.5" rx="0.3"/><rect x="47.50" y="18.5" width="1.38" height="63.0" rx="0.3"/><rect x="50.00" y="35.7" width="1.38" height="28.7" rx="0.3"/><rect x="52.50" y="28.0" width="1.38" height="44.0" rx="0.3"/><rect x="55.00" y="8.9" width="1.38" height="82.2" rx="0.3"/><rect x="57.50" y="39.4" width="1.38" height="21.1" rx="0.3"/><rect x="60.00" y="33.1" width="1.38" height="33.8" rx="0.3"/><rect x="62.50" y="18.1" width="1.38" height="63.7" rx="0.3"/><rect x="65.00" y="16.4" width="1.38" height="67.3" rx="0.3"/><rect x="67.50" y="32.7" width="1.38" height="34.5" rx="0.3"/><rect x="70.00" y="29.6" width="1.38" height="40.8" rx="0.3"/><rect x="72.50" y="15.0" width="1.38" height="69.9" rx="0.3"/><rect x="75.00" y="27.2" width="1.38" height="45.7" rx="0.3"/><rect x="77.50" y="35.1" width="1.38" height="29.9" rx="0.3"/><rect x="80.00" y="30.3" width="1.38" height="39.4" rx="0.3"/><rect x="82.50" y="28.6" width="1.38" height="42.8" rx="0.3"/><rect x="85.00" y="41.8" width="1.38" height="16.3" rx="0.3"/><rect x="87.50" y="30.3" width="1.38" height="39.5" rx="0.3"/><rect x="90.00" y="43.8" width="1.38" height="12.5" rx="0.3"/><rect x="92.50" y="28.3" width="1.38" height="43.3" rx="0.3"/><rect x="95.00" y="33.2" width="1.38" height="33.6" rx="0.3"/><rect x="97.50" y="39.9" width="1.38" height="20.2" rx="0.3"/></symbol>
-<symbol id="w-night" viewBox="0 0 100 100" preserveAspectRatio="none"><rect x="0.00" y="44.3" width="0.46" height="11.3" rx="0.3"/><rect x="0.83" y="42.7" width="0.46" height="14.6" rx="0.3"/><rect x="1.67" y="41.0" width="0.46" height="18.0" rx="0.3"/><rect x="2.50" y="44.5" width="0.46" height="11.1" rx="0.3"/><rect x="3.33" y="34.2" width="0.46" height="31.5" rx="0.3"/><rect x="4.17" y="31.4" width="0.46" height="37.3" rx="0.3"/><rect x="5.00" y="43.5" width="0.46" height="13.0" rx="0.3"/><rect x="5.83" y="32.2" width="0.46" height="35.7" rx="0.3"/><rect x="6.67" y="42.7" width="0.46" height="14.6" rx="0.3"/><rect x="7.50" y="40.4" width="0.46" height="19.2" rx="0.3"/><rect x="8.33" y="29.2" width="0.46" height="41.7" rx="0.3"/><rect x="9.17" y="38.8" width="0.46" height="22.4" rx="0.3"/><rect x="10.00" y="36.7" width="0.46" height="26.6" rx="0.3"/><rect x="10.83" y="36.5" width="0.46" height="27.0" rx="0.3"/><rect x="11.67" y="32.8" width="0.46" height="34.4" rx="0.3"/><rect x="12.50" y="29.8" width="0.46" height="40.4" rx="0.3"/><rect x="13.33" y="34.9" width="0.46" height="30.3" rx="0.3"/><rect x="14.17" y="32.7" width="0.46" height="34.7" rx="0.3"/><rect x="15.00" y="28.1" width="0.46" height="43.9" rx="0.3"/><rect x="15.83" y="33.9" width="0.46" height="32.2" rx="0.3"/><rect x="16.67" y="40.0" width="0.46" height="19.9" rx="0.3"/><rect x="17.50" y="25.5" width="0.46" height="49.0" rx="0.3"/><rect x="18.33" y="24.2" width="0.46" height="51.6" rx="0.3"/><rect x="19.17" y="41.8" width="0.46" height="16.4" rx="0.3"/><rect x="20.00" y="35.1" width="0.46" height="29.8" rx="0.3"/><rect x="20.83" y="39.4" width="0.46" height="21.2" rx="0.3"/><rect x="21.67" y="27.9" width="0.46" height="44.3" rx="0.3"/><rect x="22.50" y="41.1" width="0.46" height="17.9" rx="0.3"/><rect x="23.33" y="32.9" width="0.46" height="34.2" rx="0.3"/><rect x="24.17" y="18.1" width="0.46" height="63.9" rx="0.3"/><rect x="25.00" y="20.8" width="0.46" height="58.3" rx="0.3"/><rect x="25.83" y="22.7" width="0.46" height="54.7" rx="0.3"/><rect x="26.67" y="16.0" width="0.46" height="68.0" rx="0.3"/><rect x="27.50" y="40.6" width="0.46" height="18.8" rx="0.3"/><rect x="28.33" y="31.9" width="0.46" height="36.1" rx="0.3"/><rect x="29.17" y="20.5" width="0.46" height="59.1" rx="0.3"/><rect x="30.00" y="40.8" width="0.46" height="18.4" rx="0.3"/><rect x="30.83" y="35.7" width="0.46" height="28.7" rx="0.3"/><rect x="31.67" y="17.5" width="0.46" height="65.0" rx="0.3"/><rect x="32.50" y="36.6" width="0.46" height="26.9" rx="0.3"/><rect x="33.33" y="33.5" width="0.46" height="33.1" rx="0.3"/><rect x="34.17" y="16.6" width="0.46" height="66.9" rx="0.3"/><rect x="35.00" y="19.8" width="0.46" height="60.3" rx="0.3"/><rect x="35.83" y="14.3" width="0.46" height="71.4" rx="0.3"/><rect x="36.67" y="20.3" width="0.46" height="59.4" rx="0.3"/><rect x="37.50" y="36.8" width="0.46" height="26.5" rx="0.3"/><rect x="38.33" y="27.7" width="0.46" height="44.5" rx="0.3"/><rect x="39.17" y="23.8" width="0.46" height="52.4" rx="0.3"/><rect x="40.00" y="24.4" width="0.46" height="51.2" rx="0.3"/><rect x="40.83" y="29.0" width="0.46" height="42.1" rx="0.3"/><rect x="41.67" y="33.6" width="0.46" height="32.8" rx="0.3"/><rect x="42.50" y="22.8" width="0.46" height="54.5" rx="0.3"/><rect x="43.33" y="27.5" width="0.46" height="44.9" rx="0.3"/><rect x="44.17" y="39.7" width="0.46" height="20.7" rx="0.3"/><rect x="45.00" y="18.4" width="0.46" height="63.2" rx="0.3"/><rect x="45.83" y="36.9" width="0.46" height="26.2" rx="0.3"/><rect x="46.67" y="40.0" width="0.46" height="20.1" rx="0.3"/><rect x="47.50" y="20.3" width="0.46" height="59.5" rx="0.3"/><rect x="48.33" y="29.0" width="0.46" height="42.0" rx="0.3"/><rect x="49.17" y="23.5" width="0.46" height="53.0" rx="0.3"/><rect x="50.00" y="32.6" width="0.46" height="34.8" rx="0.3"/><rect x="50.83" y="11.2" width="0.46" height="77.7" rx="0.3"/><rect x="51.67" y="36.7" width="0.46" height="26.6" rx="0.3"/><rect x="52.50" y="36.1" width="0.46" height="27.8" rx="0.3"/><rect x="53.33" y="39.8" width="0.46" height="20.4" rx="0.3"/><rect x="54.17" y="25.6" width="0.46" height="48.8" rx="0.3"/><rect x="55.00" y="32.7" width="0.46" height="34.5" rx="0.3"/><rect x="55.83" y="31.4" width="0.46" height="37.2" rx="0.3"/><rect x="56.67" y="19.3" width="0.46" height="61.4" rx="0.3"/><rect x="57.50" y="25.9" width="0.46" height="48.2" rx="0.3"/><rect x="58.33" y="35.1" width="0.46" height="29.7" rx="0.3"/><rect x="59.17" y="25.1" width="0.46" height="49.7" rx="0.3"/><rect x="60.00" y="35.4" width="0.46" height="29.1" rx="0.3"/><rect x="60.83" y="23.1" width="0.46" height="53.9" rx="0.3"/><rect x="61.67" y="30.0" width="0.46" height="40.0" rx="0.3"/><rect x="62.50" y="36.9" width="0.46" height="26.1" rx="0.3"/><rect x="63.33" y="39.3" width="0.46" height="21.3" rx="0.3"/><rect x="64.17" y="21.2" width="0.46" height="57.6" rx="0.3"/><rect x="65.00" y="13.2" width="0.46" height="73.5" rx="0.3"/><rect x="65.83" y="40.7" width="0.46" height="18.7" rx="0.3"/><rect x="66.67" y="34.2" width="0.46" height="31.6" rx="0.3"/><rect x="67.50" y="31.1" width="0.46" height="37.7" rx="0.3"/><rect x="68.33" y="19.2" width="0.46" height="61.5" rx="0.3"/><rect x="69.17" y="32.1" width="0.46" height="35.8" rx="0.3"/><rect x="70.00" y="32.9" width="0.46" height="34.3" rx="0.3"/><rect x="70.83" y="15.0" width="0.46" height="70.1" rx="0.3"/><rect x="71.67" y="26.8" width="0.46" height="46.4" rx="0.3"/><rect x="72.50" y="22.9" width="0.46" height="54.3" rx="0.3"/><rect x="73.33" y="19.3" width="0.46" height="61.4" rx="0.3"/><rect x="74.17" y="41.1" width="0.46" height="17.7" rx="0.3"/><rect x="75.00" y="25.1" width="0.46" height="49.9" rx="0.3"/><rect x="75.83" y="32.2" width="0.46" height="35.6" rx="0.3"/><rect x="76.67" y="38.0" width="0.46" height="23.9" rx="0.3"/><rect x="77.50" y="32.5" width="0.46" height="35.1" rx="0.3"/><rect x="78.33" y="19.8" width="0.46" height="60.4" rx="0.3"/><rect x="79.17" y="30.4" width="0.46" height="39.2" rx="0.3"/><rect x="80.00" y="18.9" width="0.46" height="62.1" rx="0.3"/><rect x="80.83" y="27.7" width="0.46" height="44.6" rx="0.3"/><rect x="81.67" y="20.9" width="0.46" height="58.3" rx="0.3"/><rect x="82.50" y="37.5" width="0.46" height="25.0" rx="0.3"/><rect x="83.33" y="28.8" width="0.46" height="42.4" rx="0.3"/><rect x="84.17" y="32.6" width="0.46" height="34.7" rx="0.3"/><rect x="85.00" y="40.7" width="0.46" height="18.5" rx="0.3"/><rect x="85.83" y="28.1" width="0.46" height="43.8" rx="0.3"/><rect x="86.67" y="36.3" width="0.46" height="27.5" rx="0.3"/><rect x="87.50" y="38.5" width="0.46" height="23.0" rx="0.3"/><rect x="88.33" y="32.7" width="0.46" height="34.6" rx="0.3"/><rect x="89.17" y="30.1" width="0.46" height="39.8" rx="0.3"/><rect x="90.00" y="34.3" width="0.46" height="31.4" rx="0.3"/><rect x="90.83" y="32.1" width="0.46" height="35.9" rx="0.3"/><rect x="91.67" y="26.9" width="0.46" height="46.1" rx="0.3"/><rect x="92.50" y="32.7" width="0.46" height="34.6" rx="0.3"/><rect x="93.33" y="34.6" width="0.46" height="30.9" rx="0.3"/><rect x="94.17" y="43.0" width="0.46" height="14.0" rx="0.3"/><rect x="95.00" y="31.8" width="0.46" height="36.4" rx="0.3"/><rect x="95.83" y="33.5" width="0.46" height="32.9" rx="0.3"/><rect x="96.67" y="33.9" width="0.46" height="32.1" rx="0.3"/><rect x="97.50" y="42.9" width="0.46" height="14.1" rx="0.3"/><rect x="98.33" y="39.9" width="0.46" height="20.3" rx="0.3"/><rect x="99.17" y="41.6" width="0.46" height="16.8" rx="0.3"/></symbol>
-</defs></svg>
-
+<body class="site-redesign home-experience">
+<a class="skip-content" href="#main-content">Skip to content</a>
 <div class="wrap">
-
-  <header class="top">
-    <a class="brand" href="index.html">CoLabRoom</a>
-    <nav class="pages">
-      <!-- One nav on every page (tools/nav_test.js holds them to it). The first eight follow the front page's road; the two free tools close the row, since the hero's button already leads with the chord tool. Ten places, two rows on a phone, measured at 320, 360 and 375. -->
-      <a href="analysis.html">What it heard</a>
-      <a href="songbook.html">Song sheet</a>
-      <a href="practise.html">Practise</a>
-      <a href="takes.html">Takes</a>
-      <a href="bands.html">Rooms</a>
-      <a href="teams.html">Teams</a>
-      <a href="openmic.html">Open Mic</a>
-      <a href="learn.html">Learn</a>
-      <a href="chords.html">Chords</a>
-      <a href="what-key.html">What key</a>
-    </nav>
-    <span class="sp"></span>
-    <!-- Somebody who already has an account had no way in from here. -->
-    <a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
-    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a>
-  </header>
-
-  <main class="story">
-
-  <div class="hero">
-    <p class="kicker">An app for musicians</p>
-    <h1>From a hum<br>to the stage.</h1>
-    <p>Follow one song, County Line, from the kitchen to a Friday night.</p>
-    <!-- The one thing on this site anybody can use right now.
-         It was the first item in the nav, which is where useful things go to
-         be ignored. It posts a recording to the analyze-public function and
-         gets real chords back — no account, nothing installed. -->
-    <div class="hero-do">
-      <a class="cta" href="chords.html">Get the chords from a recording</a>
-      <span class="hero-note">No account. Nothing to install.</span>
+  <header class="top no-print">
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CoLabRoom</a>
+<details class="site-menu"><summary>Explore</summary><nav class="pages">
+<div class="nav-group"><h2>Make music</h2>
+<a href="analysis.html">What it heard</a>
+<a href="songbook.html">Song sheet</a>
+<a href="takes.html">Takes</a>
+</div>
+<div class="nav-group"><h2>Play & learn</h2>
+<a href="practise.html">Practise</a>
+<a href="learn.html">Learn</a>
+<a href="help.html">Chord help</a>
+</div>
+<div class="nav-group"><h2>Together</h2>
+<a href="bands.html">Rooms</a>
+<a href="teams.html">Teams</a>
+<a href="openmic.html">Open Mic</a>
+</div>
+<div class="nav-group"><h2>Free tools</h2>
+<a href="chords.html">Chords</a>
+<a href="what-key.html">What key</a>
+<a href="transpose.html">Transpose</a>
+<a href="capo.html">Capo</a>
+<a href="nashville-numbers.html">Nashville numbers</a>
+</div>
+</nav></details>
+<a class="header-tool" href="chords.html">Try the chord tool ↗</a>
+<div class="header-actions"><a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
+<a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a></div>
+</header>
+<main class="experience" id="main-content">
+  <section class="ex-hero" aria-labelledby="hero-title">
+    <img class="ex-hero-image" src="assets/campaign-studio.webp" alt="" width="1672" height="941" fetchpriority="high">
+    <div class="ex-hero-shade" aria-hidden="true"></div>
+    <div class="ex-container ex-hero-content">
+      <p class="ex-kicker">For the music you have in you.</p>
+      <h1 id="hero-title">Where music<br>lives.</h1>
+      <p class="ex-hero-line">Catch an idea. Make it a song.<br>Play it together.</p>
+      <div class="ex-actions"><a class="ex-button" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for a beta invite <span aria-hidden="true">↗</span></a><a class="ex-text-link" href="#product">Explore the app <span aria-hidden="true">↓</span></a></div>
+      <p class="ex-fine">An app for musicians. Free during the beta.</p>
     </div>
-    <div class="meta">Free during the beta</div>
-  </div>
-
-  <!-- The life of a song: one song, County Line, from a hum to a Friday
-       night, in seven scenes. The road is the chapter list, and while the
-       song travels it sticks to the top and fills as you go. Every
-       picture is drawn finished; story.js only adds the getting there. -->
-  <div id="life">
-
-    <nav class="road" aria-label="The life of a song">
-      <ol>
-        <li><a href="#hum" aria-label="Hum it"><span>Hum it</span></a></li>
-        <li><a href="#sheet" aria-label="The sheet"><span>The sheet</span></a></li>
-        <li><a href="#play" aria-label="Play it"><span>Play it</span></a></li>
-        <li><a href="#overnight" aria-label="Overnight"><span>Overnight</span></a></li>
-        <li><a href="#rehearse" aria-label="Rehearse"><span>Rehearse</span></a></li>
-        <li><a href="#night" aria-label="The night"><span>The night</span></a></li>
-        <li><a href="#yours" aria-label="Yours"><span>Yours</span></a></li>
-      </ol>
-      <div class="road-line" aria-hidden="true"><i class="road-fill"></i></div>
-      <p class="road-now" aria-hidden="true"><span>Hum it · 1 of 7</span><span>The sheet · 2 of 7</span><span>Play it · 3 of 7</span><span>Overnight · 4 of 7</span><span>Rehearse · 5 of 7</span><span>The night · 6 of 7</span><span>Yours · 7 of 7</span></p>
-    </nav>
-
-    <section class="scene" id="hum" data-steps="3" aria-labelledby="hum-h">
-      <div class="frame"><div class="frame-in">
-        <div class="words">
-          <p class="eyebrow">Hum it</p>
-          <h2 id="hum-h">It starts as a hum.</h2>
-          <div class="lines">
-            <p class="ln" data-at="1">Press the gold Record button, from anywhere in the app.</p>
-            <p class="ln" data-at="2">Hum it and a likely set of chords comes back. Sing it and the words come back too.</p>
-            <p class="ln" data-at="3">Not ready? Keep it for later. Kept until you remove it.</p>
-          </div>
-          <a class="more" href="analysis.html#hum">What comes back from a hum →</a>
-        </div>
-        <div class="pic">
-          <div class="art p-hum" aria-hidden="true">
-            <div class="rec-row">
-              <span class="rec"><i class="disc"></i>Record</span>
-              <span class="track"><svg class="wave" style="color:var(--a1)"><use href="#w-you" width="100%" height="100%"/></svg><i class="cover"></i><i class="ph"></i></span>
-            </div>
-            <div class="got" data-at="2">
-              <span class="k lbl">A likely set of chords</span><span class="chords">D Bm G A</span>
-            </div>
-            <div class="pill-row" data-at="3"><span class="pill keep">Keep it for later</span><span class="pill quiet">Throw it away</span></div>
-          </div>
-          <p class="inapp lbl">In the app: the gold Record button, from anywhere.</p>
-        </div>
-      </div></div>
-    </section>
-
-    <section class="scene" id="sheet" data-steps="3" aria-labelledby="sheet-h">
-      <div class="frame"><div class="frame-in">
-        <div class="words">
-          <p class="eyebrow">The sheet</p>
-          <h2 id="sheet-h">Record it. The sheet comes back.</h2>
-          <div class="lines">
-            <p class="ln" data-at="1">Chords above the words, the key, the tempo and the song's shape.</p>
-            <p class="ln" data-at="2">Where it is guessing, it says so. Tap that chord and it asks: Which chord is it?</p>
-            <p class="ln" data-at="3">Tap a chord for its shape, the notes in it, and what fits.</p>
-          </div>
-          <a class="more" href="songbook.html">The song sheet →</a>
-          <a class="more" href="chords.html">Try it on a recording now. No account. →</a>
-        </div>
-        <div class="pic">
-          <div class="art p-sheet" aria-hidden="true">
-            <div class="sheet-head"><span class="t">County Line</span><span class="s lbl">Key D major · 118 BPM · 4/4</span></div>
-            <div class="shape">
-              <span style="--c:var(--a4);--w:.6"><b>In</b></span>
-              <span style="--c:var(--a1);--w:1.4"><b>Verse</b></span>
-              <span style="--c:var(--a2);--w:1.2"><b>Chorus</b></span>
-              <span style="--c:var(--a1);--w:1.4"><b>Verse</b></span>
-              <span style="--c:var(--a2);--w:1.2"><b>Chorus</b></span>
-              <span style="--c:var(--a4);--w:.5"><b>Out</b></span>
-              <i class="cover"></i>
-            </div>
-            <p class="key lbl"><i style="--c:var(--a1)"></i>Verse <i style="--c:var(--a2)"></i>Chorus <i style="--c:var(--a4)"></i>In and out</p>
-            <div class="lyr">
-              <p data-at="1"><span class="seg"><b>D</b><span>We drove out</span></span> <span class="seg"><b class="doubt">Bm</b><span>past the</span></span> <span class="seg"><b class="tapped">G</b><span>county line</span></span></p>
-              <p data-at="1" style="--d:150ms"><span class="seg"><b>A</b><span>The radio was playing</span></span> <span class="seg"><b>D</b><span>something</span></span></p>
-            </div>
-            <div class="unsure" data-at="2" style="--d:200ms"><span class="q">Which chord is it?</span><span class="pill">It is this</span><span class="pill">Something else</span></div>
-            <div class="chip" data-at="3" style="--d:150ms"><b>G</b><span class="lbl">Major · the IV here</span></div>
-          </div>
-          <p class="inapp lbl">In the app: Your music › Songs, then the song's Song Sheet.</p>
-        </div>
-      </div></div>
-    </section>
-
-    <section class="scene" id="play" data-steps="3" aria-labelledby="play-h">
-      <div class="frame"><div class="frame-in">
-        <div class="words">
-          <p class="eyebrow">Play it</p>
-          <h2 id="play-h">Play it, and it listens.</h2>
-          <div class="lines">
-            <p class="ln" data-at="1">Open it in Perform. The words and chords scroll at the song's speed.</p>
-            <p class="ln" data-at="2">Press Hear me play. Listening to your chords. Nothing is recorded.</p>
-            <p class="ln" data-at="3">A chord it doubted gets surer as you play it. Nothing is rewritten without your tap.</p>
-          </div>
-          <a class="more" href="practise.html#hear-me-play">Hear me play →</a>
-        </div>
-        <div class="pic">
-          <div class="art p-perform" aria-hidden="true">
-            <div class="window"><div class="window-in">
-              <p class="line"><span class="seg"><b class="dash">Bm</b><span>Neither of us</span></span> <span class="seg"><b>G</b><span>knew the words</span></span></p>
-              <p class="line"><span class="seg"><b>A</b><span>So we made them</span></span> <span class="seg"><b>D</b><span>up instead</span></span></p>
-            </div></div>
-            <div class="pill-row"><span class="pill hear" data-at="2">Hear me play</span><span class="pill">Loop from here</span><span class="pill">Slower</span></div>
-            <p class="status lbl" data-at="2" style="--d:150ms">Listening to your chords. Nothing is recorded.</p>
-          </div>
-          <p class="inapp lbl">In the app: Perform › Hear me play. On phones, not in the browser.</p>
-        </div>
-      </div></div>
-    </section>
-
-    <section class="scene" id="overnight" data-steps="2" aria-labelledby="overnight-h">
-      <div class="frame"><div class="frame-in">
-        <div class="words">
-          <p class="eyebrow">Overnight</p>
-          <h2 id="overnight-h">Overnight, the room plays on it.</h2>
-          <div class="lines">
-            <p class="ln" data-at="1">A take stays private to you until you share it.</p>
-            <p class="ln" data-at="2">Then Mara adds a harmony at midnight, and Jonah a bass line before work. Nothing is written over.</p>
-          </div>
-          <a class="more" href="takes.html">Inside Takes →</a>
-          <a class="more" href="bands.html">How a room works →</a>
-        </div>
-        <div class="pic">
-          <div class="art p-takes" aria-hidden="true">
-            <div class="art-head"><span class="t">County Line</span><span class="s">Takes</span></div>
-            <div class="rows">
-              <div class="row"><span class="dots"><i class="dot mute"></i><i class="dot you" style="background:var(--a1)"></i></span><b>Your hum</b><span class="side lbl">you</span><svg class="wave" style="color:var(--a1)"><use href="#w-you" width="100%" height="100%"/></svg></div>
-              <div class="row" data-at="2"><span class="dots"><i class="dot" style="background:var(--a2)"></i></span><b>Mara's harmony</b><span class="side lbl">12:04 am</span><svg class="wave" style="color:var(--a2)"><use href="#w-mara" width="100%" height="100%"/></svg></div>
-              <div class="row" data-at="2" style="--d:150ms"><span class="dots"><i class="dot" style="background:var(--a4)"></i></span><b>Jonah's bass</b><span class="side lbl">7:40 am</span><svg class="wave" style="color:var(--a4)"><use href="#w-jonah" width="100%" height="100%"/></svg></div>
-              <i class="ph"></i>
-            </div>
-          </div>
-          <p class="inapp lbl">In the app: Your music › Songs › a song's Takes.</p>
-        </div>
-      </div></div>
-    </section>
-
-    <section class="scene" id="rehearse" data-steps="3" aria-labelledby="rehearse-h">
-      <div class="frame"><div class="frame-in">
-        <div class="words">
-          <p class="eyebrow">Rehearse</p>
-          <p class="newmark lbl">New in October 2026 · not on the beta's phones yet</p>
-          <h2 id="rehearse-h">Rehearsal. One phone per player.</h2>
-          <div class="lines">
-            <p class="ln" data-at="1">The leader taps Start recording the rehearsal.</p>
-            <p class="ln" data-at="2">Each phone records its own player, close to them. Afterwards, Line up the parts.</p>
-            <p class="ln" data-at="3">At home, practise against The band without you: everyone's take but yours.</p>
-          </div>
-          <a class="more" href="teams.html#rehearsal">The rehearsal recording →</a>
-        </div>
-        <div class="pic">
-          <div class="art p-lanes" aria-hidden="true">
-            <span class="btn rec" data-at="1">Start recording the rehearsal</span>
-            <p class="lanes-head lbl" data-at="2">Recording the rehearsal · record your part</p>
-            <div class="lanes">
-              <div class="lane-row" style="--off:-14px;--i:0"><span class="seat lbl"><i class="phone"></i>Vocal · Mara</span><span class="lane-track"><svg class="wave" style="color:var(--a2)"><use href="#w-mara" width="100%" height="100%"/></svg><i class="cover"></i></span></div>
-              <div class="lane-row mine" style="--off:10px;--i:1"><span class="seat lbl"><i class="phone"></i>Guitar · You</span><span class="lane-track"><svg class="wave" style="color:var(--a1)"><use href="#w-you" width="100%" height="100%"/></svg><i class="cover"></i></span></div>
-              <div class="lane-row" style="--off:-6px;--i:2"><span class="seat lbl"><i class="phone"></i>Bass · Jonah</span><span class="lane-track"><svg class="wave" style="color:var(--a4)"><use href="#w-jonah" width="100%" height="100%"/></svg><i class="cover"></i></span></div>
-              <div class="lane-row" style="--off:16px;--i:3"><span class="seat lbl"><i class="phone"></i>Drums · Sam</span><span class="lane-track"><svg class="wave" style="color:var(--a3)"><use href="#w-sam" width="100%" height="100%"/></svg><i class="cover"></i></span></div>
-            </div>
-            <p class="without" data-at="3">The band without you</p>
-          </div>
-        </div>
-      </div></div>
-    </section>
-
-    <section class="scene" id="night" data-steps="3" aria-labelledby="night-h">
-      <div class="frame"><div class="frame-in">
-        <div class="words">
-          <p class="eyebrow">The night</p>
-          <p class="newmark lbl">New in October 2026 · not on the beta's phones yet</p>
-          <h2 id="night-h">The leader calls the next one.</h2>
-          <div class="lines">
-            <p class="ln" data-at="1">One set for the whole band, one key per song.</p>
-            <p class="ln" data-at="2">Every stand turns to it in its own reading: numbers, a horn's key, a capo.</p>
-            <p class="ln" data-at="3">Bluetooth, phone to phone. No signal needed.</p>
-          </div>
-          <a class="more" href="teams.html">How a team plays out →</a>
-        </div>
-        <div class="pic">
-          <div class="art p-stands" aria-hidden="true">
-            <div class="setlist">
-              <p class="set-head lbl">Friday at The Crown</p>
-              <ol><li>1 County Line · D</li><li>2 Low Tide · E</li><li class="later">3 Kitchen Radio · G</li><li class="later">4 Last Train · A</li></ol>
-              <i class="called"></i>
-            </div>
-            <div class="stands">
-              <div class="stand" style="--i:0"><p class="who lbl">Vocal · Mara · leader</p>
-                <div class="flip"><div class="was cells"><b>D</b><b>Bm</b><b>G</b><b>A</b></div><div class="now cells"><b>E</b><b>C♯m</b><b>A</b><b>B</b></div></div>
-                <p class="reading lbl" data-at="3">Letters</p></div>
-              <div class="stand still" style="--i:1"><p class="who lbl">Bass · Jonah</p>
-                <div class="flip"><div class="now cells"><b>1</b><b>6-</b><b>4</b><b>5</b></div></div>
-                <p class="heard lbl" data-at="2">The leader called Low Tide in E.</p><p class="reading lbl" data-at="3">Numbers</p></div>
-              <div class="stand" style="--i:2"><p class="who lbl">Trumpet · Ade</p>
-                <div class="flip"><div class="was cells"><b>E</b><b>C♯m</b><b>A</b><b>B</b></div><div class="now cells"><b>F♯</b><b>D♯m</b><b>B</b><b>C♯</b></div></div>
-                <p class="heard lbl" data-at="2">The leader called Low Tide in E.</p><p class="reading lbl" data-at="3">For B♭</p></div>
-              <div class="stand" style="--i:3"><p class="who lbl">Guitar · You</p>
-                <div class="flip"><div class="was cells"><b>C</b><b>Am</b><b>F</b><b>G</b></div><div class="now cells"><b>D</b><b>Bm</b><b>G</b><b>A</b></div></div>
-                <p class="heard lbl" data-at="2">The leader called Low Tide in E.</p><p class="reading lbl" data-at="3">Capo 2</p></div>
-            </div>
-          </div>
-        </div>
-      </div></div>
-    </section>
-
-    <section class="scene" id="yours" data-steps="2" aria-labelledby="yours-h">
-      <div class="frame"><div class="frame-in">
-        <div class="words">
-          <p class="eyebrow">Yours</p>
-          <h2 id="yours-h">And at the end, it is yours.</h2>
-          <div class="lines">
-            <p class="ln" data-at="1">Save The mix as one WAV, or Every take, separately, for opening in a DAW.</p>
-            <p class="ln" data-at="2">Your music is yours, and you can always take it with you. Nothing about you is inferred from it.</p>
-          </div>
-          <a class="more" href="takes.html#yours">Take it with you →</a>
-        </div>
-        <div class="pic">
-          <div class="art p-folder" aria-hidden="true">
-            <div class="art-head"><span class="t">County Line</span><span class="s">Save</span></div>
-            <div class="entry" data-at="1"><span class="name">The mix</span><span class="side">.wav</span></div>
-            <p class="sub lbl" data-at="1" style="--d:100ms">Every take, separately</p>
-            <div class="entry file" data-at="1" style="--d:200ms"><span class="dot" style="background:var(--a1)"></span><span class="name">Your hum</span><span class="side">.wav</span></div>
-            <div class="entry file" data-at="1" style="--d:300ms"><span class="dot" style="background:var(--a2)"></span><span class="name">Mara's harmony</span><span class="side">.wav</span></div>
-            <div class="entry file" data-at="1" style="--d:400ms"><span class="dot" style="background:var(--a4)"></span><span class="name">Jonah's bass</span><span class="side">.wav</span></div>
-            <p class="foot lbl" data-at="2">for opening in a DAW. Yours to keep.</p>
-            <div class="pill-row" data-at="2" style="--d:150ms"><span class="pill">Print chords and words</span><span class="pill">Send as ChordPro</span></div>
-          </div>
-          <p class="inapp lbl">In the app: Save, on a song's Takes. On a phone.</p>
-        </div>
-      </div></div>
-    </section>
-
-  </div>
-
-  <section class="moment reveal" id="along">
-    <div class="eyebrow">Along the way</div>
-    <h2>Help at every stop.</h2>
-    <ul class="log">
-      <li><a href="analysis.html#ideas"><b>Ideas</b><span>Not ready? Keep it for later. Kept until you remove it.</span></a></li>
-      <li><a href="practise.html#tune-up"><b>Tune up</b><span>Tuner, metronome and drone. No song needed.</span></a></li>
-      <li><a href="learn.html#clef"><b>Ask Clef</b><span>An AI guide in the app, not a person, for your own songs, from 13. It never writes words, melodies, parts or chords.</span></a></li>
-      <li><a href="bands.html#calls"><b>Call the room</b><span>Call · nothing is recorded. For the people in your room, from 13.</span></a></li>
-      <li><a href="learn.html#lessons"><b>Lessons</b><span>Teach with a link, and each student gets their own room with you. 18 and over, both sides.</span></a></li>
-      <li><a href="openmic.html"><b>The Open Mic</b><span>Put a song up and say what it needs. Listing yourself is off until you turn it on, and is for 18 and over.</span></a></li>
-    </ul>
+    <div class="ex-hero-bottom ex-container"><a href="chords.html">Have a recording? Get the chords. <span aria-hidden="true">↗</span></a><span>No account. Nothing to install.</span></div>
   </section>
 
-  <section class="moment" id="ages">
-    <div class="eyebrow">Who it is for</div>
-    <h2>13 to start. Some doors at 18.</h2>
-    <p class="lede">From 13: your own rooms, calls with your room, and Clef. From 18: listing yourself or a song on the Open Mic and Open Mic Night, meeting strangers at a place, lessons, keeping a stage and leading a team.</p>
-    <p class="lede">For now, a call with just one adult and someone under 18 is for 18 and over, and waits for a third person.</p>
-    <a class="more" href="child-safety.html">Child safety →</a>
+  <section class="ex-product ex-container ex-section" id="product" aria-labelledby="product-title">
+    <div class="ex-editorial-head"><div><p class="ex-kicker">From the first idea</p><h2 id="product-title">Stay with<br>the song.</h2></div><p>A melody on your phone. A line worth keeping. The recording, words, chords and people that help it become something.</p></div>
+    <div id="life" class="ex-workspace" data-song-demo>
+      <div class="ex-workspace-top"><span class="ex-app-name">CoLab<span>Room</span></span><span>County Line</span><span class="ex-illustrative">Illustrative preview</span></div>
+      <nav class="ex-scene-nav" aria-label="Explore the illustrative song workspace"><a href="#hum" data-scene="capture" aria-controls="hum">Capture</a><a href="#sheet" data-scene="shape" aria-controls="sheet">Shape</a><a href="#overnight" data-scene="together" aria-controls="overnight">Together</a><a href="#demo-perform" data-scene="perform" aria-controls="demo-perform">Perform</a></nav>
+      <div class="ex-scenes">
+        <section class="ex-demo-panel ex-capture" id="hum" data-panel="capture" aria-labelledby="hum-h">
+          <div class="ex-demo-copy"><p class="ex-kicker">An idea, kept.</p><h3 id="hum-h">Before the moment<br>gets away.</h3><p>Record an idea on your phone. Keep it for later in Ideas. Naming and organising can wait.</p><a class="ex-text-link" href="analysis.html#ideas">Meet Ideas <span aria-hidden="true">↗</span></a></div>
+          <div class="ex-recording-visual" aria-label="Illustration of a reference recording named County Line, duration 34 seconds"><div class="ex-recording-orbit" aria-hidden="true"><span class="ex-record-dot"></span></div><div class="ex-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="ex-recording-label"><div><strong>County Line</strong><span>Reference recording · Ideas</span></div><span>0:34</span></div></div>
+        </section>
+        <section class="ex-demo-panel ex-shape" id="sheet" data-panel="shape" aria-labelledby="sheet-h">
+          <div class="ex-demo-copy"><p class="ex-kicker">A page to work on</p><h3 id="sheet-h">Words. Chords.<br>Your way of reading.</h3><p>Keep the music together, then read it the way that makes sense to you.</p><a class="ex-text-link" href="songbook.html">Explore the song sheet <span aria-hidden="true">↗</span></a></div>
+          <div class="ex-paper"><div class="ex-paper-top"><span>Sample words &amp; chords</span><div class="ex-reading" data-reading-controls hidden aria-label="Illustration notation"><button type="button" data-reading="letters" aria-pressed="true">Letters</button><button type="button" data-reading="numbers" aria-pressed="false">Numbers</button></div></div><h4>County Line</h4><p class="ex-paper-credit">Illustrative song · Key of C</p><div class="ex-sheet-line"><b data-letter="C" data-number="1">C</b><b data-letter="F" data-number="4">F</b><p>Take the long way home</p></div><div class="ex-sheet-line"><b data-letter="Am" data-number="6m">Am</b><b data-letter="G" data-number="5">G</b><p>Leave a little room for the night</p></div><div class="ex-paper-rule"></div><span class="ex-paper-foot">Your reading. The same song.</span></div>
+        </section>
+        <section class="ex-demo-panel ex-together" id="overnight" data-panel="together" aria-labelledby="overnight-h">
+          <div class="ex-demo-copy"><p class="ex-kicker">A place for every part</p><h3 id="overnight-h">Someone brings<br>something new.</h3><p>Record a part. Hear it with the song. Keep the individual recordings together without writing over each other.</p><a class="ex-text-link" href="takes.html">Explore Takes <span aria-hidden="true">↗</span></a></div>
+          <div class="ex-tracks" aria-label="Illustrative song with a reference recording, guitar and bass parts"><div class="ex-track-heading"><strong>County Line</strong><span>Sample arrangement</span></div><div class="ex-track"><div><span class="ex-track-dot"></span>Reference</div><span class="ex-track-wave"></span></div><div class="ex-track"><div><span class="ex-track-dot"></span>Guitar</div><span class="ex-track-wave ex-wave-two"></span></div><div class="ex-track"><div><span class="ex-track-dot"></span>Bass</div><span class="ex-track-wave ex-wave-three"></span></div><div class="ex-track-footer">One song. Individual recordings.</div></div>
+        </section>
+        <section class="ex-demo-panel ex-perform" id="demo-perform" data-panel="perform" aria-labelledby="perform-title">
+          <div class="ex-demo-copy"><p class="ex-kicker">Find your way into it</p><h3 id="perform-title">That tricky bit?<br>Stay there a while.</h3><p>Loop a passage. Slow the recording down. Read the song your way and practise your part.</p><a class="ex-text-link" href="practise.html">Explore Practise <span aria-hidden="true">↗</span></a></div>
+          <div class="ex-practice-visual" aria-label="Illustrative practice passage with C, F, A minor and G, looped at three-quarter speed"><div class="ex-practice-top"><span>County Line</span><span>Sample passage</span></div><div class="ex-chord-passage"><span>C</span><span>F</span><span>Am</span><span>G</span></div><div class="ex-loop-line"><span>A</span><i></i><span>B</span></div><div class="ex-practice-footer"><span>Loop · Verse</span><strong>0.75×</strong></div></div>
+        </section>
+      </div>
+      <p class="ex-demo-caption">Illustrative preview · Sample music. No audio, recording or upload. Phone capture and available tools depend on platform and beta build. <a href="analysis.html">What a recording can tell you →</a></p>
+    </div>
   </section>
 
-  <!-- What landed in October 2026 on the app's main. Month only: the day a thing merged is not the day a tester's phone got it. Testers run the 14 October build, so Teams and the age screens are not on their phones yet, and the lede says so. Hear me play (25 September) and Ideas (23 September) are not October and are not listed here; their doors are Scene 3 and Along the way. -->
-  <section class="moment reveal" id="new">
-    <div class="eyebrow">New lately</div>
-    <h2>New in October 2026.</h2>
-    <p class="lede">Built this month. Teams and the new age line are not on the beta's phones yet.</p>
-    <ul class="log">
-      <li><a href="teams.html#team"><b>Make this a team</b><span>Any band room: a leader, a chair for every part, and who sits where for each dated set.</span></a></li>
-      <li><a href="teams.html#rehearsal"><b>The band without you</b><span>Record the rehearsal on every player's phone, then practise against the rest.</span></a></li>
-      <li><a href="teams.html#advance"><b>Send the advance</b><span>The set, a stage plot and an input list, as one link for the venue's sound tech.</span></a></li>
-      <li><a href="teams.html#stage"><b>Follow the stage</b><span>The leader calls the next song. Every stand turns, in its own reading.</span></a></li>
-      <li><a href="teams.html#night"><b>Record the night</b><span>One phone on the mic stand, the whole set, cut into songs.</span></a></li>
-      <li><a href="teams.html#desk"><b>From the desk</b><span>Bring the desk's recording in, and each player gets their own part.</span></a></li>
-      <li><a href="#ages"><b>The age line</b><span>13 to start. 18 for strangers, lessons and leading.</span></a></li>
-      <li><a href="openmic.html#tonight"><b>We met</b><span>Hold your phones close. Both of you tap We met.</span></a></li>
-      <li><a href="takes.html#yours"><b>Cut for a reel</b><span>In Perform, on a phone: save one to send it on as a WAV.</span></a></li>
-    </ul>
+  <section class="ex-free-tools" id="along" aria-labelledby="tools-title"><div class="ex-container ex-tools-layout">
+    <div><p class="ex-kicker">Something useful. Right now.</p><h2 id="tools-title">Bring what<br>you have.</h2><p>Free music tools. No account needed.</p></div>
+    <div class="ex-tool-links"><a href="chords.html" class="ex-tool-feature"><span class="ex-tool-format">A recording</span><strong>Get the chords.</strong><span>Upload a recording for a likely progression. <span aria-hidden="true">↗</span></span></a><a href="what-key.html"><span>Find the likely key</span><span aria-hidden="true">↗</span></a><a href="transpose.html"><span>Transpose a chart</span><span aria-hidden="true">↗</span></a><a href="capo.html"><span>Find your capo shapes</span><span aria-hidden="true">↗</span></a><a href="nashville-numbers.html"><span>Turn chords into numbers</span><span aria-hidden="true">↗</span></a><p class="ex-fine">Recording tools upload audio for analysis. Chart tools work in your browser. Each tool explains its own limits and privacy.</p></div>
+  </div></section>
+
+  <section class="ex-openmic ex-section" aria-labelledby="openmic-title">
+    <div class="ex-container ex-openmic-head"><p class="ex-kicker">The Open Mic</p><h2 id="openmic-title">Meet through<br>the music.</h2><p>A song. The person making it. What they are asking for. Listen first, then offer a part when it feels right.</p><a class="ex-text-link" href="openmic.html">Find your people <span aria-hidden="true">↗</span></a></div>
+    <div class="ex-container ex-social-scene"><img src="assets/campaign-together.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"><div class="ex-encounter" aria-label="Illustrative Open Mic encounter, not a live musician or listing"><p class="ex-kicker">Illustrative encounter</p><div class="ex-maker"><span aria-hidden="true">M</span><p>Mara <small>Sample musician · Guitar &amp; vocals</small></p></div><h3>Across the water</h3><p class="ex-stated-ask">Looking for a gentle drum part.</p><a href="openmic.html">Explore the Open Mic <span aria-hidden="true">↗</span></a></div></div>
+    <p class="ex-container ex-social-caption">Campaign artwork and illustrative song. No live people, listing or audio. Public discovery and listing are for adults, with eligibility and contributor consent; younger musicians keep their own-people listening paths.</p>
   </section>
 
-  <!-- Intentions, not a roadmap. No dates and no prices: nothing is on sale and the price is undecided. The list stays short on purpose. -->
-  <section class="moment reveal" id="coming">
-    <div class="eyebrow">Coming</div>
-    <h2>What I am building next.</h2>
-    <p class="lede">
-      Intentions, not promises. No dates.
-    </p>
-    <ul class="plain">
-      <li><b>iPhone and Android apps in the stores.</b> In testing now with the first musicians. Nothing is submitted yet.</li>
-      <li><b>Teams on the beta's phones,</b> then a first real night out with a band.</li>
-    </ul>
-  </section>
+  <section class="ex-rooms" aria-labelledby="rooms-title"><div class="ex-container ex-rooms-layout">
+    <div class="ex-room-copy"><p class="ex-kicker">Your own room</p><h2 id="rooms-title">Make room for<br>your people.</h2><p>Keep the song and the conversation in the same place. Words, recordings, shared sets and calls, for the people in your room.</p><a class="ex-text-link" href="bands.html">Step into a room <span aria-hidden="true">↗</span></a><p class="ex-fine">Rooms are private to members. Calls do not record automatically; separate recording and consent rules apply.</p></div>
+    <div class="ex-room-visual" aria-label="Illustrative private band room with songs and a shared set"><div class="ex-room-bar"><span class="ex-room-icon" aria-hidden="true">N</span><div><strong>The night shift</strong><span>Private room · Illustration</span></div></div><div class="ex-room-body"><div class="ex-room-song"><span>County Line</span><small>Words · Chords · Recordings</small></div><div class="ex-room-song"><span>Small hours</span><small>Words · Chords · Recordings</small></div><div class="ex-room-song"><span>After the rain</span><small>Words · Chords · Recordings</small></div><div class="ex-room-set"><span class="ex-kicker">The band's sets</span><strong>Friday rehearsal <span aria-hidden="true">↗</span></strong></div></div></div>
+  </div></section>
 
-  <!-- Tonight: the same prompt the app hands out today, so the front door
-       is alive from the same rows. Fetched from the public tool's function;
-       the page ships no credentials. Hidden until it arrives. -->
+  <section class="ex-stage ex-section" id="rehearse" aria-labelledby="rehearse-h"><div class="ex-container">
+    <div class="ex-stage-head"><p class="ex-kicker" id="new">New in October 2026 · not on the beta's phones yet</p><h2 id="rehearse-h">One set.<br>Every stand.</h2><p>The leader calls the next song. Everyone keeps their own reading.</p><a class="ex-text-link" href="teams.html#stage">From rehearsal to the stage <span aria-hidden="true">↗</span></a></div>
+    <div class="ex-stands" id="night" aria-label="Illustrative stage set with three personal readings of the same song"><div class="ex-stand"><div class="ex-stand-sheet"><span>Guitar · Concert G</span><strong>County Line</strong><div>G &nbsp; C<br>Em &nbsp; D</div><small>Letters</small></div><i aria-hidden="true"></i></div><div class="ex-stand ex-stand-center"><div class="ex-stand-sheet"><span>B♭ trumpet · Written A</span><strong>County Line</strong><div>A &nbsp; D<br>F♯m &nbsp; E</div><small>Your instrument's key</small></div><i aria-hidden="true"></i></div><div class="ex-stand"><div class="ex-stand-sheet"><span>Keys · Concert G</span><strong>County Line</strong><div>1 &nbsp; 4<br>6m &nbsp; 5</div><small>Numbers</small></div><i aria-hidden="true"></i></div></div>
+    <p class="ex-stage-caption" id="night-h">Illustrative set and readings · Team eligibility and stage setup apply. Leading a team and keeping a stage are 18+. <a href="teams.html">See the whole night →</a></p>
+    <div class="ex-practice-link" id="play"><h3 id="play-h">A little practice.<br>A little closer.</h3><p>Tune up, loop a passage, or take the song slowly. Tools vary with your recording, sheet and platform.</p><a href="practise.html">Find your practice space <span aria-hidden="true">↗</span></a><a href="learn.html">Learn with your own song <span aria-hidden="true">↗</span></a></div>
+  </div></section>
+
+  <section class="ex-ownership ex-container ex-section" id="yours" aria-labelledby="yours-h"><div><p class="ex-kicker">Make something. Keep something.</p><h2 id="yours-h">Your music<br>can leave with you.</h2><p>Save the mix. Take the individual recordings into your DAW. Print the song sheet and put it on a stand.</p><a class="ex-text-link" href="takes.html#yours">Take it with you <span aria-hidden="true">↗</span></a><p class="ex-fine">Audio saving and export are available in the phone app. Export is not a paid restriction.</p></div><div class="ex-exports" aria-label="Examples of export families"><div><span>Audio</span><strong>The mix</strong><small>Bring the song along.</small></div><div><span>Individual audio</span><strong>Every take</strong><small>Keep working in your DAW.</small></div><div><span>Song sheet</span><strong>The page</strong><small>Read it. Print it. Play it.</small></div></div></section>
+
+  <section class="ex-availability ex-container" id="ages" aria-label="Beta and age availability"><div><h3>A small beta.<br>A real invitation.</h3><p>Free during the beta. Phone apps are in testing; store releases are not announced. <span id="coming">Teams and the new age line are not on the beta's phones yet.</span></p></div><div><h3>Some doors open later.</h3><p>13 to start. Your own rooms, room calls and Clef follow the app's age and relationship rules. Adult discovery, lessons and leading are 18+. A call with just one adult and someone under 18 waits for a third person.</p><a href="child-safety.html">Read the child-safety information <span aria-hidden="true">↗</span></a></div></section>
+
+  <div class="ex-container ex-preserved">
   <section class="moment reveal" id="tonight" hidden>
     <div class="eyebrow">Tonight</div>
     <h2 id="tonight-title">Write the first line</h2>
@@ -437,15 +156,9 @@
       } catch (_) { /* Same. */ }
     })();
   </script>
-
-  <div class="close">
-    <h2>Bring a song.</h2>
-    <p>The beta is small and free, and I read everything that comes back.</p>
-    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a>
-    <a class="cta quiet" href="https://app.colabroom.com/">Already have an account? Sign in</a>
-    <div class="meta">Free during the beta</div>
   </div>
-
+  <section class="ex-invitation" aria-labelledby="invitation-title"><div class="ex-container"><p class="ex-kicker">A place to begin. A place to belong.</p><h2 id="invitation-title">Bring a song.</h2><p>The beta is small and free.<br>Make something. Tell us how it feels.</p><div class="ex-actions"><a class="ex-button" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite <span aria-hidden="true">↗</span></a><a class="ex-text-link" href="https://app.colabroom.com/">Already here? Sign in <span aria-hidden="true">↗</span></a></div></div></section>
+  <div class="ex-container ex-preserved">
   <details class="legal" id="beta">
     <summary>Your account, your songs, and deleting them</summary>
     <div class="inner">
@@ -508,55 +221,8 @@
       </p>
     </div>
   </details>
-
-  <nav class="keep-reading" aria-label="More about CoLabRoom">
-    <p class="eyebrow">Keep reading</p>
-    <div class="onward-row">
-      <a class="onward" href="analysis.html">
-        <span class="where">What it heard</span>
-        <span class="what">It listens back and writes it down.</span>
-      </a>
-      <a class="onward" href="songbook.html">
-        <span class="where">Song sheet</span>
-        <span class="what">A page, not a form.</span>
-      </a>
-      <a class="onward" href="help.html">
-        <span class="where">Stuck?</span>
-        <span class="what">Tap the chord you're stuck on.</span>
-      </a>
-      <a class="onward" href="practise.html">
-        <span class="where">Practise</span>
-        <span class="what">Tune up. Then play it through.</span>
-      </a>
-      <a class="onward" href="takes.html">
-        <span class="where">Takes</span>
-        <span class="what">Everybody plays on it.</span>
-      </a>
-      <a class="onward" href="bands.html">
-        <span class="where">Rooms</span>
-        <span class="what">Open it and see what happened.</span>
-      </a>
-      <a class="onward" href="teams.html">
-        <span class="where">Teams</span>
-        <span class="what">One set. Every stand its own reading.</span>
-      </a>
-      <a class="onward" href="openmic.html">
-        <span class="where">Open Mic</span>
-        <span class="what">Meet somebody you haven't met.</span>
-      </a>
-      <a class="onward" href="learn.html">
-        <span class="where">Learn</span>
-        <span class="what">Ask about your own song.</span>
-      </a>
-      <a class="onward" href="what-key.html">
-        <span class="where">What key is it?</span>
-        <span class="what">The free tool, with the reasoning.</span>
-      </a>
-    </div>
-  </nav>
-
-  </main>
-
+  </div>
+</main>
   <footer>
     <span>CoLabRoom — songwriting for musicians · <a href="/child-safety.html">Child safety</a> · © 2026 <a href="https://decibelzerollc.com">Decibel Zero LLC</a></span>
     <span class="sp"></span>
@@ -565,12 +231,9 @@
     <a href="terms.html">Terms</a>
     <a href="copyright.html">Copyright</a>
   </footer>
-
 </div>
-
 <script src="count.js" data-page="home"></script>
-<script src="story.js"></script>
-<script src="reveal.js"></script>
+<script src="experience.js" defer></script>
 <script>
   /* The account-deletion steps are what the stores and the footer link to,
      as #beta. Arriving there left them folded under a summary line to find
@@ -586,5 +249,6 @@
     }
   })();
 </script>
+<script src="site-menu.js" defer></script>
 </body>
 </html>

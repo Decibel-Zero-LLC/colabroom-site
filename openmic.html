@@ -12,6 +12,7 @@
 <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="editorial.css">
   <link rel="canonical" href="https://colabroom.com/openmic.html">
   <meta property="og:url" content="https://colabroom.com/openmic.html">
   <meta property="og:site_name" content="CoLabRoom">
@@ -34,30 +35,44 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="chrome.css">
 </head>
-<body>
+<body class="site-redesign editorial page-openmic">
+<a class="skip-content" href="#main-content">Skip to content</a>
 
 <div class="wrap">
 
-  <header class="top">
-    <a class="brand" href="index.html">CoLabRoom</a>
-    <nav class="pages">
-      <a href="analysis.html">What it heard</a>
-      <a href="songbook.html">Song sheet</a>
-      <a href="practise.html">Practise</a>
-      <a href="takes.html">Takes</a>
-      <a href="bands.html">Rooms</a>
-      <a href="teams.html">Teams</a>
-      <a href="openmic.html" aria-current="page">Open Mic</a>
-      <a href="learn.html">Learn</a>
-      <a href="chords.html">Chords</a>
-      <a href="what-key.html">What key</a>
-    </nav>
-    <span class="sp"></span>
-    <!-- Somebody who already has an account had no way in from here. -->
-    <a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
-    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a>
-  </header>
+  <header class="top no-print">
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CoLabRoom</a>
+<details class="site-menu"><summary>Explore</summary><nav class="pages">
+<div class="nav-group"><h2>Make music</h2>
+<a href="analysis.html">What it heard</a>
+<a href="songbook.html">Song sheet</a>
+<a href="takes.html">Takes</a>
+</div>
+<div class="nav-group"><h2>Play & learn</h2>
+<a href="practise.html">Practise</a>
+<a href="learn.html">Learn</a>
+<a href="help.html">Chord help</a>
+</div>
+<div class="nav-group"><h2>Together</h2>
+<a href="bands.html">Rooms</a>
+<a href="teams.html">Teams</a>
+<a href="openmic.html" aria-current="page">Open Mic</a>
+</div>
+<div class="nav-group"><h2>Free tools</h2>
+<a href="chords.html">Chords</a>
+<a href="what-key.html">What key</a>
+<a href="transpose.html">Transpose</a>
+<a href="capo.html">Capo</a>
+<a href="nashville-numbers.html">Nashville numbers</a>
+</div>
+</nav></details>
+<a class="header-tool" href="chords.html">Try the chord tool ↗</a>
+<div class="header-actions"><a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
+<a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a></div>
+</header>
+<div id="main-content" tabindex="-1"></div>
 
   <div class="hero inner">
     <p class="kicker">The Open Mic</p>
@@ -68,7 +83,8 @@
     </p>
   </div>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-1 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">Off until you say</div>
     <h2>Nothing here is public because you made it.</h2>
     <p class="lede">
@@ -84,9 +100,12 @@
       and you can be handed a room; the Open Mic shows you only your own
       people's songs, newest first.
     </p>
+
+    </div>
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-2 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">Asks</div>
     <h2>Say what the song needs.</h2>
     <p class="lede">
@@ -94,15 +113,20 @@
       The ask carries the song with it: the audio, the key, the tempo, what's
       on it already. Answering is one tap.
     </p>
+
+    </div>
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-3 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">Listen</div>
     <h2>You decide by ear.</h2>
     <p class="lede">
       "Guitarist" doesn't tell you metal from jazz. Pick what you play, press
       Listen, hear the songs that need it. The rest you judge by ear.
     </p>
+
+    </div>
   </section>
 
   <!-- Open Mic Night: app #604, migration 0237, lib/domain/open_mic_night.dart.
@@ -110,7 +134,8 @@
        yet, and the app shows the time in the phone's own zone. Only
        the room's owner, an adult, can put its song on the list. Nothing
        about the night is counted. -->
-  <section class="moment reveal" id="night">
+  <section class="moment editorial-section editorial-section-4 has-art reveal" id="night">
+    <div class="editorial-copy">
     <div class="eyebrow">Open Mic Night</div>
     <h2>Once a week, a night.</h2>
     <p class="lede">
@@ -123,6 +148,8 @@
       Only an adult who owns the song's room can put it on the list.
       Nothing is counted, and there is no audience number.
     </p>
+
+    </div>
     <div class="art" aria-hidden="true">
       <div class="art-head">
         <span class="t">Open Mic Night</span>
@@ -148,12 +175,14 @@
         <span class="pill">Put a song up</span>
       </div>
     </div>
+
   </section>
 
   <!-- A door: app #596, migration 0235, lib/domain/doors.dart. Never a
        count and never "online". Your people see it; everybody on the Open
        Mic only when you are listed and say yes. -->
-  <section class="moment reveal" id="door">
+  <section class="moment editorial-section editorial-section-5 has-art reveal" id="door">
+    <div class="editorial-copy">
     <div class="eyebrow">Open the door</div>
     <h2>Up for company?</h2>
     <p class="lede">
@@ -166,6 +195,8 @@
       Everybody else on the Open Mic sees it only if you say so. It closes
       by itself, and nobody is told a knock went unanswered.
     </p>
+
+    </div>
     <div class="art" aria-hidden="true">
       <div class="art-head">
         <span class="t">Your people</span>
@@ -180,13 +211,15 @@
         <span class="name">Jonah<span class="sub">Heads down</span></span>
       </div>
     </div>
+
   </section>
 
   <!-- Here tonight and We met: lib/widgets/nearby_disclosure.dart (a place
        is a code, it never asks where you are), lib/domain/a_tap_at_the_door.dart
        (We met), lib/features/here/check_in.dart (strangers at a place are
        for adults). -->
-  <section class="moment reveal" id="tonight">
+  <section class="moment editorial-section editorial-section-6 no-art reveal" id="tonight">
+    <div class="editorial-copy">
     <div class="eyebrow">Here tonight</div>
     <h2>A place is a code.</h2>
     <p class="lede">
@@ -200,9 +233,12 @@
     <p class="lede">
       Strangers at a place are for people 18 and over.
     </p>
+
+    </div>
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-7 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">No ladder</div>
     <h2>Nobody is ranked.</h2>
     <p class="lede">
@@ -210,9 +246,12 @@
       moment a room ranks people it stops being a room. A phone recording
       gets in as readily as a mastered mix.
     </p>
+
+    </div>
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-8 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">Safe to accept</div>
     <h2>Report and block, on everything.</h2>
     <p class="lede">
@@ -221,15 +260,20 @@
       you. Nothing from a stranger is reviewed before you see it, and the app
       says so.
     </p>
+
+    </div>
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-9 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">An honest empty</div>
     <h2>A quiet noticeboard is a healthy one.</h2>
     <p class="lede">
       A noticeboard, not a feed. Nothing scrolls forever. Some days nobody
       needs anything — that's a small room, not a broken one.
     </p>
+
+    </div>
   </section>
 
   <div class="close">
@@ -271,5 +315,6 @@
 <script src="count.js" data-page="openmic"></script>
 <script src="stage.js"></script>
 <script src="reveal.js"></script>
+<script src="site-menu.js" defer></script>
 </body>
 </html>
