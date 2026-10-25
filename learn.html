@@ -4,14 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ask about your own song, and lessons from one link — CoLabRoom</title>
-<meta name="description" content="Ask Clef, a guide in the app and not a person, about one of your own songs. It shows you how and never writes the song for you. A teacher shares one link, and each person gets a room with them. Clef is for people 13 and over, about your own songs; lessons are for adults.">
+<meta name="description" content="Ask Clef, a guide in the app and not a person, about one of your own songs. It shows you how and never writes the song for you. A teacher shares one link, and each person gets a room with them. The newer build previews Clef from 13 for your own songs; lessons are for adults. Beta availability and age rules apply.">
 <meta property="og:title" content="Learn — CoLabRoom">
 <meta property="og:description" content="Ask about your own song. Songwriting for musicians who aren't in the same room.">
 <meta property="og:type" content="website">
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="fonts.css?v=20261025-footer">
+<link rel="stylesheet" href="site.css?v=20261025-footer">
+<link rel="stylesheet" href="editorial.css?v=20261025-footer">
   <link rel="canonical" href="https://colabroom.com/learn.html">
   <meta property="og:url" content="https://colabroom.com/learn.html">
   <meta property="og:site_name" content="CoLabRoom">
@@ -34,30 +35,46 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="chrome.css?v=20261025-footer">
+<link rel="stylesheet" href="atmosphere.css?v=20261025-footer">
 </head>
-<body>
+<body class="site-redesign site-atmosphere editorial page-learn site-fog-page">
+<div class="site-fog" aria-hidden="true"></div>
+<a class="skip-content" href="#main-content">Skip to content</a>
 
 <div class="wrap">
 
-  <header class="top">
-    <a class="brand" href="index.html">CoLabRoom</a>
-    <nav class="pages">
-      <a href="analysis.html">What it heard</a>
-      <a href="songbook.html">Song sheet</a>
-      <a href="practise.html">Practise</a>
-      <a href="takes.html">Takes</a>
-      <a href="bands.html">Rooms</a>
-      <a href="teams.html">Teams</a>
-      <a href="openmic.html">Open Mic</a>
-      <a href="learn.html" aria-current="page">Learn</a>
-      <a href="chords.html">Chords</a>
-      <a href="what-key.html">What key</a>
-    </nav>
-    <span class="sp"></span>
-    <!-- Somebody who already has an account had no way in from here. -->
-    <a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
-    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a>
-  </header>
+  <header class="top no-print">
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CoLabRoom</a>
+<details class="site-menu"><summary>Explore</summary><nav class="pages">
+<div class="nav-group"><h2>Make music</h2>
+<a href="analysis.html">What it heard</a>
+<a href="songbook.html">Song sheet</a>
+<a href="takes.html">Takes</a>
+</div>
+<div class="nav-group"><h2>Play & learn</h2>
+<a href="practise.html">Practise</a>
+<a href="learn.html" aria-current="page">Learn</a>
+<a href="help.html">Chord help</a>
+</div>
+<div class="nav-group"><h2>Together</h2>
+<a href="bands.html">Rooms</a>
+<a href="teams.html">Teams</a>
+<a href="openmic.html">Open Mic</a>
+</div>
+<div class="nav-group"><h2>Free tools</h2>
+<a href="chords.html">Chords</a>
+<a href="what-key.html">What key</a>
+<a href="transpose.html">Transpose</a>
+<a href="capo.html">Capo</a>
+<a href="nashville-numbers.html">Nashville numbers</a>
+</div>
+</nav></details>
+<a class="header-tool" href="chords.html">Try the chord tool ↗</a>
+<div class="header-actions"><a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
+<a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a></div>
+</header>
+<div id="main-content" tabindex="-1"></div>
 
   <!-- The app's Learn tab on main (e3276c8a, 29 September 2026). Clef's
        rules are lib/features/teacher/character.dart: show how, never do it
@@ -68,21 +85,20 @@
     <p class="kicker">Learn</p>
     <h1>Ask about your own song.</h1>
     <p>
-      A guide in the app for questions about your own songs, and a room
-      of your own for lessons with a person.
+      Explore your own songs with Clef. Learn with a teacher in a private room.
     </p>
+    <p class="availability-note">Clef from 13 is in testing. <a href="index.html#ages">What’s available →</a></p>
   </div>
 
   <!-- The answer in the picture is the app's own shape for a what-fits
        question (teacher_facts.dart, character.dart): the choosing line,
        then the chord's own notes, and nothing it was not measured to say. -->
-  <section class="moment reveal" id="clef">
+  <section class="moment editorial-section editorial-section-1 has-art reveal" id="clef">
+    <div class="editorial-copy">
     <div class="eyebrow">Ask Clef</div>
-    <h2>A teacher that reads your song.</h2>
+    <h2>A guide for your song.</h2>
     <p class="lede">
-      Clef is a guide in the app, not a person. Ask it about one of your
-      own songs: the key, the chords, the shapes, what might fit. Type
-      the question, or say it.
+      Clef is a guide in the app, not a person. Ask about your own song’s key, chords, shapes or what might fit. Type or speak.
     </p>
     <p class="lede">
       It does not hear you play. It reads what the app worked out about
@@ -90,6 +106,8 @@
       an AI model and from the app's own music theory. Clef is for people 13 and over,
       about your own songs.
     </p>
+
+    </div>
     <div class="art ask" aria-hidden="true">
       <div class="art-head">
         <span class="face"></span>
@@ -99,34 +117,44 @@
       <div class="a">I can show you the notes that fit. The choosing is yours. Bm: B, D and F&#9839;.</div>
       <div class="box">Ask, or say: loop the chorus</div>
     </div>
+
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-2 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">It shows you how</div>
     <h2>It never writes the song for you.</h2>
     <p class="lede">
-      Ask for the notes that fit and you get them. The choosing is yours.
-      It will not write you a line, a melody, a harmony or the words. Or
-      tell it what to do: loop the chorus, slower, show me G.
+      Ask which notes fit. The choosing is yours. Clef will not write a line, melody, harmony or words. You can also ask: loop the chorus, slower, show me G.
     </p>
+
+    </div>
   </section>
 
-  <section class="moment reveal" id="lessons">
+  <section class="moment editorial-section editorial-section-3 has-art reveal" id="lessons">
+    <div class="editorial-copy">
     <div class="eyebrow">Lessons</div>
     <h2>One link. A room for each of you.</h2>
     <p class="lede">
-      On Learn, a teacher taps Teach with a link. Everybody who opens it gets
-      a private room with the teacher, and a student with a code taps Use a
-      teacher's code. The teacher leaves a song and what to practise, and the
-      takes come back to the same room.
+      On Learn, Teach with a link gives each student a private room with the teacher. Have a code? Tap Use a teacher's code. Choose a song; Lesson work keeps What to practise and Your work beside it.
+    </p>
+    <p class="lede">
+      The teacher leaves a passage, a speed and what to work on in their own words. Practise opens it at that speed when the sheet and recording support it; otherwise it opens the whole song.
+    </p>
+    <p class="lede">
+      Your take stays private until you share it. In a two-person lesson,
+      Your work offers Send to your teacher by name. If more people are in
+      the room, sharing is with the room, and the app says so.
     </p>
     <p class="lede">
       No grades, no streaks. The teacher never sees whether you opened what
-      they left, only what you choose to send. In a lesson room, questions
-      to the app are off: you ask the teacher. Lessons are for adults: both
-      of you are 18 or over.
+      they left, only what you choose to send. Clef is off in lesson rooms:
+      ask the teacher. Lessons are for adults: both of you are 18 or over.
     </p>
+
+    </div>
     <div class="art" aria-hidden="true">
+      <p class="illustration-label">Example lesson</p>
       <div class="art-head">
         <span class="t">What to practise</span>
         <span class="s">From Mara</span>
@@ -134,19 +162,22 @@
       <div class="entry"><span class="name">County Line</span><span class="side">the song</span></div>
       <div class="entry"><span class="name">Into the chorus</span><span class="side">which part</span></div>
       <div class="entry"><span class="name">A little slower</span><span class="side">how fast</span></div>
-      <div class="entry"><span class="name">Before Thursday</span><span class="side">when by</span></div>
+      <div class="entry"><span class="name">Let the last chord ring</span><span class="side">Mara’s words</span></div>
       <div class="pill-row"><span class="pill on">Practise</span></div>
     </div>
+
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-4 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">Learn a song</div>
     <h2>Bring the chords you already have.</h2>
     <p class="lede">
-      Then read them in your own key, and in letters, Do Re Mi, or the
-      German way, with H.
+      Read them in your key: letters, Do Re Mi, or German notation with H.
     </p>
     <a class="more" href="songbook.html#bring">Bring what you have →</a>
+
+    </div>
   </section>
 
   <div class="close">
@@ -181,12 +212,13 @@
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
     <a href="copyright.html">Copyright</a>
+    <div class="atmosphere-controls no-print" hidden><button class="atmosphere-toggle" type="button" aria-pressed="false"><span data-atmosphere-label>Pause motion</span></button></div>
   </footer>
 
 </div>
 
-<script src="count.js" data-page="learn"></script>
-<script src="stage.js"></script>
-<script src="reveal.js"></script>
+<script src="count.js?v=20261025-footer" data-page="learn"></script>
+<script src="site-menu.js?v=20261025-footer" defer></script>
+<script src="atmosphere.js?v=20261025-footer" defer></script>
 </body>
 </html>

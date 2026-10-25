@@ -794,6 +794,8 @@ footer .sp { flex: 1; }
   cursor: pointer;
   transition: border-color .18s ease, background .18s ease;
 }
+/* Shared charts hide the uploader; authored display must respect hidden. */
+.drop[hidden] { display: none; }
 .drop:hover, .drop.over { border-color: var(--cyan); background: #0C1D33; }
 .drop:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
 

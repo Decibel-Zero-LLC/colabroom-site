@@ -10,8 +10,8 @@
 <meta property="og:type" content="website">
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="fonts.css?v=20261025-footer">
+<link rel="stylesheet" href="site.css?v=20261025-footer">
   <link rel="canonical" href="https://colabroom.com/nashville-numbers.html">
   <meta property="og:url" content="https://colabroom.com/nashville-numbers.html">
   <meta property="og:site_name" content="CoLabRoom">
@@ -209,29 +209,46 @@ select:focus-visible, button:focus-visible, textarea:focus-visible,
   ]
 }
 </script>
+<link rel="stylesheet" href="chrome.css?v=20261025-footer">
+<link rel="stylesheet" href="atmosphere.css?v=20261025-footer">
 </head>
-<body>
+<body class="site-redesign tool-page site-atmosphere site-fog-page">
+<div class="site-fog" aria-hidden="true"></div>
+<a class="skip-content" href="#main-content">Skip to content</a>
 
 <div class="wrap">
 
   <header class="top no-print">
-    <a class="brand" href="index.html">CoLabRoom</a>
-    <nav class="pages">
-      <a href="analysis.html">What it heard</a>
-      <a href="songbook.html">Song sheet</a>
-      <a href="practise.html">Practise</a>
-      <a href="takes.html">Takes</a>
-      <a href="bands.html">Rooms</a>
-      <a href="teams.html">Teams</a>
-      <a href="openmic.html">Open Mic</a>
-      <a href="learn.html">Learn</a>
-      <a href="chords.html">Chords</a>
-      <a href="what-key.html">What key</a>
-    </nav>
-    <span class="sp"></span>
-    <a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
-    <a class="cta" href="https://app.colabroom.com/">Open the app</a>
-  </header>
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CoLabRoom</a>
+<details class="site-menu"><summary>Explore</summary><nav class="pages">
+<div class="nav-group"><h2>Make music</h2>
+<a href="analysis.html">What it heard</a>
+<a href="songbook.html">Song sheet</a>
+<a href="takes.html">Takes</a>
+</div>
+<div class="nav-group"><h2>Play & learn</h2>
+<a href="practise.html">Practise</a>
+<a href="learn.html">Learn</a>
+<a href="help.html">Chord help</a>
+</div>
+<div class="nav-group"><h2>Together</h2>
+<a href="bands.html">Rooms</a>
+<a href="teams.html">Teams</a>
+<a href="openmic.html">Open Mic</a>
+</div>
+<div class="nav-group"><h2>Free tools</h2>
+<a href="chords.html">Chords</a>
+<a href="what-key.html">What key</a>
+<a href="transpose.html">Transpose</a>
+<a href="capo.html">Capo</a>
+<a href="nashville-numbers.html" aria-current="page">Nashville numbers</a>
+</div>
+</nav></details>
+<a class="header-tool" href="chords.html">Try the chord tool ↗</a>
+<div class="header-actions"><a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
+<a class="cta" href="https://app.colabroom.com/">Open the app</a></div>
+</header>
+<div id="main-content" tabindex="-1"></div>
 
   <div class="hero inner">
     <h1>G C D is 1 4 5.</h1>
@@ -325,10 +342,7 @@ Chorus:  C  G  D  Em</textarea>
     <div class="eyebrow">Why anybody bothers</div>
     <h2>The singer drops it a tone and the chart doesn't change.</h2>
     <p class="lede">
-      That is the whole thing. On a normal chart, moving a song for somebody's
-      voice makes every letter on the page wrong. On a number chart, 1 4 5 is
-      still 1 4 5 — the band works out the letters on the way to the microphone.
-      It is why a session player would rather be handed numbers.
+      The singer changes key; 1, 4 and 5 still mean the same places in the song. Each player reads them in the new key.
     </p>
   </section>
 
@@ -336,10 +350,7 @@ Chorus:  C  G  D  Em</textarea>
     <div class="eyebrow">How to read one</div>
     <h2>Count the chords of the key, one to seven.</h2>
     <p class="lede">
-      In G, that is G A B C D E F♯ — so G is 1, C is 4 and D is 5. A minor chord
-      gets a dash after the number, which is why Am in G is 2-. Anything from
-      outside the key carries a flat or a sharp in front: the F in a G song is
-      ♭7. Roman numerals say the same thing with the quality in the case.
+      In G, C is 4 and D is 5. Minor chords get a dash, so Am is 2-. A chord outside the key gets a sharp or flat: F is ♭7. Roman numerals use upper- and lowercase to show chord quality.
     </p>
   </section>
 
@@ -347,13 +358,7 @@ Chorus:  C  G  D  Em</textarea>
     <div class="eyebrow">Minor songs</div>
     <h2>There are two right answers.</h2>
     <p class="lede">
-      Chas Williams' <em>The Nashville Number System</em> — the book the whole
-      thing is written down in — builds every chart on the major scale, so a
-      song in A minor is counted against C and its home chord is 6-. Plenty of
-      players who mostly read minor material count from the minor tonic instead
-      and read the same song as 1- ♭7 ♭6 ♭3. Both are on this page and neither
-      is the advanced one. Roman numerals don't have the argument: they always
-      count a minor key from its own tonic.
+      For a minor song, you can count from the relative major (A minor is 6- in C) or from the minor tonic (A minor is 1-). Choose the convention your band uses. Roman numerals count from the minor tonic.
     </p>
   </section>
 
@@ -405,12 +410,14 @@ Chorus:  C  G  D  Em</textarea>
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
     <a href="copyright.html">Copyright</a>
+    <div class="atmosphere-controls no-print" hidden><button class="atmosphere-toggle" type="button" aria-pressed="false"><span data-atmosphere-label>Pause motion</span></button></div>
   </footer>
 
 </div>
 
-<script src="count.js" data-page="numbers"></script>
-<script type="module" src="tools.js"></script>
-<script src="reveal.js"></script>
+<script src="count.js?v=20261025-footer" data-page="numbers"></script>
+<script type="module" src="tools.js?v=20261025-footer"></script>
+<script src="atmosphere.js?v=20261025-footer" defer></script>
+<script src="site-menu.js?v=20261025-footer" defer></script>
 </body>
 </html>

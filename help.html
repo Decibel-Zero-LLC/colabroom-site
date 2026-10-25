@@ -10,8 +10,9 @@
 <meta property="og:type" content="website">
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="fonts.css?v=20261025-footer">
+<link rel="stylesheet" href="site.css?v=20261025-footer">
+<link rel="stylesheet" href="editorial.css?v=20261025-footer">
   <link rel="canonical" href="https://colabroom.com/help.html">
   <meta property="og:url" content="https://colabroom.com/help.html">
   <meta property="og:site_name" content="CoLabRoom">
@@ -34,58 +35,81 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="chrome.css?v=20261025-footer">
+<link rel="stylesheet" href="atmosphere.css?v=20261025-footer">
 </head>
-<body>
+<body class="site-redesign site-atmosphere editorial page-help site-fog-page">
+<div class="site-fog" aria-hidden="true"></div>
+<a class="skip-content" href="#main-content">Skip to content</a>
 
 <div class="wrap">
 
-  <header class="top">
-    <a class="brand" href="index.html">CoLabRoom</a>
-    <nav class="pages">
-      <a href="analysis.html">What it heard</a>
-      <a href="songbook.html">Song sheet</a>
-      <a href="practise.html">Practise</a>
-      <a href="takes.html">Takes</a>
-      <a href="bands.html">Rooms</a>
-      <a href="teams.html">Teams</a>
-      <a href="openmic.html">Open Mic</a>
-      <a href="learn.html">Learn</a>
-      <a href="chords.html">Chords</a>
-      <a href="what-key.html">What key</a>
-    </nav>
-    <span class="sp"></span>
-    <a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
-    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a>
-  </header>
+  <header class="top no-print">
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CoLabRoom</a>
+<details class="site-menu"><summary>Explore</summary><nav class="pages">
+<div class="nav-group"><h2>Make music</h2>
+<a href="analysis.html">What it heard</a>
+<a href="songbook.html">Song sheet</a>
+<a href="takes.html">Takes</a>
+</div>
+<div class="nav-group"><h2>Play & learn</h2>
+<a href="practise.html">Practise</a>
+<a href="learn.html">Learn</a>
+<a href="help.html" aria-current="page">Chord help</a>
+</div>
+<div class="nav-group"><h2>Together</h2>
+<a href="bands.html">Rooms</a>
+<a href="teams.html">Teams</a>
+<a href="openmic.html">Open Mic</a>
+</div>
+<div class="nav-group"><h2>Free tools</h2>
+<a href="chords.html">Chords</a>
+<a href="what-key.html">What key</a>
+<a href="transpose.html">Transpose</a>
+<a href="capo.html">Capo</a>
+<a href="nashville-numbers.html">Nashville numbers</a>
+</div>
+</nav></details>
+<a class="header-tool" href="chords.html">Try the chord tool ↗</a>
+<div class="header-actions"><a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
+<a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a></div>
+</header>
+<div id="main-content" tabindex="-1"></div>
 
   <div class="hero inner">
     <p class="kicker">Stuck?</p>
     <h1>Tap the chord you're stuck on.</h1>
     <p>
-      A scale chart doesn't know your song. This does.
+      The chords, notes and shapes that fit your song.
     </p>
   </div>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-1 has-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">Where you are</div>
     <h2>That's the four chord.</h2>
     <p class="lede">
       A chord on its own is a shape. A chord in a key is a decision.
     </p>
+
+    </div>
     <div class="art stats" aria-hidden="true">
       <div class="stat"><div class="k">Chord</div><div class="v">C</div></div>
       <div class="stat"><div class="k">Key</div><div class="v">G major</div></div>
       <div class="stat"><div class="k">Sitting at</div><div class="v">the IV</div></div>
     </div>
+
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-2 has-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">What else fits</div>
-    <h2>Not a list of seven chords. The three you haven't used.</h2>
+    <h2>The chords you haven't used.</h2>
     <p class="lede">
-      Anyone can look up what's in a key. Your song has used four of
-      them. Here are the rest.
+      See what belongs to the key, beyond the chords already in your song.
     </p>
+
+    </div>
     <div class="art" aria-hidden="true">
       <div class="chordnotes">
         <span><b>Em</b> the vi</span>
@@ -93,19 +117,22 @@
         <span><b>Bm</b> the iii</span>
       </div>
     </div>
+
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-3 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">For whatever you play</div>
-    <h2>The same question, answered for your instrument.</h2>
+    <h2>Find your part in the chord.</h2>
     <p class="lede">
-      A lead wants the box. A bass wants where the root goes. A singer
-      wants the note that won't clash. Same chord, three answers. You get
-      all of them.
+      A box for the lead. A root for the bass. A note for the singer. The same chord, answered for each instrument.
     </p>
+
+    </div>
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-4 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">Honest about what it knows</div>
     <h2>It won't make something up.</h2>
     <p class="lede">
@@ -113,25 +140,31 @@
       it. Harmony notes come from the chord, not your melody — and they
       say so.
     </p>
+
+    </div>
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-5 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">No waiting, no cost</div>
     <h2>It's arithmetic, not a guess.</h2>
     <p class="lede">
-      One right answer, worked out rather than predicted. Nothing leaves
-      your phone. Works with no signal.
+      Worked out on your phone. Nothing leaves it, and no signal is needed.
     </p>
+
+    </div>
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-6 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">And when it can't help</div>
     <h2>Ask the room.</h2>
     <p class="lede">
-      Some questions aren't arithmetic. Does this bridge work? The people
-      you play with are already here.
+      Does this bridge work? Ask the people you play with.
     </p>
     <a class="more" href="bands.html">Rooms →</a>
+
+    </div>
   </section>
 
   <nav class="keep-reading" aria-label="More about CoLabRoom">
@@ -159,12 +192,13 @@
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
     <a href="copyright.html">Copyright</a>
+    <div class="atmosphere-controls no-print" hidden><button class="atmosphere-toggle" type="button" aria-pressed="false"><span data-atmosphere-label>Pause motion</span></button></div>
   </footer>
 
 </div>
 
-<script src="count.js" data-page="help"></script>
-<script src="stage.js"></script>
-<script src="reveal.js"></script>
+<script src="count.js?v=20261025-footer" data-page="help"></script>
+<script src="site-menu.js?v=20261025-footer" defer></script>
+<script src="atmosphere.js?v=20261025-footer" defer></script>
 </body>
 </html>

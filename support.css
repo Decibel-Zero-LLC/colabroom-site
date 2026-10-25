@@ -1,0 +1,154 @@
+/* The shared site shell around support documents, printable work and public
+   records. Legal copy and the flier's paper/print rules remain in their files. */
+@media screen {
+  .support-site {
+    --ink: #050709;
+    --surface: #101820;
+    --line: #293744;
+    --line-soft: #263541;
+    --text: #f0f3f5;
+    --body: #c1ccd7;
+    --muted: #a0afbd;
+    --cyan: #62d9f3;
+    color: var(--body);
+    overflow-wrap: anywhere;
+  }
+  .support-site > .wrap {
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 4vw, 64px);
+  }
+  .support-site header.top {
+    align-items: center;
+    font-family: var(--display);
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .support-site header.top a { text-decoration: none; }
+  .support-site header.top > .brand {
+    font-family: var(--display);
+    font-weight: 800;
+    color: var(--text);
+  }
+  .support-site header.top .nav-group h2 {
+    margin: 0 0 .65rem;
+    padding: 0;
+    border: 0;
+    max-width: none;
+    color: var(--cyan);
+    font: 500 .7rem/1.6 var(--mono);
+    letter-spacing: .12em;
+  }
+  .support-site header.top .cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font: 600 .8rem/1.4 var(--display);
+  }
+  .support-site .skip-content { text-decoration: none; }
+  .support-site .page {
+    max-width: 44rem;
+    margin-inline: auto;
+    padding: clamp(3rem, 7vw, 6rem) 0 clamp(4rem, 8vw, 7rem);
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+  .support-site .page > h1 {
+    font-family: var(--display);
+    font-size: clamp(2.75rem, 6.5vw, 5rem);
+    font-weight: 600;
+    letter-spacing: -.055em;
+    line-height: 1.04;
+    text-wrap: balance;
+    color: var(--text);
+    margin-block: 0 1.1rem;
+  }
+  .support-site.legal-polish .page > :is(p, ul, ol) { max-width: none; }
+  .support-site .page > .updated {
+    margin-bottom: 2.75rem;
+    font-size: .75rem;
+    line-height: 1.7;
+  }
+  .support-site .page > .notice {
+    font-size: 1rem;
+    line-height: 1.75;
+    border-left-color: var(--cyan);
+    padding-left: 1.25rem;
+  }
+  .support-site.legal-polish .page > h2 {
+    font-size: clamp(1.375rem, 3vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -.025em;
+    line-height: 1.25;
+    margin-top: 3.5rem;
+    padding-top: 1.75rem;
+    scroll-margin-top: 2rem;
+  }
+  .support-site.legal-polish .page > h2:first-of-type { margin-top: 0; padding-top: 0; }
+  .support-site.legal-polish .page h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.4; }
+  .support-site .page :is(p, li) a { text-underline-offset: .17em; }
+  .support-site > .wrap > footer {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0;
+    padding-block: 2rem;
+    border-top: 1px solid var(--line-soft);
+    color: var(--muted);
+    font: 400 .75rem/1.7 var(--display);
+    letter-spacing: 0;
+  }
+  .support-site > .wrap > footer a { color: var(--muted); text-decoration: none; }
+  .support-site > .wrap > footer a:hover { color: var(--cyan); }
+  .support-site .sp { flex: 1; }
+  .support-site.record-polish .page { max-width: 50rem; }
+  .support-site.record-polish .page > h1 { font-size: clamp(3.25rem, 9vw, 6.5rem); margin-top: 1rem; }
+  .support-site.record-polish .eyebrow { font: 500 .75rem/1.6 var(--mono); letter-spacing: .12em; }
+  .support-site.record-polish .facts { margin-top: 2.5rem; }
+  .support-site.record-polish .facts li { padding-block: 1.15rem; }
+  .support-site.record-polish .facts b { color: var(--text); font-weight: 500; }
+  .support-site.record-polish .note { font-size: 1.0625rem; line-height: 1.75; max-width: 48ch; margin-top: 2.5rem; }
+  .support-site.flier-page .page { max-width: 70rem; }
+  .support-site.flier-page .page > h1 { max-width: 14ch; }
+  .support-site.flier-page .page > .lede { max-width: 45ch; margin-bottom: 3rem; }
+  .support-site.flier-page .work { gap: clamp(2rem, 5vw, 4rem); }
+  .support-site.flier-page .sheet { font-size: 1.0625rem; line-height: 1.6; }
+  .support-site.flier-page .controls {
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid var(--line);
+    border-radius: .8rem;
+    background: #101820;
+    box-shadow: 0 1.5rem 4rem #0004;
+  }
+  .support-site.flier-page .controls label { font-size: .75rem; }
+  .support-site.flier-page .controls label:first-child { margin-top: 0; }
+  .support-site.flier-page .controls :is(input, button) { min-height: 44px; }
+  .support-site.flier-page .controls input { border-color: #425969; }
+  .support-site.flier-page .controls button { font-weight: 600; border-radius: .5rem; padding-inline: 1rem; }
+  .support-site.flier-page .controls .hint { font-size: .9375rem; line-height: 1.65; }
+  @media (max-width: 46rem) {
+    .support-site.flier-page .work { grid-template-columns: minmax(0, 1fr); }
+    .support-site.flier-page .controls { width: 100%; }
+  }
+}
+@media print {
+  .support-site:not(.flier-page) {
+    --ink: #fff;
+    --surface: #fff;
+    --line: #aaa;
+    --line-soft: #ccc;
+    --text: #111;
+    --body: #222;
+    --muted: #444;
+    --cyan: #005c75;
+    color: var(--body);
+  }
+  .support-site > .wrap > header.top,
+  .support-site > .wrap > footer,
+  .support-site .skip-content { display: none !important; }
+  .support-site > .wrap { margin: 0; padding: 0; max-width: none; }
+}

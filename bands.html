@@ -10,8 +10,9 @@
 <meta property="og:type" content="website">
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="fonts.css?v=20261025-footer">
+<link rel="stylesheet" href="site.css?v=20261025-footer">
+<link rel="stylesheet" href="editorial.css?v=20261025-footer">
   <link rel="canonical" href="https://colabroom.com/bands.html">
   <meta property="og:url" content="https://colabroom.com/bands.html">
   <meta property="og:site_name" content="CoLabRoom">
@@ -34,46 +35,64 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="chrome.css?v=20261025-footer">
+<link rel="stylesheet" href="atmosphere.css?v=20261025-footer">
 </head>
-<body>
+<body class="site-redesign site-atmosphere editorial page-bands site-fog-page">
+<div class="site-fog" aria-hidden="true"></div>
+<a class="skip-content" href="#main-content">Skip to content</a>
 
 <div class="wrap">
 
-  <header class="top">
-    <a class="brand" href="index.html">CoLabRoom</a>
-    <nav class="pages">
-      <a href="analysis.html">What it heard</a>
-      <a href="songbook.html">Song sheet</a>
-      <a href="practise.html">Practise</a>
-      <a href="takes.html">Takes</a>
-      <a href="bands.html" aria-current="page">Rooms</a>
-      <a href="teams.html">Teams</a>
-      <a href="openmic.html">Open Mic</a>
-      <a href="learn.html">Learn</a>
-      <a href="chords.html">Chords</a>
-      <a href="what-key.html">What key</a>
-    </nav>
-    <span class="sp"></span>
-    <!-- Somebody who already has an account had no way in from here. -->
-    <a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
-    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a>
-  </header>
+  <header class="top no-print">
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CoLabRoom</a>
+<details class="site-menu"><summary>Explore</summary><nav class="pages">
+<div class="nav-group"><h2>Make music</h2>
+<a href="analysis.html">What it heard</a>
+<a href="songbook.html">Song sheet</a>
+<a href="takes.html">Takes</a>
+</div>
+<div class="nav-group"><h2>Play & learn</h2>
+<a href="practise.html">Practise</a>
+<a href="learn.html">Learn</a>
+<a href="help.html">Chord help</a>
+</div>
+<div class="nav-group"><h2>Together</h2>
+<a href="bands.html" aria-current="page">Rooms</a>
+<a href="teams.html">Teams</a>
+<a href="openmic.html">Open Mic</a>
+</div>
+<div class="nav-group"><h2>Free tools</h2>
+<a href="chords.html">Chords</a>
+<a href="what-key.html">What key</a>
+<a href="transpose.html">Transpose</a>
+<a href="capo.html">Capo</a>
+<a href="nashville-numbers.html">Nashville numbers</a>
+</div>
+</nav></details>
+<a class="header-tool" href="chords.html">Try the chord tool ↗</a>
+<div class="header-actions"><a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
+<a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a></div>
+</header>
+<div id="main-content" tabindex="-1"></div>
 
   <div class="hero inner">
     <p class="kicker">Rooms</p>
     <h1>Open it and see what happened.</h1>
     <p>
-      A private room per band or project. Private to whoever is in it.
+      A private room for each band or project. Just the people in it.
     </p>
   </div>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-1 has-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">Rooms</div>
-    <h2>The band you are in, not a folder.</h2>
+    <h2>Your songs. Your people.</h2>
     <p class="lede">
-      Its own songs, its own people. Start a private room and invite your
-      collaborators, by email or with a code.
+      Start a private room. Invite collaborators by email or with a code.
     </p>
+
+    </div>
     <div class="art" aria-hidden="true">
       <div class="take">
         <span class="dot" style="background:var(--a1)"></span>
@@ -91,32 +110,38 @@
         <span class="pct" style="min-width:auto">added a bass take</span>
       </div>
     </div>
+
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-2 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">Not at the same time</div>
     <h2>The song moves while you are asleep.</h2>
     <p class="lede">
-      A verse from a train, a lead at midnight, all there in the morning.
-      When somebody plays on a song you have not heard yet, the song says New.
+      A verse from a train. A lead at midnight. A song says New when somebody adds a part you have not heard.
     </p>
+
+    </div>
   </section>
 
-  <section class="moment reveal" id="sets">
+  <section class="moment editorial-section editorial-section-3 no-art reveal" id="sets">
+    <div class="editorial-copy">
     <div class="eyebrow">Sets</div>
     <h2>The band's sets.</h2>
     <p class="lede">
-      Build a set, put it in order, and Give this set to the room. Play the
-      set walks it one song at a time, in the keys you play them in.
+      Build the running order and Give this set to the room. Play the set follows it one song at a time, in your keys.
     </p>
     <p class="lede">
       Under Hand this out: Print it, Send the pack as a PDF, or Send it as
       text.
     </p>
     <a class="more" href="teams.html">Playing out? Make the room a team →</a>
+
+    </div>
   </section>
 
-  <section class="moment reveal" id="team">
+  <section class="moment editorial-section editorial-section-4 no-art reveal" id="team">
+    <div class="editorial-copy">
     <div class="eyebrow">Teams</div>
     <h2>A band that plays out can be a team.</h2>
     <p class="lede">
@@ -126,16 +151,19 @@
     </p>
     <p class="note">New in October 2026 · not on the beta's phones yet</p>
     <a class="more" href="teams.html">Teams →</a>
+
+    </div>
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-5 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">Talk</div>
     <h2>The band talks in the room.</h2>
     <p class="lede">
-      Every room is a thread. Say something and the band hears about it;
-      write to one person and only they read it. Messages is the one place
-      for all of it: your people, and every room you are in.
+      Say something and the band hears about it. Write to one person and only they read it. Messages brings your people and every room’s thread together.
     </p>
+
+    </div>
   </section>
 
   <!-- Calls: app lib/features/calls on main (e3276c8a). A call always
@@ -144,14 +172,12 @@
        (person_call_door.dart). Calls are for people 13 and over
        inside their own rooms (migration 0359, lib/domain/calls.dart). "Call · nothing is recorded" is the call
        screen's own line. -->
-  <section class="moment reveal" id="calls">
+  <section class="moment editorial-section editorial-section-6 has-art reveal" id="calls">
+    <div class="editorial-copy">
     <div class="eyebrow">Calls</div>
     <h2>When you are free at the same time.</h2>
     <p class="lede">
-      Call the whole room, or one person in a room of just the two of you.
-      Audio and video. Put a song up and its chords and words take the
-      screen, with the faces along the top. The call itself is never
-      recorded.
+      Audio or video, with the whole room or a room of just two. Put up a song: chords and words fill the screen, faces along the top. The call itself is never recorded.
     </p>
     <p class="lede">
       On the call's Stage: Record a pass, Hear the band, Take turns.
@@ -161,6 +187,11 @@
       one adult and someone under 18 has no call, and a call that drops to
       just those two waits for a third person.
     </p>
+    <p class="meta">Your beta build may differ. See the
+      <a href="child-safety.html">current child-safety information</a>.
+      Recording a pass has its own recording and consent rules.</p>
+
+    </div>
     <div class="art call" aria-hidden="true">
       <div class="art-head">
         <span class="t">You and Mara are in this call</span>
@@ -176,18 +207,18 @@
         <span class="pill leave">Leave</span>
       </div>
     </div>
+
   </section>
 
   <!-- The note a room keeps after a call: app #597, migration 0232,
        lib/domain/call_note.dart. Not a recording, not a transcript, and no
        minutes counted per person. -->
-  <section class="moment reveal" id="after-the-call">
+  <section class="moment editorial-section editorial-section-7 has-art reveal" id="after-the-call">
+    <div class="editorial-copy">
     <div class="eyebrow">After the call</div>
     <h2>The room keeps a note.</h2>
     <p class="lede">
-      When a call ends, the room keeps a note: who was there, roughly how
-      long, the takes added and whose words changed. Anybody who was on the
-      call can add a line.
+      After a call: who was there, roughly how long, the takes added and whose words changed. Anyone on the call can add a line.
     </p>
     <p class="lede">
       It is not a recording, and only the people who were there can read
@@ -196,6 +227,8 @@
     <p class="lede">
       Draft with Claude makes a draft from the note, never from the audio.
     </p>
+
+    </div>
     <div class="art" aria-hidden="true">
       <div class="art-head">
         <span class="t">After the call</span>
@@ -213,15 +246,19 @@
       </div>
       <p class="said">Bridge still drags, try it a little faster.<span>Mara</span></p>
     </div>
+
   </section>
 
-  <section class="moment reveal">
+  <section class="moment editorial-section editorial-section-8 no-art reveal">
+    <div class="editorial-copy">
     <div class="eyebrow">Credit</div>
     <h2>Who brought what, on the record.</h2>
     <p class="lede">
       Lines carry the colour of whoever wrote them. Who was in the room
       drafts a writers' split for the song.
     </p>
+
+    </div>
   </section>
 
   <div class="close">
@@ -257,12 +294,13 @@
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
     <a href="copyright.html">Copyright</a>
+    <div class="atmosphere-controls no-print" hidden><button class="atmosphere-toggle" type="button" aria-pressed="false"><span data-atmosphere-label>Pause motion</span></button></div>
   </footer>
 
 </div>
 
-<script src="count.js" data-page="bands"></script>
-<script src="stage.js"></script>
-<script src="reveal.js"></script>
+<script src="count.js?v=20261025-footer" data-page="bands"></script>
+<script src="site-menu.js?v=20261025-footer" defer></script>
+<script src="atmosphere.js?v=20261025-footer" defer></script>
 </body>
 </html>

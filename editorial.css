@@ -1,0 +1,354 @@
+/* Product chapters. Copy, illustrative art and existing script hooks stay in
+   the HTML. Global navigation/footer are intentionally owned by chrome.css. */
+body.editorial {
+  --ink: #05070b;
+  --surface: #0d1520;
+  --line: #253345;
+  --text: #eef2f7;
+  --body: #bec8d5;
+  --muted: #9eacbe;
+  --cyan: #63d8f4;
+  background: radial-gradient(ellipse at 88% 5%, #12243980, transparent 44rem), var(--ink);
+  font-family: var(--display);
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 400;
+}
+.editorial > .wrap { max-width: 82rem; padding-inline: clamp(20px, 4vw, 64px); }
+.editorial .hero {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(5rem, 11vw, 10rem) clamp(4rem, 8vw, 7rem);
+}
+.editorial .hero.inner h1 {
+  max-width: 17ch;
+  font-size: clamp(3rem, 7.5vw, 7rem);
+  line-height: 1.01;
+  letter-spacing: -.065em;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+.editorial .hero.inner p:not(.kicker):not(.newmark) {
+  max-width: 46ch;
+  margin-top: 2rem;
+  font: 400 clamp(1.1rem, 1.5vw, 1.4rem)/1.6 var(--display);
+  color: var(--body);
+}
+.editorial .hero .kicker,
+.editorial .eyebrow {
+  color: var(--cyan);
+  font: 500 .75rem/1.6 var(--mono);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.editorial .hero .kicker { margin: 0 0 1.7rem; max-width: none; }
+.editorial .hero::before {
+  content: '';
+  position: absolute;
+  width: 5rem;
+  height: 1px;
+  bottom: 2rem;
+  left: 0;
+  background: linear-gradient(90deg, var(--cyan), transparent);
+}
+.editorial section.moment {
+  position: relative;
+  padding-block: clamp(3.75rem, 7vw, 7rem);
+  border-color: var(--line);
+}
+.editorial .editorial-copy,
+.editorial .editorial-tail,
+.editorial .art { min-width: 0; }
+.editorial section.moment h2 {
+  max-width: 21ch;
+  color: var(--text);
+  font: 750 clamp(1.9rem, 3.8vw, 3.6rem)/1.09 var(--display);
+  letter-spacing: -.045em;
+  overflow-wrap: anywhere;
+}
+.editorial section.moment .lede {
+  max-width: 55ch;
+  margin-top: 1.4rem;
+  color: var(--body);
+  font: 400 clamp(1rem, 1.15vw, 1.125rem)/1.75 var(--display);
+}
+.editorial section.moment .more {
+  max-width: 100%;
+  font: 600 1rem/1.6 var(--display);
+  color: var(--cyan);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .3em;
+}
+.editorial .editorial-tail { margin-top: 1rem; }
+.editorial .art {
+  margin-top: 2rem;
+  padding: clamp(18px, 3vw, 40px);
+  border: 1px solid #52647b70;
+  border-radius: 1.5rem;
+  background: linear-gradient(145deg, #1a2939, #0a111c 60%);
+  box-shadow: 0 2rem 5rem #0005, inset 0 1px #e1eeff0a;
+  overflow-wrap: anywhere;
+}
+.editorial .art .art-head { border-color: #60718a50; }
+.editorial .art .art-head .t { font-size: 1.1rem; line-height: 1.5; }
+.editorial .art .art-head .s,
+.editorial .art .entry .side,
+.editorial .art .lbl { font-size: .75rem; line-height: 1.6; }
+.editorial .art .entry .name { font-size: 1rem; line-height: 1.5; }
+.editorial .pill {
+  padding: .5rem .85rem;
+  font-size: .75rem;
+  line-height: 1.5;
+  white-space: normal;
+}
+.editorial .art.pill-row { gap: .75rem; }
+.editorial .form { flex-wrap: wrap; overflow: visible; }
+.editorial .form span { min-width: 0; max-width: 100%; min-height: 2.25rem; height: auto; padding: .5rem .35rem; flex: 1 1 4.25rem; }
+.editorial .lyric em { min-width: 0; }
+.editorial .readings .entry .name { flex: 1 1 9rem; }
+.editorial .stats { gap: 2rem; }
+.editorial .stat { min-width: 0; }
+.editorial .stat .k { font-size: .7rem; line-height: 1.5; }
+.editorial .stat .v {
+  margin-top: .5rem;
+  font-size: clamp(1.7rem, 3.5vw, 3rem);
+  line-height: 1.2;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.editorial .lyric .chords { color: var(--cyan); padding-left: 0; overflow-wrap: anywhere; }
+.editorial .lyric em { font: 400 clamp(1.15rem, 1.7vw, 1.55rem)/1.6 var(--serif); }
+.editorial .lyric span.line { align-items: baseline; }
+.editorial .newmark {
+  display: block;
+  max-width: 47ch;
+  margin-block: 1rem 1.5rem;
+  padding-left: .8rem;
+  border-left: 2px solid var(--cyan);
+  color: var(--body);
+  font: 500 .75rem/1.65 var(--mono);
+}
+.editorial .close {
+  margin-block: clamp(2rem, 5vw, 5rem);
+  padding: clamp(2.5rem, 6vw, 5rem) 0;
+  border-block: 1px solid #71849c50;
+  text-align: left;
+  background: radial-gradient(ellipse at 85% 50%, #15364a70, transparent 60%);
+}
+.editorial .close h2 {
+  font: 800 clamp(2.5rem, 5vw, 5rem)/1.05 var(--display);
+  letter-spacing: -.05em;
+  color: var(--text);
+}
+.editorial .close p { max-width: 42ch; font: 400 1.125rem/1.65 var(--display); }
+.editorial .close .cta {
+  margin-top: 1.75rem;
+  padding: .9rem 1.5rem;
+  background: var(--cyan);
+  color: #041018;
+  border: 1px solid #c3f1ff;
+  border-radius: .4rem;
+  white-space: normal;
+}
+.editorial .close .meta { margin-top: 1rem; }
+.editorial :is(.hero,.moment,.close) a:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 5px;
+}
+
+/* Recording analysis: a technical reveal, then a broad result dashboard. */
+.page-analysis .hero h1 { max-width: 15ch; }
+.page-analysis .editorial-section-4 .stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  border-radius: 0;
+  border-inline: 0;
+  background: transparent;
+  box-shadow: none;
+  padding-inline: 0;
+}
+.page-analysis .editorial-section-4 .stat { padding-block: 1rem; border-top: 1px solid var(--line); }
+.page-analysis #guessing { border-top-color: var(--cyan); }
+
+/* The sheet: notation gets real space, with a silver-paper interlude. */
+.page-songbook .hero { padding-bottom: 4rem; }
+.page-songbook .editorial-section-1 .art { border-radius: .35rem; padding-block: 3rem; }
+.page-songbook .editorial-section-2 .art {
+  background: linear-gradient(135deg, #edf1f3, #bac8d1);
+  color: #162535;
+  border-color: #edf1f3;
+  border-radius: .3rem;
+  box-shadow: 0 2rem 4rem #0004;
+}
+.page-songbook .editorial-section-2 .lyric em { color: #172535; }
+.page-songbook .editorial-section-2 .lyric .chords { color: #07567b; font-size: .85rem; }
+.page-songbook .chordcard { max-width: 36rem; }
+.page-songbook .chordname { font-size: clamp(3rem, 6vw, 5rem); }
+.page-songbook .readings { border-radius: .4rem; }
+.page-songbook #bring .art { background: transparent; border: 0; padding-inline: 0; box-shadow: none; }
+
+/* Practice: a precise instrument, then a generous performance page. */
+.page-practise .tuner { padding: clamp(1.5rem, 4vw, 3.5rem); border-radius: 2rem; }
+.page-practise .tuner .tuner-note { font-size: clamp(4rem, 8vw, 7rem); }
+.page-practise .tuner .scale { margin-block: 2rem 1rem; }
+.page-practise .editorial-section-2 .art { border-inline: 0; border-radius: 0; padding-block: 3rem; }
+.page-practise #hear-me-play { border-top-color: #5ad4ef70; }
+
+/* Takes: the mixer is the feature image; export is an editorial close. */
+.page-takes .hero h1 { max-width: 12ch; }
+.page-takes .editorial-section-1 .art { padding-block: clamp(2rem, 5vw, 4rem); }
+.page-takes .take { padding-block: 1.2rem; gap: 1rem; flex-wrap: wrap; }
+.page-takes .take .name { min-width: 0; flex: 0 1 9rem; }
+.page-takes .take .fader { min-width: 5rem; }
+.page-takes .take .pct { font-size: .75rem; }
+.page-takes #yours { border-top-color: var(--cyan); }
+
+/* Rooms: one photographic setting; the rest is the working room itself. */
+.page-bands .hero { padding-inline: clamp(1rem, 3vw, 2.5rem); margin-inline: clamp(-2.5rem, -3vw, -1rem); }
+.page-bands .hero::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(90deg, #05070bf5 15%, #05070b9c 62%, #05070b35),
+    linear-gradient(0deg, #05070b, transparent 70%), url('assets/campaign-studio.webp') center/cover;
+}
+.page-bands .hero h1 { max-width: 15ch; }
+.page-bands #calls .art { border-radius: 1.5rem; }
+.page-bands #after-the-call .art { border-radius: .3rem; }
+
+/* Teams: a dated show dossier, with its original diagram/motion hooks. */
+.page-teams .story { max-width: none; }
+.page-teams .hero h1 { max-width: 13ch; }
+.page-teams .story section.moment {
+  border-top: 0;
+  border-left: 1px solid #40566b;
+  margin-left: .4rem;
+  padding-left: clamp(1.3rem, 4vw, 3rem);
+}
+.page-teams .story section.moment::before {
+  content: '';
+  position: absolute;
+  left: -.3rem;
+  top: clamp(3.75rem, 7vw, 7rem);
+  width: .55rem;
+  height: .55rem;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 1.2rem #63d8f440;
+}
+.page-teams .art { border-radius: .5rem; }
+.page-teams .p-advance { background: linear-gradient(155deg, #1b2b3a, #101923); }
+.page-teams #stage .p-stands { border-color: #84ccdf80; }
+.page-teams .p-stands .setlist li {
+  height: auto;
+  min-height: 1.8rem;
+  padding-block: .2rem;
+  line-height: 1.5;
+  white-space: normal;
+  overflow: visible;
+}
+.page-teams .p-stands .called { min-height: 1.8rem; }
+.page-teams .p-stands .flip { overflow: visible; }
+.page-teams .p-stands .cells b { height: auto; min-height: 2rem; padding: .25rem; white-space: normal; line-height: 1.4; }
+
+/* Open Mic: a spacious noticeboard, not a stack of feature cards. */
+.page-openmic .hero h1 { max-width: 16ch; }
+.page-openmic .editorial-section-1 { border-top-color: var(--cyan); }
+.page-openmic .editorial-section-1 .lede:last-child { color: var(--text); }
+.page-openmic #night .art { border-radius: .4rem; background: linear-gradient(135deg, #182c41, #0a101a); }
+.page-openmic #door .art { background: transparent; box-shadow: none; border-radius: 0; border-inline: 0; padding-inline: 0; }
+.page-openmic .editorial-section-7 h2 { font-size: clamp(2.4rem, 5vw, 4.5rem); }
+
+/* Learn: the app guide and the human lesson remain two different spaces. */
+.page-learn #clef .art { border-radius: 1.6rem; }
+.page-learn #lessons { border-top-color: #78939e; }
+.page-learn #lessons .art { border-radius: .35rem; background: linear-gradient(135deg, #21313a, #111b23); }
+.page-learn .ask .q, .page-learn .ask .a { font-size: 1.05rem; line-height: 1.65; }
+.page-learn .ask .box { border-radius: .35rem; font-size: .8rem; white-space: normal; }
+
+/* Chord help: a typographic reference rather than another product card. */
+.page-help .hero h1 { max-width: 16ch; }
+.page-help .editorial-section-1 .stats { background: transparent; border: 0; box-shadow: none; padding-inline: 0; }
+.page-help .editorial-section-1 .stat .v { font-size: clamp(3rem, 7vw, 6rem); }
+.page-help .editorial-section-2 .art { border-radius: 0; border-inline: 0; box-shadow: none; background: transparent; padding-inline: 0; }
+
+@media (min-width: 70rem) {
+  .editorial .moment.has-art {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    align-items: center;
+    gap: 2rem clamp(3rem, 6vw, 6rem);
+  }
+  .editorial .moment.has-art > .art { margin-top: 0; }
+  .editorial .editorial-tail { grid-column: 1 / -1; }
+  .editorial.page-analysis .moment.editorial-section-4,
+  .editorial.page-songbook .moment.editorial-section-2,
+  .editorial.page-practise .moment.editorial-section-2,
+  .editorial.page-takes .moment.editorial-section-1 { grid-template-columns: minmax(0, 1fr); }
+  .page-analysis .editorial-section-4 .editorial-copy,
+  .page-takes .editorial-section-1 .editorial-copy { max-width: 47rem; }
+  .page-songbook .editorial-section-2 .art { max-width: 58rem; width: 100%; margin-left: auto; padding: 3.5rem; }
+  .page-songbook .editorial-section-2 .lyric em { font-size: 1.8rem; }
+  .page-practise .editorial-section-2 .art { max-width: 60rem; width: 100%; }
+  .page-learn #lessons { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+  .page-learn #lessons .art { grid-column: 1; grid-row: 1; }
+  .page-learn #lessons .editorial-copy { grid-column: 2; grid-row: 1; }
+  .page-openmic .no-art .editorial-copy,
+  .page-bands .no-art .editorial-copy {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    column-gap: clamp(3rem, 6vw, 6rem);
+  }
+  .page-openmic .no-art .eyebrow, .page-bands .no-art .eyebrow { grid-column: 1; }
+  .page-openmic .no-art h2, .page-bands .no-art h2 { grid-column: 1; grid-row: 2 / span 4; }
+  .page-openmic .no-art .lede, .page-bands .no-art .lede,
+  .page-openmic .no-art .more, .page-bands .no-art .more { grid-column: 2; margin-top: 0; margin-bottom: 1.25rem; }
+  .page-openmic .no-art .lede:first-of-type, .page-bands .no-art .lede:first-of-type { grid-row: 2; }
+}
+@media (max-width: 40rem) {
+  .editorial .hero.inner h1 { font-size: clamp(2.65rem, 11.5vw, 4.5rem); letter-spacing: -.05em; }
+  .editorial .hero { padding-top: 4rem; }
+  .editorial .art { border-radius: .75rem; }
+  .editorial .art :is(.entry,.take) { overflow-wrap: anywhere; }
+  .page-takes .take .name { flex-basis: 100%; }
+  .editorial .lyric .chords { letter-spacing: 0; }
+  .page-teams .p-lanes .lane-row { grid-template-columns: minmax(0, 1fr); row-gap: .25rem; }
+  .page-teams .p-stands .stands { grid-template-columns: minmax(0, 1fr); }
+  .page-teams .p-stands .cells { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .editorial .reveal { transform: none; opacity: 1; }
+}
+@media print {
+  body.editorial { background: white; color: #111; }
+  .editorial .hero::after, .editorial .hero::before { display: none; }
+  .editorial .moment.has-art { display: block; }
+  .editorial :is(.hero,.moment,.close) :is(h1,h2,p,a) { color: #111; }
+  .editorial .art { break-inside: avoid; box-shadow: none; }
+}
+
+/* Native examples are complete source viewports, with readable provenance. */
+.editorial .native-capture{width:min(100%,340px);min-width:0;margin:2rem auto 0}
+.editorial .native-capture img{display:block;width:100%;height:auto;border:1px solid #344b60;border-radius:.75rem;box-shadow:0 1.5rem 4rem #0004}
+.editorial .native-capture figcaption{margin-top:1rem;color:var(--body);font:500 .75rem/1.65 var(--mono);overflow-wrap:anywhere}
+.editorial .availability-note,.editorial .hero.inner p.availability-note{max-width:56ch;margin-top:1.5rem;color:var(--body);font:500 .75rem/1.75 var(--mono);border-left:2px solid var(--cyan);padding-left:.85rem}
+.editorial .availability-note a{color:var(--cyan);text-underline-offset:.25em}
+.editorial .illustration-label{margin:0 0 1.25rem;color:var(--muted);font:500 .75rem/1.6 var(--mono)}
+.editorial .team-task-list{margin-top:2rem}
+.editorial .team-task-list>div{padding:1rem 0;border-top:1px solid var(--line)}
+.editorial .team-task-list dt{color:var(--text);font-weight:600;font-size:1rem}
+.editorial .team-task-list dd{margin:.25rem 0 0;color:var(--body);font-size:.9375rem;line-height:1.6}
+@media(min-width:70rem){.editorial .moment.has-art>.native-capture{margin-top:0}.page-teams .team-overview{grid-template-columns:minmax(0,6fr) minmax(0,5fr)}}
+@media print{.editorial .native-capture{break-inside:avoid}.editorial .native-capture figcaption,.editorial .availability-note{color:#111}}
+
+/* Long labels and enlarged type wrap inside their own content column. */
+.editorial :is(.close .cta,.onward,.availability-note,.availability-note a){max-width:100%;min-width:0;overflow-wrap:anywhere}
+.editorial .take .pct{max-width:100%;flex:0 1 auto;overflow-wrap:anywhere;white-space:normal}
+.editorial .call .tiles{width:100%;max-width:100%;min-width:0;grid-template-columns:repeat(auto-fit,minmax(min(100%,6rem),1fr))}
+.editorial .call .tile{width:100%;max-width:100%;min-width:0;min-height:4.6rem}
+.editorial .call .tile span{right:.6rem;overflow-wrap:anywhere}
+
+/* Enlarged words may exceed a column even while their boxes fit. */
+body.editorial{overflow-wrap:anywhere}
+.page-bands .take .name{min-width:min(100%,4ch);overflow-wrap:anywhere}

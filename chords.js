@@ -31,6 +31,43 @@ const sharedNote = document.getElementById('shared-note');
 /* Set when the page was opened on a link somebody sent, which changes what
    almost every control on it should say. */
 let arrivedShared = false;
+let uploading = false;
+// New work invalidates deferred link decoding, sharing and old result callbacks.
+let viewRevision = 0;
+let shareAttempt = 0;
+const heroHeading = document.querySelector('.hero h1');
+const heroSub = document.querySelector('.hero p');
+const ownHeading = heroHeading ? heroHeading.innerHTML : '';
+const ownSub = heroSub ? heroSub.innerHTML : '';
+
+function setUploading(busy) {
+  uploading = busy;
+  pick.disabled = busy;
+  fileInput.disabled = busy;
+  drop.setAttribute('aria-busy', String(busy));
+  drop.setAttribute('aria-disabled', String(busy));
+  if (busy) drop.classList.remove('over');
+}
+
+function startOwnSong() {
+  viewRevision += 1;
+  shareAttempt += 1;
+  if (arrivedShared) note('made_own');
+  arrivedShared = false;
+  if (/^#s=/.test(location.hash)) {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+  if (heroHeading) heroHeading.innerHTML = ownHeading;
+  if (heroSub) heroSub.innerHTML = ownSub;
+  againBtn.textContent = 'Try another song';
+  againBtn.classList.add('quiet');
+  shareBtn.classList.remove('quiet');
+  shareBtn.textContent = 'Copy a link to this';
+  show(sharedNote, false);
+  show(drop, true);
+  lastSheet = null;
+  lastCopyText = '';
+}
 
 /* ------------------------------------------------------------------
    Where people stop.
@@ -344,39 +381,46 @@ function render(data) {
    another one: counting it would inflate the step by exactly the failures
    it is compared against. */
 async function send(file, { retrying = false } = {}) {
-  if (!file) return;
-  if (!retrying) note('chose_file');
-  if (file.size > 24 * 1024 * 1024) {
-    fail('That file is over 24MB. A normal song is well under it.');
-    return;
-  }
-
-  show(problem, false);
-  show(result, false);
-  show(gate, false);
-  show(working, true);
-  workingNote.textContent = 'Listening…';
-
-  /* Said out loud because it takes about a minute and a silent minute reads
-     as a broken page. The wording changes so the page is visibly still alive
-     rather than showing one frozen sentence. */
-  const notes = [
-    'Listening…',
-    'Working out the harmony…',
-    'Naming the chords…',
-    'Almost there…',
-  ];
-  let step = 0;
-  const ticking = setInterval(() => {
-    step += 1;
-    workingNote.textContent = notes[Math.min(step, notes.length - 1)];
-  }, 12000);
-
+  if (!file || uploading) return;
+  setUploading(true);
+  let revision = viewRevision;
+  let ticking;
   try {
+    startOwnSong();
+    revision = viewRevision;
+    if (!retrying) note('chose_file');
+    if (file.size > 24 * 1024 * 1024) {
+      fail('That file is over 24MB. A normal song is well under it.');
+      return;
+    }
+
+    show(problem, false);
+    show(result, false);
+    show(gate, false);
+    show(working, true);
+    workingNote.textContent = 'Listening…';
+
+    /* Said out loud because it takes about a minute and a silent minute reads
+       as a broken page. The wording changes so the page is visibly still alive
+       rather than showing one frozen sentence. */
+    const notes = [
+      'Listening…',
+      'Working out the harmony…',
+      'Naming the chords…',
+      'Almost there…',
+    ];
+    let step = 0;
+    ticking = setInterval(() => {
+      if (revision !== viewRevision) return;
+      step += 1;
+      workingNote.textContent = notes[Math.min(step, notes.length - 1)];
+    }, 12000);
+
     const form = new FormData();
     form.append('file', file, file.name || 'song');
     const response = await fetch(ENDPOINT, { method: 'POST', body: form });
     const body = await response.json().catch(() => null);
+    if (revision !== viewRevision) return;
 
     if (!response.ok) {
       // The limit is not a failure and must not look like one. Somebody who
@@ -403,19 +447,25 @@ async function send(file, { retrying = false } = {}) {
     // Almost always the network rather than us. Said plainly, because "failed
     // to fetch" is not a sentence anybody can act on, and the same file is
     // one tap from going again.
-    fail('That upload did not reach us. Check your connection and try again.', file);
+    if (revision === viewRevision) {
+      fail('That upload did not reach us. Check your connection and try again.', file);
+    }
   } finally {
     clearInterval(ticking);
+    setUploading(false);
   }
 }
 
-pick.addEventListener('click', () => fileInput.click());
+pick.addEventListener('click', () => {
+  if (!uploading) fileInput.click();
+});
 /* The file is taken and the picker emptied at once. A picker still holding
    a file fires no change event when the same one is chosen again, so after
    "still waking up, try that again" choosing it again did nothing at all.
    The File itself stays readable after the input is cleared, and send()
    keeps it for the Try again button. */
 fileInput.addEventListener('change', () => {
+  if (uploading) { fileInput.value = ''; return; }
   const file = fileInput.files && fileInput.files[0];
   fileInput.value = '';
   send(file);
@@ -423,14 +473,14 @@ fileInput.addEventListener('change', () => {
 
 drop.addEventListener('submit', (event) => event.preventDefault());
 drop.addEventListener('click', (event) => {
-  if (event.target === pick) return;
+  if (uploading || event.target === pick) return;
   fileInput.click();
 });
 
 for (const name of ['dragenter', 'dragover']) {
   drop.addEventListener(name, (event) => {
     event.preventDefault();
-    drop.classList.add('over');
+    if (!uploading) drop.classList.add('over');
   });
 }
 for (const name of ['dragleave', 'drop']) {
@@ -440,6 +490,7 @@ for (const name of ['dragleave', 'drop']) {
   });
 }
 drop.addEventListener('drop', (event) => {
+  if (uploading) return;
   const file = event.dataTransfer && event.dataTransfer.files[0];
   send(file);
 });
@@ -461,20 +512,10 @@ gateBack.addEventListener('click', () => {
 });
 
 againBtn.addEventListener('click', () => {
-  // `show(drop, true)` is not redundant. Arriving on a shared link hides the
-  // drop zone, so before this line the button emptied the page instead of
-  // resetting it — the one path through the tool that had never been walked
-  // from the start.
-  if (arrivedShared) {
-    note('made_own');
-    arrivedShared = false;
-    history.replaceState(null, '', location.pathname);
-    againBtn.textContent = 'Try another song';
-    againBtn.classList.add('quiet');
-    shareBtn.classList.remove('quiet');
-    show(sharedNote, false);
-  }
+  startOwnSong();
   fileInput.value = '';
+  show(working, false);
+  show(gate, false);
   show(result, false);
   show(problem, false);
   show(drop, true);
@@ -482,19 +523,39 @@ againBtn.addEventListener('click', () => {
 });
 
 shareBtn.addEventListener('click', async () => {
-  if (!lastSheet) return;
+  if (!lastSheet || uploading) return;
+  const sheet = lastSheet;
+  const revision = viewRevision;
+  const attempt = ++shareAttempt;
+  const current = () => revision === viewRevision && attempt === shareAttempt;
   note('shared_link');
   try {
-    const link = location.origin + location.pathname + '#s=' + await packSheet(lastSheet);
+    const packed = await packSheet(sheet);
+    if (!current()) return;
+    // Only the local fragment carries chart content; keep query attribution local.
+    const link = location.origin + location.pathname + '#s=' + packed;
     await navigator.clipboard.writeText(link);
-    history.replaceState(null, '', '#s=' + await packSheet(lastSheet));
+    if (!current()) return;
+    history.replaceState(null, '', location.pathname + location.search + '#s=' + packed);
     shareBtn.textContent = 'Link copied';
-    setTimeout(() => { shareBtn.textContent = 'Copy a link to this'; }, 1800);
+    setTimeout(() => { if (current()) shareBtn.textContent = 'Copy a link to this'; }, 1800);
   } catch (_) {
+    if (!current()) return;
     shareBtn.textContent = 'Could not copy the link';
-    setTimeout(() => { shareBtn.textContent = 'Copy a link to this'; }, 2200);
+    setTimeout(() => { if (current()) shareBtn.textContent = 'Copy a link to this'; }, 2200);
   }
 });
+
+function validSharedSheet(sheet) {
+  return sheet !== null && typeof sheet === 'object'
+    && typeof sheet.k === 'string'
+    && (sheet.r === undefined || typeof sheet.r === 'string')
+    && Array.isArray(sheet.c) && sheet.c.length > 0
+    && sheet.c.every((tuple) => Array.isArray(tuple) && tuple.length === 3
+      && typeof tuple[0] === 'string' && tuple[0].trim().length > 0
+      && Number.isFinite(tuple[1]) && tuple[1] >= 0
+      && Number.isFinite(tuple[2]) && tuple[2] >= tuple[1]);
+}
 
 /* Somebody arriving on a shared link sees the chart, not the drop zone.
    This is the whole point of the feature: the person who receives it did
@@ -502,9 +563,10 @@ shareBtn.addEventListener('click', async () => {
 (async function openShared() {
   const match = location.hash.match(/^#s=(.+)$/);
   if (!match) return;
+  const revision = viewRevision;
   try {
     const sheet = await unpackSheet(decodeURIComponent(match[1]));
-    if (!sheet || !Array.isArray(sheet.c) || sheet.c.length === 0) return;
+    if (revision !== viewRevision || !validSharedSheet(sheet)) return;
     // The drop zone, not the whole section — `#result` lives inside `#tool`,
     // so hiding the section hides the chart it was meant to reveal.
     note('opened_shared');
@@ -517,10 +579,8 @@ shareBtn.addEventListener('click', async () => {
        not do it. Whoever opens one of these is the most interested visitor
        this site gets: they were sent chords by a musician they know. Say what
        they are looking at, then offer the only thing they could want next. */
-    const heading = document.querySelector('.hero h1');
-    const sub = document.querySelector('.hero p');
-    if (heading) heading.innerHTML = 'Somebody sent you<br>these chords.';
-    if (sub) sub.textContent = 'Free, from a recording, in about a minute.';
+    if (heroHeading) heroHeading.innerHTML = 'Somebody sent you<br>these chords.';
+    if (heroSub) heroSub.textContent = 'Free, from a recording, in about a minute.';
 
     againBtn.textContent = 'Do this with your own song';
     againBtn.classList.remove('quiet');

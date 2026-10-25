@@ -10,9 +10,10 @@
 <meta property="og:type" content="website">
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="site.css">
-<link rel="stylesheet" href="story.css">
+<link rel="stylesheet" href="fonts.css?v=20261025-footer">
+<link rel="stylesheet" href="site.css?v=20261025-footer">
+<link rel="stylesheet" href="story.css?v=20261025-footer">
+<link rel="stylesheet" href="editorial.css?v=20261025-footer">
   <link rel="canonical" href="https://colabroom.com/teams.html">
   <meta property="og:url" content="https://colabroom.com/teams.html">
   <meta property="og:site_name" content="CoLabRoom">
@@ -35,8 +36,12 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="chrome.css?v=20261025-footer">
+<link rel="stylesheet" href="atmosphere.css?v=20261025-footer">
 </head>
-<body>
+<body class="site-redesign site-atmosphere editorial page-teams site-fog-page">
+<div class="site-fog" aria-hidden="true"></div>
+<a class="skip-content" href="#main-content">Skip to content</a>
 <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false"><!-- The waveforms every drawing below plays from, drawn once. Made with
      stage.js's own lane shape (seeded, so the same every load) and pasted
      in, not built at runtime: the pictures are whole with no script. --><defs>
@@ -49,25 +54,37 @@
 
 <div class="wrap">
 
-  <header class="top">
-    <a class="brand" href="index.html">CoLabRoom</a>
-    <nav class="pages">
-      <a href="analysis.html">What it heard</a>
-      <a href="songbook.html">Song sheet</a>
-      <a href="practise.html">Practise</a>
-      <a href="takes.html">Takes</a>
-      <a href="bands.html">Rooms</a>
-      <a href="teams.html" aria-current="page">Teams</a>
-      <a href="openmic.html">Open Mic</a>
-      <a href="learn.html">Learn</a>
-      <a href="chords.html">Chords</a>
-      <a href="what-key.html">What key</a>
-    </nav>
-    <span class="sp"></span>
-    <!-- Somebody who already has an account had no way in from here. -->
-    <a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
-    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a>
-  </header>
+  <header class="top no-print">
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CoLabRoom</a>
+<details class="site-menu"><summary>Explore</summary><nav class="pages">
+<div class="nav-group"><h2>Make music</h2>
+<a href="analysis.html">What it heard</a>
+<a href="songbook.html">Song sheet</a>
+<a href="takes.html">Takes</a>
+</div>
+<div class="nav-group"><h2>Play & learn</h2>
+<a href="practise.html">Practise</a>
+<a href="learn.html">Learn</a>
+<a href="help.html">Chord help</a>
+</div>
+<div class="nav-group"><h2>Together</h2>
+<a href="bands.html">Rooms</a>
+<a href="teams.html" aria-current="page">Teams</a>
+<a href="openmic.html">Open Mic</a>
+</div>
+<div class="nav-group"><h2>Free tools</h2>
+<a href="chords.html">Chords</a>
+<a href="what-key.html">What key</a>
+<a href="transpose.html">Transpose</a>
+<a href="capo.html">Capo</a>
+<a href="nashville-numbers.html">Nashville numbers</a>
+</div>
+</nav></details>
+<a class="header-tool" href="chords.html">Try the chord tool ↗</a>
+<div class="header-actions"><a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
+<a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a></div>
+</header>
+<div id="main-content" tabindex="-1"></div>
 
   <main class="story">
 
@@ -80,33 +97,52 @@
     <p class="kicker">Teams</p>
     <h1>One set.<br>Every stand.</h1>
     <p>For a band that plays out. Any band room can become a team, when its owner is 18 or over.</p>
-    <div class="meta">New in October 2026 · not on the beta's phones yet</div>
+    <div class="meta">In testing · Not in the current phone beta</div>
   </div>
+
+  <section class="moment has-art team-overview" aria-labelledby="team-overview-title">
+    <div class="editorial-copy"><div class="eyebrow">Find the next thing</div><h2 id="team-overview-title">The band, in four places.</h2>
+      <p class="lede">People, dates, rehearsal, stage. The leader’s view brings the chairs and rehearsal requests together.</p>
+      <dl class="team-task-list">
+        <div><dt>People &amp; chairs</dt><dd>The members and their musical seats.</dd></div>
+        <div><dt>Dates &amp; sets</dt><dd>Who plays what each date, with the band’s sets.</dd></div>
+        <div><dt>Rehearse</dt><dd>Ask for a passage, plan a sectional, record your part.</dd></div>
+        <div><dt>Stage &amp; sound tech</dt><dd>Follow the stage, send the advance, bring the night home.</dd></div>
+      </dl>
+      <p class="availability-note">A sample night, from rehearsal to the desk.</p>
+    </div>
+    <figure class="native-capture"><img src="assets/app-team.png" alt="The app’s Team overview for an example band, with Leader’s view and the People &amp; chairs, Dates &amp; sets, Rehearse and Stage &amp; sound tech groups." width="360" height="640" loading="lazy" decoding="async"><figcaption>From the app · Example team</figcaption></figure>
+  </section>
 
   <!-- team_section.dart, team_screen.dart: "Make this a team" is the
        owner's, and leading a team is for people 18 and over. -->
-  <section class="moment" id="team">
+  <section class="moment editorial-section editorial-section-1 has-art" id="team">
+    <div class="editorial-copy">
     <div class="eyebrow">The week before</div>
-    <p class="newmark lbl">New in October 2026 · not on the beta's phones yet</p>
     <h2>Make this a team.</h2>
     <p class="lede">In a band room, the owner taps Make this a team. A team has a leader and a chair for every part.</p>
     <p class="lede">The leader names the chairs: Keys, Bass, Vocal 2. Leading a team is for people 18 and over.</p>
+
+    </div>
     <div class="art p-team" data-seen aria-hidden="true">
       <div class="art-head"><span class="t">Team · led by Mara</span></div>
       <div class="chairs"><b style="--i:0">Vocal</b><b style="--i:1">Guitar</b><b style="--i:2">Bass</b><b style="--i:3">Drums</b><b style="--i:4">Trumpet</b></div>
       <div class="field"><p class="lbl">Name a chair</p><p class="input">Vocal 2</p></div>
     </div>
+
   </section>
 
   <!-- leaders_view.dart, rehearsal_asks.dart. The Home card says
        "You: Keys" to whoever sits in Keys; here, You sit in Guitar. -->
-  <section class="moment" id="chairs">
+  <section class="moment editorial-section editorial-section-2 has-art" id="chairs">
+    <div class="editorial-copy">
     <div class="eyebrow">Who sits where</div>
-    <p class="newmark lbl">New in October 2026 · not on the beta's phones yet</p>
     <h2>Every chair, for every date.</h2>
-    <p class="lede">The Leader's view shows who sits in which chair for each dated set. A member can sit down themselves.</p>
-    <p class="lede">Want to go over a passage? Ask to rehearse a part of this, and say which bars. Your name goes on it only if you choose.</p>
-    <p class="lede">Somebody standing in? Lend the chair: one link, and with no account it opens the set, its keys and that chair's marks, and no recording.</p>
+    <p class="lede">See who sits where for each dated set in the Leader's view. Members can sit down themselves.</p>
+    <p class="lede">Ask to rehearse a part of this and name the bars. Add your name only if you choose.</p>
+    <p class="lede">Lend the chair sends a stand-in one link to the set, keys and that chair's marks. No account needed; no recording included.</p>
+
+    </div>
     <div class="art p-chairs" data-seen aria-hidden="true">
       <div class="art-head"><span class="t">Friday at The Crown</span><span class="s">Leader’s view</span></div>
       <div class="entry"><span class="name">Vocal</span><span class="side seat" style="--i:0"><i class="dot" style="background:var(--a2)"></i>Mara</span></div>
@@ -120,17 +156,20 @@
         <div class="card"><p class="lbl">On your phone</p><p class="set">Friday at The Crown</p><p class="you">You: Guitar</p></div>
       </div>
     </div>
+
   </section>
 
   <!-- rehearsal.dart, rehearsal_recording.dart. Scene 5's picture without
        its covers, since here the recordings already exist: scrolling past
        lines them up, and then yours steps back. -->
-  <section class="moment" id="rehearsal">
+  <section class="moment editorial-section editorial-section-3 has-art" id="rehearsal">
+    <div class="editorial-copy">
     <div class="eyebrow">Rehearsal</div>
-    <p class="newmark lbl">New in October 2026 · not on the beta's phones yet</p>
     <h2>One phone per player.</h2>
-    <p class="lede">The leader taps Start recording the rehearsal. Every other phone shows Recording the rehearsal · record your part, and each player records their own part, close to them.</p>
-    <p class="lede">Afterwards, Line up the parts works out how the recordings line up. In Perform, each song then offers The band without you: everyone's take but yours, on one clock.</p>
+    <p class="lede">The leader taps Start recording the rehearsal. Other phones show Recording the rehearsal · record your part. Each player records their own part, close to them.</p>
+    <p class="lede">Line up the parts works out how the recordings align. Then each song in Perform offers The band without you: everyone's take but yours, on one clock.</p>
+
+    </div>
     <div class="art p-lanes" data-scrub aria-hidden="true">
       <span class="btn rec plain" data-at="1">Start recording the rehearsal</span>
       <p class="lanes-head lbl" data-at="2">Recording the rehearsal · record your part</p>
@@ -143,18 +182,21 @@
       <span class="btn">Line up the parts</span>
       <p class="without" data-at="3">The band without you</p>
     </div>
+
   </section>
 
   <!-- send_advance_sheet.dart, advance_page.dart. The desk caveat is the
        app's own (advance.dart): no named desk is claimed. -->
-  <section class="moment" id="advance">
+  <section class="moment editorial-section editorial-section-4 has-art" id="advance">
+    <div class="editorial-copy">
     <div class="eyebrow">2:00 pm · Before the night</div>
-    <p class="newmark lbl">New in October 2026 · not on the beta's phones yet</p>
     <h2>The sound tech gets the gig first.</h2>
     <p class="lede">Send the advance: the set order with each song's key and tempo, a stage plot, and an input list by chair.</p>
-    <p class="lede">One link, and no account needed to open it. The tech can send corrections to the input list and the plot before the show, and the link stops working 48 hours after it.</p>
+    <p class="lede">No account needed. The tech can send corrections to the input list and plot before the show. The link stops working 48 hours after the show.</p>
     <p class="lede">The names file for the desk carries channel names, colours and icons only. Not yet proven on a real desk.</p>
     <p class="lede">A tech who has an account can keep the stage, from 18.</p>
+
+    </div>
     <div class="art p-advance" aria-hidden="true">
       <div class="art-head"><span class="t">Advance to The Crown</span><span class="s">Friday</span></div>
       <div class="adv">
@@ -164,14 +206,15 @@
       </div>
       <div class="pill-row"><span class="pill share">Share the link</span><span class="pill">Copy the link</span></div>
     </div>
+
   </section>
 
   <!-- stage/stage_session.dart: "The leader called Low Tide in E." and "Lost the
        leader. Your page stays where it is." are the app's own lines. Ade's
        stand lost the leader, so his page stays on County Line. -->
-  <section class="moment" id="stage">
+  <section class="moment editorial-section editorial-section-5 has-art" id="stage">
+    <div class="editorial-copy">
     <div class="eyebrow">9:40 pm · On the night</div>
-    <p class="newmark lbl">New in October 2026 · not on the beta's phones yet</p>
     <h2>The leader calls the next one.</h2>
     <p class="lede">Before the set: Keep the set for the stage on the leader's phone, Follow the stage on everyone else's.</p>
     <p class="lede">The leader calls a song and a key. Every following stand turns to it, in its own reading. Bluetooth, phone to phone. No signal needed.</p>
@@ -181,6 +224,8 @@
       <li>Play the set walks it one song at a time, with words large enough for the stand.</li>
     </ul>
     <a class="more" href="songbook.html#how-you-read-notes">How you read notes →</a>
+
+    </div>
     <div class="art p-stands" data-seen aria-hidden="true">
       <div class="setlist">
         <p class="set-head lbl">Friday at The Crown</p>
@@ -202,18 +247,21 @@
           <p class="heard lbl" data-at="2">The leader called Low Tide in E.</p><p class="reading lbl" data-at="3">Capo 2</p></div>
       </div>
     </div>
+
   </section>
 
   <!-- The night: one recording across the set, cut into songs on the phone
        (lib/features/night). The four boxes show one waveform, in four
        pieces; no words ever sit inside it. -->
-  <section class="moment" id="night">
+  <section class="moment editorial-section editorial-section-6 has-art" id="night">
+    <div class="editorial-copy">
     <div class="eyebrow">11:15 pm · Record the night</div>
-    <p class="newmark lbl">New in October 2026 · not on the beta's phones yet</p>
     <h2>The night, cut into songs.</h2>
-    <p class="lede">One phone on the mic stand records the whole set as one recording, and cuts it into songs on the phone. Pin a moment as it happens. The screen must stay on.</p>
-    <p class="lede">Hear it back. Afterwards, Keep the night as a folder: one WAV per song, from bar 1, that lines up in Logic.</p>
+    <p class="lede">One phone on the mic stand records the set and cuts it into songs on the phone. Pin a moment as it happens. The screen must stay on.</p>
+    <p class="lede">Keep the night as a folder saves one WAV per song, from bar 1, lined up for Logic.</p>
     <p class="lede">Record the night from your pocket stays private until the leader claims it and every player says yes. One no keeps it private.</p>
+
+    </div>
     <div class="art p-night" data-seen aria-hidden="true">
       <div class="strip">
         <span class="blk" style="--k:0"><svg class="wave" style="color:var(--body)"><use href="#w-night" width="100%" height="100%"/></svg></span>
@@ -225,31 +273,38 @@
       <div class="names lbl"><p><span>County Line</span><span>Low Tide</span><span>Kitchen Radio</span><span>Last Train</span></p></div>
       <div class="pill-row"><span class="pill">Hear it back</span><span class="pill">Keep the night as a folder</span></div>
     </div>
+
   </section>
 
   <!-- desk_night_screen.dart, your_part_card.dart: "Bring the night in
        from the desk" is in a computer's browser only. -->
-  <section class="moment" id="desk">
+  <section class="moment editorial-section editorial-section-7 has-art" id="desk">
+    <div class="editorial-copy">
     <div class="eyebrow">After the night</div>
-    <p class="newmark lbl">New in October 2026 · not on the beta's phones yet</p>
     <h2>The desk sends the night home.</h2>
-    <p class="lede">In a browser on a computer, drop the desk's multitrack folder. The app finds each song of the set in the night.</p>
+    <p class="lede">Drop the desk's multitrack folder into a computer’s browser. The app finds each song of the set.</p>
     <p class="lede">Each player gets their own channel of each song, as a take they are asked to keep.</p>
     <p class="note">In a browser on a computer, not on a phone.</p>
+
+    </div>
     <div class="art p-desk" aria-hidden="true">
       <p class="t">Your part from Friday</p>
       <p class="s lbl">The band · your own channel of each song, from the sound desk</p>
       <div class="entry"><span class="name">County Line</span><div class="pill-row"><span class="pill">Listen</span><span class="pill keep">Keep</span><span class="pill">Not this one</span></div></div>
       <div class="entry"><span class="name">Low Tide</span><div class="pill-row"><span class="pill">Listen</span><span class="pill">Keep</span><span class="pill">Not this one</span></div></div>
     </div>
+
   </section>
 
   <!-- The Team plan card: "Teams are free while nothing is on sale." No
        price, no plan name and no button here, and nothing about who pays. -->
-  <section class="moment" id="free">
+  <section class="moment editorial-section editorial-section-8 no-art" id="free">
+    <div class="editorial-copy">
     <div class="eyebrow">What it costs</div>
     <h2>Nothing, while nothing is on sale.</h2>
     <p class="lede">Teams cost nothing while nothing is on sale. A team is never shown outside its room.</p>
+
+    </div>
   </section>
 
   <div class="close">
@@ -287,11 +342,13 @@
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
     <a href="copyright.html">Copyright</a>
+    <div class="atmosphere-controls no-print" hidden><button class="atmosphere-toggle" type="button" aria-pressed="false"><span data-atmosphere-label>Pause motion</span></button></div>
   </footer>
 
 </div>
 
-<script src="count.js" data-page="teams"></script>
-<script src="story.js"></script>
+<script src="count.js?v=20261025-footer" data-page="teams"></script>
+<script src="site-menu.js?v=20261025-footer" defer></script>
+<script src="atmosphere.js?v=20261025-footer" defer></script>
 </body>
 </html>
