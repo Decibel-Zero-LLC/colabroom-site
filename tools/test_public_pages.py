@@ -8,7 +8,7 @@ from urllib.parse import parse_qs, urljoin, urlsplit
 from build_public_pages import json_for_script, musician_page, song_page
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '20261025-footer'
+VERSION = '20261025-fog'
 PREVIEW = 'https://site-preview.invalid/'
 
 
