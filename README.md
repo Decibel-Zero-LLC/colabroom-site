@@ -33,7 +33,8 @@ What is in here:
   slowly through the viewport; legal, public-record and flier pages use a
   quieter treatment. Pause/Resume, reduced motion, hidden tabs and printing
   stop movement. Without JavaScript, content stays visible and the fog is
-  still. Tool inputs, charts, captures and printed output stay clear.
+  still. The quiet Pause/Resume text button is in each page's footer. Tool inputs,
+  charts, captures and printed output stay clear.
 - `assets/` — compressed original campaign images and their provenance.
 - `tools/build_public_pages.py` — the nightly job that writes a page per
   showcased song and discoverable musician, and `sitemap-pages.xml` for them.
@@ -52,9 +53,21 @@ reachable and keep the support address live.
 
 ## Reviewing the visual redesign locally
 
-From the checkout, run `python3 -m http.server 8780 --bind 127.0.0.1` and open
-`http://127.0.0.1:8780/`. Explore the four song scenes, switch the sheet from
-letters to numbers, open the grouped navigation, and try a chart tool. Product
+From the checkout, run `python3 tools/preview.py` and open
+`http://127.0.0.1:8780/`. Use `--port 8781` for another port. The local-only server
+binds to `127.0.0.1` and serves this repository's root even when the script is
+launched by its full path from another directory. It sends `no-store` on every
+response and ignores cache validators, so edits to HTML, CSS and JavaScript
+appear at the same URLs even when file timestamps are unchanged.
+
+If this browser already visited a stock `http.server` preview, do one hard reload
+(or clear its cached data for `127.0.0.1:8780`) after switching servers. The old
+cached page must first reach the new server to receive its no-store policy;
+future preview responses will not be stored. This changes only local review,
+not the published site's caching.
+
+Explore the four song scenes, switch the sheet from letters to numbers, open
+the grouped navigation, and try a chart tool. Product
 illustrations are distinct from the working free tools. Existing age and beta
 availability notices still apply. Local review does not publish the site.
 

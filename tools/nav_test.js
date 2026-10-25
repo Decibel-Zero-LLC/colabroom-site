@@ -5,7 +5,7 @@
 
 const ROOT = new URL('../', import.meta.url);
 const PREVIEW = 'https://site-preview.invalid/';
-const VERSION = '20261025-layout';
+const VERSION = '20261025-footer';
 
 function eq(actual, expected, because) {
   const a = JSON.stringify(actual);
@@ -101,6 +101,24 @@ for (const page of all) {
     eq(skips[0].href, '#main-content', 'skip stays on the current page');
     const targets = [...page.html.matchAll(/<[^/!][^>]*\bid=["']main-content["'][^>]*>/g)];
     eq(targets.length, 1, `${page.name} needs exactly one main-content target`);
+  });
+
+  Deno.test(`${page.name} keeps its single motion control in the footer`, () => {
+    const controls = tags(page.html, 'div').filter((a) => hasClass(a, 'atmosphere-controls'));
+    eq(controls.length, 1, `${page.name} needs one shared motion control`);
+    eq('hidden' in controls[0], true, 'the control stays hidden without JavaScript');
+    const footers = [...page.html.matchAll(/<footer\b[^>]*>([\s\S]*?)<\/footer>/g)];
+    eq(footers.length, 1, `${page.name} needs one site footer`);
+    const footerControls = tags(footers[0][1], 'div').filter((a) => hasClass(a, 'atmosphere-controls'));
+    eq(footerControls.length, 1, `${page.name} must keep motion controls out of the opening content`);
+    const buttons = tags(page.html, 'button').filter((a) =>
+      hasClass(a, 'atmosphere-toggle') || hasClass(a, 'ex-motion-toggle'));
+    eq(buttons.length, 1, `${page.name} must not gain duplicate motion buttons`);
+    eq(buttons[0].type, 'button', 'motion control never submits a form');
+    eq(buttons[0]['aria-pressed'], 'false', 'motion control exposes its initial state');
+    if (!footers[0][1].includes('data-atmosphere-label>Pause motion</span>')) {
+      throw new Error(`${page.name} needs a readable motion label in its footer`);
+    }
   });
 
   Deno.test(`${page.name} loads current local presentation and tool assets`, async () => {

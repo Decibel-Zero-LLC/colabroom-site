@@ -113,13 +113,13 @@ HEAD = """<!DOCTYPE html>
 <meta name="twitter:description" content="{description}">
 <meta name="twitter:image" content="{origin}/share.png">
 <meta name="theme-color" content="#06101F">
-<link rel="stylesheet" href="/fonts.css?v=20261025-layout">
-<link rel="stylesheet" href="/site.css?v=20261025-layout">
-<link rel="stylesheet" href="/atmosphere.css?v=20261025-layout">
-<link rel="stylesheet" href="/chrome.css?v=20261025-layout">
-<link rel="stylesheet" href="/support.css?v=20261025-layout">
-<script src="/atmosphere.js?v=20261025-layout" defer></script>
-<script src="/site-menu.js?v=20261025-layout" defer></script>
+<link rel="stylesheet" href="/fonts.css?v=20261025-footer">
+<link rel="stylesheet" href="/site.css?v=20261025-footer">
+<link rel="stylesheet" href="/atmosphere.css?v=20261025-footer">
+<link rel="stylesheet" href="/chrome.css?v=20261025-footer">
+<link rel="stylesheet" href="/support.css?v=20261025-footer">
+<script src="/atmosphere.js?v=20261025-footer" defer></script>
+<script src="/site-menu.js?v=20261025-footer" defer></script>
 <script type="application/ld+json">{schema}</script>
 </head>
 <body class="site-redesign record-polish support-site site-fog-page">
@@ -168,6 +168,7 @@ FOOT = """
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
     <a href="/copyright.html">Copyright</a>
+    <div class="atmosphere-controls no-print" hidden><button class="atmosphere-toggle" type="button" aria-pressed="false"><span data-atmosphere-label>Pause motion</span></button></div>
   </footer>
 </div>
 </body>
@@ -221,7 +222,6 @@ def song_page(row):
   <article class="page">
     <div class="eyebrow">A song on CoLabRoom</div>
     <h1>{title}</h1>
-    <div class="atmosphere-controls no-print" hidden><button class="atmosphere-toggle" type="button" aria-pressed="false"><span class="atmosphere-toggle-icon" aria-hidden="true"></span><span data-atmosphere-label>Pause motion</span></button></div>
     <p class="lede">by {owner}{with_line}</p>
     {facts}
     <p class="note">
@@ -290,7 +290,6 @@ def musician_page(row):
   <article class="page">
     <div class="eyebrow">A musician on CoLabRoom</div>
     <h1>{name}</h1>
-    <div class="atmosphere-controls no-print" hidden><button class="atmosphere-toggle" type="button" aria-pressed="false"><span class="atmosphere-toggle-icon" aria-hidden="true"></span><span data-atmosphere-label>Pause motion</span></button></div>
     <ul class="facts">{rows}</ul>
     <p class="note">
       {name} is findable on the CoLabRoom Open Mic — where musicians say what
