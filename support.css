@@ -130,7 +130,6 @@
   .support-site.flier-page .controls input { border-color: #425969; }
   .support-site.flier-page .controls button { font-weight: 600; border-radius: .5rem; padding-inline: 1rem; }
   .support-site.flier-page .controls .hint { font-size: .9375rem; line-height: 1.65; }
-  .support-site.flier-page .atmosphere-toggle { margin-top: 0; font-weight: 500; }
   @media (max-width: 46rem) {
     .support-site.flier-page .work { grid-template-columns: minmax(0, 1fr); }
     .support-site.flier-page .controls { width: 100%; }

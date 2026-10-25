@@ -8,7 +8,7 @@ from urllib.parse import parse_qs, urljoin, urlsplit
 from build_public_pages import json_for_script, musician_page, song_page
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '20261025-layout'
+VERSION = '20261025-footer'
 PREVIEW = 'https://site-preview.invalid/'
 
 
@@ -150,7 +150,10 @@ class PublicPagesTest(unittest.TestCase):
             self.assertEqual(markup.count('class="atmosphere-controls no-print" hidden'), 1)
             self.assertEqual(markup.count('data-atmosphere-label>Pause motion</span>'), 1)
             self.assertIn('aria-pressed="false"', markup)
-            self.assertLess(markup.index('</h1>'), markup.index('class="atmosphere-controls'))
+            footer = markup[markup.index('<footer'):markup.index('</footer>')]
+            self.assertEqual(footer.count('class="atmosphere-controls no-print" hidden'), 1)
+            self.assertGreater(markup.index('class="atmosphere-controls'), markup.index('</main>'))
+            self.assertNotIn('ex-motion-toggle', markup)
 
     def test_both_record_templates_keep_the_same_fourteen_explore_links_and_skip_target(self):
         reference = Scripts((ROOT / 'index.html').read_text())

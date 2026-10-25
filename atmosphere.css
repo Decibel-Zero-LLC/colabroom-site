@@ -24,11 +24,11 @@
       linear-gradient(0deg, #050709, transparent 70%), url('assets/campaign-studio.webp') center / cover;
   }
   .site-atmosphere .reveal { opacity: 1; transform: none; }
+  /* One quiet, reachable control lives with the footer's other utilities. */
   .site-fog-page .atmosphere-controls {
     position: relative;
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 1.75rem;
+    margin: 0;
     min-width: 0;
     max-width: 100%;
   }
@@ -36,34 +36,27 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: .65rem;
     min-height: 44px;
     min-width: 0;
     max-width: 100%;
-    padding: .65rem .95rem;
-    border: 1px solid #8292a14d;
-    border-radius: 100px;
-    background: #0d172099;
-    color: #c5d4e0;
-    font: 500 .75rem/1.5 var(--mono);
+    margin: 0;
+    padding: .5rem .15rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--muted);
+    font: inherit;
     text-align: left;
     cursor: pointer;
   }
   .site-fog-page .atmosphere-toggle:hover {
-    border-color: #b2d3ed88;
-    color: #f0f7fd;
-    background: #142537;
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: .2em;
   }
   .site-fog-page .atmosphere-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
   .site-fog-page .atmosphere-toggle [data-atmosphere-label] { min-width: 0; overflow-wrap: anywhere; }
-  .atmosphere-toggle-icon { flex: none; width: 10px; height: 11px; border-inline: 2px solid currentColor; }
-  .atmosphere-toggle[aria-pressed='true'] .atmosphere-toggle-icon {
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-left: 9px solid currentColor;
-    border-right: 0;
-  }
   .site-fog-page .atmosphere-controls[hidden] { display: none !important; }
   .record-polish { --surface: #101820; --line: #293744; --text: #f0f3f5; --body: #c1ccd7; --muted: #a0afbd; --cyan: #62d9f3; }
   .record-polish .page { overflow-wrap: anywhere; }
@@ -158,8 +151,6 @@
   .site-fog-page :is(.atmosphere-controls, .ex-motion-toggle) { position: relative; z-index: 3; }
   .site-fog-page :is(.atmosphere-controls, .ex-motion-toggle)[hidden] { display: none !important; }
   .site-fog-page:is(.legal-polish, .record-polish) .site-fog { opacity: .20; }
-  .site-fog-page:is(.legal-polish, .record-polish) .atmosphere-controls { margin-block: 1rem 1.75rem; }
-  .site-fog-page .atmosphere-controls { margin-block: 1.25rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .site-fog::before, .site-fog::after { animation: none !important; }
