@@ -8,8 +8,9 @@ from `main`; `CNAME` points it at the custom domain. Merging is publishing.
 
 What is in here:
 
-- Twelve marketing pages, three free tool pages (transpose, capo, Nashville
-  numbers), four legal pages, a printable flier, and `404.html`.
+- Ten marketing pages, five free tool pages (chords, key, transpose, capo,
+  Nashville numbers), four legal pages, public musician/song records, a
+  printable flier, and `404.html`.
 - The tests, run by hand from the root with Deno and nothing else:
   `deno test --allow-read tools.test.js tools/chords_test.js tools/count_test.js tools/nav_test.js`.
   `tools/nav_test.js` holds every page's nav to the front page's.
@@ -18,16 +19,21 @@ What is in here:
 - `site.css` — the look. `fonts.css` plus `fonts/` — the three faces, served
   from this domain rather than Google's, under the OFL (see `fonts/README.md`).
 - `count.js` — the arrival code and the anonymous step counters, on every
-  marketing page. `chords.js` — the free chord tool. `stage.js`, `reveal.js` —
-  a little motion, skipped when reduced motion is asked for. `story.css` and
-  `story.js` retain the Teams page's drawings and motion.
+  marketing page. `chords.js` — the free chord tool. `story.css` retains the
+  Teams page's finished drawings; the older decorative stage/reveal/story
+  scripts are no longer loaded by the product chapters.
 - `experience.css` and `experience.js` — the home product tour. Its four
   scenes and notation control are clearly labelled illustrations; they do
   not record, upload or play audio. Without JavaScript all scenes are visible.
 - `chrome.css` and `site-menu.js` — shared marketing/tool navigation and
   presentation; the native Explore disclosure also works without JavaScript.
-  `editorial.css` gives each product chapter its layout. Legal and generated
-  public-record pages retain their original presentation.
+  `editorial.css` gives each product chapter its layout.
+- `atmosphere.css` and `atmosphere.js` — blue light and restrained movement
+  across product/tool introductions and closing invitations. Pause/Resume,
+  reduced motion, hidden tabs and offscreen sections stop the movement.
+  Without JavaScript, content stays visible and the light is still. Legal,
+  public-record and flier pages receive a still, screen-only treatment;
+  reading, tool inputs, charts and printed output stay clear.
 - `assets/` — compressed original campaign images and their provenance.
 - `tools/build_public_pages.py` — the nightly job that writes a page per
   showcased song and discoverable musician, and `sitemap-pages.xml` for them.
@@ -59,8 +65,11 @@ Flutter render fixtures, not store-release or physical-device evidence. Learn
 describes the real chosen-song practice and deliberate take-sharing flow.
 
 PR #42 remains the single website redesign review. Publication is still held.
-Before publication, the owner/legal review must reconcile the newer own-room
-age rules with the older calls/Clef/handover wording in Terms and Child safety.
-Those four legal pages remain unchanged. The public account-deletion section
-retains its closure, room and shared-music explanation; its changed setting
-location and existing legal/safety-preservation exception are stated explicitly.
+Terms and Child safety now follow the approved age rules, with an unpublished
+25 October change note. The normal owner/legal launch review is still owed;
+this wording reconciliation is not counsel clearance or permission to publish.
+The subsequent page-by-page visual pass leaves all four legal pages' wording
+unchanged. The public account-deletion section retains its closure, room and
+shared-music explanation, corrected settings path and existing legal/safety
+preservation exception. Public-page generation changes only the presentation
+shell; consent, visibility and deletion behavior are unchanged.

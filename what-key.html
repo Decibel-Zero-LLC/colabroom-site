@@ -90,8 +90,9 @@
 }
 </script>
 <link rel="stylesheet" href="chrome.css">
+<link rel="stylesheet" href="atmosphere.css">
 </head>
-<body class="site-redesign tool-page">
+<body class="site-redesign tool-page site-atmosphere">
 <a class="skip-content" href="#main-content">Skip to content</a>
 
 <div class="wrap">
@@ -130,7 +131,9 @@
 
   <div class="hero">
     <h1>What key<br>is this song?</h1>
-    <p>Drop in a recording. The key comes back with the chords that decided it, and when two keys are close, both.</p>
+    <p>
+      Upload a recording. See its likely key and chords, including both keys when the answer is close.
+    </p>
     <!-- The limit is said before it bites, not only at the gate. 25 is
          public_tool_budget.per_requester_daily (app migration 0178); a
          launch day that raises it should raise this with it. chords.js
@@ -237,14 +240,7 @@
          finder. -->
     <h2>The chords tell you the key.</h2>
     <p class="lede">
-      A key is the set of chords a song keeps coming home to. The tool names
-      the chords first, then weighs the whole run of them against all
-      twenty-four keys: how well each chord belongs, for as long as it sounds,
-      and where the song comes home — the chord it starts on, the one it ends
-      on, the one it holds longest, and every cadence that lands. That is why
-      the answer above says <em>estimated</em>: it is the same judgement a
-      player makes by ear, made from the same evidence, and a song that
-      borrows a chord from next door can fool either of you for a bar.
+      The tool weighs the chords, how long they last and where the song settles. The key is an estimate: borrowed chords and changes of key can make it uncertain.
     </p>
   </section>
 
@@ -252,13 +248,7 @@
     <div class="eyebrow">Major or minor</div>
     <h2>The same chords, two homes.</h2>
     <p class="lede">
-      G major and E minor share every chord. What separates them is where the
-      song feels finished. If the last chord of the chorus sounds like a door
-      closing on G, it is in G; if it settles on Em and stays there, it is in
-      E minor. The tool reports the one the recording leans on, and when it
-      leans on both it says so: <em>G major, or E minor</em>. When it gets
-      the pair right and the home wrong, the chords are still right, and you
-      will hear which of the two it is in about four bars.
+      G major and E minor share the same notes. What changes is where the song feels at home. When the recording points both ways, the tool shows both keys. Listen back and choose the one that fits.
     </p>
   </section>
 
@@ -266,11 +256,7 @@
     <div class="eyebrow">What to do with it</div>
     <h2>Now you know where the other chords are.</h2>
     <p class="lede">
-      Every key has seven chords that belong to it. Once you know the key,
-      the ones the song has not used are the ones worth trying next, and a
-      capo that puts it in your voice is a matter of counting. The app does
-      that arithmetic on your own recordings and keeps the sheet with the
-      song.
+      Use the key to explore chords you haven’t tried, or find a capo position for your voice. In the app, the results stay with your song.
     </p>
     <a class="more" href="help.html">Not a list of seven chords: the three you haven't used →</a>
   </section>
@@ -309,7 +295,7 @@
 
 <script src="count.js" data-page="what-key"></script>
 <script src="chords.js"></script>
-<script src="reveal.js"></script>
+<script src="atmosphere.js" defer></script>
 <script src="site-menu.js" defer></script>
 </body>
 </html>
