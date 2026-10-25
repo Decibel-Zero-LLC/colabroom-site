@@ -113,35 +113,61 @@ HEAD = """<!DOCTYPE html>
 <meta name="twitter:description" content="{description}">
 <meta name="twitter:image" content="{origin}/share.png">
 <meta name="theme-color" content="#06101F">
-<link rel="stylesheet" href="{origin}/fonts.css">
-<link rel="stylesheet" href="{origin}/site.css">
-<link rel="stylesheet" href="{origin}/atmosphere.css">
-<script src="{origin}/atmosphere.js" defer></script>
+<link rel="stylesheet" href="/fonts.css?v=20261025-layout">
+<link rel="stylesheet" href="/site.css?v=20261025-layout">
+<link rel="stylesheet" href="/atmosphere.css?v=20261025-layout">
+<link rel="stylesheet" href="/chrome.css?v=20261025-layout">
+<link rel="stylesheet" href="/support.css?v=20261025-layout">
+<script src="/atmosphere.js?v=20261025-layout" defer></script>
+<script src="/site-menu.js?v=20261025-layout" defer></script>
 <script type="application/ld+json">{schema}</script>
 </head>
-<body class="record-polish site-fog-page">
+<body class="site-redesign record-polish support-site site-fog-page">
 <div class="site-fog" aria-hidden="true"></div>
+<a class="skip-content" href="#main-content">Skip to content</a>
 <div class="wrap">
-  <header class="top">
-    <a class="brand" href="{origin}/">CoLabRoom</a>
-    <nav class="pages">
-      <a href="{origin}/chords.html">Chords</a>
-      <a href="{origin}/what-key.html">What key</a>
-      <a href="{origin}/openmic.html">Open Mic</a>
-    </nav>
-    <span class="sp"></span>
-    <a class="cta quiet" href="{app}/">Sign in</a>
-    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a>
-  </header>
+<header class="top no-print">
+<a class="brand" href="/index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CoLabRoom</a>
+<details class="site-menu"><summary>Explore</summary><nav class="pages">
+<div class="nav-group"><h2>Make music</h2>
+<a href="/analysis.html">What it heard</a>
+<a href="/songbook.html">Song sheet</a>
+<a href="/takes.html">Takes</a>
+</div>
+<div class="nav-group"><h2>Play & learn</h2>
+<a href="/practise.html">Practise</a>
+<a href="/learn.html">Learn</a>
+<a href="/help.html">Chord help</a>
+</div>
+<div class="nav-group"><h2>Together</h2>
+<a href="/bands.html">Rooms</a>
+<a href="/teams.html">Teams</a>
+<a href="/openmic.html">Open Mic</a>
+</div>
+<div class="nav-group"><h2>Free tools</h2>
+<a href="/chords.html">Chords</a>
+<a href="/what-key.html">What key</a>
+<a href="/transpose.html">Transpose</a>
+<a href="/capo.html">Capo</a>
+<a href="/nashville-numbers.html">Nashville numbers</a>
+</div>
+</nav></details>
+<a class="header-tool" href="/chords.html">Try the chord tool ↗</a>
+<div class="header-actions"><a class="cta quiet" href="{app}/">Sign in</a>
+<a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a></div>
+</header>
+<main id="main-content" tabindex="-1">
 """
 
 FOOT = """
-  <footer>
+</main>
+<footer class="no-print">
+    <span>CoLabRoom — songwriting for musicians · <a href="/child-safety.html">Child safety</a> · © 2026 <a href="https://decibelzerollc.com">Decibel Zero LLC</a></span>
     <span class="sp"></span>
-    <a href="{origin}/privacy.html">Privacy</a>
-    <a href="{origin}/terms.html">Terms</a>
-    <a href="{origin}/copyright.html">Copyright</a>
-    <a href="{origin}/child-safety.html">Child safety</a>
+    <a href="/index.html#beta">Account deletion</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/copyright.html">Copyright</a>
   </footer>
 </div>
 </body>
@@ -201,7 +227,7 @@ def song_page(row):
     <p class="note">
       Recorded and written in CoLabRoom — the takes, the words and the chords
       in one place. <a href="{app}/">Open the app</a> to hear it, or
-      <a href="{origin}/">see what CoLabRoom does</a>.
+      <a href="/">see what CoLabRoom does</a>.
     </p>
   </article>
 """.format(
@@ -210,7 +236,6 @@ def song_page(row):
         with_line=e(with_line),
         facts=('<ul class="facts">%s</ul>' % ''.join(facts)) if facts else '',
         app=APP,
-        origin=ORIGIN,
     )
 
     return url, page(
@@ -271,10 +296,10 @@ def musician_page(row):
       {name} is findable on the CoLabRoom Open Mic — where musicians say what
       a song is missing, and somebody who plays that thing answers.
       <a href="{app}/">Open the app</a> to work with them, or
-      <a href="{origin}/openmic.html">see how the Open Mic works</a>.
+      <a href="/openmic.html">see how the Open Mic works</a>.
     </p>
   </article>
-""".format(name=e(name), rows=''.join(rows), app=APP, origin=ORIGIN)
+""".format(name=e(name), rows=''.join(rows), app=APP)
 
     return url, page(
         body,

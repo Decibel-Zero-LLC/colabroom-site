@@ -81,3 +81,15 @@ uploads and stale chart URLs. The chord tool permits one upload at a time,
 restores its normal starting view for another song and ignores stale deferred
 link work. Provider limits and data handling remain unchanged; browser checks
 use synthetic responses, not paid or live uploads.
+
+Every visual page now uses the same Explore navigation and current site frame,
+including the four legal documents, the flier workspace and public musician
+records. The public-page templates share that frame too. Internal record links
+and presentation assets stay on the current host, so a local preview cannot
+silently load the published site's older styling. Canonical and social metadata
+still identify the public site. Legal article text and the flier's printed sheet
+are unchanged by this layout pass; no analytics were added to these pages.
+
+Local CSS and JavaScript references carry a shared `v` query to refresh cached
+assets. When changing those assets, update their version in the HTML and public
+page templates together; the navigation tests check that they stay consistent.

@@ -61,10 +61,12 @@ class ChildSafetyRoutesTests(unittest.TestCase):
         row = {"id": "00000000-0000-4000-8000-000000000001"}
         for render in (pages.song_page, pages.musician_page):
             with self.subTest(renderer=render.__name__):
-                _, markup = render(row)
+                url, markup = render(row)
                 document = Document(markup)
                 self.assertEqual(len(document.footers), 1)
-                self.assertEqual(document.footers[0].count(CANONICAL), 1)
+                targets = [urljoin(url, href)
+                           for href in document.footers[0]]
+                self.assertEqual(targets.count(CANONICAL), 1)
 
     def test_contact_routes_and_official_reporting_destinations(self):
         document = Document((ROOT / "child-safety.html").read_text())
