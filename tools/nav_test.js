@@ -44,7 +44,7 @@ function navOf(html, page) {
     .map(([, source, text]) => {
       const attrs = attributes(source);
       return { href: route(attrs.href, page), rawHref: attrs.href,
-        label: text.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim(),
+        label: text.replace(/\s+/g, ' ').trim(),
         current: attrs['aria-current'] === 'page' };
     });
 }
@@ -57,8 +57,7 @@ async function pages(folder = '') {
     if (entry.isDirectory) found.push(...await pages(name + '/'));
     if (!entry.isFile || !name.endsWith('.html')
         || name === 'google9d25000efa91451c.html') continue;
-    const html = (await Deno.readTextFile(new URL(name, ROOT)))
-      .replace(/<!--[\s\S]*?-->/g, '');
+    const html = await Deno.readTextFile(new URL(name, ROOT));
     found.push({ name, html });
   }
   return found.sort((a, b) => a.name.localeCompare(b.name));
@@ -82,7 +81,7 @@ for (const page of all) {
       .filter(([, attrs]) => hasClass(attributes(attrs), 'site-menu'));
     eq(menus.length, 1, `${page.name} needs one native Explore disclosure`);
     const summary = menus[0][2].match(/<summary\b[^>]*>([\s\S]*?)<\/summary>/)?.[1];
-    eq(summary?.replace(/<[^>]*>/g, '').trim(), 'Explore', 'the navigation door keeps its name');
+    eq(summary?.trim(), 'Explore', 'the navigation door keeps its name');
     const nav = navOf(menus[0][2], page.name);
     eq(nav?.map(({ href, label }) => ({ href, label })), places,
       `${page.name} has drifted from index.html's destinations`);
