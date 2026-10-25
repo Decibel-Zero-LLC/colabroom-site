@@ -29,9 +29,12 @@ What is in here:
   presentation; the native Explore disclosure also works without JavaScript.
   `editorial.css` gives each product chapter its layout.
 - `atmosphere.css` and `atmosphere.js` — blue light and restrained movement
-  across every visual page. Two layers of the approved blue texture drift
-  slowly through the viewport; legal, public-record and flier pages use a
-  quieter treatment. Pause/Resume, reduced motion, hidden tabs and printing
+  across every visual page. Three copies of the approved blue texture drift
+  through the viewport at different speeds and directions, and the whole fog
+  breathes slowly, like a fog machine running quietly behind the page; legal,
+  public-record and flier pages use a quieter treatment. Every fog knob
+  (strength, breath, drift speed, layer count) is a custom property at the top
+  of `atmosphere.css`, so retuning it is a one-line edit. Pause/Resume, reduced motion, hidden tabs and printing
   stop movement. Without JavaScript, content stays visible and the fog is
   still. The quiet Pause/Resume text button is in each page's footer. Tool inputs,
   charts, captures and printed output stay clear.

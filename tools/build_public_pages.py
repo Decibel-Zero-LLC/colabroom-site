@@ -113,13 +113,13 @@ HEAD = """<!DOCTYPE html>
 <meta name="twitter:description" content="{description}">
 <meta name="twitter:image" content="{origin}/share.png">
 <meta name="theme-color" content="#06101F">
-<link rel="stylesheet" href="/fonts.css?v=20261025-footer">
-<link rel="stylesheet" href="/site.css?v=20261025-footer">
-<link rel="stylesheet" href="/atmosphere.css?v=20261025-footer">
-<link rel="stylesheet" href="/chrome.css?v=20261025-footer">
-<link rel="stylesheet" href="/support.css?v=20261025-footer">
-<script src="/atmosphere.js?v=20261025-footer" defer></script>
-<script src="/site-menu.js?v=20261025-footer" defer></script>
+<link rel="stylesheet" href="/fonts.css?v=20261025-fog">
+<link rel="stylesheet" href="/site.css?v=20261025-fog">
+<link rel="stylesheet" href="/atmosphere.css?v=20261025-fog">
+<link rel="stylesheet" href="/chrome.css?v=20261025-fog">
+<link rel="stylesheet" href="/support.css?v=20261025-fog">
+<script src="/atmosphere.js?v=20261025-fog" defer></script>
+<script src="/site-menu.js?v=20261025-fog" defer></script>
 <script type="application/ld+json">{schema}</script>
 </head>
 <body class="site-redesign record-polish support-site site-fog-page">
