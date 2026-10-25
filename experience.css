@@ -89,3 +89,44 @@
 .ex-recording-label>*{min-width:0;max-width:100%}
 .experience .ex-text-link,.experience .ex-button,.ex-practice-link a,.ex-encounter>a{max-width:100%;overflow-wrap:anywhere}
 .experience .ex-text-link>span,.experience .ex-button>span{flex-shrink:0}
+
+/* A little blue in the air. These are broad sheets of light, not UI. */
+.ex-hero,.ex-rooms,.ex-invitation{position:relative;isolation:isolate;overflow:hidden}
+.ex-atmosphere{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;contain:paint;mask-image:linear-gradient(transparent,#000 24%,#000 64%,transparent)}
+.ex-atmosphere i{position:absolute;inset:-30% -35%;display:block;background:radial-gradient(ellipse at 62% 70%,#326ab548 0%,#285e922b 19%,transparent 49%),radial-gradient(ellipse at 28% 78%,#47799f35 0%,transparent 43%);transform:translate3d(-3%,1%,0) rotate(-6deg);animation:ex-fog-drift 32s ease-in-out infinite alternate;animation-play-state:paused}
+.ex-atmosphere i:nth-child(2){inset:-15% -35% -35%;background:radial-gradient(ellipse at 70% 67%,#7296b62b 0%,#2963912b 17%,transparent 48%),radial-gradient(ellipse at 18% 86%,#234e8c3d 0%,transparent 39%);transform:translate3d(4%,6%,0) rotate(5deg);animation-name:ex-fog-return;animation-duration:39s;animation-delay:-15s}
+.ex-atmosphere i:nth-child(3){background:radial-gradient(ellipse at 75% 92%,#2066a654 0%,#234f8b24 26%,transparent 53%);transform:translate3d(0,4%,0);animation-duration:44s;animation-delay:-23s}
+.ex-atmosphere-hero{inset:5% -4% -8%;opacity:.95}
+.ex-atmosphere-rooms{inset:-30% -10% -20%;opacity:.6}
+.ex-atmosphere-invitation{inset:-35% -10% -30%;opacity:.65}
+.ex-motion-enabled .ex-atmosphere.is-in-view i{animation-play-state:running}
+@keyframes ex-fog-drift{to{transform:translate3d(5%,-3%,0) rotate(2deg)}}
+@keyframes ex-fog-return{to{transform:translate3d(-4%,-2%,0) rotate(-3deg)}}
+.ex-hero-bottom{column-gap:22px}
+.ex-hero-bottom>span{margin-left:auto}
+.experience .ex-motion-toggle{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:8px 12px;border:1px solid #8292a14d;border-radius:999px;background:#0d172066;color:#c5d4e0;font:500 .6875rem/1.4 var(--mono);cursor:pointer;max-width:100%;min-width:0}
+.experience .ex-motion-toggle:hover{border-color:#b2d3ed88;color:#f0f7fd;background:#142537}
+.ex-motion-icon{width:10px;height:10px;border-inline:2px solid currentColor}
+.ex-motion-toggle[aria-pressed=true] .ex-motion-icon{height:0;width:0;border:5px solid transparent;border-left:8px solid currentColor;border-right:0}
+/* Deep, quiet surfaces keep the song and the people in the foreground. */
+.ex-workspace{background:linear-gradient(135deg,#111c25 0%,#0b1015 48%);border-color:#425663;box-shadow:0 1px 0 #a4c4db18 inset,0 34px 100px #0009,0 0 70px #245c8610}
+.ex-scene-nav{background:#070d1266}
+.ex-scene-nav a{transition:color .2s ease,background-color .2s ease}
+.ex-scene-nav a:hover{background:#527b9610}
+.ex-workspace-top{border-color:#57708440}
+.ex-encounter{background:linear-gradient(140deg,#192a36,#0e1820);border-color:#68859b7a;box-shadow:0 1px 0 #a9cde212 inset,0 24px 70px #0008}
+.ex-room-visual{background:linear-gradient(140deg,#172632,#101922);border-color:#587082;box-shadow:0 1px 0 #b8d0df14 inset,35px 30px 70px #0007}
+.experience .ex-button{box-shadow:0 1px 0 #d2f7ff80 inset,0 8px 28px #07121b44;transition:background-color .2s ease,box-shadow .2s ease}
+.experience .ex-button:hover{box-shadow:0 1px 0 #fff9 inset,0 10px 35px #54b7d128}
+.ex-text-link>span,.ex-button>span,.ex-tool-links>a>span:last-child{transition:transform .25s ease}
+.ex-text-link:hover>span,.ex-button:hover>span{transform:translate(3px,-2px)}
+.ex-tool-links>a:hover>span:last-child{transform:translateX(3px)}
+.ex-social-caption a{color:var(--ex-cyan);white-space:normal}
+.ex-account-copy{max-width:38rem}
+@media(max-width:760px){.ex-hero-bottom>span{margin-left:0}.ex-hero-bottom .ex-motion-toggle{margin-left:auto}.ex-atmosphere-hero{inset:18% -30% -4%;opacity:.9}}
+@media(max-width:420px){.ex-hero-bottom{gap:8px 12px}.ex-hero-bottom>a{flex-basis:100%}.ex-hero-bottom .ex-motion-toggle{font-size:.625rem}}
+@media(prefers-reduced-motion:reduce){.ex-atmosphere i{animation:none!important}.experience .ex-motion-toggle{display:none!important}}
+/* Let the hero's utility row grow with the reader's text size. */
+.ex-motion-icon{flex-shrink:0}
+.ex-motion-toggle [data-motion-label]{min-width:0;overflow-wrap:anywhere}
+@media(max-width:760px){.ex-hero-content{padding-bottom:65px}.ex-hero-bottom{position:relative;inset:auto;margin-top:auto;margin-bottom:23px}}

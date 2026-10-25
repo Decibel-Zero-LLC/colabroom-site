@@ -36,6 +36,7 @@
     font-family: var(--serif);
     font-size: 1.0625rem;
     line-height: 1.65;
+    overflow-wrap: anywhere;
   }
 
   a { color: var(--cyan); }
@@ -44,7 +45,7 @@
   .page {
     max-width: 42rem;
     margin: 0 auto;
-    padding: clamp(2.5rem, 6vw, 4.5rem) 1.25rem 5rem;
+    padding: clamp(2.5rem, 6vw, 4.5rem) min(1.25rem, 24px) 5rem;
   }
 
   .back {
