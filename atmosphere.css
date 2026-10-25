@@ -11,49 +11,6 @@
     --cyan: #62d9f3;
     background: var(--ink);
   }
-  .site-atmosphere :is(.hero, .close) {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    overflow: clip;
-    overflow-clip-margin: 8px;
-  }
-  /* Two bounded, softly overlapping fields. They never extend into a tool. */
-  .site-atmosphere :is(.hero, .close)::before,
-  .site-atmosphere :is(.hero, .close)::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    width: auto;
-    height: auto;
-    pointer-events: none;
-    border: 0;
-    background: radial-gradient(ellipse at 72% 65%, #326ab546 0%, #285e922b 22%, transparent 57%),
-      radial-gradient(ellipse at 25% 82%, #47799f2e 0%, transparent 48%);
-    mask-image: radial-gradient(ellipse closest-side at 50% 55%, #000 20%, #000b 55%, transparent 100%);
-    transform: translate3d(-3%, 1%, 0) rotate(-3deg) scale(1.04);
-    animation: atmosphere-drift 34s ease-in-out infinite alternate;
-    animation-play-state: paused;
-  }
-  .site-atmosphere :is(.hero, .close)::after {
-    background: radial-gradient(ellipse at 65% 76%, #7296b62b 0%, #2963912b 20%, transparent 54%),
-      radial-gradient(ellipse at 18% 80%, #234e8c3d 0%, transparent 42%);
-    transform: translate3d(4%, 5%, 0) rotate(3deg) scale(1.04);
-    animation-name: atmosphere-return;
-    animation-duration: 43s;
-    animation-delay: -17s;
-  }
-  .site-atmosphere.atmosphere-motion :is(.hero, .close).atmosphere-in-view::before,
-  .site-atmosphere.atmosphere-motion :is(.hero, .close).atmosphere-in-view::after {
-    animation-play-state: running;
-  }
-  @keyframes atmosphere-drift {
-    to { transform: translate3d(4%, -3%, 0) rotate(2deg) scale(1.08); }
-  }
-  @keyframes atmosphere-return {
-    to { transform: translate3d(-4%, -2%, 0) rotate(-2deg) scale(1.08); }
-  }
   .site-atmosphere.editorial .hero.inner h1 { font-weight: 600; letter-spacing: -.06em; }
   .site-atmosphere.editorial section.moment h2 { font-weight: 600; }
   .site-atmosphere.editorial .art {
@@ -67,7 +24,7 @@
       linear-gradient(0deg, #050709, transparent 70%), url('assets/campaign-studio.webp') center / cover;
   }
   .site-atmosphere .reveal { opacity: 1; transform: none; }
-  .site-atmosphere .atmosphere-controls {
+  .site-fog-page .atmosphere-controls {
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -75,7 +32,7 @@
     min-width: 0;
     max-width: 100%;
   }
-  .site-atmosphere .atmosphere-toggle {
+  .site-fog-page .atmosphere-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -92,13 +49,13 @@
     text-align: left;
     cursor: pointer;
   }
-  .site-atmosphere .atmosphere-toggle:hover {
+  .site-fog-page .atmosphere-toggle:hover {
     border-color: #b2d3ed88;
     color: #f0f7fd;
     background: #142537;
   }
-  .site-atmosphere .atmosphere-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
-  .site-atmosphere .atmosphere-toggle [data-atmosphere-label] { min-width: 0; overflow-wrap: anywhere; }
+  .site-fog-page .atmosphere-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+  .site-fog-page .atmosphere-toggle [data-atmosphere-label] { min-width: 0; overflow-wrap: anywhere; }
   .atmosphere-toggle-icon { flex: none; width: 10px; height: 11px; border-inline: 2px solid currentColor; }
   .atmosphere-toggle[aria-pressed='true'] .atmosphere-toggle-icon {
     width: 0;
@@ -107,7 +64,7 @@
     border-left: 9px solid currentColor;
     border-right: 0;
   }
-  .site-atmosphere .atmosphere-controls[hidden] { display: none !important; }
+  .site-fog-page .atmosphere-controls[hidden] { display: none !important; }
   .record-polish { --surface: #101820; --line: #293744; --text: #f0f3f5; --body: #c1ccd7; --muted: #a0afbd; --cyan: #62d9f3; }
   .record-polish .page { overflow-wrap: anywhere; }
   .record-polish .page h1 { font-weight: 600; letter-spacing: -.045em; color: var(--text); }
@@ -143,30 +100,66 @@
   @media (max-width: 34rem) {
     .legal-polish .row { grid-template-columns: minmax(0, 1fr); }
   }
-  /* Legal reading keeps its typography and has only a small, still halo. */
   body.legal-polish, body.record-polish { background: #050709; }
-  .legal-polish .page, .record-polish .page { position: relative; isolation: isolate; }
-  .legal-polish .page::before, .record-polish .page::before {
+}
+
+/* A single viewport of air follows the reader through the whole site. The
+   original login texture is composited over dark surfaces, with a quiet middle
+   for reading. Only two modestly overscanned bitmaps move; no frame loop. */
+@media screen {
+  .site-fog-page { isolation: isolate; }
+  .site-fog-page > .wrap { z-index: auto; }
+  .site-fog {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    overflow: hidden;
+    contain: strict;
+    pointer-events: none;
+    user-select: none;
+    opacity: .26;
+    mix-blend-mode: screen;
+  }
+  .site-fog::before, .site-fog::after {
     content: '';
     position: absolute;
-    z-index: -1;
-    inset: 1rem 0 auto;
-    height: 17rem;
+    inset: -9% -10%;
     pointer-events: none;
-    background: radial-gradient(ellipse at 68% 35%, #285e922b, transparent 66%);
-    mask-image: radial-gradient(ellipse closest-side at 50% 50%, #000 15%, #000a 50%, transparent 100%);
+    background: url('assets/site-fog.jpg') center / 100% 100% no-repeat;
+    opacity: .72;
+    transform: translate3d(-5%, 3%, 0) scale(1.02);
+    animation: site-fog-flow 68s ease-in-out -21s infinite alternate;
+    animation-play-state: paused;
   }
+  .site-fog::after {
+    opacity: .46;
+    transform: translate3d(5%, -3%, 0) scale(1.04) rotate(180deg);
+    animation: site-fog-counterflow 91s ease-in-out -56s infinite alternate;
+    animation-play-state: paused;
+  }
+  .fog-motion .site-fog::before, .fog-motion .site-fog::after { animation-play-state: running; }
+  @keyframes site-fog-flow {
+    to { transform: translate3d(5%, -4%, 0) scale(1.06); }
+  }
+  @keyframes site-fog-counterflow {
+    to { transform: translate3d(-5%, 4%, 0) scale(1.02) rotate(180deg); }
+  }
+  /* Forms and authored art are intact above the decorative air. */
+  .site-fog-page :is(.tool, .native-capture, .art, .ex-workspace, .ex-social-scene, .ex-app-capture, .work) {
+    position: relative;
+    z-index: 3;
+  }
+  .site-fog-page :is(.atmosphere-controls, .ex-motion-toggle) { position: relative; z-index: 3; }
+  .site-fog-page :is(.atmosphere-controls, .ex-motion-toggle)[hidden] { display: none !important; }
+  .site-fog-page:is(.legal-polish, .record-polish) .site-fog { opacity: .12; }
+  .site-fog-page:is(.legal-polish, .record-polish) .atmosphere-controls { margin-block: 1rem 1.75rem; }
+  .site-fog-page .atmosphere-controls { margin-block: 1.25rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .site-atmosphere :is(.hero, .close)::before,
-  .site-atmosphere :is(.hero, .close)::after { animation: none !important; }
-  .site-atmosphere .atmosphere-controls { display: none !important; }
+  .site-fog::before, .site-fog::after { animation: none !important; }
+  .site-fog-page :is(.atmosphere-controls, .ex-motion-toggle) { display: none !important; }
 }
 @media print {
-  .site-atmosphere, .site-atmosphere * { animation: none !important; transition: none !important; }
-  .site-atmosphere :is(.hero, .close)::before,
-  .site-atmosphere :is(.hero, .close)::after,
-  .legal-polish .page::before,
-  .record-polish .page::before,
-  .site-atmosphere .atmosphere-controls { display: none !important; }
+  .site-fog, .site-fog-page :is(.atmosphere-controls, .ex-motion-toggle) { display: none !important; }
+  .site-fog-page, .site-fog-page * { animation: none !important; transition: none !important; }
 }

@@ -32,8 +32,10 @@
   ]}
   </script>
 <link rel="stylesheet" href="chrome.css">
+<link rel="stylesheet" href="atmosphere.css">
 </head>
-<body class="site-redesign home-experience">
+<body class="site-redesign home-experience site-fog-page">
+<div class="site-fog" aria-hidden="true"></div>
 <a class="skip-content" href="#main-content">Skip to content</a>
 <div class="wrap">
   <header class="top no-print">
@@ -70,7 +72,7 @@
   <section class="ex-hero" aria-labelledby="hero-title">
     <img class="ex-hero-image" src="assets/campaign-studio.webp" alt="" width="1672" height="941" fetchpriority="high">
     <div class="ex-hero-shade" aria-hidden="true"></div>
-    <div class="ex-atmosphere ex-atmosphere-hero" aria-hidden="true"><i></i><i></i><i></i></div>
+
     <div class="ex-container ex-hero-content">
       <p class="ex-kicker">For the music you have in you.</p>
       <h1 id="hero-title">Where music<br>lives.</h1>
@@ -119,7 +121,7 @@
     <p class="ex-container ex-social-caption">Fictional musician and song · Campaign artwork. Public Open Mic is 18+. <a href="openmic.html">Who can take part →</a></p>
   </section>
 
-  <section class="ex-rooms" aria-labelledby="rooms-title"><div class="ex-atmosphere ex-atmosphere-rooms" aria-hidden="true"><i></i><i></i></div><div class="ex-container ex-rooms-layout">
+  <section class="ex-rooms" aria-labelledby="rooms-title"><div class="ex-container ex-rooms-layout">
     <div class="ex-room-copy"><p class="ex-kicker">Your own room</p><h2 id="rooms-title">Make room for<br>your people.</h2><p>Keep the song and the conversation in the same place. Words, recordings, shared sets and calls, for the people in your room.</p><a class="ex-text-link" href="bands.html">Step into a room <span aria-hidden="true">↗</span></a><p class="ex-fine">Private to members. Calls do not record automatically.</p></div>
     <div class="ex-room-visual" aria-label="Example private band room with songs and a shared set"><div class="ex-room-bar"><span class="ex-room-icon" aria-hidden="true">N</span><div><strong>The night shift</strong><span>Private room · Example</span></div></div><div class="ex-room-body"><div class="ex-room-song"><span>County Line</span><small>Words · Chords · Recordings</small></div><div class="ex-room-song"><span>Small hours</span><small>Words · Chords · Recordings</small></div><div class="ex-room-song"><span>After the rain</span><small>Words · Chords · Recordings</small></div><div class="ex-room-set"><span class="ex-kicker">The band's sets</span><strong>Friday rehearsal <span aria-hidden="true">↗</span></strong></div></div></div>
   </div></section>
@@ -166,7 +168,7 @@
     })();
   </script>
   </div>
-  <section class="ex-invitation" aria-labelledby="invitation-title"><div class="ex-atmosphere ex-atmosphere-invitation" aria-hidden="true"><i></i><i></i></div><div class="ex-container"><p class="ex-kicker">A place to begin. A place to belong.</p><h2 id="invitation-title">Bring a song.</h2><p>The beta is small and free.<br>Make something. Tell us how it feels.</p><div class="ex-actions"><a class="ex-button" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite <span aria-hidden="true">↗</span></a><a class="ex-text-link" href="https://app.colabroom.com/">Already here? Sign in <span aria-hidden="true">↗</span></a></div></div></section>
+  <section class="ex-invitation" aria-labelledby="invitation-title"><div class="ex-container"><p class="ex-kicker">A place to begin. A place to belong.</p><h2 id="invitation-title">Bring a song.</h2><p>The beta is small and free.<br>Make something. Tell us how it feels.</p><div class="ex-actions"><a class="ex-button" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite <span aria-hidden="true">↗</span></a><a class="ex-text-link" href="https://app.colabroom.com/">Already here? Sign in <span aria-hidden="true">↗</span></a></div></div></section>
   <div class="ex-container ex-preserved">
   <details class="legal" id="beta">
     <summary>Your account, your songs, and deleting them</summary>
@@ -264,5 +266,6 @@
   })();
 </script>
 <script src="site-menu.js" defer></script>
+<script src="atmosphere.js" defer></script>
 </body>
 </html>

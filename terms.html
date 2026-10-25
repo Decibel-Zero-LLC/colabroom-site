@@ -145,10 +145,12 @@
   <meta name="theme-color" content="#06101F">
 <link rel="stylesheet" href="atmosphere.css">
 </head>
-<body class="legal-polish">
+<body class="legal-polish site-fog-page">
+<div class="site-fog" aria-hidden="true"></div>
 <div class="page">
 
   <a class="back" href="/">← CoLabRoom</a>
+  <div class="atmosphere-controls no-print" hidden><button class="atmosphere-toggle" type="button" aria-pressed="false"><span class="atmosphere-toggle-icon" aria-hidden="true"></span><span data-atmosphere-label>Pause motion</span></button></div>
 
   <h1>Terms of Service</h1>
   <p class="updated">Last updated October 25, 2026</p>
@@ -1238,5 +1240,6 @@
   </footer>
 
 </div>
+<script src="atmosphere.js" defer></script>
 </body>
 </html>

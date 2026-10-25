@@ -29,11 +29,11 @@ What is in here:
   presentation; the native Explore disclosure also works without JavaScript.
   `editorial.css` gives each product chapter its layout.
 - `atmosphere.css` and `atmosphere.js` — blue light and restrained movement
-  across product/tool introductions and closing invitations. Pause/Resume,
-  reduced motion, hidden tabs and offscreen sections stop the movement.
-  Without JavaScript, content stays visible and the light is still. Legal,
-  public-record and flier pages receive a still, screen-only treatment;
-  reading, tool inputs, charts and printed output stay clear.
+  across every visual page. Two layers of the approved blue texture drift
+  slowly through the viewport; legal, public-record and flier pages use a
+  quieter treatment. Pause/Resume, reduced motion, hidden tabs and printing
+  stop movement. Without JavaScript, content stays visible and the fog is
+  still. Tool inputs, charts, captures and printed output stay clear.
 - `assets/` — compressed original campaign images and their provenance.
 - `tools/build_public_pages.py` — the nightly job that writes a page per
   showcased song and discoverable musician, and `sitemap-pages.xml` for them.
@@ -71,5 +71,13 @@ this wording reconciliation is not counsel clearance or permission to publish.
 The subsequent page-by-page visual pass leaves all four legal pages' wording
 unchanged. The public account-deletion section retains its closure, room and
 shared-music explanation, corrected settings path and existing legal/safety
-preservation exception. Public-page generation changes only the presentation
-shell; consent, visibility and deletion behavior are unchanged.
+preservation exception. Public-page generation retains consent, visibility and deletion behavior. Its
+shared presentation shell now includes the fog, and JSON-LD safely escapes
+user-supplied text before embedding it in HTML. Pure local tests cover this;
+the live generator has not been run.
+
+The final walkthrough also repairs malformed shared-chart links, overlapping
+uploads and stale chart URLs. The chord tool permits one upload at a time,
+restores its normal starting view for another song and ignores stale deferred
+link work. Provider limits and data handling remain unchanged; browser checks
+use synthetic responses, not paid or live uploads.

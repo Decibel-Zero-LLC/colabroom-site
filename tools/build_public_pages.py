@@ -82,6 +82,11 @@ def e(text):
     return html.escape(str(text or ''), quote=True)
 
 
+def json_for_script(value):
+    """Serialize JSON without HTML script-closing characters; decoded data is unchanged."""
+    return json.dumps(value).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
+
+
 def minutes(ms):
     if not ms:
         return None
@@ -111,9 +116,11 @@ HEAD = """<!DOCTYPE html>
 <link rel="stylesheet" href="{origin}/fonts.css">
 <link rel="stylesheet" href="{origin}/site.css">
 <link rel="stylesheet" href="{origin}/atmosphere.css">
+<script src="{origin}/atmosphere.js" defer></script>
 <script type="application/ld+json">{schema}</script>
 </head>
-<body class="record-polish">
+<body class="record-polish site-fog-page">
+<div class="site-fog" aria-hidden="true"></div>
 <div class="wrap">
   <header class="top">
     <a class="brand" href="{origin}/">CoLabRoom</a>
@@ -164,7 +171,7 @@ def song_page(row):
 
     description = '%s by %s%s, made on CoLabRoom.' % (title, owner, with_line)
 
-    schema = json.dumps({
+    schema = json_for_script({
         '@context': 'https://schema.org',
         '@type': 'MusicRecording',
         'name': title,
@@ -188,6 +195,7 @@ def song_page(row):
   <article class="page">
     <div class="eyebrow">A song on CoLabRoom</div>
     <h1>{title}</h1>
+    <div class="atmosphere-controls no-print" hidden><button class="atmosphere-toggle" type="button" aria-pressed="false"><span class="atmosphere-toggle-icon" aria-hidden="true"></span><span data-atmosphere-label>Pause motion</span></button></div>
     <p class="lede">by {owner}{with_line}</p>
     {facts}
     <p class="note">
@@ -234,7 +242,7 @@ def musician_page(row):
     description = '%s on CoLabRoom. %s.' % (name, '; '.join(bits)) if bits \
         else '%s on CoLabRoom.' % name
 
-    schema = json.dumps({
+    schema = json_for_script({
         '@context': 'https://schema.org',
         '@type': 'Person',
         'name': name,
@@ -257,6 +265,7 @@ def musician_page(row):
   <article class="page">
     <div class="eyebrow">A musician on CoLabRoom</div>
     <h1>{name}</h1>
+    <div class="atmosphere-controls no-print" hidden><button class="atmosphere-toggle" type="button" aria-pressed="false"><span class="atmosphere-toggle-icon" aria-hidden="true"></span><span data-atmosphere-label>Pause motion</span></button></div>
     <ul class="facts">{rows}</ul>
     <p class="note">
       {name} is findable on the CoLabRoom Open Mic — where musicians say what
