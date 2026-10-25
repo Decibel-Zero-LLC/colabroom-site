@@ -51,3 +51,16 @@ From the checkout, run `python3 -m http.server 8780 --bind 127.0.0.1` and open
 letters to numbers, open the grouped navigation, and try a chart tool. Product
 illustrations are distinct from the working free tools. Existing age and beta
 availability notices still apply. Local review does not publish the site.
+
+The completion pass adds actual native Account, Profile and Team captures to
+their relevant pages, with example-content and in-testing captions. Their
+unchanged source paths and hashes are in `assets/app-screens.json`; these are
+Flutter render fixtures, not store-release or physical-device evidence. Learn
+describes the real chosen-song practice and deliberate take-sharing flow.
+
+PR #42 remains the single website redesign review. Publication is still held.
+Before publication, the owner/legal review must reconcile the newer own-room
+age rules with the older calls/Clef/handover wording in Terms and Child safety.
+Those four legal pages remain unchanged. The public account-deletion section
+retains its closure, room and shared-music explanation; its changed setting
+location and existing legal/safety-preservation exception are stated explicitly.

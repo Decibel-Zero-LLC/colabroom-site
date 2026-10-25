@@ -1,0 +1,26 @@
+[
+  {
+    "asset": "assets/app-account.png",
+    "source_path": "handover/reports/evidence/account-native-2026-10-24/account-phone-home.png",
+    "app_commit": "6c60b725f118bc2cae3a087554c4a9a14017ca38",
+    "bytes": 72259,
+    "sha256": "e3824c07311189c7479bef04b54e8d14dcaaf0363de53486a04fc955c922011c",
+    "treatment": "Unchanged native Flutter test capture; synthetic fixture; not a distributed device build."
+  },
+  {
+    "asset": "assets/app-profile.png",
+    "source_path": "handover/reports/evidence/profiles-native-2026-10-24/normal-small-other-top.png",
+    "app_commit": "6c60b725f118bc2cae3a087554c4a9a14017ca38",
+    "bytes": 57081,
+    "sha256": "9e0a969d43685294e11e308b2d0fb8e69289e828a5c2381955404962fdd7054e",
+    "treatment": "Unchanged native Flutter test capture; synthetic fixture; not a distributed device build."
+  },
+  {
+    "asset": "assets/app-team.png",
+    "source_path": "handover/reports/evidence/team-stage-native-2026-10-24/360.0-1.0-overview-top.png",
+    "app_commit": "6c60b725f118bc2cae3a087554c4a9a14017ca38",
+    "bytes": 58041,
+    "sha256": "56dfe274826d712151d041878a340f915006deb88dba7e67354cd08852dd4dbf",
+    "treatment": "Unchanged native Flutter test capture; synthetic fixture; not a distributed device build."
+  }
+]
