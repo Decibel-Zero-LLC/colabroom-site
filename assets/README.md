@@ -19,3 +19,24 @@ and instruments, tactile materials, no logos, no lettering, no watermark and no
 interface. The second explicitly requested fictional adults without celebrity
 resemblance. Original PNGs are retained in the designer's local generation
 archive; the site ships only the compressed WebP files.
+
+## Actual app screens — 25 October 2026
+
+`app-account.png`, `app-profile.png` and `app-team.png` are unchanged Flutter
+render-test captures from the native Account, Profiles and Team redesigns,
+present in app main `6c60b725f118bc2cae3a087554c4a9a14017ca38`.
+They use synthetic example people, rooms and accounts, including an example.com
+email address. They are not customer data or endorsements. Captions distinguish
+these actual app layouts from the site's authored illustrations, and state that
+the layouts are in testing; a merge does not put them on beta phones.
+
+`app-screens.json` records each original repository path, exact bytes and SHA-256.
+The images have not been retouched, recomposed or cropped. At 187,381 bytes in
+total, they load lazily on the relevant pages. Source review reports are
+`handover/reports/CODEX_ACCOUNT_NATIVE_2026-10-24.md`,
+`CODEX_PROFILES_NATIVE_2026-10-24.md` and
+`CODEX_TEAM_STAGE_NATIVE_2026-10-24.md` in the app repository.
+
+These captures show only the native areas already adopted. Broader HTML design
+proposals, specialized Open Mic work, the held playable-song game and whole-app
+acceptance are not represented as completed native work.

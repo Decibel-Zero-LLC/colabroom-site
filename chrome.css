@@ -76,12 +76,28 @@
   .site-redesign .header-actions { flex-basis: 100%; margin-left: 0; justify-content: flex-end; }
   .site-redesign .header-actions .cta { padding: .65rem 1rem; font-size: .8rem; }
   .site-redesign header.top nav.pages { inset: 100% 0 auto; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 1.2rem; gap: 1.2rem; max-height: calc(100svh - 10rem); }
-  .site-redesign .brand { font-size: 1.2rem; }
+  .site-redesign .brand { font-size: min(1.2rem, 8vw); }
   .tool-page .hero h1 br { display: initial; }
   .tool-page .chartbox, .tool-page .sheet { max-width: 100%; }
 }
 .tool-page :is(h1,h2,h3) { overflow-wrap: anywhere; }
 .tool-page .capo-row { display: flex; flex-wrap: wrap; gap: .5rem 1rem; }
+/* Keep the wordmark within a narrow viewport when reading text is enlarged. */
+.site-redesign .brand { gap: min(.7rem, 12px); }
+.site-redesign .header-actions, .site-redesign .cta { min-width: 0; max-width: 100%; overflow-wrap: anywhere; white-space: normal; }
+.tool-page .field { min-width: 0; max-width: 100%; }
+.tool-page .field select { min-width: 0; max-width: 100%; }
+.site-redesign header.top nav.pages { overflow-wrap: anywhere; }
+.site-redesign .skip-content { left: 16px; max-width: calc(100% - 32px); overflow-wrap: anywhere; }
+.site-redesign footer { min-width: 0; overflow-wrap: anywhere; }
+.site-redesign footer > * { min-width: 0; max-width: 100%; }
+.site-redesign .onward { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+.tool-page .step { flex-wrap: wrap; }
+.tool-page .seg { min-inline-size: 0; max-width: 100%; }
+.tool-page .seg :is(legend, .choices, label, span) { min-width: 0; max-width: 100%; overflow-wrap: anywhere; white-space: normal; }
+@media (max-width: 24rem) {
+  .site-redesign header.top nav.pages { grid-template-columns: minmax(0, 1fr); padding: 20px; max-height: 65svh; }
+}
 .page-bands .hero { margin-inline: 0; padding-inline: 0; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 }

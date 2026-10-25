@@ -327,3 +327,28 @@ body.editorial {
   .editorial :is(.hero,.moment,.close) :is(h1,h2,p,a) { color: #111; }
   .editorial .art { break-inside: avoid; box-shadow: none; }
 }
+
+/* Native examples are complete source viewports, with readable provenance. */
+.editorial .native-capture{width:min(100%,340px);min-width:0;margin:2rem auto 0}
+.editorial .native-capture img{display:block;width:100%;height:auto;border:1px solid #344b60;border-radius:.75rem;box-shadow:0 1.5rem 4rem #0004}
+.editorial .native-capture figcaption{margin-top:1rem;color:var(--body);font:500 .75rem/1.65 var(--mono);overflow-wrap:anywhere}
+.editorial .availability-note,.editorial .hero.inner p.availability-note{max-width:56ch;margin-top:1.5rem;color:var(--body);font:500 .75rem/1.75 var(--mono);border-left:2px solid var(--cyan);padding-left:.85rem}
+.editorial .availability-note a{color:var(--cyan);text-underline-offset:.25em}
+.editorial .illustration-label{margin:0 0 1.25rem;color:var(--muted);font:500 .75rem/1.6 var(--mono)}
+.editorial .team-task-list{margin-top:2rem}
+.editorial .team-task-list>div{padding:1rem 0;border-top:1px solid var(--line)}
+.editorial .team-task-list dt{color:var(--text);font-weight:600;font-size:1rem}
+.editorial .team-task-list dd{margin:.25rem 0 0;color:var(--body);font-size:.9375rem;line-height:1.6}
+@media(min-width:70rem){.editorial .moment.has-art>.native-capture{margin-top:0}.page-teams .team-overview{grid-template-columns:minmax(0,6fr) minmax(0,5fr)}}
+@media print{.editorial .native-capture{break-inside:avoid}.editorial .native-capture figcaption,.editorial .availability-note{color:#111}}
+
+/* Long labels and enlarged type wrap inside their own content column. */
+.editorial :is(.close .cta,.onward,.availability-note,.availability-note a){max-width:100%;min-width:0;overflow-wrap:anywhere}
+.editorial .take .pct{max-width:100%;flex:0 1 auto;overflow-wrap:anywhere;white-space:normal}
+.editorial .call .tiles{width:100%;max-width:100%;min-width:0;grid-template-columns:repeat(auto-fit,minmax(min(100%,6rem),1fr))}
+.editorial .call .tile{width:100%;max-width:100%;min-width:0;min-height:4.6rem}
+.editorial .call .tile span{right:.6rem;overflow-wrap:anywhere}
+
+/* Enlarged words may exceed a column even while their boxes fit. */
+body.editorial{overflow-wrap:anywhere}
+.page-bands .take .name{min-width:min(100%,4ch);overflow-wrap:anywhere}

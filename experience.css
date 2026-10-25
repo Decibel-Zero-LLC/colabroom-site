@@ -70,3 +70,22 @@
 @media(max-width:420px){.experience .ex-hero h1{font-size:clamp(3rem,14vw,4rem)}}
 
 @media(max-width:760px){.ex-social-scene{padding-bottom:0}.ex-encounter{position:relative;inset:auto;margin:-60px auto 0;width:86%}.ex-social-caption{margin-top:24px}}
+
+/* A native screen stays intact, alongside the setting it explains. */
+.ex-account{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(3rem,8vw,8rem);align-items:center;border-top:1px solid var(--ex-line)}
+.ex-account-copy>p:not(.ex-kicker){color:var(--ex-silver);font-size:1.0625rem;max-width:44ch;margin-top:24px}
+.ex-account-copy strong{color:var(--ex-white);font-weight:600}
+.ex-account-copy .ex-text-link{color:var(--ex-cyan);margin-top:24px}
+.ex-app-capture{width:min(100%,290px);margin:0 auto;min-width:0}
+.ex-app-capture img{display:block;width:100%;height:auto;border:1px solid #314351;border-radius:12px;box-shadow:0 24px 60px #0005}
+.ex-app-capture figcaption{margin-top:16px;font:500 .75rem/1.65 var(--mono);color:var(--ex-silver);overflow-wrap:anywhere}
+@media(max-width:760px){.ex-account{grid-template-columns:minmax(0,1fr);gap:36px}.ex-account-copy>p:not(.ex-kicker){font-size:1rem}.ex-app-capture{width:min(100%,310px)}}
+
+/* Keep enlarged text in the flow instead of letting grid/flex items widen it. */
+.experience :is(.ex-editorial-head,.ex-tools-layout,.ex-openmic-head,.ex-rooms-layout,.ex-ownership,.ex-availability,.ex-practice-link)>*{min-width:0}
+.experience :is(.ex-workspace-top,.ex-recording-label,.ex-tool-links,.ex-exports,.ex-availability,.ex-hero-bottom){overflow-wrap:anywhere}
+.ex-workspace-top>*,.ex-tool-links>a>*,.ex-exports>div{min-width:0;max-width:100%}
+.ex-recording-label{flex-wrap:wrap}
+.ex-recording-label>*{min-width:0;max-width:100%}
+.experience .ex-text-link,.experience .ex-button,.ex-practice-link a,.ex-encounter>a{max-width:100%;overflow-wrap:anywhere}
+.experience .ex-text-link>span,.experience .ex-button>span{flex-shrink:0}
