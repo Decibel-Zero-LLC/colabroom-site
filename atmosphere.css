@@ -105,7 +105,8 @@
 
 /* A single viewport of air follows the reader through the whole site. The
    original login texture is composited over dark surfaces, with a quiet middle
-   for reading. Only two modestly overscanned bitmaps move; no frame loop. */
+   for reading. Two bounded bitmaps advect in the same direction, taking turns fading
+   through the invisible reset instead of reversing; no frame loop. */
 @media screen {
   .site-fog-page { isolation: isolate; }
   .site-fog-page > .wrap { z-index: auto; }
@@ -117,32 +118,37 @@
     contain: strict;
     pointer-events: none;
     user-select: none;
-    opacity: .26;
+    opacity: .50;
     mix-blend-mode: screen;
   }
   .site-fog::before, .site-fog::after {
     content: '';
     position: absolute;
-    inset: -9% -10%;
+    inset: -9% -8%;
     pointer-events: none;
     background: url('assets/site-fog.jpg') center / 100% 100% no-repeat;
-    opacity: .72;
-    transform: translate3d(-5%, 3%, 0) scale(1.02);
-    animation: site-fog-flow 68s ease-in-out -21s infinite alternate;
+    mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+    opacity: .8;
+    transform: translate3d(-12%, 3%, 0) scale(1.02);
+    animation: site-fog-flow 40s linear -9s infinite;
     animation-play-state: paused;
   }
   .site-fog::after {
-    opacity: .46;
-    transform: translate3d(5%, -3%, 0) scale(1.04) rotate(180deg);
-    animation: site-fog-counterflow 91s ease-in-out -56s infinite alternate;
+    opacity: .6;
+    transform: translate3d(-12%, -4%, 0) scale(1.04) rotate(180deg);
+    animation: site-fog-counterflow 40s linear -29s infinite;
     animation-play-state: paused;
   }
   .fog-motion .site-fog::before, .fog-motion .site-fog::after { animation-play-state: running; }
   @keyframes site-fog-flow {
-    to { transform: translate3d(5%, -4%, 0) scale(1.06); }
+    0% { opacity: 0; transform: translate3d(-12%, 3%, 0) scale(1.02); }
+    20%, 80% { opacity: .8; }
+    100% { opacity: 0; transform: translate3d(12%, -3%, 0) scale(1.02); }
   }
   @keyframes site-fog-counterflow {
-    to { transform: translate3d(-5%, 4%, 0) scale(1.02) rotate(180deg); }
+    0% { opacity: 0; transform: translate3d(-12%, -4%, 0) scale(1.04) rotate(180deg); }
+    20%, 80% { opacity: .6; }
+    100% { opacity: 0; transform: translate3d(12%, 4%, 0) scale(1.04) rotate(180deg); }
   }
   /* Forms and authored art are intact above the decorative air. */
   .site-fog-page :is(.tool, .native-capture, .art, .ex-workspace, .ex-social-scene, .ex-app-capture, .work) {
@@ -151,7 +157,7 @@
   }
   .site-fog-page :is(.atmosphere-controls, .ex-motion-toggle) { position: relative; z-index: 3; }
   .site-fog-page :is(.atmosphere-controls, .ex-motion-toggle)[hidden] { display: none !important; }
-  .site-fog-page:is(.legal-polish, .record-polish) .site-fog { opacity: .12; }
+  .site-fog-page:is(.legal-polish, .record-polish) .site-fog { opacity: .20; }
   .site-fog-page:is(.legal-polish, .record-polish) .atmosphere-controls { margin-block: 1rem 1.75rem; }
   .site-fog-page .atmosphere-controls { margin-block: 1.25rem; }
 }
