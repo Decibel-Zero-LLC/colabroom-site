@@ -36,6 +36,7 @@
     font-family: var(--serif);
     font-size: 1.0625rem;
     line-height: 1.65;
+    overflow-wrap: anywhere;
   }
 
   a { color: var(--cyan); }
@@ -44,7 +45,7 @@
   .page {
     max-width: 42rem;
     margin: 0 auto;
-    padding: clamp(2.5rem, 6vw, 4.5rem) 1.25rem 5rem;
+    padding: clamp(2.5rem, 6vw, 4.5rem) min(1.25rem, 24px) 5rem;
   }
 
   .back {
@@ -149,7 +150,7 @@
   <a class="back" href="/">← CoLabRoom</a>
 
   <h1>Terms of Service</h1>
-  <p class="updated">Last updated October 14, 2026</p>
+  <p class="updated">Last updated October 25, 2026</p>
 
   <p class="notice">
     CoLabRoom is made and run by <strong>Decibel Zero LLC</strong>, a Florida
@@ -166,7 +167,7 @@
   <h2>The short version</h2>
   <ul>
     <li>Your music stays yours. We use it to run the app for you and the people you choose. We never sell it, and we never train an AI on it.</li>
-    <li>You must be 13 or older. From 13 you can do everything with your own music, and write, share and play together in the rooms you have joined. Calls, Clef, lessons, being handed a room, and meeting people you haven't worked with are for people 18 and over, for now.</li>
+    <li>You must be 13 or older. From 13 you can make music in your own rooms, ask Clef about your songs and join room calls with the protections below. Lessons, meeting new people and the other <a href="#adult-features">adult features</a> stay at 18.</li>
     <li>Only upload what you have the right to share. Never share an intimate image of anyone without their consent.</li>
     <li>What the app works out about a song, and what Clef says, is a first pass. It can be wrong, and it is not legal or professional advice.</li>
     <li>CoLabRoom is still being tested. It comes as it is, without guarantees, and the most we can owe you is limited.</li>
@@ -229,31 +230,49 @@
 
   <h3>Age</h3>
   <p>
-    You must be 13 or older to make an account. When you sign up you
-    confirm that you are. The first time you reach something that depends on
-    your age, we ask the month and year you were born, once. Please tell us
-    the truth: some parts of CoLabRoom depend on it, and once given it can
-    only be corrected by writing to
+    You must be 13 or older to make an account. At sign-up we ask the month
+    and year you were born, never the day. If your account was made before
+    we asked at sign-up, we ask before you record, upload, send a message,
+    make or join a room or song, or invite somebody. Those actions wait until
+    you answer. Please tell us the truth: some parts of CoLabRoom depend on
+    it, and once given it can only be corrected by writing to
     <a href="mailto:support@colabroom.com">support@colabroom.com</a>. If you
     are under 18, please read these terms with a parent or guardian.
   </p>
 
   <h3>From 13</h3>
   <p>
-    From 13 you can use everything you do with your own music (writing,
-    recording, the song sheet, practising and exporting) and everything
-    inside the rooms you have joined: the room's thread, notes, takes, songs
-    and sets. You can write to the people you share a room with, and listen
-    to your own people's songs on Open Mic Night.
+    From 13 you can write, record, use the song sheet, practise and export
+    your own music. In ordinary rooms you have joined, you can use the
+    thread, notes, takes, songs and sets, and write to your room-mates,
+    subject to the invitation protections below. Under 18, the Open Mic shows
+    only your own people's songs, newest first; you can listen to their
+    songs on Open Mic Night.
+  </p>
+  <p>
+    You can ask <a href="#clef">Clef</a> about your own songs from 13 when
+    Anthropic answers; with OpenAI it stays for adults. Clef is an AI guide,
+    not a person, and is not on in lesson rooms. An ordinary room you are
+    already in can be handed to you from 13, once you say yes. Lesson or
+    class rooms, rooms made at a door, and leading a team stay for adults.
+  </p>
+  <p>
+    <a href="#calls">Room calls</a> open from 13 with the people in your
+    ordinary rooms. One adult and one person under 18 cannot call alone:
+    if a call drops to those two, the under-18 person's sound and video
+    wait until a third person joins. Lessons stay for adults on both sides.
+  </p>
+  <p>
+    These rules describe newer builds now in testing. Older beta builds may
+    keep some of these features closed.
   </p>
 
-  <h3>From 18, for now</h3>
+  <h3 id="adult-features">From 18, for now</h3>
   <p>
     Some parts of CoLabRoom are for people 18 and over, for now, and the app
     tells you when you reach one:
   </p>
   <ul>
-    <li>calls, and asking Clef about a song;</li>
     <li>anything that puts you in front of people you have not worked with:
       listing yourself on the Open Mic, putting a song on the Open Mic, in
       the showcase or on an Open Mic Night list, a public page about you on
@@ -263,7 +282,9 @@
       records;</li>
     <li>showing your door on the Open Mic, making a place on Here tonight,
       and meeting anybody there you have not played with;</li>
-    <li>being handed a room, and keeping a room that was made at a door;</li>
+    <li>taking ownership of a lesson or class room, keeping or taking
+      ownership of a room made at a door, leading a team, and keeping a
+      stage as a sound tech;</li>
     <li>signing anything, such as printing a music release, and offering a
       song for other people to use.</li>
   </ul>
@@ -275,10 +296,16 @@
 
   <h3>Invitations</h3>
   <p>
-    Anyone can be invited into a room by email, whatever their age, and once
-    you join, the people in it count as people you work with. Only join rooms
-    of people you know. You never have to say yes, and you can leave, block
-    or report at any time.
+    Musicians 13 and over can be invited into ordinary rooms by email.
+    Only join rooms of people you know. You never have to say yes, and you
+    can leave, block or report at any time.
+  </p>
+  <p>
+    If you are under 18 and join by email or code from an adult you do not
+    already work with, we first ask whether you know them in real life.
+    After that join, one-to-one messages and calls between you stay closed
+    for seven days; the room thread works. The separate rule against a call
+    with just one adult and one person under 18 still applies after that week.
   </p>
   <p>
     If we have reason to think the age on an account is wrong, we may close
@@ -620,7 +647,7 @@
     writing, separately from these terms.
   </p>
 
-  <h3>Clef</h3>
+  <h3 id="clef">Clef</h3>
   <p>
     Clef is an AI guide, not a person. It answers what you ask about a song
     in the song's Ask box (our Privacy Policy calls this asking the app about
@@ -628,11 +655,16 @@
     OpenAI, from what the app has measured in your song; it never hears the
     recording. It can be wrong, and nothing it says is professional, medical
     or legal advice. Clef never writes your song for you: no words, melodies,
-    parts or chords. We keep each question you ask Clef and its answer on
-    your account, where only you can read them. You can't take one back yet,
+    parts or chords. We keep your questions and answers on your account,
+    where only you can read them, except questions about hurting yourself:
+    those get a line pointing to help and are not kept. You can't take a
+    saved question back yet,
     but they go when the song or your account is deleted. You can ask Clef
-    30 questions an hour. Clef isn't on in lesson rooms, and for now it is
-    for people 18 and over.
+    30 questions an hour. Clef isn't on in lesson rooms. For your own songs
+    it opens from 13 when Anthropic answers, with safeguards for younger
+    musicians; when OpenAI answers, it stays for people 18 and over. You
+    must have answered the age question first. Clef refuses romantic,
+    sexual and self-harm conversations and points to help for self-harm.
   </p>
 
   <h3>Split drafts and music releases</h3>
@@ -740,10 +772,15 @@
     with.
   </p>
 
-  <h3>Calls, and recording</h3>
+  <h3 id="calls">Calls, and recording</h3>
   <p>
-    You can call the people in a room. Calls are for people 18 and over, for
-    now. CoLabRoom never records calls. When a call has a song up, you can
+    You can call the people in your ordinary rooms from 13, after answering
+    the age question. A call cannot be just one adult and one person under
+    18: the under-18 person's sound and video wait until a third person
+    joins. The invitation protections above also apply; lesson calls stay
+    for adults. Older beta builds that cannot keep these protections do
+    not admit under-18s to calls. CoLabRoom never records calls. When a call
+    has a song up, you can
     record your own part, on your own phone, as a take on the song. Tell the
     others on the call before you do. Your phone's microphone hears the room,
     so use headphones if you don't want other people's voices in your take.
@@ -939,8 +976,9 @@
     A room other people are in is settled first. The app lists each one, and
     your account can be deleted once every one is settled.
     <strong>Hand it over</strong> moves the room and every song in it to
-    somebody 18 or over in it, once they say yes. <strong>Close the
-    room</strong> gives every song somebody else in it started, played on or
+    somebody 13 or over already in it, once they say yes. For a lesson or
+    class room, a room made at a door, or a team, they must be 18 or over.
+    <strong>Close the room</strong> gives every song somebody else in it started, played on or
     wrote on to them, in a room of their own, and deletes the rest.
   </p>
   <p>
@@ -1169,6 +1207,15 @@
   </p>
 
   <h2 id="what-changed">What changed</h2>
+  <p>
+    <strong>October 25, 2026 (unpublished draft).</strong> The age wording
+    now matches the approved rules for newer builds: own-room calls, Clef
+    and ordinary room handover from 13, with the provider, invitation and
+    call protections explained. Lessons, strangers and the other adult
+    features stay at 18. The sign-up explanation and account-deletion
+    handover wording now follow the same rules. Clef's retention wording
+    also states the existing exception for questions about self-harm.
+  </p>
   <p>
     <strong>October 14, 2026.</strong> Rewritten in full, replacing the terms
     of September 24, 2026. They now say who we are and where to write; who
