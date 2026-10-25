@@ -110,9 +110,10 @@ HEAD = """<!DOCTYPE html>
 <meta name="theme-color" content="#06101F">
 <link rel="stylesheet" href="{origin}/fonts.css">
 <link rel="stylesheet" href="{origin}/site.css">
+<link rel="stylesheet" href="{origin}/atmosphere.css">
 <script type="application/ld+json">{schema}</script>
 </head>
-<body>
+<body class="record-polish">
 <div class="wrap">
   <header class="top">
     <a class="brand" href="{origin}/">CoLabRoom</a>

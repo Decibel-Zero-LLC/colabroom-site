@@ -1,0 +1,172 @@
+/* Product and tool pages opt in. The homepage keeps its own experience.
+   Light is still and all content is visible until atmosphere.js can enhance it. */
+@media screen {
+  body.site-atmosphere {
+    --ink: #050709;
+    --surface: #101820;
+    --line: #293744;
+    --text: #f0f3f5;
+    --body: #c1ccd7;
+    --muted: #a0afbd;
+    --cyan: #62d9f3;
+    background: var(--ink);
+  }
+  .site-atmosphere :is(.hero, .close) {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    overflow: clip;
+    overflow-clip-margin: 8px;
+  }
+  /* Two bounded, softly overlapping fields. They never extend into a tool. */
+  .site-atmosphere :is(.hero, .close)::before,
+  .site-atmosphere :is(.hero, .close)::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: auto;
+    height: auto;
+    pointer-events: none;
+    border: 0;
+    background: radial-gradient(ellipse at 72% 65%, #326ab546 0%, #285e922b 22%, transparent 57%),
+      radial-gradient(ellipse at 25% 82%, #47799f2e 0%, transparent 48%);
+    mask-image: radial-gradient(ellipse closest-side at 50% 55%, #000 20%, #000b 55%, transparent 100%);
+    transform: translate3d(-3%, 1%, 0) rotate(-3deg) scale(1.04);
+    animation: atmosphere-drift 34s ease-in-out infinite alternate;
+    animation-play-state: paused;
+  }
+  .site-atmosphere :is(.hero, .close)::after {
+    background: radial-gradient(ellipse at 65% 76%, #7296b62b 0%, #2963912b 20%, transparent 54%),
+      radial-gradient(ellipse at 18% 80%, #234e8c3d 0%, transparent 42%);
+    transform: translate3d(4%, 5%, 0) rotate(3deg) scale(1.04);
+    animation-name: atmosphere-return;
+    animation-duration: 43s;
+    animation-delay: -17s;
+  }
+  .site-atmosphere.atmosphere-motion :is(.hero, .close).atmosphere-in-view::before,
+  .site-atmosphere.atmosphere-motion :is(.hero, .close).atmosphere-in-view::after {
+    animation-play-state: running;
+  }
+  @keyframes atmosphere-drift {
+    to { transform: translate3d(4%, -3%, 0) rotate(2deg) scale(1.08); }
+  }
+  @keyframes atmosphere-return {
+    to { transform: translate3d(-4%, -2%, 0) rotate(-2deg) scale(1.08); }
+  }
+  .site-atmosphere.editorial .hero.inner h1 { font-weight: 600; letter-spacing: -.06em; }
+  .site-atmosphere.editorial section.moment h2 { font-weight: 600; }
+  .site-atmosphere.editorial .art {
+    border-color: #526b7d80;
+    box-shadow: inset 0 1px #c2e5ff0b, 0 1.75rem 4.5rem #0005;
+  }
+  .site-atmosphere.editorial .close { background: #091017; }
+  /* The Rooms photograph is retained beneath the new light. */
+  .site-atmosphere.page-bands .hero {
+    background: linear-gradient(90deg, #050709f5 15%, #050709a6 62%, #05070955),
+      linear-gradient(0deg, #050709, transparent 70%), url('assets/campaign-studio.webp') center / cover;
+  }
+  .site-atmosphere .reveal { opacity: 1; transform: none; }
+  .site-atmosphere .atmosphere-controls {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1.75rem;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .site-atmosphere .atmosphere-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .65rem;
+    min-height: 44px;
+    min-width: 0;
+    max-width: 100%;
+    padding: .65rem .95rem;
+    border: 1px solid #8292a14d;
+    border-radius: 100px;
+    background: #0d172099;
+    color: #c5d4e0;
+    font: 500 .75rem/1.5 var(--mono);
+    text-align: left;
+    cursor: pointer;
+  }
+  .site-atmosphere .atmosphere-toggle:hover {
+    border-color: #b2d3ed88;
+    color: #f0f7fd;
+    background: #142537;
+  }
+  .site-atmosphere .atmosphere-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+  .site-atmosphere .atmosphere-toggle [data-atmosphere-label] { min-width: 0; overflow-wrap: anywhere; }
+  .atmosphere-toggle-icon { flex: none; width: 10px; height: 11px; border-inline: 2px solid currentColor; }
+  .atmosphere-toggle[aria-pressed='true'] .atmosphere-toggle-icon {
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-left: 9px solid currentColor;
+    border-right: 0;
+  }
+  .site-atmosphere .atmosphere-controls[hidden] { display: none !important; }
+  .record-polish { --surface: #101820; --line: #293744; --text: #f0f3f5; --body: #c1ccd7; --muted: #a0afbd; --cyan: #62d9f3; }
+  .record-polish .page { overflow-wrap: anywhere; }
+  .record-polish .page h1 { font-weight: 600; letter-spacing: -.045em; color: var(--text); }
+  .record-polish .eyebrow { color: var(--cyan); }
+  .record-polish .cta {
+    padding: .8rem 1.1rem;
+    min-height: 44px;
+    border: 1px solid transparent;
+    border-radius: .5rem;
+    background: #e9f1f6;
+    color: #08121c;
+  }
+  .record-polish .cta.quiet { background: #ffffff04; border-color: #ffffff27; color: var(--text); }
+  .record-polish .cta:hover { background: var(--cyan); color: #05131b; }
+  .record-polish a:focus-visible { outline-color: var(--cyan); }
+  .record-polish .facts li { flex-wrap: wrap; gap: .35rem 1rem; }
+  .record-polish .facts :is(span, b) { min-width: 0; max-width: 100%; }
+  .record-polish .facts span { flex-basis: min(8.5rem, 100%); }
+  /* Enlarged reading text wraps within the existing static shells. */
+  .legal-polish .page, .record-polish { overflow-wrap: anywhere; }
+  .legal-polish .row > * { min-width: 0; }
+  .record-polish :is(header.top, footer) > * { min-width: 0; max-width: 100%; }
+  .record-polish .cta { white-space: normal; }
+  .legal-polish .work > * { min-width: 0; max-width: 100%; }
+  .legal-polish .work :is(input, select, button) { min-width: 0; max-width: 100%; }
+  .legal-polish .work button.quiet { margin-left: 0; }
+  .legal-polish .work .sheet { width: 100%; padding-inline: min(2rem, 8%); }
+  .legal-polish .work .qr > * { min-width: 0; max-width: 100%; }
+  .legal-polish .work .qr :is(img, canvas) { max-width: 100%; height: auto; }
+  @media (max-width: 46rem) {
+    .legal-polish .work { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 34rem) {
+    .legal-polish .row { grid-template-columns: minmax(0, 1fr); }
+  }
+  /* Legal reading keeps its typography and has only a small, still halo. */
+  body.legal-polish, body.record-polish { background: #050709; }
+  .legal-polish .page, .record-polish .page { position: relative; isolation: isolate; }
+  .legal-polish .page::before, .record-polish .page::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 1rem 0 auto;
+    height: 17rem;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 68% 35%, #285e922b, transparent 66%);
+    mask-image: radial-gradient(ellipse closest-side at 50% 50%, #000 15%, #000a 50%, transparent 100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-atmosphere :is(.hero, .close)::before,
+  .site-atmosphere :is(.hero, .close)::after { animation: none !important; }
+  .site-atmosphere .atmosphere-controls { display: none !important; }
+}
+@media print {
+  .site-atmosphere, .site-atmosphere * { animation: none !important; transition: none !important; }
+  .site-atmosphere :is(.hero, .close)::before,
+  .site-atmosphere :is(.hero, .close)::after,
+  .legal-polish .page::before,
+  .record-polish .page::before,
+  .site-atmosphere .atmosphere-controls { display: none !important; }
+}
