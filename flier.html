@@ -66,9 +66,11 @@
 </style>
 <link rel="stylesheet" href="atmosphere.css">
 </head>
-<body class="legal-polish">
+<body class="legal-polish site-fog-page">
+<div class="site-fog" aria-hidden="true"></div>
 <div class="page">
   <a class="back" href="index.html">← CoLabRoom</a>
+  <div class="atmosphere-controls no-print" hidden><button class="atmosphere-toggle" type="button" aria-pressed="false"><span class="atmosphere-toggle-icon" aria-hidden="true"></span><span data-atmosphere-label>Pause motion</span></button></div>
   <h1>A flier for one board.</h1>
   <p class="lede">Type where it is going. The QR code lands on the free chord tool with a code for that board, so a week later you know which one worked. Print, or save as PDF from the print dialog.</p>
 
@@ -153,5 +155,6 @@
   });
   render();
 </script>
+<script src="atmosphere.js" defer></script>
 </body>
 </html>

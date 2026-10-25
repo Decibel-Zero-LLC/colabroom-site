@@ -40,3 +40,21 @@ total, they load lazily on the relevant pages. Source review reports are
 These captures show only the native areas already adopted. Broader HTML design
 proposals, specialized Open Mic work, the held playable-song game and whole-app
 acceptance are not represented as completed native work.
+
+## Shared blue fog — 25 October 2026
+
+`site-fog.jpg` is the unchanged 1024 × 1536, 120,326-byte JPEG approved for the
+login atmosphere concept on 21 October 2026, reused at Taylor's request for
+slow, subtle fog throughout the website. SHA-256:
+`3c476263405f99d47906e7650ffb636c324abb3a6ec6dc6cdaa95562edfbe5e4`.
+
+Source: `handover/design/ui-pass-2026-10-21/login-haze-preview.jpg` in the
+`codex-ui-2026-10-21` app design worktree; its adjacent README documents the
+original image-generation prompt and encoding. It is original generated
+atmospheric art, with no logo, lettering, person or third-party brand asset.
+The original PNG is preserved at
+`/Users/tsw/code/colabroom/archive/ui-pass-2026-10-21/login-texture/generated-original.png`.
+This copy has no crop, retouching, compositing or encoding changes. The browser
+composites two low-opacity instances; no additional images or dependencies are
+loaded. The texture remains still without JavaScript or with reduced motion,
+and is absent in print. Legal pages and public records use a quieter opacity.

@@ -92,7 +92,8 @@
 <link rel="stylesheet" href="chrome.css">
 <link rel="stylesheet" href="atmosphere.css">
 </head>
-<body class="site-redesign tool-page site-atmosphere">
+<body class="site-redesign tool-page site-atmosphere site-fog-page">
+<div class="site-fog" aria-hidden="true"></div>
 <a class="skip-content" href="#main-content">Skip to content</a>
 
 <div class="wrap">
@@ -131,6 +132,7 @@
 
   <div class="hero">
     <h1>What chords<br>is this?</h1>
+    <div class="atmosphere-controls no-print" hidden><button class="atmosphere-toggle" type="button" aria-pressed="false"><span class="atmosphere-toggle-icon" aria-hidden="true"></span><span data-atmosphere-label>Pause motion</span></button></div>
     <p>Drop in a song. Get the chords back.</p>
     <!-- The limit is said before it bites, not only at the gate. 25 is
          public_tool_budget.per_requester_daily (app migration 0178); a

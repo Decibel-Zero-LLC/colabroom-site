@@ -1,58 +1,61 @@
-/* Decorative light and one-time entrances only. No scroll driver, storage,
-   analytics or tool behavior. The complete page is the unenhanced state. */
+/* Shared decorative motion only. The full page is the unenhanced state;
+   tools, audio, navigation, storage and analytics are outside this controller. */
 (() => {
   'use strict';
-  const page = document.querySelector('.site-atmosphere');
-  if (!page || typeof window.IntersectionObserver !== 'function' || !window.matchMedia) return;
-  const hero = page.querySelector('.hero');
-  if (!hero) return;
+  const page = document.querySelector('.site-fog-page');
+  if (!page || !page.querySelector('.site-fog') || !window.matchMedia) return;
   const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
   const printPreference = window.matchMedia('print');
-  const sections = [...page.querySelectorAll('.hero, .close')];
+  const controls = page.querySelector('.atmosphere-controls');
+  const toggle = page.querySelector('.ex-motion-toggle, .atmosphere-toggle');
+  const label = toggle?.querySelector('[data-motion-label], [data-atmosphere-label]');
   const active = new Map();
-  const observers = [];
-  let dead = false;
   let paused = false;
+  let suspended = false;
   let printing = printPreference.matches;
-  let controls;
-  let toggle;
-  let label;
-
-  const canMove = () => !dead && !paused && !preference.matches && !document.hidden && !printing;
+  let entranceObserver;
+  const canMove = () => !paused && !suspended && !preference.matches && !document.hidden && !printing;
   const finishEntrances = target => {
     for (const [element, animation] of active) {
-      if (target && element !== target) continue;
+      if (target && target !== element) continue;
       animation.cancel();
       active.delete(element);
     }
   };
   const sync = () => {
-    page.classList.toggle('atmosphere-motion', canMove());
-    if (controls) controls.hidden = dead || preference.matches || printing;
-    if (toggle) toggle.setAttribute('aria-pressed', String(paused));
+    // Removing this class pauses CSS animation at its current time.
+    page.classList.toggle('fog-motion', canMove());
+    const hideControl = preference.matches || printing;
+    if (controls) controls.hidden = hideControl;
+    if (toggle) {
+      toggle.hidden = hideControl;
+      toggle.setAttribute('aria-pressed', String(paused));
+    }
     if (label) label.textContent = paused ? 'Resume motion' : 'Pause motion';
     if (!canMove()) finishEntrances();
   };
-  const failQuietly = () => {
-    dead = true;
-    page.classList.remove('atmosphere-motion');
-    for (const observer of observers) observer.disconnect();
-    finishEntrances();
-    controls?.remove();
+  toggle?.addEventListener('click', () => { paused = !paused; sync(); });
+  document.addEventListener('visibilitychange', sync);
+  const watch = (query, callback) => {
+    if (query.addEventListener) query.addEventListener('change', callback);
+    else if (query.addListener) query.addListener(callback);
   };
+  watch(preference, sync);
+  watch(printPreference, () => { printing = printPreference.matches; sync(); });
+  window.addEventListener('beforeprint', () => { printing = true; sync(); });
+  window.addEventListener('afterprint', () => { printing = printPreference.matches; sync(); });
+  window.addEventListener('pagehide', () => { suspended = true; sync(); });
+  window.addEventListener('pageshow', () => { suspended = false; sync(); });
+  sync();
 
+  // Entrances are optional and one-time. A failed/missing observer leaves all
+  // copy visible, and does not interrupt the independently bounded fog layer.
+  if (typeof window.IntersectionObserver !== 'function') return;
+  const entered = new WeakSet();
+  const stopEntrances = () => { entranceObserver?.disconnect(); finishEntrances(); };
   try {
-    const fogObserver = new IntersectionObserver(entries => {
-      if (dead) return;
-      for (const entry of entries) entry.target.classList.toggle('atmosphere-in-view', entry.isIntersecting);
-    });
-    observers.push(fogObserver);
-    for (const section of sections) fogObserver.observe(section);
-
-    const entered = new WeakSet();
-    const entranceObserver = new IntersectionObserver(entries => {
+    entranceObserver = new IntersectionObserver(entries => {
       try {
-        if (dead) return;
         for (const entry of entries) {
           const target = entry.target;
           if (!entry.isIntersecting) {
@@ -76,10 +79,8 @@
             entranceObserver.unobserve(target);
           };
         }
-      } catch (_) { failQuietly(); }
+      } catch (_) { stopEntrances(); }
     }, { threshold: 0, rootMargin: '0px 0px -24px 0px' });
-    observers.push(entranceObserver);
-    // Tool controls, results and charts are deliberately outside this set.
     const targets = new Set(page.querySelectorAll('.hero h1, .hero > p:not(.kicker), .editorial-copy, .moment > .art, .moment > .native-capture, .close > h2, .close > p, .onwards > .onward-row'));
     for (const section of page.querySelectorAll('.moment')) {
       if (!section.querySelector('.editorial-copy')) {
@@ -90,32 +91,8 @@
     for (const target of targets) {
       if (!target.closest('.tool') && !target.querySelector('input, textarea, select, button')) entranceObserver.observe(target);
     }
-
-    controls = document.createElement('div');
-    controls.className = 'atmosphere-controls no-print';
-    toggle = document.createElement('button');
-    toggle.type = 'button';
-    toggle.className = 'atmosphere-toggle';
-    toggle.setAttribute('aria-pressed', 'false');
-    const icon = document.createElement('span');
-    icon.className = 'atmosphere-toggle-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    label = document.createElement('span');
-    label.setAttribute('data-atmosphere-label', '');
-    label.textContent = 'Pause motion';
-    toggle.append(icon, label);
-    controls.append(toggle);
-    hero.append(controls);
-    toggle.addEventListener('click', () => { paused = !paused; sync(); });
-    document.addEventListener('visibilitychange', sync);
-    const watch = (query, callback) => {
-      if (query.addEventListener) query.addEventListener('change', callback);
-      else if (query.addListener) query.addListener(callback);
-    };
-    watch(preference, sync);
-    watch(printPreference, () => { printing = printPreference.matches; sync(); });
-    window.addEventListener('beforeprint', () => { printing = true; sync(); });
-    window.addEventListener('afterprint', () => { printing = printPreference.matches; sync(); });
-    sync();
-  } catch (_) { failQuietly(); }
+    for (const target of page.querySelectorAll('.ex-editorial-head, .ex-workspace, .ex-tools-layout, .ex-openmic-head, .ex-social-scene, .ex-room-copy, .ex-room-visual, .ex-stage-head, .ex-stands, .ex-practice-link, .ex-ownership>div, .ex-account-copy, .ex-app-capture, .ex-availability, .ex-invitation>.ex-container')) {
+      entranceObserver.observe(target);
+    }
+  } catch (_) { stopEntrances(); }
 })();
