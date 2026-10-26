@@ -55,7 +55,6 @@ atmospheric art, with no logo, lettering, person or third-party brand asset.
 The original PNG is preserved at
 `/Users/tsw/code/colabroom/archive/ui-pass-2026-10-21/login-texture/generated-original.png`.
 This copy has no crop, retouching, compositing or encoding changes. The browser
-composites this one file into three slowly drifting layers, each a strip of
-the picture and its mirror image (the mirror is a CSS flip of the same file,
-so every join matches); no additional images or dependencies are loaded. The texture remains still without JavaScript or with reduced motion,
+composites two low-opacity instances; no additional images or dependencies are
+loaded. The texture remains still without JavaScript or with reduced motion,
 and is absent in print. Legal pages and public records use a quieter opacity.

@@ -1,28 +1,3 @@
-/* Fog knobs. Each is a one-line edit; every fog layer below reads these. */
-:root {
-  --fog-opacity: .58;          /* fog strength in open space at the top of each breath */
-  --fog-quiet-opacity: .30;    /* the same on legal, public-record and flier pages */
-  --fog-layers: 3;             /* moving layers shown, 1 to 3 */
-  --fog-layer-a: .58;          /* main layer, the nearest and fastest */
-  --fog-layer-b: .50;          /* middle layer, flipped top to bottom so its wisps differ */
-  --fog-layer-c: .46;          /* far layer, the slowest, drifting a little upward */
-  --fog-width-b: 1.3;          /* the middle layer's picture is this many screens wide (the main one is 1) */
-  --fog-width-c: 1.65;         /* the far layer's picture is this many screens wide */
-  --fog-drift: 105s;           /* seconds the main layer takes to drift one screen width (one picture) */
-  --fog-ratio-b: 1.5;          /* the middle layer is this many times slower than the main one */
-  --fog-ratio-c: 2.3;          /* the far layer is this many times slower than the main one */
-  --fog-tilt-b: 1deg;          /* the middle layer's drift leans this far down from level */
-  --fog-tilt-c: -3.5deg;       /* the far layer's drift leans this far up from level */
-  --fog-breathe-a: 74s;        /* one swell and ebb of the main layer */
-  --fog-breathe-b: 87s;        /* one swell and ebb of the middle layer */
-  --fog-breathe-c: 63s;        /* one swell and ebb of the far layer */
-  --fog-breathe-depth: .12;    /* how far each layer ebbs, as a share of its strength (at most .15) */
-  --fog-thin: .25;             /* each layer's mirror-image stretch runs this thin, so no join looks folded */
-  --fog-behind-content: .33;   /* fog left behind text, cards and screenshots, as a share of open space */
-  --fog-veil-feather: 1.25rem; /* how softly the quiet zone around a text block fades back into open fog */
-  --fog-veil-rgb: 5 7 9;       /* the colour of that quiet zone: the page background (sections may override) */
-}
-
 /* Product and tool pages opt in. The homepage keeps its own experience.
    Light is still and all content is visible until atmosphere.js can enhance it. */
 @media screen {
@@ -121,16 +96,10 @@
   body.legal-polish, body.record-polish { background: #050709; }
 }
 
-/* A single viewport of air follows the reader through the whole site, like a
-   fog machine running quietly behind the page. Three layers of the original
-   login texture drift steadily to the left, each at its own slow speed and
-   angle, the way real fog crosses a room: nothing reverses, nothing jumps.
-   Each layer is a strip of the picture, its mirror image, the picture again
-   and the mirror again, so every join matches; it slides exactly one picture
-   and mirror (half the strip) per cycle, which leaves it where it began. Each
-   layer also breathes on its own long period. CSS only, transform and opacity
-   only; no frame loop. The fog sits above section backgrounds and below the
-   content, so words, cards and screenshots are never washed by it. */
+/* A single viewport of air follows the reader through the whole site. The
+   original login texture is composited over dark surfaces, with a quiet middle
+   for reading. Two bounded bitmaps advect in the same direction, taking turns fading
+   through the invisible reset instead of reversing; no frame loop. */
 @media screen {
   .site-fog-page { isolation: isolate; }
   .site-fog-page > .wrap { z-index: auto; }
@@ -142,152 +111,49 @@
     contain: strict;
     pointer-events: none;
     user-select: none;
-    opacity: var(--fog-opacity);
+    opacity: .50;
     mix-blend-mode: screen;
   }
-  .site-fog > i {
-    --fog-layer: var(--fog-layer-a);
-    --fog-width: 1;
-    --fog-cycle: calc(var(--fog-drift) * 2);
-    --fog-tilt: 0deg;
-    --fog-flip: 1;
-    position: absolute;
-    top: -14%;
-    left: calc(-50% * var(--fog-width));
-    width: calc(400% * var(--fog-width));
-    height: 128%;
-    display: block;
-    pointer-events: none;
-    background: url('assets/site-fog.jpg') 0 0 / 25% 100% no-repeat,
-      url('assets/site-fog.jpg') calc(200% / 3) 0 / 25% 100% no-repeat;
-    /* Thick over the picture, thin over its mirror image, changing across
-       each join: the reflection never reads as a fold. The mask repeats every
-       picture-and-mirror, so it travels with the strip and wraps with it. */
-    --fog-join: calc((1 + var(--fog-thin)) / 2);
-    -webkit-mask: linear-gradient(90deg, rgb(0 0 0 / var(--fog-join)), #000 3.5%, #000 46.5%,
-      rgb(0 0 0 / var(--fog-join)) 50%, rgb(0 0 0 / var(--fog-thin)) 53.5%, rgb(0 0 0 / var(--fog-thin)) 96.5%,
-      rgb(0 0 0 / var(--fog-join))) 0 0 / 50% 100% repeat-x;
-    mask: linear-gradient(90deg, rgb(0 0 0 / var(--fog-join)), #000 3.5%, #000 46.5%,
-      rgb(0 0 0 / var(--fog-join)) 50%, rgb(0 0 0 / var(--fog-thin)) 53.5%, rgb(0 0 0 / var(--fog-thin)) 96.5%,
-      rgb(0 0 0 / var(--fog-join))) 0 0 / 50% 100% repeat-x;
-    mix-blend-mode: screen;
-    transform-origin: calc(12.5% + 12.5% / var(--fog-width)) 50%;
-    opacity: calc(var(--fog-layer) * (1 - var(--fog-breathe-depth)));
-    transform: rotate(var(--fog-tilt)) translate3d(0, 0, 0) scaleY(var(--fog-flip));
-    animation:
-      site-fog-drift var(--fog-cycle) linear calc(var(--fog-cycle) * -.37) infinite normal both,
-      site-fog-breathe var(--fog-breathe-a) ease-in-out calc(var(--fog-breathe-a) * -.21) infinite normal both;
-    animation-play-state: paused;
-  }
-  /* The mirror image fills the strip's other two pictures, so each join is a
-     picture meeting its own reflection. */
-  .site-fog > i::before {
+  .site-fog::before, .site-fog::after {
     content: '';
     position: absolute;
-    inset: 0;
-    background: inherit;
-    transform: scaleX(-1);
-  }
-  .site-fog > i:nth-child(2) {
-    --fog-layer: calc(var(--fog-layer-b) * clamp(0, var(--fog-layers) - 1, 1));
-    --fog-width: var(--fog-width-b);
-    --fog-cycle: calc(var(--fog-drift) * 2 * var(--fog-width-b) * var(--fog-ratio-b));
-    --fog-tilt: var(--fog-tilt-b);
-    --fog-flip: -1;
-    animation:
-      site-fog-drift var(--fog-cycle) linear calc(var(--fog-cycle) * -.71) infinite normal both,
-      site-fog-breathe var(--fog-breathe-b) ease-in-out calc(var(--fog-breathe-b) * -.64) infinite normal both;
-    animation-play-state: paused;
-  }
-  .site-fog > i:nth-child(3) {
-    --fog-layer: calc(var(--fog-layer-c) * clamp(0, var(--fog-layers) - 2, 1));
-    --fog-width: var(--fog-width-c);
-    --fog-cycle: calc(var(--fog-drift) * 2 * var(--fog-width-c) * var(--fog-ratio-c));
-    --fog-tilt: var(--fog-tilt-c);
-    animation:
-      site-fog-drift var(--fog-cycle) linear calc(var(--fog-cycle) * -.18) infinite normal both,
-      site-fog-breathe var(--fog-breathe-c) ease-in-out calc(var(--fog-breathe-c) * -.43) infinite normal both;
-    animation-play-state: paused;
-  }
-  .fog-motion .site-fog > i { animation-play-state: running; }
-  /* Linear, one way, forever: the end of a cycle is the start of the next. */
-  @keyframes site-fog-drift {
-    from { transform: rotate(var(--fog-tilt)) translate3d(0, 0, 0) scaleY(var(--fog-flip)); }
-    to { transform: rotate(var(--fog-tilt)) translate3d(-50%, 0, 0) scaleY(var(--fog-flip)); }
-  }
-  /* A shallow swell that ends where it began. */
-  @keyframes site-fog-breathe {
-    0%, 100% { opacity: calc(var(--fog-layer) * (1 - var(--fog-breathe-depth))); }
-    50% { opacity: var(--fog-layer); }
-  }
-
-  /* Content sits above the fog. Pictures, cards, mock-ups and screenshots are
-     opaque, so the fog never shows through them. */
-  .site-fog-page :is(.tool, .native-capture, .art, .ex-workspace, .ex-social-scene, .ex-app-capture,
-    .ex-room-visual, .ex-stands, .work, .close, .onward-row, .onward) {
-    position: relative;
-    z-index: 5;
-  }
-  .site-fog-page :is(.native-capture, .ex-app-capture) img { background-color: rgb(var(--fog-veil-rgb)); }
-  /* Text sits on a quiet zone in the page's own colour that leaves about a
-     third of the fog behind it, feathered so the open fog returns softly
-     around it. */
-  .site-fog-page :where(.editorial-copy, .editorial-tail, .page, .ex-editorial-head > *, .ex-openmic-head, .ex-social-caption,
-    .ex-room-copy, .ex-stage-head, .ex-stage-caption, .ex-practice-link, .ex-ownership > div:first-child,
-    .ex-account-copy, .ex-availability, .ex-invitation > .ex-container, .ex-tools-layout > div:first-child,
-    .ex-tool-links, .ex-exports,
-    .ex-preserved > details, .keep-reading > .eyebrow, .onwards > .eyebrow, header.top, footer,
-    .native-capture figcaption, .ex-app-capture figcaption,
-    .page-bands .hero > :not(h1)) {
-    --fog-veil: rgb(var(--fog-veil-rgb) / calc(1 - var(--fog-behind-content)));
-    position: relative;
-    z-index: 4;
-    background-color: var(--fog-veil);
-    box-shadow: 0 0 var(--fog-veil-feather) var(--fog-veil-feather) var(--fog-veil);
-    border-radius: .75rem;
-  }
-  .site-fog-page :is(header.top, footer) { border-radius: 0; }
-  .site-fog-page .ex-tools-layout { position: relative; z-index: 4; }
-  .site-fog-page footer { z-index: 3; }
-  /* Groups of stacked lines (page heads, the tool pages' explanations): the
-     quiet zone of every line sits on a layer under the whole group, so no
-     line's feather can fall across the line above it. Page headlines, the
-     largest type, may keep a little fog behind them. */
-  .site-fog-page:not(.page-bands) .hero, .site-fog-page :is(.ex-hero-content, .tool-page section.moment) {
-    position: relative;
-    z-index: 4;
-  }
-  .site-fog-page .ex-hero-bottom { z-index: 4; }
-  .site-fog-page.page-bands .hero > h1 { position: relative; z-index: 5; }
-  .site-fog-page :is(.hero, .ex-hero-content) > :not(h1) { width: fit-content; }
-  .site-fog-page:not(.page-bands) .hero > :not(h1),
-  .site-fog-page :is(.ex-hero-content > :not(h1), .ex-hero-bottom > *, .tool-page section.moment > *) {
-    position: relative;
-  }
-  .site-fog-page:not(.page-bands) .hero > :not(h1)::before,
-  .site-fog-page :is(.ex-hero-content > :not(h1), .ex-hero-bottom > *, .tool-page section.moment > *)::before {
-    --fog-veil: rgb(var(--fog-veil-rgb) / calc(1 - var(--fog-behind-content)));
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
+    inset: -9% -8%;
     pointer-events: none;
-    background-color: var(--fog-veil);
-    box-shadow: 0 0 var(--fog-veil-feather) var(--fog-veil-feather) var(--fog-veil);
-    border-radius: .75rem;
+    background: url('assets/site-fog.jpg') center / 100% 100% no-repeat;
+    mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+    opacity: .8;
+    transform: translate3d(-12%, 3%, 0) scale(1.02);
+    animation: site-fog-flow 40s linear -9s infinite;
+    animation-play-state: paused;
   }
-  /* The homepage photograph moves beneath the fog with the rest of the page,
-     so its headline and buttons can sit above the fog like everything else. */
-  .site-fog-page .ex-hero { isolation: auto; background-color: transparent; }
-  .site-fog-page .ex-free-tools { --fog-veil-rgb: 220 225 228; }
-  .site-fog-page .ex-rooms { --fog-veil-rgb: 12 17 23; }
-  .site-fog-page :is(.atmosphere-controls, .ex-motion-toggle) { position: relative; z-index: 4; }
+  .site-fog::after {
+    opacity: .6;
+    transform: translate3d(-12%, -4%, 0) scale(1.04) rotate(180deg);
+    animation: site-fog-counterflow 40s linear -29s infinite;
+    animation-play-state: paused;
+  }
+  .fog-motion .site-fog::before, .fog-motion .site-fog::after { animation-play-state: running; }
+  @keyframes site-fog-flow {
+    0% { opacity: 0; transform: translate3d(-12%, 3%, 0) scale(1.02); }
+    20%, 80% { opacity: .8; }
+    100% { opacity: 0; transform: translate3d(12%, -3%, 0) scale(1.02); }
+  }
+  @keyframes site-fog-counterflow {
+    0% { opacity: 0; transform: translate3d(-12%, -4%, 0) scale(1.04) rotate(180deg); }
+    20%, 80% { opacity: .6; }
+    100% { opacity: 0; transform: translate3d(12%, 4%, 0) scale(1.04) rotate(180deg); }
+  }
+  /* Forms and authored art are intact above the decorative air. */
+  .site-fog-page :is(.tool, .native-capture, .art, .ex-workspace, .ex-social-scene, .ex-app-capture, .work) {
+    position: relative;
+    z-index: 3;
+  }
+  .site-fog-page :is(.atmosphere-controls, .ex-motion-toggle) { position: relative; z-index: 3; }
   .site-fog-page :is(.atmosphere-controls, .ex-motion-toggle)[hidden] { display: none !important; }
-  .site-fog-page:is(.legal-polish, .record-polish) { --fog-opacity: var(--fog-quiet-opacity); }
+  .site-fog-page:is(.legal-polish, .record-polish) .site-fog { opacity: .20; }
 }
-/* Reduced motion: the fog stays still at the ebb of its breath. */
 @media (prefers-reduced-motion: reduce) {
-  .site-fog > i { animation: none !important; }
+  .site-fog::before, .site-fog::after { animation: none !important; }
   .site-fog-page :is(.atmosphere-controls, .ex-motion-toggle) { display: none !important; }
 }
 @media print {
