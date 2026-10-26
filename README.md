@@ -29,23 +29,15 @@ What is in here:
   presentation; the native Explore disclosure also works without JavaScript.
   `editorial.css` gives each product chapter its layout.
 - `atmosphere.css` and `atmosphere.js` — blue light and restrained movement
-  across every visual page. Three layers of the approved blue texture drift
-  steadily to the left forever, each at its own slow speed and angle, like
-  real fog crossing a room: each layer is a strip of the picture and its
-  mirror image that slides exactly one picture-and-mirror per cycle, with
-  linear timing, so a cycle ends exactly where the next begins and nothing
-  reverses or jumps. Each layer also breathes on its own long period. The fog
-  sits above section backgrounds and below the content: text sits on a
-  feathered quiet zone in the page's own colour that leaves about a third of
-  the fog behind it, and cards, mock-ups and app screenshots are opaque, so
-  the fog is strongest in the open space around them. Legal, public-record
-  and flier pages use a quieter treatment. Every knob (strength, layer
-  strengths, drift seconds, speed ratios, angles, breath periods, the quiet
-  zone) is a custom property at the top of `atmosphere.css`, so retuning it
-  is a one-line edit. Pause/Resume, reduced motion, hidden tabs and printing
+  across every visual page. Three copies of the approved blue texture drift
+  through the viewport at different speeds and directions, and the whole fog
+  breathes slowly, like a fog machine running quietly behind the page; legal,
+  public-record and flier pages use a quieter treatment. Every fog knob
+  (strength, breath, drift speed, layer count) is a custom property at the top
+  of `atmosphere.css`, so retuning it is a one-line edit. Pause/Resume, reduced motion, hidden tabs and printing
   stop movement. Without JavaScript, content stays visible and the fog is
-  still. The quiet Pause/Resume text button is in each page's footer. Tool
-  inputs, charts, captures and printed output stay clear.
+  still. The quiet Pause/Resume text button is in each page's footer. Tool inputs,
+  charts, captures and printed output stay clear.
 - `assets/` — compressed original campaign images and their provenance.
 - `tools/build_public_pages.py` — the nightly job that writes a page per
   showcased song and discoverable musician, and `sitemap-pages.xml` for them.

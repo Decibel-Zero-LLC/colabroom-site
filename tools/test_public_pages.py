@@ -8,7 +8,7 @@ from urllib.parse import parse_qs, urljoin, urlsplit
 from build_public_pages import json_for_script, musician_page, song_page
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '20261025-fog2'
+VERSION = '20261025-fog'
 PREVIEW = 'https://site-preview.invalid/'
 
 
@@ -146,7 +146,7 @@ class PublicPagesTest(unittest.TestCase):
             document = Scripts(markup)
             self.assertTrue({'site-redesign', 'record-polish', 'support-site',
                              'site-fog-page'}.issubset(document.body_classes))
-            self.assertEqual(markup.count('<div class="site-fog" aria-hidden="true"><i></i><i></i><i></i></div>'), 1)
+            self.assertEqual(markup.count('<div class="site-fog" aria-hidden="true"></div>'), 1)
             self.assertEqual(markup.count('class="atmosphere-controls no-print" hidden'), 1)
             self.assertEqual(markup.count('data-atmosphere-label>Pause motion</span>'), 1)
             self.assertIn('aria-pressed="false"', markup)
