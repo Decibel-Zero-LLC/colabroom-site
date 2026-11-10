@@ -372,12 +372,33 @@ def sweep(site, folder, keep):
     return gone
 
 
+# Paused 10 November 2026: no new musician pages until the app asks for one
+# separately. See the file itself for why.
+KEPT_MUSICIANS = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                              'musician_pages_kept.txt')
+
+
+def kept_musicians():
+    """The musician pages that may still be written, as 'musician/<x>.html'.
+
+    A missing file stops the run before anything is written or removed:
+    reading it as empty would quietly take down every page, and that is not
+    this file's decision to make.
+    """
+    if not os.path.isfile(KEPT_MUSICIANS):
+        sys.exit('%s is missing' % KEPT_MUSICIANS)
+    with open(KEPT_MUSICIANS, encoding='utf-8') as handle:
+        names = [line.strip() for line in handle]
+    return {'musician/%s.html' % n for n in names if n and not n.startswith('#')}
+
+
 def main():
     ref = env('SUPABASE_PROJECT_REF')
     key = env('SUPABASE_ANON_KEY')
     site = env('SITE_DIR')
     if not os.path.isdir(site):
         sys.exit('SITE_DIR %s is not a directory' % site)
+    kept, held = kept_musicians(), 0
 
     songs = rpc(ref, key, 'public_songs', {'in_limit': 2000, 'in_offset': 0})
     people = rpc(ref, key, 'public_musicians',
@@ -397,6 +418,9 @@ def main():
     for row in people:
         url, markup = musician_page(row)
         relative = url[len(ORIGIN) + 1:]
+        if relative not in kept:
+            held += 1
+            continue
         keep_people.add(relative)
         urls.append(url)
         if write(site, url, markup):
@@ -424,6 +448,7 @@ def main():
 
     print('songs: %d  musicians: %d  written: %d  removed: %d'
           % (len(songs), len(people), written, removed))
+    print('held: %d (waiting for the web-page choice)' % held)
     if not urls:
         print('nothing to publish yet — no song is on the showcase and '
               'nobody discoverable has said what they play')
