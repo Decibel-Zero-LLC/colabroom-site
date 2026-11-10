@@ -1,10 +1,16 @@
-"""Pure synthetic rendering checks; no RPC, file generation or production access."""
+"""Synthetic checks only: made-up rows, a throwaway folder, no RPC or production access."""
+import io
 import json
+import os
+import tempfile
 import unittest
+from contextlib import redirect_stdout
 from html.parser import HTMLParser
 from pathlib import Path
+from unittest import mock
 from urllib.parse import parse_qs, urljoin, urlsplit
 
+import build_public_pages as generator
 from build_public_pages import json_for_script, musician_page, song_page
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -193,6 +199,127 @@ class PublicPagesTest(unittest.TestCase):
                     paths.append(url.path)
                 self.assertTrue({'/fonts.css', '/site.css', '/chrome.css',
                                  '/atmosphere.css'}.issubset(paths))
+
+
+class NewPeoplePagesArePausedTest(unittest.TestCase):
+    """The whole nightly run on made-up rows; no network, a throwaway folder.
+
+    10 November 2026: no new musician pages until the app asks separately.
+    """
+    kept_id = 'aaaa1111-0000-4000-8000-000000000001'
+    new_id = 'bbbb2222-0000-4000-8000-000000000002'
+    kept_name = 'Keptperson Zyx'
+    new_name = 'Newperson Qwv'
+
+    def setUp(self):
+        self.folder = tempfile.TemporaryDirectory()
+        self.site = Path(self.folder.name) / 'site'
+        self.site.mkdir()
+        self.kept_slug = generator.slug(self.kept_name, self.kept_id)
+        self.kept_file = Path(self.folder.name) / 'kept.txt'
+        self.kept_file.write_text('# a comment line\n\n%s\n' % self.kept_slug,
+                                  encoding='utf-8')
+        self.people = []
+        patches = [
+            mock.patch.object(generator, 'KEPT_MUSICIANS', str(self.kept_file)),
+            mock.patch.object(generator, 'rpc', self.fake_rpc),
+            mock.patch.dict(os.environ, {'SUPABASE_PROJECT_REF': 'test',
+                                         'SUPABASE_ANON_KEY': 'test',
+                                         'SITE_DIR': str(self.site)}),
+        ]
+        for patch in patches:
+            patch.start()
+            self.addCleanup(patch.stop)
+        self.addCleanup(self.folder.cleanup)
+
+    def fake_rpc(self, ref, key, fn, payload):
+        return {'public_songs': [], 'public_musicians': self.people}[fn]
+
+    def row(self, unique, name, city='Townsville'):
+        return {'id': unique, 'display_name': name, 'plays': ['guitar'],
+                'sounds_like': ['jazz'], 'city': city, 'bio': None}
+
+    def run_job(self):
+        out = io.StringIO()
+        with redirect_stdout(out):
+            generator.main()
+        return out.getvalue()
+
+    def pages(self):
+        folder = self.site / 'musician'
+        return sorted(p.name for p in folder.iterdir()) if folder.is_dir() else []
+
+    def sitemap(self):
+        return (self.site / 'sitemap-pages.xml').read_text(encoding='utf-8')
+
+    def test_a_newly_listed_person_gets_no_page_and_is_not_in_the_sitemap(self):
+        self.people = [self.row(self.new_id, self.new_name)]
+        log = self.run_job()
+        self.assertEqual(self.pages(), [])
+        self.assertNotIn('musician/', self.sitemap())
+        self.assertIn('held: 1 (waiting for the web-page choice)', log)
+
+    def test_a_person_on_the_list_still_gets_their_page(self):
+        self.people = [self.row(self.kept_id, self.kept_name),
+                       self.row(self.new_id, self.new_name)]
+        log = self.run_job()
+        self.assertEqual(self.pages(), [self.kept_slug + '.html'])
+        self.assertIn('/musician/%s.html' % self.kept_slug, self.sitemap())
+        self.assertEqual(self.sitemap().count('<loc>'), 1)
+        self.assertIn('held: 1 (waiting for the web-page choice)', log)
+
+    def test_a_person_on_the_list_who_unlists_loses_their_page(self):
+        self.people = [self.row(self.kept_id, self.kept_name)]
+        self.run_job()
+        self.assertEqual(self.pages(), [self.kept_slug + '.html'])
+        self.people = []  # no longer listed, so no longer a row
+        log = self.run_job()
+        self.assertEqual(self.pages(), [])
+        self.assertNotIn('musician/', self.sitemap())
+        self.assertIn('removed: 1', log)
+
+    def test_a_held_persons_stray_page_is_removed_not_kept(self):
+        stray = self.site / 'musician' / (generator.slug(self.new_name, self.new_id) + '.html')
+        stray.parent.mkdir()
+        stray.write_text('<p>old</p>', encoding='utf-8')
+        self.people = [self.row(self.new_id, self.new_name)]
+        self.run_job()
+        self.assertEqual(self.pages(), [])
+
+    def test_the_log_never_names_anybody(self):
+        self.people = [self.row(self.kept_id, self.kept_name),
+                       self.row(self.new_id, self.new_name)]
+        log = self.run_job()
+        for secret in (self.kept_name, self.new_name, 'Keptperson', 'Newperson',
+                       'keptperson', 'newperson', self.kept_id[:8],
+                       self.new_id[:8], 'Townsville'):
+            self.assertNotIn(secret, log)
+
+    def test_a_missing_list_stops_before_anything_is_written_or_removed(self):
+        page = self.site / 'musician' / (self.kept_slug + '.html')
+        page.parent.mkdir()
+        page.write_text('<p>still here</p>', encoding='utf-8')
+        self.kept_file.unlink()
+        self.people = [self.row(self.new_id, self.new_name)]
+        with self.assertRaises(SystemExit):
+            self.run_job()
+        self.assertEqual(self.pages(), [self.kept_slug + '.html'])
+        self.assertFalse((self.site / 'sitemap-pages.xml').exists())
+
+
+class TheRealListTest(unittest.TestCase):
+    def test_the_list_only_ever_holds_pages_that_existed_on_10_november_2026(self):
+        kept = generator.kept_musicians()
+        self.assertTrue(kept <= {'musician/bam-98ecbf44.html',
+                                 'musician/taylor-e01fede7.html'},
+                        'adding a person here is the decision that was paused')
+
+    def test_robots_does_not_point_crawlers_at_peoples_pages(self):
+        lines = [line.strip() for line in
+                 (ROOT / 'robots.txt').read_text(encoding='utf-8').splitlines()]
+        sitemaps = [line for line in lines if line.lower().startswith('sitemap:')]
+        self.assertEqual(sitemaps, ['Sitemap: https://colabroom.com/sitemap.xml'])
+        self.assertTrue((ROOT / 'sitemap-pages.xml').is_file(), 'the file itself stays')
 
 
 if __name__ == '__main__':

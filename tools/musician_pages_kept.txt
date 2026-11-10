@@ -1,0 +1,23 @@
+# The only musician pages the nightly job may write: the ones that already
+# existed on 10 November 2026, one page name per line (the part between
+# musician/ and .html).
+#
+# Why. Choosing "Listed" on the Open Mic in the app also made a public,
+# search-findable page about you here, and the choice in the app never said
+# so. On 10 November 2026 the owner decided to pause new pages until the app
+# asks separately, with its own choice that is off until you turn it on.
+#
+# Until then:
+# - Nobody new is added here. A listed person not on this list gets no page;
+#   build_public_pages.py counts them as held and never prints who.
+# - A person on this list who stops being listed still loses their page on
+#   the next run, as before. Taking a line out removes that page on the next
+#   run as well.
+# - A page name carries the person's name, so somebody here who changes their
+#   name gets no page under the new name, and the old page comes down.
+#
+# What happens to these two pages is a separate decision for the owner.
+# When the app's choice is live, this file and its check are removed and the
+# database decides again.
+bam-98ecbf44
+taylor-e01fede7
