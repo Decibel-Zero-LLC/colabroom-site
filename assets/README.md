@@ -58,3 +58,24 @@ This copy has no crop, retouching, compositing or encoding changes. The browser
 composites two low-opacity instances; no additional images or dependencies are
 loaded. The texture remains still without JavaScript or with reduced motion,
 and is absent in print. Legal pages and public records use a quieter opacity.
+
+## Site icons — 10 November 2026
+
+The tab icon, the home-screen icon and the logo in the home page's data are
+the app's own mark, so search results, a phone's home screen and the stores
+show one drawing. Nothing was redrawn.
+
+- `logo-512.png` (repository root): a byte-for-byte copy of
+  `web/icons/Icon-512.png` in CoLabRoom-Flutter at `origin/main`
+  `9c7808d0ab767f6315768b8960f48f6f43153276` (last changed in app PR #183,
+  "A mark that is ours"). 512 × 512 PNG. SHA-256:
+  `c8cb7345084872f49544fd485b57bc3bf98e15034a6d2ce42219a476802e8889`.
+- `apple-touch-icon.png`: the same file scaled to 180 × 180 with macOS
+  `sips -z 180 180`. No other change.
+- `favicon.ico`: the same file scaled to 16, 32 and 48 px with `sips`, the
+  three PNGs packed unchanged into one icon file.
+- `favicon.svg`: a byte-for-byte copy of `assets/icon/launcher_icon.svg` in
+  the same app commit, which is the hand-copy of the app's
+  `CoLabRoomMarkPainter` that CI rasterises for the Android and iOS icons.
+
+If the mark in the app changes, replace all four from the new app files.
