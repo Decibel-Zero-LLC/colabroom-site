@@ -1,0 +1,111 @@
+name: Tell IndexNow what changed
+
+# After a merge to main is live, tell Bing (and the other IndexNow engines:
+# Yandex, Seznam, Naver) which hand-written pages changed, so they need not
+# wait to recrawl. Google does not use IndexNow; nothing here talks to it.
+#
+# Why workflow_run and not push: the site is published by GitHub Pages'
+# own "pages-build-deployment" run (legacy build from main), a minute or
+# more after the push. Pinging on the push would make Bing fetch the old
+# page. This runs when that deployment has finished, and only then.
+#
+# Why it can only run for main: a workflow_run workflow runs from the copy
+# of this file on the default branch, never from a branch or a pull request,
+# and the job below also checks that the deployed run was for the default
+# branch of this repository and succeeded.
+#
+# People's pages (/musician/, /song/) are never sent from here, changed or
+# removed. Whether to ping those is a separate decision about people's pages.
+#
+# The key is public by design (IndexNow proves ownership by fetching
+# https://colabroom.com/<key>.txt); it is not a secret. A failed ping never
+# fails anything: the step reports and stops.
+on:
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    if: >-
+      github.repository == 'Decibel-Zero-LLC/colabroom-site' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 2
+
+      - name: Send the changed pages
+        continue-on-error: true
+        env:
+          DEPLOYED: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          python3 - <<'PY'
+          import json, re, subprocess, sys, urllib.request
+          from pathlib import Path
+
+          HOST = 'colabroom.com'
+          SKIP = {'404.html', 'flier.html', 'google9d25000efa91451c.html'}
+          PEOPLE = ('musician/', 'song/')
+
+          keys = [p for p in Path('.').glob('*.txt') if re.fullmatch(r'[0-9a-f]{32}\.txt', p.name)]
+          if len(keys) != 1:
+              print('No single IndexNow key file at the root; nothing sent.')
+              sys.exit(0)
+          key = keys[0].stem
+          if keys[0].read_text(encoding='utf-8').strip() != key:
+              print('The key file does not contain its own key; nothing sent.')
+              sys.exit(0)
+
+          parent = subprocess.run(['git', 'rev-parse', '--verify', '-q', 'HEAD^'],
+                                  capture_output=True, text=True)
+          if parent.returncode != 0:
+              print('The deployed commit has no parent here; nothing sent.')
+              sys.exit(0)
+          changed = subprocess.run(
+              ['git', 'diff', '--name-only', '--no-renames', 'HEAD^', 'HEAD', '--', '*.html'],
+              capture_output=True, text=True, check=True).stdout.split()
+
+          urls = []
+          for name in sorted(set(changed)):
+              if name in SKIP or name.startswith(PEOPLE) or name.startswith('.'):
+                  continue
+              urls.append('https://%s/%s' % (HOST, '' if name == 'index.html' else name))
+          if not urls:
+              print('No hand-written page changed in this deployment; nothing sent.')
+              sys.exit(0)
+
+          key_location = 'https://%s/%s.txt' % (HOST, key)
+          try:
+              with urllib.request.urlopen(key_location, timeout=20) as live:
+                  if live.read().decode('utf-8').strip() != key:
+                      raise ValueError('wrong contents')
+          except Exception as error:
+              print('The key file is not live yet (%s); nothing sent.' % error)
+              sys.exit(0)
+
+          body = json.dumps({'host': HOST, 'key': key, 'keyLocation': key_location,
+                             'urlList': urls}).encode('utf-8')
+          request = urllib.request.Request(
+              'https://api.indexnow.org/indexnow', data=body, method='POST',
+              headers={'Content-Type': 'application/json; charset=utf-8'})
+          try:
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  print('IndexNow answered %s for %d page(s):' % (response.status, len(urls)))
+          except Exception as error:
+              print('IndexNow did not accept the ping (%s). Nothing else depends on it.' % error)
+              sys.exit(0)
+          for url in urls:
+              print('  ' + url)
+          PY

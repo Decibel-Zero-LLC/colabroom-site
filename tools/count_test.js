@@ -374,7 +374,7 @@ Deno.test('requests remain credential-free GETs with only public counting fields
 
 Deno.test('Privacy links directly to the refusal action without loading counters', async () => {
   const privacy = await Deno.readTextFile(new URL('../privacy.html', import.meta.url));
-  assertStringIncludes(privacy, 'href="index.html#flier-preference">Don\'t remember my flier</a>');
+  assertStringIncludes(privacy, 'href="/#flier-preference">Don\'t remember my flier</a>');
   assertFalse(/<script[^>]+src=["']count\.js["']/.test(privacy));
   assertEquals(run({ href: HOME }).preference.id, 'flier-preference');
 });
