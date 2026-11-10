@@ -11,4 +11,7 @@ Sitemap: https://colabroom.com/sitemap.xml
 # The generated half: one page per showcased song and per discoverable
 # musician. Kept separate so a bad generator run can never take the
 # hand-written pages down with it.
-Sitemap: https://colabroom.com/sitemap-pages.xml
+# Held since 10 November 2026: it lists people's pages, and naming it here
+# asks every crawler to index them. It comes back when the app asks each
+# person separately whether they want a page. The file itself stays.
+# Sitemap: https://colabroom.com/sitemap-pages.xml
