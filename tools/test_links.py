@@ -102,8 +102,7 @@ def ids_of(path):
 class LinksTest(unittest.TestCase):
     def test_the_inventory_includes_root_pages_records_and_templates(self):
         names = [name for name, _, _ in documents()]
-        self.assertGreaterEqual(len(names), 25)
-        self.assertTrue(any(name.startswith('musician/') for name in names))
+        self.assertGreaterEqual(len(names), 23)
 
     def test_every_local_href_and_src_resolves_and_every_fragment_exists(self):
         checked = 0

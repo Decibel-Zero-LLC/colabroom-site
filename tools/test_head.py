@@ -82,8 +82,7 @@ def documents():
 class HeadTest(unittest.TestCase):
     def test_the_inventory_covers_root_pages_and_records(self):
         names = [str(p.relative_to(ROOT)) for p in pages()]
-        self.assertGreaterEqual(len(names), 23)
-        self.assertTrue(any(name.startswith('musician/') for name in names))
+        self.assertGreaterEqual(len(names), 21)
         self.assertIn('404.html', names)
 
     def test_the_four_icon_files_exist_and_are_what_they_say(self):

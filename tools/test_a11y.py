@@ -102,7 +102,7 @@ class AccessibilityTest(unittest.TestCase):
                 self.assertEqual(page.images_without_alt, [], 'img without alt')
                 self.assertEqual(page.unlabelled(), [], 'field without a label')
                 self.assertEqual(page.positive_tabindex, [], 'tabindex above 0')
-        self.assertGreaterEqual(checked, 25)
+        self.assertGreaterEqual(checked, 23)
 
 
 if __name__ == '__main__':

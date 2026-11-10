@@ -11,11 +11,15 @@ name: Tell IndexNow what changed
 #
 # Why it can only run for main: a workflow_run workflow runs from the copy
 # of this file on the default branch, never from a branch or a pull request,
-# and the job below also checks that the deployed run was for the default
-# branch of this repository and succeeded.
+# and the job below also checks that the deployed run succeeded, was not
+# started by a pull request, came from this repository (not a fork, which
+# could add its own workflow with the same name on a branch called main),
+# and was for the default branch.
 #
 # People's pages (/musician/, /song/) are never sent from here, changed or
-# removed. Whether to ping those is a separate decision about people's pages.
+# removed: only root-level hand-written pages (a-z, 0-9 and hyphens, then
+# .html) can ever be sent, so nothing in any folder, however spelled, gets
+# through. Whether to ping people's pages is a separate decision.
 #
 # The key is public by design (IndexNow proves ownership by fetching
 # https://colabroom.com/<key>.txt); it is not a secret. A failed ping never
@@ -37,6 +41,8 @@ jobs:
     if: >-
       github.repository == 'Decibel-Zero-LLC/colabroom-site' &&
       github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event != 'pull_request' &&
+      github.event.workflow_run.head_repository.full_name == github.repository &&
       github.event.workflow_run.head_branch == github.event.repository.default_branch
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -57,7 +63,6 @@ jobs:
 
           HOST = 'colabroom.com'
           SKIP = {'404.html', 'flier.html', 'google9d25000efa91451c.html'}
-          PEOPLE = ('musician/', 'song/')
 
           keys = [p for p in Path('.').glob('*.txt') if re.fullmatch(r'[0-9a-f]{32}\.txt', p.name)]
           if len(keys) != 1:
@@ -79,7 +84,7 @@ jobs:
 
           urls = []
           for name in sorted(set(changed)):
-              if name in SKIP or name.startswith(PEOPLE) or name.startswith('.'):
+              if name in SKIP or not re.fullmatch(r'[a-z0-9-]+\.html', name):
                   continue
               urls.append('https://%s/%s' % (HOST, '' if name == 'index.html' else name))
           if not urls:
