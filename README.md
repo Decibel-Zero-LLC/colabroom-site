@@ -16,6 +16,14 @@ What is in here:
   `tools/nav_test.js` holds every page's nav to the front page's.
   Footer coverage, generated-page links and child-safety contact routes use
   Python’s standard library: `python3 -m unittest discover -s tools -p "test_*.py"`.
+  Those include the search foundations: `test_head.py` (icons, site name,
+  data that parses), `test_links.py` (every local link and sitemap URL is a
+  file), `test_sitemap.py` (lastmod is the day the words last changed),
+  `test_a11y.py` and `test_structured_data.py` (schema.org words only).
+- `seo-changelog.md` — one row per site change that could move search; kept
+  off the website by `_config.yml`, which also keeps this README and
+  `tools/` off it. `.github/workflows/indexnow.yml` tells Bing what changed
+  after each deploy of `main`; the key file at the root is public by design.
 - `site.css` — the look. `fonts.css` plus `fonts/` — the three faces, served
   from this domain rather than Google's, under the OFL (see `fonts/README.md`).
 - `count.js` — the arrival code and the anonymous step counters, on every

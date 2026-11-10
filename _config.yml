@@ -1,0 +1,12 @@
+# GitHub Pages runs Jekyll on this repository (there is no .nojekyll), and
+# Jekyll publishes every file it is not told to leave out. These are the
+# repository's own notes and tools, not pages. tools/ ends in a slash on
+# purpose: tools.js, the free tools' own script, must stay served.
+# CNAME, the Google verification file and the IndexNow key file stay served.
+exclude:
+  - README.md
+  - tools/
+  - tools.test.js
+  - assets/README.md
+  - fonts/README.md
+  - seo-changelog.md

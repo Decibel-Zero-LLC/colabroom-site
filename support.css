@@ -31,7 +31,7 @@
     font-weight: 800;
     color: var(--text);
   }
-  .support-site header.top .nav-group h2 {
+  .support-site header.top .nav-group .nav-heading {
     margin: 0 0 .65rem;
     padding: 0;
     border: 0;
