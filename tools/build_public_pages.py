@@ -111,18 +111,21 @@ HEAD = """<!DOCTYPE html>
 <meta property="og:description" content="{description}">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{origin}/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CoLabRoom">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{description}">
 <meta name="twitter:image" content="{origin}/share.png">
 <meta name="theme-color" content="#06101F">
-<link rel="stylesheet" href="/fonts.css?v=20261025-footer">
-<link rel="stylesheet" href="/site.css?v=20261025-footer">
-<link rel="stylesheet" href="/atmosphere.css?v=20261025-footer">
-<link rel="stylesheet" href="/chrome.css?v=20261025-footer">
-<link rel="stylesheet" href="/support.css?v=20261025-footer">
-<script src="/atmosphere.js?v=20261025-footer" defer></script>
-<script src="/site-menu.js?v=20261025-footer" defer></script>
+<link rel="stylesheet" href="/fonts.css?v=20261110-nav">
+<link rel="stylesheet" href="/site.css?v=20261110-nav">
+<link rel="stylesheet" href="/atmosphere.css?v=20261110-nav">
+<link rel="stylesheet" href="/chrome.css?v=20261110-nav">
+<link rel="stylesheet" href="/support.css?v=20261110-nav">
+<script src="/atmosphere.js?v=20261110-nav" defer></script>
+<script src="/site-menu.js?v=20261110-nav" defer></script>
 <script type="application/ld+json">{schema}</script>
 </head>
 <body class="site-redesign record-polish support-site site-fog-page">
@@ -132,22 +135,22 @@ HEAD = """<!DOCTYPE html>
 <header class="top no-print">
 <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CoLabRoom</a>
 <details class="site-menu"><summary>Explore</summary><nav class="pages">
-<div class="nav-group"><h2>Make music</h2>
+<div class="nav-group" role="group" aria-labelledby="nav-make"><p class="nav-heading" id="nav-make">Make music</p>
 <a href="/analysis.html">What it heard</a>
 <a href="/songbook.html">Song sheet</a>
 <a href="/takes.html">Takes</a>
 </div>
-<div class="nav-group"><h2>Play & learn</h2>
+<div class="nav-group" role="group" aria-labelledby="nav-play"><p class="nav-heading" id="nav-play">Play & learn</p>
 <a href="/practise.html">Practise</a>
 <a href="/learn.html">Learn</a>
 <a href="/help.html">Chord help</a>
 </div>
-<div class="nav-group"><h2>Together</h2>
+<div class="nav-group" role="group" aria-labelledby="nav-together"><p class="nav-heading" id="nav-together">Together</p>
 <a href="/bands.html">Rooms</a>
 <a href="/teams.html">Teams</a>
 <a href="/openmic.html">Open Mic</a>
 </div>
-<div class="nav-group"><h2>Free tools</h2>
+<div class="nav-group" role="group" aria-labelledby="nav-tools"><p class="nav-heading" id="nav-tools">Free tools</p>
 <a href="/chords.html">Chords</a>
 <a href="/what-key.html">What key</a>
 <a href="/transpose.html">Transpose</a>
@@ -251,6 +254,19 @@ def song_page(row):
     )
 
 
+def postal_address(city):
+    """"Deltona, FL" is a town and a state; anything else stays whole.
+
+    Only a trailing comma and a two-letter state code is split, so a city
+    written any other way is never guessed at.
+    """
+    match = re.match(r'^(.*\S)\s*,\s*([A-Z]{2})$', city.strip())
+    if match:
+        return {'@type': 'PostalAddress', 'addressLocality': match.group(1),
+                'addressRegion': match.group(2)}
+    return {'@type': 'PostalAddress', 'addressLocality': city}
+
+
 def musician_page(row):
     name = row.get('display_name') or 'Somebody'
     plays = [p for p in (row.get('plays') or []) if p]
@@ -270,13 +286,19 @@ def musician_page(row):
     description = '%s on CoLabRoom. %s.' % (name, '; '.join(bits)) if bits \
         else '%s on CoLabRoom.' % name
 
+    # A page about one member is a ProfilePage whose mainEntity is the
+    # Person (Google's profile-page format). No dateCreated or dateModified
+    # yet: public_musicians does not return updated_at, and the build date
+    # would be a nightly lie (see the sitemap note in main()).
     schema = json_for_script({
         '@context': 'https://schema.org',
-        '@type': 'Person',
-        'name': name,
-        'url': url,
-        **({'address': {'@type': 'PostalAddress',
-                        'addressLocality': city}} if city else {}),
+        '@type': 'ProfilePage',
+        'mainEntity': {
+            '@type': 'Person',
+            'name': name,
+            'url': url,
+            **({'address': postal_address(city)} if city else {}),
+        },
     })
 
     rows = []

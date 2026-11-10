@@ -8,7 +8,7 @@ from urllib.parse import parse_qs, urljoin, urlsplit
 from build_public_pages import json_for_script, musician_page, song_page
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '20261025-footer'
+VERSION = '20261110-nav'
 PREVIEW = 'https://site-preview.invalid/'
 
 
@@ -129,9 +129,48 @@ class PublicPagesTest(unittest.TestCase):
                                    'city': 'city ' + self.attack,
                                    'plays': ['guitar'], 'sounds_like': ['jazz']})
         schema = self.schema(markup)
-        self.assertEqual(schema['name'], self.attack)
-        self.assertEqual(schema['address']['addressLocality'], 'city ' + self.attack)
+        person = schema['mainEntity']
+        self.assertEqual(person['name'], self.attack)
+        self.assertEqual(person['address']['addressLocality'], 'city ' + self.attack)
+        self.assertNotIn('addressRegion', person['address'])
         self.assertNotIn(self.attack, markup)
+
+    def test_musician_page_is_a_profile_page_about_one_person(self):
+        url, markup = musician_page({'id': '87654321-abcd', 'display_name': 'Example',
+                                     'city': 'Deltona, FL', 'plays': ['guitar']})
+        schema = self.schema(markup)
+        self.assertEqual(schema['@type'], 'ProfilePage')
+        self.assertEqual(schema['mainEntity']['@type'], 'Person')
+        self.assertEqual(schema['mainEntity']['url'], url)
+        # Nothing the row does not carry: no dates until updated_at exists.
+        for field in ('dateCreated', 'dateModified', 'description', 'image'):
+            self.assertNotIn(field, schema)
+            self.assertNotIn(field, schema['mainEntity'])
+
+    def test_musician_city_and_state_are_separate_fields(self):
+        _, markup = musician_page({'id': '87654321-abcd', 'display_name': 'Example',
+                                   'city': 'Deltona, FL'})
+        address = self.schema(markup)['mainEntity']['address']
+        self.assertEqual(address, {'@type': 'PostalAddress',
+                                   'addressLocality': 'Deltona', 'addressRegion': 'FL'})
+
+    def test_musician_city_without_a_state_stays_whole_with_no_region(self):
+        for city in ('Orlando', 'Paris, France'):
+            with self.subTest(city=city):
+                _, markup = musician_page({'id': '87654321-abcd', 'display_name': 'Example',
+                                           'city': city})
+                address = self.schema(markup)['mainEntity']['address']
+                self.assertEqual(address, {'@type': 'PostalAddress', 'addressLocality': city})
+        _, markup = musician_page({'id': '87654321-abcd', 'display_name': 'Example'})
+        self.assertNotIn('address', self.schema(markup)['mainEntity'])
+
+    def test_generated_share_image_states_its_size_and_alt(self):
+        for render in (song_page, musician_page):
+            with self.subTest(renderer=render.__name__):
+                _, markup = render({'id': '12345678-abcd'})
+                self.assertIn('<meta property="og:image:width" content="1200">', markup)
+                self.assertIn('<meta property="og:image:height" content="630">', markup)
+                self.assertIn('<meta property="og:image:alt" content="CoLabRoom">', markup)
 
     def test_serializer_preserves_unicode_and_nested_json(self):
         value = {'x': [self.attack, '\u2028\u2029', {'quotes': '" and \\'}]}

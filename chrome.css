@@ -35,7 +35,7 @@
 }
 .site-redesign header.top .site-menu:not([open]) > nav.pages { display: none; }
 .nav-group { display: flex; flex-direction: column; align-items: stretch; min-width: 0; }
-.nav-group h2 { font: 500 .7rem/1.6 var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--cyan); margin: 0 0 .65rem; }
+.nav-group .nav-heading { font: 500 .7rem/1.6 var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--cyan); margin: 0 0 .65rem; }
 .site-redesign nav.pages a { padding: .65rem .5rem; margin-inline: -.5rem; color: var(--body); min-height: 44px; border-radius: .3rem; }
 .site-redesign nav.pages a:hover, .site-redesign nav.pages a[aria-current] { background: #ffffff0a; color: #fff; }
 .site-redesign .header-tool { font: 500 .8rem/1.5 var(--display); text-decoration: none; color: var(--muted); }

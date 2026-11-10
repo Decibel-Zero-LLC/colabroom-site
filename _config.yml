@@ -9,3 +9,4 @@ exclude:
   - tools.test.js
   - assets/README.md
   - fonts/README.md
+  - seo-changelog.md
