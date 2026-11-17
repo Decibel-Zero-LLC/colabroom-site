@@ -49,14 +49,24 @@ function navOf(html, page) {
     });
 }
 
+// Pages that are deliberately outside the shared doors, each with its reason.
+const OUTSIDE = new Set([
+  // Google's verification file: one line, never a page.
+  'google9d25000efa91451c.html',
+  // The testers' door (colabroom.com/test): private, noindex, reached only by
+  // the address being handed to someone. It must not carry the site's nav or
+  // footer (nothing leads to it and it leads nowhere), nor the shared
+  // atmosphere and counters. tools/test_the_door.py holds it to its own rules.
+  'test.html',
+]);
+
 async function pages(folder = '') {
   const found = [];
   for await (const entry of Deno.readDir(new URL(folder, ROOT))) {
     if (entry.name.startsWith('.')) continue;
     const name = folder + entry.name;
     if (entry.isDirectory) found.push(...await pages(name + '/'));
-    if (!entry.isFile || !name.endsWith('.html')
-        || name === 'google9d25000efa91451c.html') continue;
+    if (!entry.isFile || !name.endsWith('.html') || OUTSIDE.has(name)) continue;
     const html = await Deno.readTextFile(new URL(name, ROOT));
     found.push({ name, html });
   }
