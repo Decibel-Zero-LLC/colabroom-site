@@ -28,7 +28,7 @@ SEEN = {'CoLab', 'Room', 'Where music lives.', 'Password', 'Come in',
 SAID = {'You’re in.', 'Where music lives.', 'The password first.',
         'Not that one. Try again.', 'The doors are closed for now.',
         'The door didn’t answer. Try again.', 'Too many tries. Try again later.',
-        'Too many tries. Try again after ', 'Once more.', 'One moment.',
+        'Too many tries. Try again after ', 'The password again.', 'One moment.',
         'Show password', 'Hide password', 'Get CoLabRoom for iPhone',
         'Get CoLabRoom for Android'}
 
@@ -92,6 +92,38 @@ class TheDoorTest(unittest.TestCase):
             self.assertNotRegex(listing, r'(?i)colabroom\.com/test\b|/test(\.html)?\s*$|the-door', name)
             for line in listing.splitlines():
                 self.assertNotRegex(line, r'/test(\.html)?(\s|<|$)', name)
+
+    def test_no_search_engine_is_told_it_changed(self):
+        # The IndexNow workflow announces every changed root page; not this one.
+        workflow = text(ROOT / '.github' / 'workflows' / 'indexnow.yml')
+        skip = re.search(r"SKIP = \{([^}]*)\}", workflow).group(1)
+        self.assertIn("'test.html'", skip)
+        self.assertIn('if name in SKIP or not', workflow)
+
+    def test_without_script_or_inside_a_frame_there_is_no_form(self):
+        html = [a for t, a in self.page.tags if t == 'html'][0]
+        self.assertIn('no-js', html.get('class', '').split())
+        self.assertIn("root.classList.remove('no-js');", self.script)
+        self.assertIn("if (framed) root.classList.add('framed');", self.script)
+        self.assertIn("if (framed) { no('unreachable'); return; }", self.script)
+        self.assertRegex(text(STYLE), r'\.no-js \.floor, \.framed \.floor \{ display: none; \}')
+        # Even with the policy gone, what is typed could never reach an address bar.
+        self.assertEqual([a.get('method') for t, a in self.page.tags if t == 'form'], ['post'])
+        self.assertNotIn('action', [a for t, a in self.page.tags if t == 'form'][0])
+
+    def test_a_door_that_does_not_answer_is_given_up_on(self):
+        js = self.script
+        self.assertIn('new AbortController()', js)
+        self.assertRegex(js, r"setTimeout\(function \(\) \{\s*if \(done\) return;\s*done = true;\s*if \(stop\) stop\.abort\(\);\s*no\('unreachable'\);\s*\}, PATIENCE\);")
+        self.assertIn('signal: stop ? stop.signal : undefined', js)
+
+    def test_it_rests(self):
+        js, css = self.script, text(STYLE)
+        # At rest nothing is asked of the screen: no frame is requested.
+        self.assertRegex(js, r"resting = true; root\.classList\.add\('resting'\);\s*return;")
+        self.assertIn("powerPreference: 'default'", js)
+        self.assertIn('.gl.resting .pill::before { animation-play-state: paused; }', css)
+        self.assertNotRegex(css, r'(?m)^\.pill::before \{[^}]*animation:')
 
     def test_nothing_else_leads_to_it(self):
         leads = re.compile(r'''(?i)(href|src|action|content|url)\s*[=(:]\s*["']?[^"'\s>)]*(?<![\w.-])(test\.html|/test)(?![\w/-])''')

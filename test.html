@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-state="waiting">
+<html lang="en" class="no-js" data-state="waiting">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -48,13 +48,12 @@
   </div>
 
   <div class="floor" id="floor">
-    <form id="ask" class="ask" novalidate autocomplete="off">
+    <form id="ask" class="ask" method="post" novalidate autocomplete="off">
       <div class="field">
         <label for="pw">Password</label>
         <input id="pw" name="password" type="password" required maxlength="200"
                autocomplete="off" autocapitalize="none"
-               autocorrect="off" spellcheck="false" enterkeyhint="go"
-               aria-describedby="said">
+               autocorrect="off" spellcheck="false" enterkeyhint="go">
         <button type="button" id="see" class="see" aria-pressed="false" aria-label="Show password">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/>

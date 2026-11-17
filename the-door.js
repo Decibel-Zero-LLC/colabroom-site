@@ -19,9 +19,17 @@
 
   var KEPT = 'colabroom.door.open';     // this browser session only; never the password
   var FRESH = 9 * 60 * 1000;            // the Android link lives ten minutes; trust it for nine
+  var PATIENCE = 14000;                 // how long the door is waited on, in milliseconds
+  var REST = 75;                        // untouched this many seconds, the room holds still
   var END = 2.6;                        // the opening: a beat of dark, then about 1.8 seconds
 
   var root = document.documentElement;
+  root.classList.remove('no-js');
+  // Inside somebody else's page there is a room and no door: a password is
+  // never typed into a frame.
+  var framed = false;
+  try { framed = window.top !== window.self; } catch (e) { framed = true; }
+  if (framed) root.classList.add('framed');
   var q = new URLSearchParams(location.search);
   // The demo and every parameter below it answer only on this machine, so the
   // published page can never be opened without the password.
@@ -109,7 +117,7 @@
     wrong:    { house: 0.40, beam: 0.085, wander: 0.5, flood: 0,    clear: 0 },
     locked:   { house: 0.40, beam: 0.085, wander: 0.5, flood: 0,    clear: 0 },
     closed:   { house: 0.30, beam: 0.05, wander: 0.4,  flood: 0,    clear: 0 },
-    open:     { house: 1.0,  beam: 0.86, wander: 0.78, flood: 0.3,  clear: 1 }
+    open:     { house: 0.72, beam: 0.92, wander: 0.78, flood: 0.12, clear: 1 }
   };
 
   // THE OPENING, as a score: what everything is T seconds after the yes.
@@ -124,10 +132,10 @@
     var bloom = outCubic(up);
     var settle = inOut(span(T, 0.9, 2.3));
     return {
-      house: mix(mix(from.house, 0.04, down), 1.0, inOut(span(T, 0.75, 1.5))),
-      beam: mix(from.beam, 0, down) * (1 - up) + bloom * mix(1.42, 0.86, settle),
+      house: mix(mix(from.house, 0.04, down), mix(1.0, 0.72, settle), inOut(span(T, 0.75, 1.5))),
+      beam: mix(from.beam, 0, down) * (1 - up) + bloom * mix(1.42, 0.92, settle),
       wander: mix(from.wander * (1 - down), 0.78, inOut(span(T, 1.5, 2.6))),
-      flood: bloom * mix(1.0, 0.3, settle),
+      flood: bloom * mix(1.0, 0.12, settle),
       clear: inOut(span(T, 0.85, 2.1)),
       form: 1 - inOut(span(T, 0, 0.26)),
       dark: down * (1 - bloom),
@@ -185,9 +193,12 @@
       var L = LAMPS[i];
       var px = cx + L.u * rig, py = TRUSS_Y;
       var side = L.u < 0 ? -1 : 1;
+      // On a low, wide glass the name sits right under the truss; the lamps
+      // are aimed below it there, so the beams still cross and reach the floor.
+      var ny = Math.max(room.name.y, TRUSS_Y + 0.34);
       var tx = room.name.x * a + (L.end ? -side * reach * spread : 0);
-      var ty = room.name.y + (L.end ? drop * spread : 0);
-      var toName = Math.atan2(room.name.x * a - px, room.name.y - py);
+      var ty = ny + (L.end ? drop * spread : 0);
+      var toName = Math.atan2(room.name.x * a - px, ny - py);
       var base = Math.atan2(tx - px, ty - py);
       var aim = base + L.sway * now.wander * Math.sin(lampClock * 2 * Math.PI / L.every + L.at);
       var strength = L.gain * now.beam * (0.76 + 0.24 * Math.sin(lampClock * 2 * Math.PI / L.breath + L.lung));
@@ -246,8 +257,8 @@
     if (dist < 1e-5) return;
     var speed = Math.min(3.2, dist / dt);                 // heights of the glass a second
     var hard = clamp01((speed - 0.5) / 1.8);              // a hard swipe throws wider
-    var take = Math.min(1, 9 * dt) * gain * (0.9 + 0.7 * hard);
-    pushes.push({ x: x, y: y, r: 0.05 + 0.045 * hard, air: gain > 0.5 ? 1.6 + 2.2 * hard : 0,
+    var take = Math.min(1, 13 * dt) * gain * (0.9 + 0.7 * hard);
+    pushes.push({ x: x, y: y, r: 0.06 + 0.05 * hard, air: gain > 0.5 ? 5 + 9 * hard : 0,
       fx: dx / dist * speed * take, fy: -dy / dist * speed * take });
     if (pushes.length > 24) pushes.shift();
     if (gain > 0.5) {
@@ -313,14 +324,14 @@
       for (var i = 1; i <= steps; i += 1) s.push({ t: at + t0 + (t1 - t0) * i / steps, kind: 'move', id: id, p: fn(i / steps) });
       s.push({ t: at + t1 + 0.001, kind: 'up', id: id });
     };
-    // a press, low on the left, in the bank of smoke
-    path('a', 0.0, 0.05, function () { return [0.27, 0.72]; });
-    // a slow drag up through the beams, in an arc
-    path('b', 1.5, 2.9, function (k) { return [0.24 + 0.5 * k, 0.6 - 0.36 * Math.sin(k * Math.PI * 0.62)]; });
-    // a hard swipe across the floor, right to left
-    path('c', 4.6, 4.78, function (k) { return [0.9 - 0.78 * k, 0.76 - 0.1 * k]; });
+    // a press, up where the beams cross
+    path('a', 0.0, 0.05, function () { return [0.34, 0.21]; });
+    // a slow drag through the beams, in an arc over the name
+    path('b', 1.5, 2.9, function (k) { return [0.16 + 0.68 * k, 0.40 - 0.27 * Math.sin(k * Math.PI)]; });
+    // a hard swipe back across them, right to left
+    path('c', 4.6, 4.78, function (k) { return [0.92 - 0.8 * k, 0.30 - 0.1 * k]; });
     // and a second press, on the right
-    path('d', 6.4, 6.45, function () { return [0.74, 0.44]; });
+    path('d', 6.4, 6.45, function () { return [0.70, 0.17]; });
     return s;
   })() : null;
   var scriptAt = 0;
@@ -361,12 +372,12 @@
     ' float wings=smoothstep(0.16,0.5,abs(x-0.5));',
     ' float rig=1.0-smoothstep(0.0,0.26,y);',
     ' float shape=0.52+0.85*bank+0.30*wings*(0.35+0.65*y)+0.10*rig;',
-    ' float d=shape*(0.10+1.45*billow(p,t));',
+    ' float d=shape*(0.30+1.15*billow(p,t));',
     // Let go from the middle of the stage once the room is open; the wings,
     // the floor and the air under the rig keep theirs.
-    ' vec2 c=(p-vec2(uName.x,uName.y+0.20))/vec2(0.20+0.30*uAspect,0.40);',
+    ' vec2 c=(p-vec2(uName.x,uName.y+0.20))/vec2(0.24+0.36*uAspect,0.46);',
     ' float hole=exp(-pow(dot(c,c),1.4));',
-    ' float kept=max(0.26,max(smoothstep(uFloor-0.10,uFloor+0.06,y)*0.72,(1.0-smoothstep(0.02,0.16,y))*0.6));',
+    ' float kept=max(0.06,max(smoothstep(uFloor-0.10,uFloor+0.06,y)*0.72,(1.0-smoothstep(0.02,0.16,y))*0.6));',
     ' return d*mix(1.0,mix(1.0,kept,hole),uClear);}'
   ].join('\n');
 
@@ -414,6 +425,16 @@
       'uniform sampler2D uVel;uniform vec2 uAsp;uniform float uDt;uniform float uDamp;',
       'void main(){vec2 vel=texture2D(uVel,v).xy;vec2 b=v-uDt*vel*uAsp;',
       ' gl_FragColor=vec4(texture2D(uVel,b).xy*uDamp,0.0,1.0);}'
+    ].join('\n'),
+
+    // Where the air has carried things: how far each place's smoke has been
+    // moved from where it lay. The wisps are drawn that far along, so what a
+    // hand stirs curls and trails as smoke does, and then eases back.
+    carry: HEAD + [
+      'uniform sampler2D uVel;uniform sampler2D uGone;uniform vec2 uAsp;uniform float uDt;uniform float uKeep;',
+      'void main(){vec2 vel=texture2D(uVel,v).xy;vec2 b=v-uDt*vel*uAsp;',
+      ' vec2 g=texture2D(uGone,b).xy*uKeep+uDt*vel;g*=min(1.0,0.20/max(length(g),0.0001));',
+      ' gl_FragColor=vec4(g,0.0,1.0);}'
     ].join('\n'),
 
     curl: HEAD + [
@@ -476,7 +497,7 @@
     ].join('\n'),
 
     // The smoke is carried by the air the hand has moved and by the room's
-    // own slow drift; it spreads a little; a breath clears it; and it is
+    // own slow drift; it spreads a little; a breath heaps it aside; and it is
     // drawn back, slowly, toward where smoke lies in this room.
     smoke: HEAD + ROOM + [
       'uniform sampler2D uVel;uniform sampler2D uDen;uniform vec2 uAsp;uniform vec2 uTexel;',
@@ -495,8 +516,11 @@
       ' float d=texture2D(uDen,b).r;',
       ' float n=0.25*(texture2D(uDen,b+vec2(uTexel.x,0.0)).r+texture2D(uDen,b-vec2(uTexel.x,0.0)).r+texture2D(uDen,b+vec2(0.0,uTexel.y)).r+texture2D(uDen,b-vec2(0.0,uTexel.y)).r);',
       ' d=mix(d,n,min(0.5,uSpread+0.07*length(vel)));',
+      // A breath moves smoke, it does not take it away: what leaves the middle
+      // is heaped in a soft lip round it, where a lamp can find it.
       ' for(int i=0;i<8;i++){vec4 s=uSplat[i];vec2 q=(v-s.xy)*vec2(uAspect,1.0);',
-      '  d*=1.0-min(0.8,s.w*uDt*0.42)*exp(-dot(q,q)/(s.z*s.z));}',
+      '  float r2=dot(q,q)/(s.z*s.z);float r=sqrt(r2)-1.5;',
+      '  d*=1.0+min(0.4,s.w*uDt*0.2)*(0.55*exp(-r*r/0.34)-exp(-r2));}',
       ' d+=(goal-d)*(goal>d?uUp:uDown);',
       ' gl_FragColor=vec4(max(d,0.0),0.0,0.0,1.0);}'
     ].join('\n'),
@@ -522,7 +546,7 @@
   // brand's blues.
   function pictureSource(wakeOnly) {
     return HEAD + (wakeOnly ? '#define WAKE\n' : '') + ROOM + LIGHT + [
-      'uniform sampler2D uDen;uniform sampler2D uSoft;uniform sampler2D uWide;uniform sampler2D uLight;',
+      'uniform sampler2D uDen;uniform sampler2D uSoft;uniform sampler2D uWide;uniform sampler2D uLight;uniform sampler2D uVel;uniform sampler2D uGone;',
       'uniform float uHouse;uniform float uOpen;uniform vec2 uPar;uniform vec4 uCalm;uniform float uCalmK;',
       'uniform vec4 uTouch[6];uniform vec4 uWordsA;uniform vec4 uWordsB;',
       'const vec3 INK=vec3(0.0118,0.0314,0.0706);',
@@ -541,8 +565,13 @@
       '  q-=normalize(r+vec2(0.0001))*g*0.07;gone+=g;}',
       ' float d=rest(q,uTime)*(1.0-0.72*min(gone,1.0));float ds=d;float dw=0.9*d;vec2 f1=vec2(vn(p*8.0+vec2(0.05*uTime,0.11*uTime)),vn2(p*8.0+vec2(5.0-0.04*uTime,0.09*uTime)))-0.5;',
       ' vec3 L=lightAt(p);',
-      ' float mirror=0.0;',
+      ' float mirror=0.0;vec2 air=vec2(0.0);vec2 carried=vec2(0.0);float torn=0.0;',
       '#else',
+      ' vec2 air=texture2D(uVel,v).xy*vec2(1.0,-1.0);vec2 carried=texture2D(uGone,v).xy*vec2(1.0,-1.0);',
+      // Where the air has pulled one place far from the next, smoke is mixed
+      // to a soft haze; it is never drawn out into lines.
+      ' float torn=(length(texture2D(uGone,v+vec2(0.0,0.02)).xy*vec2(1.0,-1.0)-carried)+length(texture2D(uGone,v+vec2(0.02/uAspect,0.0)).xy*vec2(1.0,-1.0)-carried))/0.02;',
+      ' torn=smoothstep(0.5,1.8,torn);',
       // Smoke has no clean edge: what is looked up is frayed a little, finely.
       ' vec2 f1=vec2(vn(p*8.0+vec2(0.05*uTime,0.11*uTime)),vn2(p*8.0+vec2(5.0-0.04*uTime,0.09*uTime)))-0.5;',
       ' vec2 f2=vec2(vn2(p*19.0+vec2(0.07*uTime,0.16*uTime)),vn(p*19.0+vec2(9.0,0.13*uTime)))-0.5;',
@@ -560,12 +589,27 @@
       // The far layer: slower, softer, out of the hand's reach.
       ' vec2 fp=p+uPar*0.014;',
       ' float far=vn(fp*1.9+vec2(0.012*uTime,0.020*uTime))*vn2(fp*1.05+vec2(4.0-0.008*uTime,7.0+0.007*uTime));',
-      ' far=smoothstep(0.05,0.50,far)*(0.40+0.60*st.y)*mix(1.0,0.45,uClear);',
+      ' far=smoothstep(0.05,0.50,far)*(0.40+0.60*st.y)*mix(1.0,0.28,uClear);',
       // Thinner behind the words, never gone.
       ' vec2 cc=(st-uCalm.xy)/uCalm.zw;float calm=1.0-uCalmK*exp(-pow(dot(cc,cc),1.3));',
-      ' float tex=vn(p*13.0+3.0*f1+vec2(0.04*uTime,0.10*uTime))*0.6+vn2(p*27.0+5.0*f1+vec2(0.0,0.15*uTime))*0.4;',
-      ' float body=(1.0-exp(-1.25*(0.72*d+0.28*ds)*(0.72+0.56*tex)))*calm;',
-      ' float smoke=body*(0.62*uHouse+2.2*L.r)+far*calm*(0.03*uHouse+0.30*L.r)+0.30*(1.0-exp(-dw))*L.r*calm+0.02*L.g;',
+      // THE WISPS: what the fluid's grid is too coarse to hold. Soft strands at
+      // the glass's own fineness, curling as they rise and drawn out along the
+      // air the hand has moved. Soft-edged always: smoke, never a crease.
+      ' vec2 wq=(p-carried-0.03*air)*vec2(1.0,0.74);',
+      ' wq+=0.15*(vec2(vn(wq*2.6+vec2(1.7,0.05*uTime)),vn2(wq*2.6+vec2(-4.2,0.04*uTime)))-0.5)+0.06*f1;',
+      // Each finer layer is turned against the last, so no grain of the noise lines up.
+      ' vec2 w1=mat2(0.80,0.60,-0.60,0.80)*wq;vec2 w2=mat2(0.28,0.96,-0.96,0.28)*wq;vec2 w3=mat2(-0.45,0.89,-0.89,-0.45)*wq;',
+      ' float wisp=0.40*vn(w1*9.0+vec2(0.05*uTime,0.09*uTime))+0.30*vn2(w2*19.0+vec2(-0.08*uTime,0.12*uTime))+0.19*vn(w3*41.0+vec2(6.0,0.19*uTime))+0.11*vn2(w1*83.0+vec2(0.21*uTime,3.0));',
+      ' wisp=smoothstep(0.26,0.76,wisp);wisp*=wisp;wisp=mix(wisp,0.30,0.85*torn);',
+      // Smoke that has just been stirred is thrown up into the light.
+      ' float dens=(0.86*d+0.14*ds)*(0.30+2.1*wisp)*(1.0+1.5*smoothstep(0.02,0.55,length(air)));',
+      ' float body=(1.0-exp(-0.55*dens))*calm;',
+      // A thin even haze hangs in the whole room, so a beam is one shaft from
+      // lens to floor; the smoke and its wisps are what move through it.
+      ' float inbeam=(1.0-exp(-0.55*dens-0.10-0.10*wisp))*calm;',
+      // Smoke is seen where a lamp is on it. In the dark it is all but ink.
+      ' float amb=0.11*uHouse+0.02;',
+      ' float smoke=body*amb+inbeam*2.3*L.r+far*calm*(0.02*uHouse+0.035+0.20*L.r)+0.08*(1.0-exp(-dw))*L.r*calm+(0.02+0.05*uClear)*L.g;',
       // THE FLOOR: one line low on the glass, the pools where beams land,
       // and a sheen of the light above it.
       ' float below=st.y-uFloor;float onFloor=smoothstep(-0.002,0.004,below);',
@@ -603,7 +647,7 @@
       ' vec3 colour=light*mix(DEEP,BLUE,smoothstep(0.04,0.50,light));',
       ' colour=mix(colour,light*PALE,smoothstep(0.50,1.05,light));',
       ' colour=mix(colour,light*WHITE,smoothstep(1.3,3.6,lum));',
-      ' vec2 vg=(st-0.5)*vec2(1.0,1.12);float dim=1.0-0.42*smoothstep(0.30,0.80,dot(vg,vg)*1.9);',
+      ' vec2 vg=(st-0.5)*vec2(1.0,1.12);float dim=1.0-0.64*smoothstep(0.26,0.84,dot(vg,vg)*1.9);',
       ' colour*=dim;',
       ' float top=min(1.0,max(colour.r,max(colour.g,colour.b)));',
       ' vec3 outc=INK*(1.0-top)+colour;',
@@ -688,7 +732,7 @@
     if (arg('gl') === 'off' || forced === 3) return false;
     try {
       var opts = { alpha: false, antialias: false, depth: false, stencil: false,
-        powerPreference: 'high-performance', preserveDrawingBuffer: held };
+        powerPreference: 'default', preserveDrawingBuffer: held };
       gl = canvas.getContext('webgl2', opts);
       isGL2 = !!gl;
       if (!gl) gl = canvas.getContext('webgl', opts) || canvas.getContext('experimental-webgl', opts);
@@ -768,7 +812,7 @@
     grid = { w: gw, h: gh };
     var dw = gw * 2, dh = gh * 2;
     T = {
-      vel: pair(gw, gh, true), curl: target(gw, gh, false), div: target(gw, gh, false), pre: pair(gw, gh, false),
+      vel: pair(gw, gh, true), gone: pair(gw, gh, true), curl: target(gw, gh, false), div: target(gw, gh, false), pre: pair(gw, gh, false),
       den: pair(dw, dh, true),
       softA: target(dw >> 1, dh >> 1, true), soft: target(dw >> 1, dh >> 1, true),
       wideA: target(dw >> 2, dh >> 2, true), wide: target(dw >> 2, dh >> 2, true),
@@ -848,14 +892,14 @@
   var asleep = false;
   function stepFluid(dt) {
     var u, i;
-    var awake = clock - lastStir < 7;
+    var awake = clock - lastStir < 9;
     gatherSplats();
     if (awake) {
       asleep = false;
       var tx = 1 / grid.w, ty = 1 / grid.h;
       u = use(P.advectVel);
       tex(u.uVel, T.vel.read); gl.uniform2f(u.uAsp, 1 / room.aspect, 1);
-      gl.uniform1f(u.uDt, dt); gl.uniform1f(u.uDamp, Math.exp(-dt * 0.85));
+      gl.uniform1f(u.uDt, dt); gl.uniform1f(u.uDamp, Math.exp(-dt * 0.6));
       draw(T.vel.write); T.vel.swap();
 
       u = use(P.curl);
@@ -865,7 +909,7 @@
       u = use(P.force);
       tex(u.uVel, T.vel.read); tex(u.uCurl, T.curl); tex(u.uDen, T.den.read); tex(u.uWide, T.wide);
       gl.uniform2f(u.uTexel, tx, ty); gl.uniform1f(u.uDt, dt);
-      gl.uniform1f(u.uConf, 2.2); gl.uniform1f(u.uBuoy, 0.10);
+      gl.uniform1f(u.uConf, 3.4); gl.uniform1f(u.uBuoy, 0.10);
       gl.uniform1f(u.uAspect, room.aspect); gl.uniform1f(u.uMax, 2.6);
       gl.uniform4fv(u.uSplat, splatData); gl.uniform2fv(u.uPush, pushData);
       draw(T.vel.write); T.vel.swap();
@@ -887,6 +931,11 @@
       u = use(P.gradient);
       tex(u.uPre, T.pre.read); tex(u.uVel, T.vel.read); gl.uniform2f(u.uTexel, tx, ty);
       draw(T.vel.write); T.vel.swap();
+
+      u = use(P.carry);
+      tex(u.uVel, T.vel.read); tex(u.uGone, T.gone.read); gl.uniform2f(u.uAsp, 1 / room.aspect, 1);
+      gl.uniform1f(u.uDt, dt); gl.uniform1f(u.uKeep, Math.exp(-dt / 3.2));
+      draw(T.gone.write); T.gone.swap();
     } else if (!asleep) {
       // Settled: the air is still. The fluid sleeps; only the room's own
       // slow drift goes on.
@@ -904,7 +953,8 @@
     gl.uniform1f(u.uDt, dt); gl.uniform1f(u.uLive, awake ? 1 : 0); gl.uniform1f(u.uSet, 0);
     var opening = state === 'opening';
     gl.uniform1f(u.uUp, 1 - Math.exp(-dt / 11));
-    gl.uniform1f(u.uDown, 1 - Math.exp(-dt / (opening ? 0.9 : 3.2)));
+    // Heaped smoke is let lie a while after a hand has been through it.
+    gl.uniform1f(u.uDown, 1 - Math.exp(-dt / (opening ? 0.9 : clock - lastTouch < 12 ? 10 : 3.2)));
     gl.uniform1f(u.uSpread, Math.min(0.5, dt * 0.5));
     gl.uniform4fv(u.uSplat, splatData);
     draw(T.den.write); T.den.swap();
@@ -918,11 +968,11 @@
     if (level < 2) {
       u = use(P.light);
       roomUniforms(u); lightUniforms(u);
-      tex(u.uShade, T.soft); gl.uniform1f(u.uSigma, 1.3);
+      tex(u.uShade, T.soft); gl.uniform1f(u.uSigma, 0.5);
       draw(T.light);
       u = use(P.picture);
       roomUniforms(u); lightUniforms(u);
-      tex(u.uDen, T.den.read); tex(u.uSoft, T.soft); tex(u.uWide, T.wide); tex(u.uLight, T.light);
+      tex(u.uDen, T.den.read); tex(u.uSoft, T.soft); tex(u.uWide, T.wide); tex(u.uLight, T.light); tex(u.uVel, T.vel.read); tex(u.uGone, T.gone.read);
     } else {
       u = use(P.wake);
       roomUniforms(u); lightUniforms(u);
@@ -952,7 +1002,9 @@
     if (r.width) { room.name.x = (r.left + r.width / 2) / w; room.name.y = (r.top + r.height / 2) / h; }
     var f = floorEl.getBoundingClientRect();
     var l = line.getBoundingClientRect();
-    if (r.width) room.wordsA = [(r.left + r.right) / 2 / w, (r.top + l.bottom) / 2 / h, r.width / 2 / w, (l.bottom - r.top) / 2 / h];
+    // The words the light is held behind: the mark, the name and the line.
+    var sg = sign.getBoundingClientRect();
+    if (r.width) room.wordsA = [(r.left + r.right) / 2 / w, (sg.top + l.bottom) / 2 / h, r.width / 2 / w, (l.bottom - sg.top) / 2 / h];
     if (f.height) {
       room.wordsB = [(f.left + f.right) / 2 / w, (f.top + f.bottom) / 2 / h, f.width / 2 / w, f.height / 2 / h];
       // The stage floor: one line, low, clear of everything that is pressed.
@@ -970,11 +1022,18 @@
     shown[name] = value; el.style.setProperty(name, value);
   }
 
+  var litShown = -1, litAt = -1;
   function paint(onName) {
     // The name takes the light that is on it; held dark in the beat before
     // the lamps find it, and lit whole when they do.
     var lit = clamp01(0.16 * now.house + 0.5 * onName + 0.5 * now.flood) * (1 - 0.92 * extra.dark);
-    css(sign, '--lit', lit.toFixed(2));
+    // Written when it has moved enough to see and not more than ten times a
+    // second (every frame only in the opening): each write redraws the name.
+    var swift = state === 'opening' || held;
+    if (swift || (Math.abs(lit - litShown) >= 0.03 && clock - litAt >= 0.1)) {
+      litShown = lit; litAt = clock;
+      css(sign, '--lit', lit.toFixed(2));
+    }
     css(root, '--form', extra.form.toFixed(3));
     css(root, '--c1', extra.c1.toFixed(3));
     css(root, '--c2', extra.c2.toFixed(3));
@@ -988,7 +1047,13 @@
     take(s);
     extra.form = s.form; extra.dark = s.dark; extra.c1 = s.c1; extra.c2 = s.c2;
     if (s.lit && !line.classList.contains('in')) { line.textContent = 'You’re in.'; line.classList.add('in'); }
-    if (s.c1 > 0 && ways.hidden) { ways.hidden = false; form.hidden = true; measure(); }
+    if (s.c1 > 0 && ways.hidden) {
+      // The form is gone from here: focus goes to the line that says so, at
+      // once, so it is never left on nothing.
+      var had = form.contains(document.activeElement) || document.activeElement === document.body;
+      ways.hidden = false; form.hidden = true; measure();
+      if (had && !held) line.focus({ preventScroll: true });
+    }
     // The parting: air let in at the name, so the smoke is pushed out from
     // it. No drawn ring; the fluid does it.
     if (Tm >= 0.85 && Tm < 1.75) {
@@ -1028,32 +1093,51 @@
 
   // ------------------------------------------------------------ the pace
   // Every frame while the smoke is moving or the room is opening; thirty a
-  // second once the air has settled; twenty when nobody has touched the room
-  // for two minutes; none while the tab is hidden; and none at all under
-  // reduced motion or on the still picture.
-  var raf = 0, last = 0;
+  // second once the air has settled (asked for by a timer, so the screen is
+  // not woken at every refresh to be told no); nothing at all once the room
+  // has gone untouched for REST seconds, until it is touched again; none
+  // while the tab is hidden; none under reduced motion or on the still
+  // picture.
+  var raf = 0, last = 0, pause = 0;
   var live = false;   // is anything being drawn at all
+  var resting = false, seen = 0;
 
-  function wake() { if (live && !raf && !document.hidden && !held) raf = requestAnimationFrame(tick); }
+  // Anything that happens to the room: a hand, a key, a change of state.
+  function wake() {
+    seen = clock;
+    if (resting) { resting = false; root.classList.remove('resting'); last = 0; }
+    if (pause) { clearTimeout(pause); pause = 0; }
+    if (live && !raf && !document.hidden && !held) raf = requestAnimationFrame(tick);
+  }
+
+  function next(gap) {
+    if (gap > 0) {
+      pause = setTimeout(function () { pause = 0; if (live && !raf && !document.hidden) raf = requestAnimationFrame(tick); }, Math.max(0, gap * 1000 - 8));
+    } else raf = requestAnimationFrame(tick);
+  }
 
   function tick(t) {
     raf = 0;
     if (document.hidden || !live) return;
-    var busy = state === 'opening' || clock - lastStir < 7;
-    var gap = busy ? 0 : (clock - lastTouch > 120 ? 0.048 : 0.031);
+    var busy = state === 'opening' || state === 'checking' || clock - lastStir < 9;
+    var gap = busy ? 0 : 0.033;
     if (!last) last = t - 16;
     var dt = (t - last) / 1000;
-    if (dt < gap) { raf = requestAnimationFrame(tick); return; }
     last = t;
-    watch(dt, busy);
+    watch(dt, busy, gap);
     frame(Math.min(dt, 1 / 24), true);
-    raf = requestAnimationFrame(tick);
+    if (!busy && timers.length === 0 && clock - seen > REST) {
+      // The last frame stays on the glass. Nothing runs until a touch.
+      resting = true; root.classList.add('resting');
+      return;
+    }
+    next(gap);
   }
 
   // The first second of frames is measured, and after that every few
   // seconds of moving smoke; a device that cannot keep up is stepped down
   // the ladder, by itself.
-  function watch(dt, busy) {
+  function watch(dt, busy, gap) {
     if (!gl || forced >= 0) return;
     if (arg('slow')) dt = parseFloat(arg('slow')) / 1000;
     cost.frames += 1;
@@ -1061,7 +1145,9 @@
     var first = cost.checked === 0;
     if (!first && !busy) return;
     cost.sum += dt; cost.n += 1;
-    if (dt > 0.034) cost.slow += 1;                    // under thirty frames a second
+    // Under thirty frames a second, or, while the room is paced, well late
+    // for the pace it was given: a sixty-hertz phone idling is not a slow one.
+    if (dt > Math.max(0.034, gap + 0.02)) cost.slow += 1;
     var enough = first ? cost.sum >= 1 : cost.n >= 150;
     if (!enough) return;
     // More than half the frames late: one stumble while the page loads is
@@ -1099,7 +1185,7 @@
   }
 
   document.addEventListener('visibilitychange', function () {
-    if (document.hidden) { if (raf) cancelAnimationFrame(raf); raf = 0; last = 0; }
+    if (document.hidden) { if (raf) cancelAnimationFrame(raf); raf = 0; if (pause) clearTimeout(pause); pause = 0; last = 0; }
     else { last = 0; stale(); wake(); }
   });
   var resizing = 0;
@@ -1125,6 +1211,8 @@
   // 'closed', 'locked' (and when it lifts), or 'unreachable'. The password
   // goes nowhere else and is kept nowhere.
   function ask(password, yes, no) {
+    if (framed) { no('unreachable'); return; }
+    if (demo === 'hang') return hang(no);
     if (demo) {
       after(1.4, function () {
         if (demo === 'wrong') no('wrong');
@@ -1134,11 +1222,23 @@
       });
       return;
     }
+    // A door that has not answered in a quarter of a minute is not going to:
+    // the lights never stay down on a request that hangs.
+    var done = false, stop = window.AbortController ? new AbortController() : null;
+    var gaveUp = setTimeout(function () {
+      if (done) return;
+      done = true;
+      if (stop) stop.abort();
+      no('unreachable');
+    }, PATIENCE);
+    var answer = function (fn) { return function (a, b) { if (done) return; done = true; clearTimeout(gaveUp); fn(a, b); }; };
+    yes = answer(yes); no = answer(no);
     fetch(ENDPOINT, {
       method: 'POST', mode: 'cors', credentials: 'omit', cache: 'no-store',
       referrerPolicy: 'no-referrer',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password: password })
+      body: JSON.stringify({ password: password }),
+      signal: stop ? stop.signal : undefined
     }).then(function (res) {
       return res.json().then(function (body) { return { status: res.status, body: body || {} }; },
         function () { return { status: res.status, body: {} }; });
@@ -1152,6 +1252,9 @@
       else no('unreachable');
     }, function () { no('unreachable'); });
   }
+
+  // Local demo only (?demo=hang): a door that never answers.
+  function hang(no) { setTimeout(function () { no('unreachable'); }, PATIENCE); }
 
   function lifted(when) {
     var d = when ? new Date(when) : null;
@@ -1220,7 +1323,9 @@
     }, 100);
   }
 
+  pw.addEventListener('focus', wake);
   pw.addEventListener('input', function () {
+    wake();
     if (said.textContent) { say(''); pw.removeAttribute('aria-invalid'); }
     if (state === 'wrong') { if (back) { cancel(back); back = null; } setState('waiting'); }
   });
@@ -1269,7 +1374,7 @@
     css(root, '--form', '0'); css(root, '--c1', '1'); css(root, '--c2', '1');
     measure();
     // Said once, and the next Tab is the first way in.
-    if (!held) line.focus({ preventScroll: true });
+    if (!held && (document.activeElement === document.body || form.contains(document.activeElement))) line.focus({ preventScroll: true });
   }
 
   // The Android link is good for ten minutes. When the links have aged, the
@@ -1285,7 +1390,7 @@
     css(root, '--form', '1'); css(root, '--c1', '0'); css(root, '--c2', '0');
     setState('waiting');
     measure();
-    say('Once more.');
+    say('The password again.');
     pw.focus();
     return true;
   }
