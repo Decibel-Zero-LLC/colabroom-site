@@ -79,3 +79,13 @@ show one drawing. Nothing was redrawn.
   `CoLabRoomMarkPainter` that CI rasterises for the Android and iOS icons.
 
 If the mark in the app changes, replace all four from the new app files.
+
+## The testers' door — 17 November 2026
+
+`the-door/waiting-{tall,mid,wide}.webp` and `the-door/open-{tall,mid,wide}.webp`
+are stills of the room behind `test.html`, taken from the page's own WebGL
+renderer (`canvas.toDataURL('image/webp', 0.9)`) at 390 × 844, 820 × 1180 and
+1440 × 900. Nothing in them is photographed or generated elsewhere. They are
+the first paint, the no-WebGL picture and the reduced-motion picture; retake
+them whenever the room's look changes, so the still and the living room stay
+the same place.

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" class="no-js" data-state="waiting">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Private: invited testers only. Not in any sitemap, not linked from any
+     page, and asked of no search engine. tools/test_the_door.py holds it so. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src https://gzcoclsfvazfhcheefhz.supabase.co; form-action 'none'; base-uri 'none'">
+<meta name="theme-color" content="#030812">
+<meta name="color-scheme" content="dark">
+<title>CoLabRoom</title>
+<meta property="og:site_name" content="CoLabRoom">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="the-door.css">
+</head>
+<body>
+
+<!-- The room. First a finished still of it (taken from the living one), so
+     there is a stage before any script runs, with no WebGL, and under
+     reduced motion; the canvas is the living room laid over it. Ornament. -->
+<div class="room" aria-hidden="true">
+  <div class="still waiting"></div>
+  <div class="still opened"></div>
+  <div class="still-dark"></div>
+  <canvas id="fog"></canvas>
+</div>
+
+<main class="door" id="main-content">
+  <div class="sign" id="sign">
+    <svg class="mark" viewBox="0 0 192 192" width="44" height="44" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="markgrad" gradientUnits="userSpaceOnUse" x1="0" y1="96" x2="192" y2="96">
+          <stop offset="0" stop-color="#159DFF"/><stop offset="1" stop-color="#35D8F7"/>
+        </linearGradient>
+      </defs>
+      <path d="M 140.81 140.81 A 63.36 63.36 0 1 1 140.81 51.19" fill="none" stroke="url(#markgrad)" stroke-width="26.88" stroke-linecap="square"/>
+      <path d="M 78.72 63.36 L 138.24 96 L 78.72 128.64 Z" fill="url(#markgrad)"/>
+    </svg>
+    <h1 id="name" class="name">CoLab<span>Room</span></h1>
+    <p id="line" class="line" tabindex="-1">Where music lives.</p>
+  </div>
+
+  <div class="floor" id="floor">
+    <form id="ask" class="ask" method="post" novalidate autocomplete="off">
+      <div class="field">
+        <label for="pw">Password</label>
+        <input id="pw" name="password" type="password" required maxlength="200"
+               autocomplete="off" autocapitalize="none"
+               autocorrect="off" spellcheck="false" enterkeyhint="go">
+        <button type="button" id="see" class="see" aria-pressed="false" aria-label="Show password">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/>
+            <circle cx="12" cy="12" r="2.8"/>
+            <path class="strike" d="M4 4l16 16"/>
+          </svg>
+        </button>
+      </div>
+      <p id="said" class="said" role="status" aria-live="polite"></p>
+      <button type="submit" id="go" class="pill main"><span class="words">Come in</span></button>
+    </form>
+
+    <nav id="ways" class="ways" aria-label="Get CoLabRoom" hidden>
+      <a id="ios" class="pill main way" href="#" rel="noopener noreferrer"><span class="words">iPhone</span></a>
+      <a id="android" class="pill main way" href="#" rel="noopener noreferrer"><span class="words">Android</span></a>
+    </nav>
+  </div>
+
+  <p id="aside" class="aside" role="status" aria-live="polite"></p>
+  <noscript><p class="said on">This page needs JavaScript.</p></noscript>
+</main>
+
+<script src="the-door.js"></script>
+</body>
+</html>

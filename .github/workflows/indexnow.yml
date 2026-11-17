@@ -62,7 +62,8 @@ jobs:
           from pathlib import Path
 
           HOST = 'colabroom.com'
-          SKIP = {'404.html', 'flier.html', 'google9d25000efa91451c.html'}
+          # test.html is the testers' door: private, noindex, never announced.
+          SKIP = {'404.html', 'flier.html', 'google9d25000efa91451c.html', 'test.html'}
 
           keys = [p for p in Path('.').glob('*.txt') if re.fullmatch(r'[0-9a-f]{32}\.txt', p.name)]
           if len(keys) != 1:

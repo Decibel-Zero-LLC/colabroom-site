@@ -43,6 +43,17 @@ What is in here:
   stop movement. Without JavaScript, content stays visible and the fog is
   still. The quiet Pause/Resume text button is in each page's footer. Tool inputs,
   charts, captures and printed output stay clear.
+- `test.html` with `the-door.css` and `the-door.js` — the testers' door,
+  served at `/test`. Private: `noindex`, in no sitemap, linked from nowhere,
+  outside the shared nav and footer on purpose. It asks for one password and
+  never checks it: the password is POSTed to the one address at the top of
+  `the-door.js`, which answers with the two download links. The room behind
+  it is a small fluid simulation on the graphics card that answers the hand;
+  it steps itself down on slow devices to a plain wake and then to the still
+  pictures in `assets/the-door/` (taken from the living room; also the first
+  paint, no-WebGL and reduced-motion picture). `?demo=1` and the other demo
+  parameters answer only on localhost and `file:`. `tools/test_the_door.py`
+  holds all of that.
 - `assets/` — compressed original campaign images and their provenance.
 - `tools/build_public_pages.py` — the nightly job that writes a page per
   showcased song and discoverable musician, and `sitemap-pages.xml` for them.
