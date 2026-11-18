@@ -107,6 +107,22 @@ class HeadTest(unittest.TestCase):
                          if m.get('property') == 'og:site_name']
                 self.assertEqual(names, ['CoLabRoom'])
 
+    def test_every_page_with_share_tags_names_its_language_for_them(self):
+        for name, markup in documents():
+            head = Head(markup)
+            if not any(m.get('property') == 'og:title' for m in head.metas):
+                continue
+            with self.subTest(page=name):
+                locales = [m.get('content') for m in head.metas
+                           if m.get('property') == 'og:locale']
+                self.assertEqual(locales, ['en_US'])
+
+    def test_no_page_escapes_an_ampersand_twice(self):
+        # copyright.html's share title showed "&amp;" as text until 18 Nov 2026.
+        for name, markup in documents():
+            with self.subTest(page=name):
+                self.assertNotIn('&amp;amp;', markup)
+
     def test_the_verification_file_is_untouched(self):
         self.assertEqual((ROOT / VERIFICATION).read_text(encoding='utf-8').strip(),
                          'google-site-verification: ' + VERIFICATION)

@@ -15,6 +15,7 @@ from build_public_pages import json_for_script, musician_page, song_page
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = '20261118-look'
+NOINDEX_TAG = '<meta name="robots" content="noindex">'
 PREVIEW = 'https://site-preview.invalid/'
 
 
@@ -298,14 +299,21 @@ class NewPeoplePagesArePausedTest(unittest.TestCase):
         self.assertNotIn('musician/', self.sitemap())
         self.assertIn('held: 1 (waiting for the web-page choice)', log)
 
-    def test_a_person_on_the_list_still_gets_their_page(self):
+    def test_a_person_on_the_list_still_gets_their_page_but_out_of_search(self):
         self.people = [self.row(self.kept_id, self.kept_name),
                        self.row(self.new_id, self.new_name)]
         log = self.run_job()
         self.assertEqual(self.pages(), [self.kept_slug + '.html'])
-        self.assertIn('/musician/%s.html' % self.kept_slug, self.sitemap())
-        self.assertEqual(self.sitemap().count('<loc>'), 1)
+        page = (self.site / 'musician' / (self.kept_slug + '.html')).read_text(encoding='utf-8')
+        self.assertIn(NOINDEX_TAG, page)
+        self.assertNotIn('musician/', self.sitemap())
+        self.assertEqual(self.sitemap().count('<loc>'), 0)
         self.assertIn('held: 1 (waiting for the web-page choice)', log)
+        self.assertNotIn('nothing to publish yet', log)
+
+    def test_songs_are_not_part_of_the_hold(self):
+        _, markup = song_page({'id': '12345678-abcd', 'title': 'Example'})
+        self.assertNotIn('noindex', markup)
 
     def test_a_person_on_the_list_who_unlists_loses_their_page(self):
         self.people = [self.row(self.kept_id, self.kept_name)]
@@ -352,6 +360,21 @@ class TheRealListTest(unittest.TestCase):
         self.assertTrue(kept <= {'musician/bam-98ecbf44.html',
                                  'musician/taylor-e01fede7.html'},
                         'adding a person here is the decision that was paused')
+
+    def test_every_kept_persons_page_asks_not_to_be_indexed(self):
+        # No assertion that any exist: test_no_people runs this suite with
+        # the people pages taken away, and that must still pass.
+        for path in sorted((ROOT / 'musician').glob('*.html')):
+            with self.subTest(page=path.name):
+                markup = path.read_text(encoding='utf-8')
+                head = markup[:markup.index('</head>')]
+                self.assertEqual(head.count(NOINDEX_TAG), 1)
+
+    def test_the_people_sitemap_lists_nobody_while_the_hold_is_on(self):
+        self.assertTrue(generator.people_pages_held())
+        sitemap = (ROOT / 'sitemap-pages.xml').read_text(encoding='utf-8')
+        self.assertIn('<urlset', sitemap)
+        self.assertEqual(sitemap.count('<loc>'), 0)
 
     def test_robots_does_not_point_crawlers_at_peoples_pages(self):
         lines = [line.strip() for line in

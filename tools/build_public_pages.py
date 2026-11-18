@@ -104,9 +104,10 @@ HEAD = """<!DOCTYPE html>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="description" content="{description}">
-<link rel="canonical" href="{url}">
+<link rel="canonical" href="{url}">{robots}
 <meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="CoLabRoom">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
 <meta property="og:url" content="{url}">
@@ -185,6 +186,7 @@ FOOT = """
 def page(body, **kw):
     kw.setdefault('origin', ORIGIN)
     kw.setdefault('app', APP)
+    kw.setdefault('robots', '')
     return HEAD.format(**kw) + body + FOOT.format(origin=ORIGIN)
 
 
@@ -330,6 +332,7 @@ def musician_page(row):
         url=url,
         og_type='profile',
         schema=schema,
+        robots=NOINDEX if people_pages_held() else '',
     )
 
 
@@ -376,6 +379,20 @@ KEPT_MUSICIANS = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                               'musician_pages_kept.txt')
 
 
+# While the hold is on, the pages that stay also stay out of search: each
+# carries a "do not index" tag and none is listed in sitemap-pages.xml.
+# Removing robots.txt's pointer to that sitemap (10 November 2026) did not
+# do this by itself: the file and both pages still answered, with no tag.
+# A noindex works only when a search engine next visits; a page already in
+# its index needs a removal request in Search Console as well.
+NOINDEX = '\n<meta name="robots" content="noindex">'
+
+
+def people_pages_held():
+    """True while musician_pages_kept.txt exists: the hold is on."""
+    return os.path.isfile(KEPT_MUSICIANS)
+
+
 def kept_musicians():
     """The musician pages that may still be written, as 'musician/<x>.html'.
 
@@ -420,7 +437,8 @@ def main():
             held += 1
             continue
         keep_people.add(relative)
-        urls.append(url)
+        if not people_pages_held():
+            urls.append(url)
         if write(site, url, markup):
             written += 1
 
@@ -447,7 +465,7 @@ def main():
     print('songs: %d  musicians: %d  written: %d  removed: %d'
           % (len(songs), len(people), written, removed))
     print('held: %d (waiting for the web-page choice)' % held)
-    if not urls:
+    if not urls and not keep_people:
         print('nothing to publish yet — no song is on the showcase and '
               'nobody discoverable has said what they play')
 
