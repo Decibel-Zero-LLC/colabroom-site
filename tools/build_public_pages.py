@@ -233,7 +233,7 @@ def song_page(row):
     <p class="lede">by {owner}{with_line}</p>
     {facts}
     <p class="note">
-      Made in CoLabRoom. <a href="{app}/">Open the app</a> to hear it, or
+      Made in CoLabRoom. <a href="mailto:beta@colabroom.com?subject=CoLabRoom%20invite">Ask for an invite</a> to hear it, or
       <a href="/">see what CoLabRoom does</a>.
     </p>
   </article>
@@ -319,7 +319,7 @@ def musician_page(row):
     <ul class="facts">{rows}</ul>
     <p class="note">
       {name} is on the CoLabRoom Open Mic.
-      <a href="{app}/">Open the app</a> to work with them, or
+      <a href="mailto:beta@colabroom.com?subject=CoLabRoom%20invite">Ask for an invite</a> to work with them, or
       <a href="/openmic.html">see how the Open Mic works</a>.
     </p>
   </article>
