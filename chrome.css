@@ -100,6 +100,77 @@
 }
 .page-bands .hero { margin-inline: 0; padding-inline: 0; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* The app's look, 18 November 2026: the mark, the name, the titles and the
+   buttons drawn the way the app draws them (CoLabRoom-Flutter
+   lib/widgets/brand_mark.dart, lib/app/colabroom_theme.dart,
+   lib/widgets/gold_button.dart, lib/widgets/fog_pill.dart). Alignment only:
+   no page is laid out differently.
+
+   The mark is the app's ring and play with no box round it, as the app's
+   top row draws it (BrandMark.quiet), from the same painter favicon.svg
+   copies. The old five-bar markup is still in the page; its bars are hidden
+   and the ring drawn behind them, so a page not yet re-cut still shows the
+   right mark. */
+.site-redesign .brand-mark {
+  flex: none; width: 26px; height: 26px; gap: 0; margin-right: 8px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='19 19 154 154'%3E%3Cdefs%3E%3ClinearGradient id='g' gradientUnits='userSpaceOnUse' x1='19' y1='96' x2='173' y2='96'%3E%3Cstop offset='0' stop-color='%23159DFF'/%3E%3Cstop offset='1' stop-color='%2335D8F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M140.81 140.81A63.36 63.36 0 1 1 140.81 51.19' fill='none' stroke='url(%23g)' stroke-width='26.88' stroke-linecap='square'/%3E%3Cpath d='M78.72 63.36L138.24 96 78.72 128.64Z' fill='url(%23g)'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.site-redesign .brand-mark i { display: none; }
+/* The name: CoLab in the page's white, Room always the app's cyan, in the
+   platform's own sans at a medium weight, which is the face the app draws
+   it in on each phone. Body-qualified so the support pages' own brand rule,
+   loaded after this sheet, does not set it back to the heavy display face. */
+body.site-redesign header.top > .brand {
+  gap: 0; color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 500; letter-spacing: -.04em;
+}
+.site-redesign .brand-room { color: #3AD3FF; }
+
+/* Titles: the app sets a screen's title and a place's name in a serif
+   (Fraunces, 500). Fraunces is not served here and no new font is fetched
+   for it; Newsreader, the serif the site already serves, stands in at the
+   same weight, with the sans's tight tracking let out. The page sheets set
+   their headings' face, weight and tracking in a dozen selectors of their
+   own; these three properties win over all of them, and nothing else
+   (sizes, line heights, colours) is touched. */
+body.site-redesign :is(h1, h2) {
+  font-family: var(--serif) !important;
+  font-weight: 500 !important;
+  letter-spacing: -.012em !important;
+}
+
+/* Buttons. The main action is the app's main button: a pill of the main
+   blue, light at the top, inside a clear cyan rim, white words, in a soft
+   blue glow. The quiet one is the app's fog pill: the site's own fog image
+   under a scrim of ink, inside a faint cyan rim. */
+.site-redesign .cta,
+.experience .ex-button,
+.editorial .close .cta {
+  border-radius: 999px;
+  background: linear-gradient(180deg, #2259D0, #173F96);
+  color: #F8FBFF;
+  border: 1.5px solid rgb(58 211 255 / .6);
+  box-shadow: 0 4px 18px rgb(43 111 255 / .25);
+  font-weight: 700;
+  transition: box-shadow .2s ease, transform .15s ease;
+}
+.site-redesign .cta:hover,
+.experience .ex-button:hover,
+.editorial .close .cta:hover {
+  background: linear-gradient(180deg, #2259D0, #173F96);
+  color: #F8FBFF;
+  box-shadow: 0 4px 28px rgb(43 111 255 / .4);
+}
+.site-redesign .cta:active, .experience .ex-button:active { transform: scale(.97); }
+.site-redesign .cta.quiet {
+  background: linear-gradient(rgb(3 8 18 / .55), rgb(3 8 18 / .55)), url('assets/site-fog.jpg') center 30% / 400% auto;
+  border: 1px solid rgb(58 211 255 / .32);
+  box-shadow: none;
+  color: #F8FBFF;
+}
+.site-redesign .cta.quiet:hover { box-shadow: 0 2px 16px rgb(58 211 255 / .18); }
 }
 @media print {
   .site-redesign { background: #fff; color: #000; }

@@ -14,7 +14,7 @@ import build_public_pages as generator
 from build_public_pages import json_for_script, musician_page, song_page
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '20261110-nav'
+VERSION = '20261118-look'
 PREVIEW = 'https://site-preview.invalid/'
 
 

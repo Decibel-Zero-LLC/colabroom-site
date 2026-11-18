@@ -119,13 +119,13 @@ HEAD = """<!DOCTYPE html>
 <meta name="twitter:description" content="{description}">
 <meta name="twitter:image" content="{origin}/share.png">
 <meta name="theme-color" content="#06101F">
-<link rel="stylesheet" href="/fonts.css?v=20261110-nav">
-<link rel="stylesheet" href="/site.css?v=20261110-nav">
-<link rel="stylesheet" href="/atmosphere.css?v=20261110-nav">
-<link rel="stylesheet" href="/chrome.css?v=20261110-nav">
-<link rel="stylesheet" href="/support.css?v=20261110-nav">
-<script src="/atmosphere.js?v=20261110-nav" defer></script>
-<script src="/site-menu.js?v=20261110-nav" defer></script>
+<link rel="stylesheet" href="/fonts.css?v=20261118-look">
+<link rel="stylesheet" href="/site.css?v=20261118-look">
+<link rel="stylesheet" href="/atmosphere.css?v=20261118-look">
+<link rel="stylesheet" href="/chrome.css?v=20261118-look">
+<link rel="stylesheet" href="/support.css?v=20261118-look">
+<script src="/atmosphere.js?v=20261118-look" defer></script>
+<script src="/site-menu.js?v=20261118-look" defer></script>
 <script type="application/ld+json">{schema}</script>
 </head>
 <body class="site-redesign record-polish support-site site-fog-page">
@@ -133,7 +133,7 @@ HEAD = """<!DOCTYPE html>
 <a class="skip-content" href="#main-content">Skip to content</a>
 <div class="wrap">
 <header class="top no-print">
-<a class="brand" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CoLabRoom</a>
+<a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span>CoLab<span class="brand-room">Room</span></a>
 <details class="site-menu"><summary>Explore</summary><nav class="pages">
 <div class="nav-group" role="group" aria-labelledby="nav-make"><p class="nav-heading" id="nav-make">Make music</p>
 <a href="/analysis.html">What it heard</a>
