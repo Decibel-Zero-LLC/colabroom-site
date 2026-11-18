@@ -1,4 +1,5 @@
 """Synthetic checks only: made-up rows, a throwaway folder, no RPC or production access."""
+import re
 import io
 import json
 import os
@@ -299,15 +300,15 @@ class NewPeoplePagesArePausedTest(unittest.TestCase):
         self.assertNotIn('musician/', self.sitemap())
         self.assertIn('held: 1 (waiting for the web-page choice)', log)
 
-    def test_a_person_on_the_list_still_gets_their_page_but_out_of_search(self):
+    def test_a_person_on_the_list_still_gets_their_page_and_is_in_search(self):
         self.people = [self.row(self.kept_id, self.kept_name),
                        self.row(self.new_id, self.new_name)]
         log = self.run_job()
         self.assertEqual(self.pages(), [self.kept_slug + '.html'])
         page = (self.site / 'musician' / (self.kept_slug + '.html')).read_text(encoding='utf-8')
-        self.assertIn(NOINDEX_TAG, page)
-        self.assertNotIn('musician/', self.sitemap())
-        self.assertEqual(self.sitemap().count('<loc>'), 0)
+        self.assertNotIn('noindex', page)
+        self.assertIn('/musician/%s.html' % self.kept_slug, self.sitemap())
+        self.assertEqual(self.sitemap().count('<loc>'), 1)
         self.assertIn('held: 1 (waiting for the web-page choice)', log)
         self.assertNotIn('nothing to publish yet', log)
 
@@ -361,26 +362,31 @@ class TheRealListTest(unittest.TestCase):
                                  'musician/taylor-e01fede7.html'},
                         'adding a person here is the decision that was paused')
 
-    def test_every_kept_persons_page_asks_not_to_be_indexed(self):
+    def test_no_kept_persons_page_asks_not_to_be_indexed(self):
         # No assertion that any exist: test_no_people runs this suite with
         # the people pages taken away, and that must still pass.
         for path in sorted((ROOT / 'musician').glob('*.html')):
             with self.subTest(page=path.name):
                 markup = path.read_text(encoding='utf-8')
                 head = markup[:markup.index('</head>')]
-                self.assertEqual(head.count(NOINDEX_TAG), 1)
+                self.assertEqual(head.count(NOINDEX_TAG), 0)
 
-    def test_the_people_sitemap_lists_nobody_while_the_hold_is_on(self):
+    def test_the_people_sitemap_lists_exactly_the_pages_that_exist(self):
+        # test_no_people runs this suite with the people's pages taken away
+        # and an empty sitemap, and that must still pass.
         self.assertTrue(generator.people_pages_held())
         sitemap = (ROOT / 'sitemap-pages.xml').read_text(encoding='utf-8')
         self.assertIn('<urlset', sitemap)
-        self.assertEqual(sitemap.count('<loc>'), 0)
+        listed = sorted(re.findall(r'<loc>https://colabroom\.com/(musician/[^<]+)</loc>', sitemap))
+        present = sorted('musician/' + p.name for p in (ROOT / 'musician').glob('*.html'))
+        self.assertEqual(listed, present)
 
-    def test_robots_does_not_point_crawlers_at_peoples_pages(self):
+    def test_robots_points_crawlers_at_both_sitemaps(self):
         lines = [line.strip() for line in
                  (ROOT / 'robots.txt').read_text(encoding='utf-8').splitlines()]
         sitemaps = [line for line in lines if line.lower().startswith('sitemap:')]
-        self.assertEqual(sitemaps, ['Sitemap: https://colabroom.com/sitemap.xml'])
+        self.assertEqual(sitemaps, ['Sitemap: https://colabroom.com/sitemap.xml',
+                                    'Sitemap: https://colabroom.com/sitemap-pages.xml'])
         self.assertTrue((ROOT / 'sitemap-pages.xml').is_file(), 'the file itself stays')
 
 
