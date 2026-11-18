@@ -7,23 +7,23 @@
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="description" content="For a band that plays out. A leader, a chair for every part, one set for the band, and every stand reading it its own way. Rehearse a phone each, call the next song from the stage, send the advance, and bring the night home.">
+<meta name="description" content="For a band that plays out. One set list, every player reading it their own way, from rehearsal to the stage.">
 <meta property="og:title" content="Teams · CoLabRoom">
 <meta property="og:description" content="One set for the band. Every stand its own reading.">
 <meta property="og:type" content="website">
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css?v=20261110-nav">
-<link rel="stylesheet" href="site.css?v=20261110-nav">
-<link rel="stylesheet" href="story.css?v=20261110-nav">
-<link rel="stylesheet" href="editorial.css?v=20261110-nav">
+<link rel="stylesheet" href="fonts.css?v=20261118-look">
+<link rel="stylesheet" href="site.css?v=20261118-look">
+<link rel="stylesheet" href="story.css?v=20261118-look">
+<link rel="stylesheet" href="editorial.css?v=20261118-look">
   <link rel="canonical" href="https://colabroom.com/teams.html">
   <meta property="og:url" content="https://colabroom.com/teams.html">
   <meta property="og:site_name" content="CoLabRoom">
   <meta property="og:image" content="https://colabroom.com/share.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="CoLabRoom — songwriting for musicians who aren't in the same room.">
+  <meta property="og:image:alt" content="CoLabRoom">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Teams · CoLabRoom">
   <meta name="twitter:description" content="One set for the band. Every stand its own reading.">
@@ -39,8 +39,8 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="chrome.css?v=20261110-nav">
-<link rel="stylesheet" href="atmosphere.css?v=20261110-nav">
+<link rel="stylesheet" href="chrome.css?v=20261118-look">
+<link rel="stylesheet" href="atmosphere.css?v=20261118-look">
 </head>
 <body class="site-redesign site-atmosphere editorial page-teams site-fog-page">
 <div class="site-fog" aria-hidden="true"></div>
@@ -58,7 +58,7 @@
 <div class="wrap">
 
   <header class="top no-print">
-<a class="brand" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CoLabRoom</a>
+<a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span>CoLab<span class="brand-room">Room</span></a>
 <details class="site-menu"><summary>Explore</summary><nav class="pages">
 <div class="nav-group" role="group" aria-labelledby="nav-make"><p class="nav-heading" id="nav-make">Make music</p>
 <a href="analysis.html">What it heard</a>
@@ -85,7 +85,7 @@
 </nav></details>
 <a class="header-tool" href="chords.html">Try the chord tool ↗</a>
 <div class="header-actions"><a class="cta quiet" href="https://app.colabroom.com/">Sign in</a>
-<a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a></div>
+<a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20invite">Ask for an invite</a></div>
 </header>
 <div id="main-content" tabindex="-1"></div>
 
@@ -99,22 +99,15 @@
   <div class="hero inner">
     <p class="kicker">Teams</p>
     <h1>One set.<br>Every stand.</h1>
-    <p>For a band that plays out. Any band room can become a team, when its owner is 18 or over.</p>
-    <div class="meta">In testing · Not in the current phone beta</div>
+    <p>For a band that plays out.</p>
   </div>
 
   <section class="moment has-art team-overview" aria-labelledby="team-overview-title">
-    <div class="editorial-copy"><div class="eyebrow">Find the next thing</div><h2 id="team-overview-title">The band, in four places.</h2>
-      <p class="lede">People, dates, rehearsal, stage. The leader’s view brings the chairs and rehearsal requests together.</p>
-      <dl class="team-task-list">
-        <div><dt>People &amp; chairs</dt><dd>The members and their musical seats.</dd></div>
-        <div><dt>Dates &amp; sets</dt><dd>Who plays what each date, with the band’s sets.</dd></div>
-        <div><dt>Rehearse</dt><dd>Ask for a passage, plan a sectional, record your part.</dd></div>
-        <div><dt>Stage &amp; sound tech</dt><dd>Follow the stage, send the advance, bring the night home.</dd></div>
-      </dl>
-      <p class="availability-note">A sample night, from rehearsal to the desk.</p>
+    <div class="editorial-copy"><div class="eyebrow">The team page</div><h2 id="team-overview-title">The band, in four places.</h2>
+      <p class="lede">People, dates, rehearsal, stage.</p>
+      <p class="availability-note">One Friday, start to finish.</p>
     </div>
-    <figure class="native-capture"><img src="assets/app-team.png" alt="The app’s Team overview for an example band, with Leader’s view and the People &amp; chairs, Dates &amp; sets, Rehearse and Stage &amp; sound tech groups." width="360" height="640" loading="lazy" decoding="async"><figcaption>From the app · Example team</figcaption></figure>
+    <figure class="native-capture"><img src="assets/app-team.png" alt="The app’s Team page for an example band, led by Mara, with four rows: People and parts, Dates and sets, Rehearse, Stage and sound tech, and Play a set live at the foot." width="390" height="844" loading="lazy" decoding="async"><figcaption>From the app</figcaption></figure>
   </section>
 
   <!-- team_section.dart, team_screen.dart: "Make this a team" is the
@@ -122,9 +115,8 @@
   <section class="moment editorial-section editorial-section-1 has-art" id="team">
     <div class="editorial-copy">
     <div class="eyebrow">The week before</div>
-    <h2>Make this a team.</h2>
-    <p class="lede">In a band room, the owner taps Make this a team. A team has a leader and a chair for every part.</p>
-    <p class="lede">The leader names the chairs: Keys, Bass, Vocal 2. Leading a team is for people 18 and over.</p>
+    <h2>Make your room a team.</h2>
+    <p class="lede">A leader, and a chair for every part.</p>
 
     </div>
     <div class="art p-team" data-seen aria-hidden="true">
@@ -141,13 +133,11 @@
     <div class="editorial-copy">
     <div class="eyebrow">Who sits where</div>
     <h2>Every chair, for every date.</h2>
-    <p class="lede">See who sits where for each dated set in the Leader's view. Members can sit down themselves.</p>
-    <p class="lede">Ask to rehearse a part of this and name the bars. Add your name only if you choose.</p>
-    <p class="lede">Lend the chair sends a stand-in one link to the set, keys and that chair's marks. No account needed; no recording included.</p>
+    <p class="lede">Ask the band to rehearse a passage. Need a stand-in? Send them the set.</p>
 
     </div>
     <div class="art p-chairs" data-seen aria-hidden="true">
-      <div class="art-head"><span class="t">Friday at The Crown</span><span class="s">Leader’s view</span></div>
+      <div class="art-head"><span class="t">Friday at The Crown</span><span class="s">Overview</span></div>
       <div class="entry"><span class="name">Vocal</span><span class="side seat" style="--i:0"><i class="dot" style="background:var(--a2)"></i>Mara</span></div>
       <div class="entry"><span class="name">Guitar</span><span class="side seat" style="--i:1"><i class="dot" style="background:var(--a1)"></i>You</span></div>
       <div class="entry"><span class="name">Bass</span><span class="side seat" style="--i:2"><i class="dot" style="background:var(--a4)"></i>Jonah</span></div>
@@ -169,8 +159,7 @@
     <div class="editorial-copy">
     <div class="eyebrow">Rehearsal</div>
     <h2>One phone per player.</h2>
-    <p class="lede">The leader taps Start recording the rehearsal. Other phones show Recording the rehearsal · record your part. Each player records their own part, close to them.</p>
-    <p class="lede">Line up the parts works out how the recordings align. Then each song in Perform offers The band without you: everyone's take but yours, on one clock.</p>
+    <p class="lede">Everyone records their own part. Then play along with the band without you.</p>
 
     </div>
     <div class="art p-lanes" data-scrub aria-hidden="true">
@@ -194,10 +183,7 @@
     <div class="editorial-copy">
     <div class="eyebrow">2:00 pm · Before the night</div>
     <h2>The sound tech gets the gig first.</h2>
-    <p class="lede">Send the advance: the set order with each song's key and tempo, a stage plot, and an input list by chair.</p>
-    <p class="lede">No account needed. The tech can send corrections to the input list and plot before the show. The link stops working 48 hours after the show.</p>
-    <p class="lede">The names file for the desk carries channel names, colours and icons only. Not yet proven on a real desk.</p>
-    <p class="lede">A tech who has an account can keep the stage, from 18.</p>
+    <p class="lede">Send the advance: set order, stage plot, input list.</p>
 
     </div>
     <div class="art p-advance" aria-hidden="true">
@@ -219,13 +205,7 @@
     <div class="editorial-copy">
     <div class="eyebrow">9:40 pm · On the night</div>
     <h2>The leader calls the next one.</h2>
-    <p class="lede">Before the set: Keep the set for the stage on the leader's phone, Follow the stage on everyone else's.</p>
-    <p class="lede">The leader calls a song and a key. Every following stand turns to it, in its own reading. Bluetooth, phone to phone. No signal needed.</p>
-    <p class="lede">Lost the leader? Your page stays where it is.</p>
-    <ul class="plain">
-      <li>A Bluetooth page-turner pedal works in Perform.</li>
-      <li>Play the set walks it one song at a time, with words large enough for the stand.</li>
-    </ul>
+    <p class="lede">A song and a key. Every stand turns to it. No signal needed.</p>
     <a class="more" href="songbook.html#how-you-read-notes">How you read notes →</a>
 
     </div>
@@ -260,9 +240,7 @@
     <div class="editorial-copy">
     <div class="eyebrow">11:15 pm · Record the night</div>
     <h2>The night, cut into songs.</h2>
-    <p class="lede">One phone on the mic stand records the set and cuts it into songs on the phone. Pin a moment as it happens. The screen must stay on.</p>
-    <p class="lede">Keep the night as a folder saves one WAV per song, from bar 1, lined up for Logic.</p>
-    <p class="lede">Record the night from your pocket stays private until the leader claims it and every player says yes. One no keeps it private.</p>
+    <p class="lede">One phone on the mic stand. Take it home as a folder, a file for every song.</p>
 
     </div>
     <div class="art p-night" data-seen aria-hidden="true">
@@ -285,9 +263,7 @@
     <div class="editorial-copy">
     <div class="eyebrow">After the night</div>
     <h2>The desk sends the night home.</h2>
-    <p class="lede">Drop the desk's multitrack folder into a computer’s browser. The app finds each song of the set.</p>
-    <p class="lede">Each player gets their own channel of each song, as a take they are asked to keep.</p>
-    <p class="note">In a browser on a computer, not on a phone.</p>
+    <p class="lede">Drop the desk’s multitrack into a browser on a computer. Each player gets their own channel.</p>
 
     </div>
     <div class="art p-desk" aria-hidden="true">
@@ -299,23 +275,10 @@
 
   </section>
 
-  <!-- The Team plan card: "Teams are free while nothing is on sale." No
-       price, no plan name and no button here, and nothing about who pays. -->
-  <section class="moment editorial-section editorial-section-8 no-art" id="free">
-    <div class="editorial-copy">
-    <div class="eyebrow">What it costs</div>
-    <h2>Nothing, while nothing is on sale.</h2>
-    <p class="lede">Teams cost nothing while nothing is on sale. A team is never shown outside its room.</p>
-
-    </div>
-  </section>
-
   <div class="close">
     <h2>Bring your band.</h2>
-    <p>The beta is small and free, and I read everything that comes back.</p>
-    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a>
-    <a class="cta quiet" href="https://app.colabroom.com/">Already have an account? Sign in</a>
-    <div class="meta">Free during the beta</div>
+    <a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20invite">Ask for an invite</a>
+    <a class="cta quiet" href="https://app.colabroom.com/">Already here? Sign in</a>
   </div>
 
   <nav class="keep-reading" aria-label="More about CoLabRoom">
@@ -339,7 +302,7 @@
   </main>
 
   <footer>
-    <span>CoLabRoom — songwriting for musicians · <a href="/child-safety.html">Child safety</a> · © 2026 <a href="https://decibelzerollc.com">Decibel Zero LLC</a></span>
+    <span>CoLabRoom · Where music lives. · <a href="/child-safety.html">Child safety</a> · © 2026 <a href="https://decibelzerollc.com">Decibel Zero LLC</a></span>
     <span class="sp"></span>
     <a href="/#beta">Account deletion</a>
     <a href="privacy.html">Privacy</a>
@@ -350,8 +313,8 @@
 
 </div>
 
-<script src="count.js?v=20261110-nav" data-page="teams"></script>
-<script src="site-menu.js?v=20261110-nav" defer></script>
-<script src="atmosphere.js?v=20261110-nav" defer></script>
+<script src="count.js?v=20261118-look" data-page="teams"></script>
+<script src="site-menu.js?v=20261118-look" defer></script>
+<script src="atmosphere.js?v=20261118-look" defer></script>
 </body>
 </html>

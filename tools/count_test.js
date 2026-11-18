@@ -100,7 +100,7 @@ function run({ href, stored = null, page = 'home', links = [], tools = [],
 
 const HOME = 'https://colabroom.com/';
 const APP = 'https://app.colabroom.com/';
-const MAIL = 'mailto:beta@colabroom.com?subject=CoLabRoom%20beta';
+const MAIL = 'mailto:beta@colabroom.com?subject=CoLabRoom%20invite';
 
 Deno.test('a code on the address is kept, sent, and carried to the app', () => {
   const { sent, nodes, store, api } = run({

@@ -20,26 +20,34 @@ interface. The second explicitly requested fictional adults without celebrity
 resemblance. Original PNGs are retained in the designer's local generation
 archive; the site ships only the compressed WebP files.
 
-## Actual app screens — 25 October 2026
+## Actual app screens — 18 November 2026
 
-`app-account.png`, `app-profile.png` and `app-team.png` are unchanged Flutter
-render-test captures from the native Account, Profiles and Team redesigns,
-present in app main `6c60b725f118bc2cae3a087554c4a9a14017ca38`.
-They use synthetic example people, rooms and accounts, including an example.com
-email address. They are not customer data or endorsements. Captions distinguish
-these actual app layouts from the site's authored illustrations, and state that
-the layouts are in testing; a merge does not put them on beta phones.
+`app-account.png`, `app-profile.png` and `app-team.png` are unchanged captures
+from the app's render harness (`test_render/` in CoLabRoom-Flutter), drawn at
+390 × 844 at text scale 1 from commit
+`8545b60d72621216ec186e1391226c89c1ac8160` on the local branch
+`feat/tools-and-the-desk`, which contains the 17 November test build
+(`ec2eed27`). They replace the 24 October captures of the older interface.
 
-`app-screens.json` records each original repository path, exact bytes and SHA-256.
-The images have not been retouched, recomposed or cropped. At 187,381 bytes in
-total, they load lazily on the relevant pages. Source review reports are
-`handover/reports/CODEX_ACCOUNT_NATIVE_2026-10-24.md`,
-`CODEX_PROFILES_NATIVE_2026-10-24.md` and
-`CODEX_TEAM_STAGE_NATIVE_2026-10-24.md` in the app repository.
+- Account: `account_is_you_test.dart`, state `account`.
+- A profile: `the_profile_test.dart`, the phone case.
+- A team: `the_team_pages_and_stage_test.dart`, state `team`.
 
-These captures show only the native areas already adopted. Broader HTML design
-proposals, specialized Open Mic work, the held playable-song game and whole-app
-acceptance are not represented as completed native work.
+The harness tests were run from copies kept in the app's ignored `build/`
+folder, changed only to draw at 390 × 844 and, for the profile, to wait for
+the app's serif before the capture (the stock profile test draws the name as
+blank boxes). Nothing was committed in the app repository.
+
+They use the harness's synthetic people, rooms and accounts. They are not
+customer data, real people or endorsements. The images have not been
+retouched, recomposed or cropped, and are kept as the harness wrote them: at
+144,602 bytes together they are already smaller than the set they replace,
+so they were not re-encoded. They load lazily on the relevant pages.
+`app-screens.json` records each source, the commit, exact bytes and SHA-256.
+
+These captures show three screens only. The site's drawn pictures elsewhere
+(the sample song, the room card, the stands) are the site's own
+illustrations, not app screens.
 
 ## Shared blue fog — 25 October 2026
 

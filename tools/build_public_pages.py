@@ -119,13 +119,13 @@ HEAD = """<!DOCTYPE html>
 <meta name="twitter:description" content="{description}">
 <meta name="twitter:image" content="{origin}/share.png">
 <meta name="theme-color" content="#06101F">
-<link rel="stylesheet" href="/fonts.css?v=20261110-nav">
-<link rel="stylesheet" href="/site.css?v=20261110-nav">
-<link rel="stylesheet" href="/atmosphere.css?v=20261110-nav">
-<link rel="stylesheet" href="/chrome.css?v=20261110-nav">
-<link rel="stylesheet" href="/support.css?v=20261110-nav">
-<script src="/atmosphere.js?v=20261110-nav" defer></script>
-<script src="/site-menu.js?v=20261110-nav" defer></script>
+<link rel="stylesheet" href="/fonts.css?v=20261118-look">
+<link rel="stylesheet" href="/site.css?v=20261118-look">
+<link rel="stylesheet" href="/atmosphere.css?v=20261118-look">
+<link rel="stylesheet" href="/chrome.css?v=20261118-look">
+<link rel="stylesheet" href="/support.css?v=20261118-look">
+<script src="/atmosphere.js?v=20261118-look" defer></script>
+<script src="/site-menu.js?v=20261118-look" defer></script>
 <script type="application/ld+json">{schema}</script>
 </head>
 <body class="site-redesign record-polish support-site site-fog-page">
@@ -133,7 +133,7 @@ HEAD = """<!DOCTYPE html>
 <a class="skip-content" href="#main-content">Skip to content</a>
 <div class="wrap">
 <header class="top no-print">
-<a class="brand" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>CoLabRoom</a>
+<a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span>CoLab<span class="brand-room">Room</span></a>
 <details class="site-menu"><summary>Explore</summary><nav class="pages">
 <div class="nav-group" role="group" aria-labelledby="nav-make"><p class="nav-heading" id="nav-make">Make music</p>
 <a href="/analysis.html">What it heard</a>
@@ -160,7 +160,7 @@ HEAD = """<!DOCTYPE html>
 </nav></details>
 <a class="header-tool" href="/chords.html">Try the chord tool ↗</a>
 <div class="header-actions"><a class="cta quiet" href="{app}/">Sign in</a>
-<a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20beta">Ask for an invite</a></div>
+<a class="cta" href="mailto:beta@colabroom.com?subject=CoLabRoom%20invite">Ask for an invite</a></div>
 </header>
 <main id="main-content" tabindex="-1">
 """
@@ -168,7 +168,7 @@ HEAD = """<!DOCTYPE html>
 FOOT = """
 </main>
 <footer class="no-print">
-    <span>CoLabRoom — songwriting for musicians · <a href="/child-safety.html">Child safety</a> · © 2026 <a href="https://decibelzerollc.com">Decibel Zero LLC</a></span>
+    <span>CoLabRoom · Where music lives. · <a href="/child-safety.html">Child safety</a> · © 2026 <a href="https://decibelzerollc.com">Decibel Zero LLC</a></span>
     <span class="sp"></span>
     <a href="/#beta">Account deletion</a>
     <a href="/privacy.html">Privacy</a>
@@ -231,8 +231,7 @@ def song_page(row):
     <p class="lede">by {owner}{with_line}</p>
     {facts}
     <p class="note">
-      Recorded and written in CoLabRoom — the takes, the words and the chords
-      in one place. <a href="{app}/">Open the app</a> to hear it, or
+      Made in CoLabRoom. <a href="{app}/">Open the app</a> to hear it, or
       <a href="/">see what CoLabRoom does</a>.
     </p>
   </article>
@@ -246,7 +245,7 @@ def song_page(row):
 
     return url, page(
         body,
-        title=e('%s by %s — CoLabRoom' % (title, owner)),
+        title=e('%s by %s · CoLabRoom' % (title, owner)),
         description=e(description),
         url=url,
         og_type='music.song',
@@ -317,8 +316,7 @@ def musician_page(row):
     <h1>{name}</h1>
     <ul class="facts">{rows}</ul>
     <p class="note">
-      {name} is findable on the CoLabRoom Open Mic — where musicians say what
-      a song is missing, and somebody who plays that thing answers.
+      {name} is on the CoLabRoom Open Mic.
       <a href="{app}/">Open the app</a> to work with them, or
       <a href="/openmic.html">see how the Open Mic works</a>.
     </p>
@@ -327,7 +325,7 @@ def musician_page(row):
 
     return url, page(
         body,
-        title=e('%s — CoLabRoom' % name),
+        title=e('%s · CoLabRoom' % name),
         description=e(description),
         url=url,
         og_type='profile',

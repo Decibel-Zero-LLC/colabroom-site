@@ -5,7 +5,7 @@
 
 const ROOT = new URL('../', import.meta.url);
 const PREVIEW = 'https://site-preview.invalid/';
-const VERSION = '20261110-nav';
+const VERSION = '20261118-look';
 
 function eq(actual, expected, because) {
   const a = JSON.stringify(actual);
