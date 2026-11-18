@@ -28,6 +28,12 @@ STIFF = (r"\b(you are|it is|they are|we are|that is|there is) \w",
          r"\b(do not|does not|cannot|is not|are not|will not|was not|have not|has not)\b")
 
 TAGLINE = 'Where music lives.'
+WHAT_IT_IS = 'A songwriting and band app for musicians.'
+
+# The search phrase each tool page says in its own body, above its h1.
+TOOL_LABELS = {'chords.html': 'Chord finder', 'what-key.html': 'Key finder',
+               'transpose.html': 'Chord transposer', 'capo.html': 'Capo chart',
+               'nashville-numbers.html': 'Nashville number converter'}
 
 
 class Seen(HTMLParser):
@@ -110,11 +116,11 @@ class Voice(unittest.TestCase):
         for page in pages():
             with self.subTest(page=page.name):
                 footer = flat(Seen(page.read_text(encoding='utf-8')).footer)
-                self.assertIn('CoLabRoom · ' + TAGLINE, footer)
+                self.assertIn('CoLabRoom · ' + TAGLINE + ' · ' + WHAT_IT_IS, footer)
 
     def test_the_generator_writes_the_same_footer_and_voice(self):
         source = (ROOT / 'tools' / 'build_public_pages.py').read_text(encoding='utf-8')
-        self.assertIn('CoLabRoom · ' + TAGLINE, source)
+        self.assertIn('CoLabRoom · ' + TAGLINE + ' · ' + WHAT_IT_IS, source)
         self.assertNotIn('songwriting for musicians', source.lower())
         self.assertNotIn('%20beta', source)
 
@@ -167,6 +173,18 @@ class Voice(unittest.TestCase):
         self.assertIn('Clef is an AI guide.', learn)
         guess = flat(Seen((ROOT / 'analysis.html').read_text(encoding='utf-8')).words)
         self.assertIn('It tells you when it’s guessing.', guess)
+        key = (ROOT / 'what-key.html').read_text(encoding='utf-8')
+        decides = re.search(r'How it decides</div>(.*?)</section>', key, re.S)
+        self.assertIsNotNone(decides)
+        self.assertIn('It weighs the chords it hears. The key is its best estimate.',
+                      flat(Seen(decides.group(1)).words))
+
+    def test_each_tool_page_names_itself_above_its_heading(self):
+        for name, label in TOOL_LABELS.items():
+            markup = (ROOT / name).read_text(encoding='utf-8')
+            with self.subTest(page=name):
+                self.assertRegex(markup, r'<div class="eyebrow">' + re.escape(label)
+                                 + r'</div>\n    <h1>')
 
 
 if __name__ == '__main__':

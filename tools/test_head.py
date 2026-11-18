@@ -147,10 +147,18 @@ class HeadTest(unittest.TestCase):
         self.assertEqual(site['url'], 'https://colabroom.com/')
         self.assertEqual(site['publisher'], {'@id': company['@id']})
         self.assertEqual(company['logo'], 'https://colabroom.com/logo-512.png')
-        self.assertEqual(company['description'], 'An app for musicians.')
+        self.assertEqual(company['description'], 'A songwriting and band app for musicians.')
         self.assertNotIn('sameAs', company, 'only real company profiles, and none exist yet')
         self.assertEqual(app['url'], 'https://colabroom.com/')
         self.assertIs(app['isAccessibleForFree'], True)
+
+    def test_the_home_title_names_what_the_app_is(self):
+        # The store title is "CoLabRoom: Songwriting & Band"; the motto stays
+        # the heading and the share title.
+        markup = (ROOT / 'index.html').read_text(encoding='utf-8')
+        self.assertEqual(markup.count('<title>'), 1)
+        self.assertIn('<title>CoLabRoom: Songwriting &amp; Band App for Musicians</title>', markup)
+        self.assertIn('<meta property="og:title" content="CoLabRoom · Where music lives.">', markup)
 
     def test_no_page_invents_ratings_reviews_or_counts(self):
         for name, markup in documents():
