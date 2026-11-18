@@ -23,6 +23,10 @@ GONE = ('beta', 'test build', 'in testing', 'new in october', 'not yet',
         '18 and over', '18 or over', '18+', 'from 13', '13 and over',
         'under 18', 'under-18', 'consent', 'free during')
 
+# The stiff forms, where a contraction is what somebody would say out loud.
+STIFF = (r"\b(you are|it is|they are|we are|that is|there is) \w",
+         r"\b(do not|does not|cannot|is not|are not|will not|was not|have not|has not)\b")
+
 TAGLINE = 'Where music lives.'
 
 
@@ -116,13 +120,37 @@ class Voice(unittest.TestCase):
 
     def test_a_feature_page_closes_with_one_ask(self):
         for name in ('openmic', 'bands', 'teams', 'learn', 'takes', 'analysis',
-                     'practise', 'songbook'):
+                     'practise', 'songbook', 'help'):
             markup = (ROOT / (name + '.html')).read_text(encoding='utf-8')
             close = re.search(r'<div class="close">(.*?)\n  </div>', markup, re.S)
             with self.subTest(page=name):
                 self.assertIsNotNone(close)
                 self.assertNotIn('<p>', close.group(1))
                 self.assertIn('Ask for an invite', close.group(1))
+
+    def test_it_talks_the_way_a_musician_talks(self):
+        # "you're", "it's", "don't": one writer, on every page. The account
+        # deletion steps are the app's own answer, word for word, and stay.
+        for page in pages():
+            markup = re.sub(r'<details class="legal".*?</details>', '',
+                            page.read_text(encoding='utf-8'), flags=re.S)
+            seen = Seen(markup)
+            for part in seen.words + seen.search:
+                said = flat([part])
+                for stiff in STIFF:
+                    with self.subTest(page=page.name, text=said[:60]):
+                        self.assertIsNone(re.search(stiff, said, re.I))
+
+    def test_one_ask_in_every_header(self):
+        for page in sorted(ROOT.glob('*.html')):
+            if page.name in OUTSIDE or page.name in ('404.html', 'flier.html'):
+                continue
+            markup = page.read_text(encoding='utf-8')
+            head = re.search(r'<div class="header-actions">(.*?)</div>', markup, re.S)
+            with self.subTest(page=page.name):
+                self.assertIsNotNone(head)
+                self.assertIn('Ask for an invite', head.group(1))
+                self.assertNotIn('Open the app', head.group(1))
 
     def test_account_deletion_stays_where_the_stores_look(self):
         home = (ROOT / 'index.html').read_text(encoding='utf-8')
@@ -138,7 +166,7 @@ class Voice(unittest.TestCase):
         learn = flat(Seen((ROOT / 'learn.html').read_text(encoding='utf-8')).words)
         self.assertIn('Clef is an AI guide.', learn)
         guess = flat(Seen((ROOT / 'analysis.html').read_text(encoding='utf-8')).words)
-        self.assertIn('It tells you when it is guessing.', guess)
+        self.assertIn('It tells you when it’s guessing.', guess)
 
 
 if __name__ == '__main__':

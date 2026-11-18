@@ -1923,7 +1923,7 @@ function wireCapo() {
     if (rows.length === 0) {
       const empty = document.createElement('p');
       empty.className = 'quiet-line';
-      empty.textContent = 'Nothing to move to — that key is already on open shapes.';
+      empty.textContent = 'Already on open shapes. No capo needed.';
       chartRows.append(empty);
       return;
     }
