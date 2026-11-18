@@ -332,7 +332,7 @@ def musician_page(row):
         url=url,
         og_type='profile',
         schema=schema,
-        robots=NOINDEX if people_pages_held() else '',
+        robots='',
     )
 
 
@@ -379,12 +379,10 @@ KEPT_MUSICIANS = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                               'musician_pages_kept.txt')
 
 
-# While the hold is on, the pages that stay also stay out of search: each
-# carries a "do not index" tag and none is listed in sitemap-pages.xml.
-# Removing robots.txt's pointer to that sitemap (10 November 2026) did not
-# do this by itself: the file and both pages still answered, with no tag.
-# A noindex works only when a search engine next visits; a page already in
-# its index needs a removal request in Search Console as well.
+# The hold stops NEW people's pages. The pages that stay are in search again
+# since 18 November 2026 (the owner's decision, with the written yes of the
+# person the other page is about): no robots tag, and each is listed in
+# sitemap-pages.xml. NOINDEX stays here for the day a page must come out.
 NOINDEX = '\n<meta name="robots" content="noindex">'
 
 
@@ -437,8 +435,7 @@ def main():
             held += 1
             continue
         keep_people.add(relative)
-        if not people_pages_held():
-            urls.append(url)
+        urls.append(url)
         if write(site, url, markup):
             written += 1
 
