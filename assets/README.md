@@ -37,6 +37,10 @@ words, and three fixture names were swapped for invented ones. Every person,
 band and song in them is an example. Nothing was committed in the app
 repository.
 
+`app-chord-card.webp` and `app-chord-picker.webp` (26 November, later) are
+close-ups at 3x: a D's card with its own family of shapes, and the All picker,
+cut from the full screen. They replace `app-chord-shapes.webp`.
+
 ## Shared blue fog — 25 October 2026
 
 `site-fog.jpg` is the unchanged 1024 × 1536, 120,326-byte JPEG approved for the
