@@ -1,32 +1,102 @@
 [
   {
-    "asset": "assets/app-account.png",
-    "source_path": "build/eyes/site-account/account-390x844-1x.png",
-    "render": "test_render/account_is_you_test.dart, state 'account', at 390 x 844, text scale 1",
-    "app_commit": "8545b60d72621216ec186e1391226c89c1ac8160",
-    "app_branch": "feat/tools-and-the-desk (local, not merged)",
-    "bytes": 27196,
-    "sha256": "a22bb895e1bd03bc66ec787d6f5a1e97f399c0bb57320fee0985e599f5b91ba0",
-    "treatment": "Unchanged Flutter render-harness capture; synthetic fixture (Robin Hale); not a device screenshot."
+    "asset": "assets/app-chords-on-the-word.webp",
+    "source_path": "build/eyes/site-pictures/chord-b1-card.png",
+    "render": "test_render/fix_a_chord_test.dart, frame b1 (the page at rest), at 390 x 844, text scale 1, drawn at 2x",
+    "app_commit": "b49419cfefd0c458253e89df6e3b87ca2939457a",
+    "app_branch": "main",
+    "bytes": 49290,
+    "sha256": "2e7ca2c3aa01834b7dd9012ec983d97f4318e2440798e6499f272ff91b90601c",
+    "treatment": "Flutter render-harness capture from a copy of the named test kept out of the app repository; demo fixtures only; WebP, cwebp -q 82; not a device screenshot."
   },
   {
-    "asset": "assets/app-profile.png",
-    "source_path": "build/eyes/site-profile/profile-phone.png",
-    "render": "test_render/the_profile_test.dart, 'Profile phone', at 390 x 844, text scale 1, with the serif loaded before the capture",
-    "app_commit": "8545b60d72621216ec186e1391226c89c1ac8160",
-    "app_branch": "feat/tools-and-the-desk (local, not merged)",
-    "bytes": 78714,
-    "sha256": "e9142704354f03e1a0515222e8697db7c03ba14feaecdd756aa24149f2349b65",
-    "treatment": "Unchanged Flutter render-harness capture; synthetic fixture (preview-mara in the in-memory repository); not a device screenshot."
+    "asset": "assets/app-chord-shapes.webp",
+    "source_path": "build/eyes/site-pictures/chord-b2-card.png",
+    "render": "test_render/fix_a_chord_test.dart, frame b2 (a chord tapped: its shapes and Yours), at 390 x 844, text scale 1, drawn at 2x",
+    "app_commit": "b49419cfefd0c458253e89df6e3b87ca2939457a",
+    "app_branch": "main",
+    "bytes": 52652,
+    "sha256": "fc089fc81e74d9badecbbe54c3a7996e75dd89ed1ce1fa09183c4e26c1a0ad00",
+    "treatment": "Flutter render-harness capture from a copy of the named test kept out of the app repository; demo fixtures only; WebP, cwebp -q 82; not a device screenshot."
   },
   {
-    "asset": "assets/app-team.png",
-    "source_path": "build/eyes/site-team/team-390x844-1x.png",
-    "render": "test_render/the_team_pages_and_stage_test.dart, state 'team', at 390 x 844, text scale 1",
-    "app_commit": "8545b60d72621216ec186e1391226c89c1ac8160",
-    "app_branch": "feat/tools-and-the-desk (local, not merged)",
-    "bytes": 38692,
-    "sha256": "fb5ecd8fb48cf1492f382df5f5d6cf43aa31e693ea13c17b5fb99efe5a081243",
-    "treatment": "Unchanged Flutter render-harness capture; synthetic fixture (test/support/a_team.dart); not a device screenshot."
+    "asset": "assets/app-every-d.webp",
+    "source_path": "build/eyes/site-pictures/chord-b3-card.png",
+    "render": "test_render/fix_a_chord_test.dart, frame b3 (5-5-4-0-2-0 tapped on Yours: Dmaj11/A and Every D?), at 390 x 844, text scale 1, drawn at 2x",
+    "app_commit": "b49419cfefd0c458253e89df6e3b87ca2939457a",
+    "app_branch": "main",
+    "bytes": 50954,
+    "sha256": "08824e4d363f4dc940d8b5ce1fafce263a4993511504e097a7051a792fa4e9b7",
+    "treatment": "Flutter render-harness capture from a copy of the named test kept out of the app repository; demo fixtures only; WebP, cwebp -q 82; not a device screenshot."
+  },
+  {
+    "asset": "assets/app-notepad.webp",
+    "source_path": "build/eyes/site-pictures/notepad-ch-becomes-chorus-phone-390x844.png",
+    "render": "test_render/the_songwriting_editor_test.dart, state ch-becomes-chorus, keyboard not drawn, at 390 x 844, text scale 1, drawn at 2x",
+    "app_commit": "b49419cfefd0c458253e89df6e3b87ca2939457a",
+    "app_branch": "main",
+    "bytes": 48666,
+    "sha256": "a2d663caed0383d47a58dc37e9f3b433197ed93506f00821de57981acf5fd631",
+    "treatment": "Flutter render-harness capture from a copy of the named test kept out of the app repository; demo fixtures only; WebP, cwebp -q 82; not a device screenshot."
+  },
+  {
+    "asset": "assets/app-takes-lanes.webp",
+    "source_path": "build/eyes/site-pictures/takes-390-1.0.png",
+    "render": "test_render/takes_are_lanes_test.dart, shot takes, at 390 x 844, text scale 1, drawn at 2x",
+    "app_commit": "b49419cfefd0c458253e89df6e3b87ca2939457a",
+    "app_branch": "main",
+    "bytes": 46852,
+    "sha256": "5a91400be877ced3b8d494b4f7c92e750aa75732982684b0fbd825ff2a0d471f",
+    "treatment": "Flutter render-harness capture from a copy of the named test kept out of the app repository; demo fixtures only; WebP, cwebp -q 82; not a device screenshot."
+  },
+  {
+    "asset": "assets/app-bell.webp",
+    "source_path": "build/eyes/site-pictures/bell-5-bell-page.png",
+    "render": "test_render/one_bell_built_test.dart, case 5 the bell page, at 390 x 844, text scale 1, drawn at 2x",
+    "app_commit": "b49419cfefd0c458253e89df6e3b87ca2939457a",
+    "app_branch": "main",
+    "bytes": 41740,
+    "sha256": "a1243f5a4e0e21ea87a25d23ed6c80c5c831e4304a66c786c57ec84d7667ebd6",
+    "treatment": "Flutter render-harness capture from a copy of the named test kept out of the app repository; demo fixtures only; WebP, cwebp -q 82; not a device screenshot."
+  },
+  {
+    "asset": "assets/app-large-screen.webp",
+    "source_path": "build/eyes/site-pictures/wide-1280.png",
+    "render": "test_render/the_wide_song_sheet_test.dart at 1280 x 800, drawn at 2x, resized to 1600 x 1000",
+    "app_commit": "b49419cfefd0c458253e89df6e3b87ca2939457a",
+    "app_branch": "main",
+    "bytes": 63878,
+    "sha256": "04ddf8a92357341a0bc47f79d3be060348ac6297e0c4c331b6166a29044fc82c",
+    "treatment": "Flutter render-harness capture from a copy of the named test kept out of the app repository; demo fixtures only; WebP, cwebp -q 82; not a device screenshot."
+  },
+  {
+    "asset": "assets/app-account.webp",
+    "source_path": "build/eyes/site-pictures/account.png",
+    "render": "test_render/account_is_you_test.dart, state account, at 390 x 844, text scale 1, drawn at 2x",
+    "app_commit": "b49419cfefd0c458253e89df6e3b87ca2939457a",
+    "app_branch": "main",
+    "bytes": 19956,
+    "sha256": "c964cb4ee34d782230ec771895a6c2f9e6ca290aa20fe7a6f536274c9d786e78",
+    "treatment": "Flutter render-harness capture from a copy of the named test kept out of the app repository; demo fixtures only; WebP, cwebp -q 82; not a device screenshot."
+  },
+  {
+    "asset": "assets/app-profile.webp",
+    "source_path": "build/eyes/site-pictures/profile.png",
+    "render": "test_render/the_profile_test.dart, the phone case, the serif loaded before the capture, at 390 x 844, text scale 1, drawn at 2x",
+    "app_commit": "b49419cfefd0c458253e89df6e3b87ca2939457a",
+    "app_branch": "main",
+    "bytes": 51636,
+    "sha256": "eb67a5781d1b2fed0cebfb9c3a57e200e44b565dc00d58ab759f3f6b94123008",
+    "treatment": "Flutter render-harness capture from a copy of the named test kept out of the app repository; demo fixtures only; WebP, cwebp -q 82; not a device screenshot."
+  },
+  {
+    "asset": "assets/app-team.webp",
+    "source_path": "build/eyes/site-pictures/team-team.png",
+    "render": "test_render/the_team_pages_and_stage_test.dart, state team, at 390 x 844, text scale 1, drawn at 2x",
+    "app_commit": "b49419cfefd0c458253e89df6e3b87ca2939457a",
+    "app_branch": "main",
+    "bytes": 20206,
+    "sha256": "b7c8ed2b3b5bf29398cac8f83c29475c94f8ba9e6ae531d352b1a9166d0015a9",
+    "treatment": "Flutter render-harness capture from a copy of the named test kept out of the app repository; demo fixtures only; WebP, cwebp -q 82; not a device screenshot."
   }
 ]
