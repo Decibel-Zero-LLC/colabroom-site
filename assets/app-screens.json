@@ -10,14 +10,24 @@
     "treatment": "Flutter render-harness capture from a copy of the named test kept out of the app repository; demo fixtures only; WebP, cwebp -q 82; not a device screenshot."
   },
   {
-    "asset": "assets/app-chord-shapes.webp",
-    "source_path": "build/eyes/site-pictures/chord-b2-card.png",
-    "render": "test_render/fix_a_chord_test.dart, frame b2 (a chord tapped: its shapes and Yours), at 390 x 844, text scale 1, drawn at 2x",
+    "asset": "assets/app-chord-card.webp",
+    "source_path": "build/eyes/site-closeup/card-390.png",
+    "render": "a copy of test_render/fix_a_chord_test.dart with no runner-up chords (so the card offers the chord's own family), a D tapped, at 390 x 844, text scale 1, drawn at 3x and cut to the card",
     "app_commit": "b49419cfefd0c458253e89df6e3b87ca2939457a",
     "app_branch": "main",
-    "bytes": 52652,
-    "sha256": "fc089fc81e74d9badecbbe54c3a7996e75dd89ed1ce1fa09183c4e26c1a0ad00",
-    "treatment": "Flutter render-harness capture from a copy of the named test kept out of the app repository; demo fixtures only; WebP, cwebp -q 82; not a device screenshot."
+    "bytes": 30482,
+    "sha256": "7a43716abe7debdce98fccf8793ff01e113c01e50a4e98aa517a0fd22e19d9a5",
+    "treatment": "Flutter render-harness capture, cropped with sips; demo song County Line; WebP, cwebp -q 85; not a device screenshot."
+  },
+  {
+    "asset": "assets/app-chord-picker.webp",
+    "source_path": "build/eyes/site-closeup/all-390.png",
+    "render": "the same walk, All tapped: ChordEditorSheet, drawn at 3x, cut to the sheet, resized to 780 wide",
+    "app_commit": "b49419cfefd0c458253e89df6e3b87ca2939457a",
+    "app_branch": "main",
+    "bytes": 36078,
+    "sha256": "73aa68c2475041bd6cab7e8a2fca9bc5d27c2de6019312d3e42082d93ef0fcea",
+    "treatment": "Flutter render-harness capture, cropped with sips; demo song County Line; WebP, cwebp -q 85; not a device screenshot."
   },
   {
     "asset": "assets/app-every-d.webp",
