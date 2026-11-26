@@ -20,34 +20,22 @@ interface. The second explicitly requested fictional adults without celebrity
 resemblance. Original PNGs are retained in the designer's local generation
 archive; the site ships only the compressed WebP files.
 
-## Actual app screens — 18 November 2026
+## Actual app screens: 26 November 2026
 
-`app-account.png`, `app-profile.png` and `app-team.png` are unchanged captures
-from the app's render harness (`test_render/` in CoLabRoom-Flutter), drawn at
-390 × 844 at text scale 1 from commit
-`8545b60d72621216ec186e1391226c89c1ac8160` on the local branch
-`feat/tools-and-the-desk`, which contains the 17 November test build
-(`ec2eed27`). They replace the 24 October captures of the older interface.
+The `app-*.webp` pictures are captures from the app's render harness
+(`test_render/` in CoLabRoom-Flutter) at main
+`b49419cfefd0c458253e89df6e3b87ca2939457a`, drawn at 390 × 844 at text scale 1
+and photographed at twice that (the large-screen picture at 1280 × 800,
+resized to 1600 × 1000), then compressed with `cwebp -q 82`. Sources, sizes and
+hashes are in `app-screens.json`. They replace the 18 November PNG captures of
+the account, profile and team pages.
 
-- Account: `account_is_you_test.dart`, state `account`.
-- A profile: `the_profile_test.dart`, the phone case.
-- A team: `the_team_pages_and_stage_test.dart`, state `team`.
-
-The harness tests were run from copies kept in the app's ignored `build/`
-folder, changed only to draw at 390 × 844 and, for the profile, to wait for
-the app's serif before the capture (the stock profile test draws the name as
-blank boxes). Nothing was committed in the app repository.
-
-They use the harness's synthetic people, rooms and accounts. They are not
-customer data, real people or endorsements. The images have not been
-retouched, recomposed or cropped, and are kept as the harness wrote them: at
-144,602 bytes together they are already smaller than the set they replace,
-so they were not re-encoded. They load lazily on the relevant pages.
-`app-screens.json` records each source, the commit, exact bytes and SHA-256.
-
-These captures show three screens only. The site's drawn pictures elsewhere
-(the sample song, the room card, the stands) are the site's own
-illustrations, not app screens.
+The harness tests were run from copies kept out of the app repository, changed
+only in size, in where they write, and in their demo words: the chord pictures
+use the site's own sample song, County Line, in place of the test's placeholder
+words, and three fixture names were swapped for invented ones. Every person,
+band and song in them is an example. Nothing was committed in the app
+repository.
 
 ## Shared blue fog — 25 October 2026
 
